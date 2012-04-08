@@ -1,0 +1,17 @@
+<package>
+  <description brief="rosruby">
+
+    This is ruby learning project.
+
+  </description>
+  <author>Takashi Ogura</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rosruby</url>
+  <depend package="roslang"/>
+  <depend package="rosgraph_msgs"/>
+  <depend package="std_msgs"/>
+
+</package>
+
+

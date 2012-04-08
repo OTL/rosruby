@@ -1,0 +1,1 @@
+export RUBYLIB=`rospack find rosruby`/src
