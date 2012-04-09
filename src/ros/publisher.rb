@@ -1,10 +1,10 @@
-require 'ros/serializer'
+#require 'ros/serializer'
 
 module ROS
 
   class Publisher
     
-    include Serializer
+#    include Serializer
 
     def initialize(caller_id, topic_name, topic_type, is_latched=false)
       @caller_id = caller_id
@@ -20,7 +20,7 @@ module ROS
         connection.write(serialize(@caller_id, @is_latched, @topic_name))
       end
     end
-
+    
     attr_reader :port, :host, :topic_name, :topic_type
 
     def add_subscriber

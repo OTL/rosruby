@@ -1,6 +1,7 @@
 require 'ros/param'
 require 'ros/name'
 require 'ros/topic_manager'
+require 'ros/publisher'
 
 module ROS
 
@@ -27,7 +28,11 @@ module ROS
     end
 
     def advertise(topic_name, topic_type)
-      @manager.add_publisher(PublisherImple.new(@node_name, topic_name, topic_type))
+      @manager.add_publisher(Publisher.new(@node_name, topic_name, topic_type))
+    end
+
+    def shutdown
+      @manager.shutdown
     end
   end
   

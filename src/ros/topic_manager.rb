@@ -26,6 +26,7 @@ module ROS
       @thread = Thread.new do
         @server.serve
       end
+
     end
 
     def test_serve
@@ -44,13 +45,36 @@ module ROS
                            publisher.topic_type,
                            get_uri)
       if result[0] == 1
-        publisher.add_subscribers(result[2])
+        #publisher.add_subscribers(result[2])
         @publishers[publisher.topic_name] = publisher
         return publisher
       else
         raise "registration of publisher failed"
       end
-      
     end
+
+    def delete_publisher(publisher)
+      master = XMLRPC::Client.new2(ENV['ROS_MASTER_URI'])
+      result = master.call("unregisterPublisher",
+                           @caller_id,
+                           publisher.topic_name,
+                           get_uri)
+      if result[0] == 1
+        @publishers.delete(publisher.topic_name)
+        return publisher
+      else
+        raise "registration of publisher failed"
+      end
+    end
+
+    def shutdown
+      @publishers.each do |publisher|
+        delete_publisher(publisher)
+        publisher.shutdown
+      end
+      @server.shutdown
+      @thread.join
+    end
+
   end
 end
