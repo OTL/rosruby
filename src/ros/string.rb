@@ -6,19 +6,27 @@ module ROS
 
     attr_accessor :data
 
-    def get_serialized_data
-      data
+    def serialize
+      data_length = 4 + @data.length
+      [data_length + 4, data_length, @data].pack("VVa*")
     end
 
-    def get_message_definition_str
-      "message_definition=string data\n\n"
+    def deserialize(data)
+      field_byte, data = data.unpack("Va*")
+      @data = data
+      return self
     end
 
-    def get_md5sum_str
-      'md5sum=992ce8a1687cec8c8bd883ec73ca41d1'
+    def self.message_definition
+      "string data\n\n"
     end
-    def get_type_str
-      'type=std_msgs/String'
+
+    def self.md5sum
+      '992ce8a1687cec8c8bd883ec73ca41d1'
+    end
+
+    def self.type_string
+      'std_msgs/String'
     end
   end
 

@@ -1,39 +1,26 @@
 #require 'ros/serializer'
+require 'ros/topic'
+require 'ros/tcpros_server'
 
 module ROS
 
-  class Publisher
-    
-#    include Serializer
+  class Publisher < Topic
 
     def initialize(caller_id, topic_name, topic_type, is_latched=false)
-      @caller_id = caller_id
-      @topic_name = topic_name
-      @topic_type = topic_type
+      super(caller_id, topic_name, topic_type)
       @is_latched = is_latched
-      @host = "localhost"
-      @connections = []
     end
 
     def publish(message) 
-      for connection in @connections
-        connection.write(serialize(@caller_id, @is_latched, @topic_name))
+      @connections.each_value do |connection|
+        connection.write_msg(message)
       end
     end
-    
-    attr_reader :port, :host, :topic_name, :topic_type
 
-    def add_subscriber
-      new_connection = TCPROS.new
-      @connections.push(new_connection)
+    def add_connection(uri)
+      new_connection = TCPROS::Server.new(TCROS::Server.generate_port)
+      @connections[uri] = new_connection
       return new_connection
     end
-
-    def shutdown
-      for connection in @connections
-        connection.close
-      end
-    end
-
   end
 end
