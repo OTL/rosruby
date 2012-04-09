@@ -46,5 +46,7 @@ class TestPub_Normal < Test::Unit::TestCase
     msg = ROS::String.new
     msg.data = 'hogehoge'
     publisher.publish(msg)
+    while true
+    end
   end
 end
