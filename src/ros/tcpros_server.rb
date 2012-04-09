@@ -1,69 +1,84 @@
 require 'socket'
+require 'thread'
 
 module ROS
   module TCPROS
     class Server
 
-      def initialize(port, caller_id, topic_name, topic_type)
+      def initialize(caller_id, topic_name, topic_type, port=0)
         @@next_port = 12345
-        @port = port
         @host = "localhost"
         @caller_id = caller_id
         @topic_name = topic_name
         @topic_type = topic_type
-        @server = TCPServer.open(@port)
+        p '=======SERVER'
+        @server = TCPServer.open(port)
+        saddr = @server.getsockname
+        @port = Socket.unpack_sockaddr_in(saddr)[0]
+        p 'SERVER====='
+        p @port
         @write_queue = Queue.new
         @msg_queue = Queue.new
-        @thread = Thread.start(@server.accept) do |socket|
-          socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
-          total_bytes = socket.recv(4).unpack("V")[0]
-          data = socket.recv(total_bytes)
-          header = Header.new
-          header.deserialize(data)
-          if check_header(header)
-            loop do
-              msg = @msg_queue.pop
-              socket.write(msg.serialize)
+      end
+
+      def start
+
+        @accept_thread = Thread.new do
+          socket = @server.accept
+          p 'start thread'
+          @thread = Thread.new do
+            p 'accepted'
+            socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
+            p 'waiting for header'
+            total_bytes = socket.recv(4).unpack("V")[0]
+            p total_bytes
+            p 'waiting for header end'
+            data = socket.recv(total_bytes)
+            header = Header.new
+            header.deserialize(data)
+            p 'header get'
+            if check_header(header)
+              p 'checker ok'
+              send_header(socket)
+              p 'send header finish'
+              loop do
+                p 'waiting for msg_queue'
+                msg = @msg_queue.pop
+                socket.write(msg.serialize)
+              end
+            else
+              socket.close
+              raise 'header check error'
             end
-          else
-            socket.close
-            raise 'header check error'
           end
         end
       end
-
       attr_accessor :msg_queue
 
       def check_header(header)
         return true
       end
 
-      def send_header
+      def send_header (socket)
+        p 'send_header start'
         header = Header.new
         header.push_data("callerid", @caller_id)
         header.push_data("topic", @topic_name)
         header.push_data("md5sum", @topic_type.md5sum)
         header.push_data("type", @topic_type.type_string)
         header.push_data("tcp_nodelay", '1')
-        p header.serialize
-        @socket.write(header.serialize)
-        @socket.flush
-      end
-
-      def write(data)
-        @socket.write(data)
+        p 'send_header start writing'
+        socket.write(header.serialize)
+        p 'send_header start writing end'
+        socket.flush
       end
       
       def close
         @server.close
-        @socket.close
       end
       
       attr_reader :port, :host
       
-      def self.generate_port
-        @@next_port = @@next_port +1
-      end
     end
   end
 end

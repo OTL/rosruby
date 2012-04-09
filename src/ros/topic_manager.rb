@@ -6,28 +6,58 @@ module ROS
 
     def initialize(caller_id)
       @caller_id = caller_id
-      @port = 12345
       @host = "localhost"
+      @port = 12345
       @server = XMLRPC::Server.new(@port)
-      @publishers = {}
-      @subscribers = {}
+      @publishers = []
+      @subscribers = []
+      @server.set_default_handler do |method, *args|
+        p 'call!! unhandled'
+        p method
+        p *args
+        [0, "I DON'T KNOW", 0]
+      end
       @server.add_handler('requestTopic') do |caller_id, topic, protocols|
+        message = [0, "I DON'T KNOW", 0]
         for protocol in protocols
           if protocol[0] == 'TCPROS'
-            if @publishers.has_key(topic)
-              connection = @publishers[topic].add_subscriber
-              return [1, "OK! WAIT!!!", ['TCPROS',
-                                         connection.host,
-                                         connection.port]]
+            for publisher in @publishers
+              if publisher.topic_name == topic
+                connection = publisher.add_connection(caller_id)
+                connection.start
+                message = [1, "OK! WAIT!!!", ['TCPROS',
+                                              connection.host,
+                                              connection.port]]
+              end
             end
           end
         end
-        return [0, "I DON'T KNOW", 0]
-      end
-      @thread = Thread.new do
-        @server.serve
+        message
       end
 
+      @server.add_handler('publisherUpdate') do |caller_id, topic, publishers|
+        for subscriber in @subscribers
+          if subscriber.topic_name == topic
+            for publisher_uri in publishers
+              if not subscriber.has_connection_with?(publisher_uri)
+                subscriber.add_connection(publisher_uri)
+              end
+            end
+          end
+          for uri in subscriber.get_connected_uri
+            if not publishers.index(uri)
+              subscriber.drop_connection(uri)
+            end
+          end
+        end
+        [1, "OK! Updated!!", 0]
+      end
+
+      @thread = Thread.new do
+        p 'start serve'
+        @server.serve
+      end
+      
     end
 
     def test_serve
@@ -49,24 +79,24 @@ module ROS
         for publisher_uri in result[2]
           subscriber.add_connection(publisher_uri)
         end
-        @subscribers[subscriber.topic_name] = subscriber
+        @subscribers.push(subscriber)
         return subscriber
       else
         raise "registration of publisher failed"
       end
     end
 
-    def delete_subscriber(publisher)
+    def delete_subscriber(subscriber)
       master = XMLRPC::Client.new2(ENV['ROS_MASTER_URI'])
-      result = master.call("unregisterPublisher",
+      result = master.call("unregisterSubscriber",
                            @caller_id,
-                           publisher.topic_name,
+                           subscriber.topic_name,
                            get_uri)
       if result[0] == 1
-        @publishers.delete(publisher.topic_name)
-        return publisher
+        @subscribers.delete(puslisher)
+        return subscriber
       else
-        raise "registration of publisher failed"
+        raise "registration of subscriber failed"
       end
     end
 
@@ -78,8 +108,10 @@ module ROS
                            publisher.topic_type.type_string,
                            get_uri)
       if result[0] == 1
-        #publisher.add_subscribers(result[2])
-        @publishers[publisher.topic_name] = publisher
+#        for subscriber_uri in result[2]
+#          publisher.add_connection(subscriber_uri)
+#        end
+        @publishers.push(publisher)
         return publisher
       else
         raise "registration of publisher failed"
@@ -93,7 +125,7 @@ module ROS
                            publisher.topic_name,
                            get_uri)
       if result[0] == 1
-        @publishers.delete(publisher.topic_name)
+        @publishers.delete(publisher)
         return publisher
       else
         raise "registration of publisher failed"
@@ -101,17 +133,17 @@ module ROS
     end
 
     def spin_once
-      @subscribers.each_value do |subscriber|
+      for subscriber in @subscribers
         subscriber.process_queue
       end
     end
 
     def shutdown
-      @publishers.each_value do |publisher|
+      for publisher in @publishers
         delete_publisher(publisher)
         publisher.shutdown
       end
-      @subscribers.each_value do |subscriber|
+      for subscriber in @subscribers
         delete_subscriber(subscriber)
         subscriber.shutdown
       end

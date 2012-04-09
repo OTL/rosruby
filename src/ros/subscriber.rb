@@ -20,6 +20,10 @@ module ROS
       end
     end
 
+    def drop_connection(uri)
+      @connections[uri].close
+    end
+
     def add_connection(uri)
       publisher = XMLRPC::Client.new2(uri)
       result = publisher.call("requestTopic",
@@ -43,5 +47,12 @@ module ROS
       end
     end
 
+    def has_connection_with?(uri)
+      return @connections[uri]
+    end
+
+    def get_connected_uri
+      return @connections.keys
+    end
   end
 end

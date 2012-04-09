@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 require 'ros/node'
 require 'ros/string'
 
