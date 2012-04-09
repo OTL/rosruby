@@ -4,7 +4,7 @@ module ROS
       @data = ''
     end
 
-    attr_accessor: data
+    attr_accessor :data
 
     def get_serialized_data
       data
