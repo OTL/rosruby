@@ -1,6 +1,6 @@
 #require 'ros/serializer'
 require 'ros/topic'
-require 'ros/tcpros_client'
+require 'ros/tcpros/client'
 require 'xmlrpc/client'
 
 module ROS

@@ -1,6 +1,5 @@
-#require 'ros/serializer'
 require 'ros/topic'
-require 'ros/tcpros_server'
+require 'ros/tcpros/server'
 
 module ROS
 
@@ -18,9 +17,7 @@ module ROS
     end
 
     def add_connection(caller_id)
-      p 'addd_connection'
       new_connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type)
-      p 'server create'
       @connections[caller_id] = new_connection
       return new_connection
     end

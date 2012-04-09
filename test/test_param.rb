@@ -36,17 +36,3 @@ class TestParam_Normal < Test::Unit::TestCase
     node.shutdown
   end
 end
-
-
-class TestPub_Normal < Test::Unit::TestCase
-  def test_advertise
-    node = ROS::Node.new('hoge')
-    publisher = node.advertise('/topic_test', 'std_msgs/String')
-    sleep(0.5)
-    msg = ROS::String.new
-    msg.data = 'hogehoge'
-    publisher.publish(msg)
-    while true
-    end
-  end
-end
