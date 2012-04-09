@@ -1,19 +1,17 @@
-require 'ros/param'
+require 'ros/parameter_manager'
 require 'ros/name'
 require 'ros/topic_manager'
 require 'ros/publisher'
 require 'ros/subscriber'
 
 module ROS
-
   class Node
-    
-    include Param
     include Name
 
     def initialize(node_name)
       @node_name = resolve_name(node_name)
       @manager = TopicManager.new(@node_name)
+      @parameter = ParameterManager.new(@node_name)
     end
 
     def resolve_name(name)
@@ -21,11 +19,11 @@ module ROS
     end
 
     def get_param(key)
-      get_param_with_caller_id(@node_name, resolve_name(key))
+      @parameter.get_param(resolve_name(key))
     end
 
     def set_param(key, value)
-      set_param_with_caller_id(@node_name, resolve_name(key), value)
+      @parameter.set_param(resolve_name(key), value)
     end
 
     def advertise(topic_name, topic_type)

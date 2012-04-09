@@ -13,13 +13,15 @@ module ROS
 
     def publish(message) 
       @connections.each_value do |connection|
-        connection.write_msg(message)
+        connection.msg_queue.push(message)
       end
     end
 
-    def add_connection(uri)
-      new_connection = TCPROS::Server.new(TCROS::Server.generate_port)
-      @connections[uri] = new_connection
+    def add_connection(caller_id)
+      p 'addd_connection'
+      new_connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type)
+      p 'server create'
+      @connections[caller_id] = new_connection
       return new_connection
     end
   end

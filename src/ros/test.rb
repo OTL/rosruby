@@ -4,7 +4,7 @@ require 'ros/string'
 
 class TestParam_Normal < Test::Unit::TestCase
   def test_set_get
-    node = ROS::Node.new('hoge')
+    node = ROS::Node('hoge')
     # integer
     assert(node.set_param('/test1', 1))
     assert_equal(1, node.get_param('/test1'))
