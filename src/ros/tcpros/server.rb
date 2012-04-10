@@ -19,7 +19,7 @@ module ROS::TCPROS
 
     def start
       @accept_thread = Thread.new do
-        socket = @server.accept
+        while socket = @server.accept
         @thread = Thread.new do
           total_bytes = socket.recv(4).unpack("V")[0]
           data = socket.recv(total_bytes)
@@ -40,6 +40,7 @@ module ROS::TCPROS
             raise 'header check error'
           end
         end
+      end
       end
     end
 

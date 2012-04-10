@@ -4,6 +4,7 @@ require 'ros/topic_manager'
 require 'ros/publisher'
 require 'ros/subscriber'
 require 'ros/service_server'
+require 'ros/service_client'
 
 module ROS
   class Node
@@ -51,6 +52,12 @@ module ROS
                                                     service_name,
                                                     service_type,
                                                     callback))
+    end
+
+    def service(service_name, service_type)
+      @manager.add_service_client(::ROS::ServiceClient.new(@node_name,
+                                                           service_name,
+                                                           service_type))
     end
 
     def subscribe(topic_name, topic_type, callback)

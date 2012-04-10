@@ -123,6 +123,18 @@ module ROS
       "http://" + @host + ":" + @port.to_s + "/"
     end
 
+    def add_service_client(service_client)
+      master = XMLRPC::Client.new2(@node.master_uri)
+      result = master.call('lookupService',
+                           @caller_id,
+                           service_client.service_name)
+      if result[0] == 1
+        service_client.connect(result[2])
+      else
+        raise 'lookupService fail'
+      end
+    end
+
     def add_service_server(service_server)
       master = XMLRPC::Client.new2(@node.master_uri)
       result = master.call('registerService',

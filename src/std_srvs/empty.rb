@@ -25,12 +25,11 @@ module Std_srvs
     class Response
 
       def serialize()
-#        [0].pack("V")
-        ''
+        return [0].pack("V")
       end
 
       def deserialize(data)
-        # nothing
+        self
       end
 
     end
