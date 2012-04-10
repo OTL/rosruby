@@ -10,12 +10,11 @@ def main
                               Proc.new do |data|
                                 p data
                               end)
-  while true
+  while node.ok?
     node.spin_once
     sleep(1)
   end
 
-  node.shutdown
 end
 
 main

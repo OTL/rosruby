@@ -7,7 +7,7 @@ module ROS
     def initialize(caller_id)
       @caller_id = caller_id
       @host = "localhost"
-      @port = 12345
+      @port = get_available_port
       @server = XMLRPC::Server.new(@port)
       @publishers = []
       @subscribers = []
@@ -54,10 +54,17 @@ module ROS
       end
 
       @thread = Thread.new do
-        p 'start serve'
         @server.serve
       end
       
+    end
+
+    def get_available_port
+      server = TCPServer.open(0)
+      saddr = server.getsockname
+      port = Socket.unpack_sockaddr_in(saddr)[0]
+      server.close
+      return port
     end
 
     def test_serve
@@ -93,7 +100,7 @@ module ROS
                            subscriber.topic_name,
                            get_uri)
       if result[0] == 1
-        @subscribers.delete(puslisher)
+        @subscribers.delete(subscriber)
         return subscriber
       else
         raise "registration of subscriber failed"

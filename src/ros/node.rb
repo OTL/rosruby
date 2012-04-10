@@ -12,6 +12,15 @@ module ROS
       @node_name = resolve_name(node_name)
       @manager = TopicManager.new(@node_name)
       @parameter = ParameterManager.new(@node_name)
+      @is_ok = true
+      # because xmlrpc server use signal trap, after serve, it have to trap signal
+      [:INT, :TERM, :HUP].each do |signal|
+        Signal.trap(signal, proc{p 'shutdown by signal'; shutdown})
+      end
+    end
+
+    def ok?
+      return @is_ok
     end
 
     def resolve_name(name)
@@ -42,6 +51,7 @@ module ROS
     end
 
     def shutdown
+      @is_ok = false
       @manager.shutdown
     end
   end

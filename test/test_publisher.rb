@@ -9,11 +9,10 @@ def main
   sleep(1)
   msg = ROS::String.new
   msg.data = 'hogehoge'
-  while true
+  while node.ok?
     publisher.publish(msg)
     sleep (1.0)
   end
-  node.shutdown
 end
 
 main
