@@ -1,5 +1,3 @@
-#require 'ros/serializer'
-
 module ROS
 
   class Topic
@@ -19,5 +17,18 @@ module ROS
         connection.close
       end
     end
+
+    def get_connected_uri
+      return @connections.keys
+    end
+
+    def drop_connection(uri)
+      @connections[uri].close
+    end
+
+    def has_connection_with?(uri)
+      return @connections[uri]
+    end
+
   end
 end

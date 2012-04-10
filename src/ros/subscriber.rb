@@ -1,4 +1,3 @@
-#require 'ros/serializer'
 require 'ros/topic'
 require 'ros/tcpros/client'
 require 'xmlrpc/client'
@@ -18,10 +17,6 @@ module ROS
           @callback.call(connection.msg_queue.pop)
         end
       end
-    end
-
-    def drop_connection(uri)
-      @connections[uri].close
     end
 
     def add_connection(uri)
@@ -47,12 +42,5 @@ module ROS
       end
     end
 
-    def has_connection_with?(uri)
-      return @connections[uri]
-    end
-
-    def get_connected_uri
-      return @connections.keys
-    end
   end
 end

@@ -6,7 +6,6 @@ module ROS::TCPROS
   class Server
 
     def initialize(caller_id, topic_name, topic_type, port=0)
-      @@next_port = 12345
       @host = "localhost"
       @caller_id = caller_id
       @topic_name = topic_name
@@ -19,16 +18,17 @@ module ROS::TCPROS
     end
 
     def start
-
       @accept_thread = Thread.new do
         socket = @server.accept
         @thread = Thread.new do
-          socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
           total_bytes = socket.recv(4).unpack("V")[0]
           data = socket.recv(total_bytes)
           header = Header.new
           header.deserialize(data)
           if check_header(header)
+            if header['tcp_nodelay'] == '1'
+              socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
+            end
             send_header(socket)
             loop do
               msg = @msg_queue.pop
@@ -36,6 +36,7 @@ module ROS::TCPROS
             end
           else
             socket.close
+            p 'header check error'
             raise 'header check error'
           end
         end
@@ -45,7 +46,10 @@ module ROS::TCPROS
     attr_accessor :msg_queue
 
     def check_header(header)
-      return true
+      if header['type'] == @topic_type.type_string and header['md5sum'] == @topic_type.md5sum
+        return true
+      end
+      return false
     end
 
     def send_header (socket)

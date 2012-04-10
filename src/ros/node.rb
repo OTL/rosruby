@@ -3,6 +3,7 @@ require 'ros/name'
 require 'ros/topic_manager'
 require 'ros/publisher'
 require 'ros/subscriber'
+require 'ros/service_server'
 
 module ROS
   class Node
@@ -43,6 +44,13 @@ module ROS
 
     def advertise(topic_name, topic_type)
       @manager.add_publisher(Publisher.new(@node_name, topic_name, topic_type))
+    end
+
+    def advertise_service(service_name, service_type, callback)
+      @manager.add_service_server(::ROS::ServiceServer.new(@node_name,
+                                                    service_name,
+                                                    service_type,
+                                                    callback))
     end
 
     def subscribe(topic_name, topic_type, callback)
