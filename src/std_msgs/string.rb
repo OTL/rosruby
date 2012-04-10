@@ -1,4 +1,4 @@
-module ROS
+module Std_msgs
   class String
     def initialize()
       @data = ''
@@ -29,5 +29,4 @@ module ROS
       'std_msgs/String'
     end
   end
-
 end
