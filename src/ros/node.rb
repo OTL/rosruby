@@ -9,9 +9,10 @@ module ROS
     include Name
 
     def initialize(node_name)
+      @master_uri = ENV['ROS_MASTER_URI']
       @node_name = resolve_name(node_name)
-      @manager = TopicManager.new(@node_name)
-      @parameter = ParameterManager.new(@node_name)
+      @manager = TopicManager.new(@node_name, self)
+      @parameter = ParameterManager.new(@node_name, self)
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
       [:INT, :TERM, :HUP].each do |signal|
@@ -25,6 +26,8 @@ module ROS
     def ok?
       return @is_ok
     end
+
+    attr_reader :master_uri
 
     def resolve_name(name)
       resolve_name_with_call_id(@node_name, name)

@@ -7,10 +7,10 @@ module ROS
     def canonicalize_name(name)
       if name == nil or name == SEP
         return name
-      elsif name[0] == SEP
-        return name.split(/\/+/).join('/')
+      elsif name[0] == SEP[0]
+        return name.split(/\/+/).join(SEP)
       else
-        return '/' + name.split(/\/+/).join('/')
+        return SEP + name.split(/\/+/).join(SEP)
       end
     end
 
