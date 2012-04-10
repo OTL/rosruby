@@ -7,8 +7,8 @@ module Std_msgs
     attr_accessor :data
 
     def serialize
-      data_length = 4 + @data.length
-      [data_length + 4, data_length, @data].pack("VVa*")
+      total_length = 4 + @data.length
+      [total_length, @data.length, @data].pack("VVa*")
     end
 
     def deserialize(data)

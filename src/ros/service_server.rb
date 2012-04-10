@@ -7,7 +7,6 @@ module ROS
     def initialize(caller_id, service_name, service_type, callback)
       super(caller_id, service_name, service_type)
       @callback = callback
-      
       @server = TCPROS::ServiceServer.new(@caller_id,
                                           @service_name,
                                           @service_type,
