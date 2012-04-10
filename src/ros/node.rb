@@ -15,7 +15,10 @@ module ROS
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
       [:INT, :TERM, :HUP].each do |signal|
-        Signal.trap(signal, proc{p 'shutdown by signal'; shutdown})
+        Signal.trap(signal, proc{if @is_ok
+                                   p 'shutdown by signal'
+                                   shutdown
+                                 end})
       end
     end
 
