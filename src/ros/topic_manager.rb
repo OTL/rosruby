@@ -4,8 +4,9 @@ require 'xmlrpc/client'
 module ROS
   class TopicManager
 
-    def initialize(caller_id)
+    def initialize(caller_id, node)
       @caller_id = caller_id
+      @node = node
       @host = "localhost"
       @port = get_available_port
       @server = XMLRPC::Server.new(@port)
@@ -17,6 +18,27 @@ module ROS
         p *args
         [0, "I DON'T KNOW", 0]
       end
+
+      @server.add_handler('getBusStats') do |caller_id|
+        [-1, "stats", 'not implemented yet']
+      end
+
+      @server.add_handler('getMasterUri') do |caller_id|
+        [1, "master", @node.master_uri]
+      end
+
+      @server.add_handler('getSubscriptions') do |caller_id|
+        @subscribers.map do |sub|
+          [sub.topic_name, sub.topic_type.type_string]
+        end
+      end
+
+      @server.add_handler('getPublications') do |caller_id|
+        @publishers.map do |pub|
+          [pub.topic_name, pub.topic_type.type_string]
+        end
+      end
+
       @server.add_handler('requestTopic') do |caller_id, topic, protocols|
         message = [0, "I DON'T KNOW", 0]
         for protocol in protocols
@@ -33,6 +55,31 @@ module ROS
           end
         end
         message
+      end
+
+      @server.add_handler('shutdown') do |caller_id, msg|
+        @node.shutdown
+        [1, 'shutdown ok', 0]
+      end
+
+      @server.add_handler('getPid') do |caller_id|
+        [1, "pid ok", Process.pid]
+      end
+
+      @server.add_handler('getBusInfo') do |caller_id|
+        info = []
+        i = 0
+        for publisher in @publishers
+          for uri in publisher.get_connected_uri
+            info.push(['connection' + i.to_s, uri, 'o', 'TCPROS', publisher.topic_name])
+          end
+        end
+        for subscriber in @subscribers
+          for uri in subscriber.get_connected_uri
+            info.push(['connection' + i.to_s, uri, 'i', 'TCPROS', subscriber.topic_name])
+          end
+        end
+        [1, "getBusInfo ok", info]
       end
 
       @server.add_handler('publisherUpdate') do |caller_id, topic, publishers|
@@ -76,7 +123,7 @@ module ROS
     end
 
     def add_subscriber(subscriber)
-      master = XMLRPC::Client.new2(ENV['ROS_MASTER_URI'])
+      master = XMLRPC::Client.new2(@node.master_uri)
       result = master.call("registerSubscriber",
                            @caller_id,
                            subscriber.topic_name,
@@ -94,7 +141,7 @@ module ROS
     end
 
     def delete_subscriber(subscriber)
-      master = XMLRPC::Client.new2(ENV['ROS_MASTER_URI'])
+      master = XMLRPC::Client.new2(@node.master_uri)
       result = master.call("unregisterSubscriber",
                            @caller_id,
                            subscriber.topic_name,
@@ -108,7 +155,7 @@ module ROS
     end
 
     def add_publisher(publisher)
-      master = XMLRPC::Client.new2(ENV['ROS_MASTER_URI'])
+      master = XMLRPC::Client.new2(@node.master_uri)
       result = master.call("registerPublisher",
                            @caller_id,
                            publisher.topic_name,
@@ -126,7 +173,7 @@ module ROS
     end
 
     def delete_publisher(publisher)
-      master = XMLRPC::Client.new2(ENV['ROS_MASTER_URI'])
+      master = XMLRPC::Client.new2(@node.master_uri)
       result = master.call("unregisterPublisher",
                            @caller_id,
                            publisher.topic_name,

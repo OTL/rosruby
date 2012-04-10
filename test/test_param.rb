@@ -1,10 +1,12 @@
+#!/usr/bin/ruby
+
 require 'test/unit'
 require 'ros/node'
 require 'ros/string'
 
 class TestParam_Normal < Test::Unit::TestCase
   def test_set_get
-    node = ROS::Node('hoge')
+    node = ROS::Node.new('hoge')
     # integer
     assert(node.set_param('/test1', 1))
     assert_equal(1, node.get_param('/test1'))
