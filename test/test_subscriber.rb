@@ -5,7 +5,7 @@ require 'std_msgs/string'
 
 def main
   node = ROS::Node.new('hoge')
-  subscriber = node.subscribe('/topic_test3',
+  subscriber = node.subscribe('/chutter',
                               Std_msgs::String,
                               Proc.new do |data|
                                 p data
