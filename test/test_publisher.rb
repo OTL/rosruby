@@ -5,7 +5,7 @@ require 'std_msgs/string'
 
 def main
   node = ROS::Node.new('hoge')
-  publisher = node.advertise('/topic_test2', Std_msgs::String)
+  publisher = node.advertise('/chatter', Std_msgs::String)
   sleep(1)
   msg = Std_msgs::String.new
   msg.data = 'hogehoge'
