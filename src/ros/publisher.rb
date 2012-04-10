@@ -22,9 +22,5 @@ module ROS
       return new_connection
     end
 
-    def get_connected_uri
-      return @connections.keys
-    end
-
   end
 end

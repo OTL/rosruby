@@ -12,6 +12,7 @@ module ROS
       @server = XMLRPC::Server.new(@port)
       @publishers = []
       @subscribers = []
+      @service_servers = []
       @server.set_default_handler do |method, *args|
         p 'call!! unhandled'
         p method
@@ -122,6 +123,37 @@ module ROS
       "http://" + @host + ":" + @port.to_s + "/"
     end
 
+    def add_service_server(service_server)
+      master = XMLRPC::Client.new2(@node.master_uri)
+      result = master.call('registerService',
+                           @caller_id,
+                           service_server.service_name,
+                           service_server.service_uri,
+                           get_uri)
+      if result[0] == 1
+        @service_servers.push(service_server)
+      else
+        p result[0]
+        p result[1]
+        p result[2]
+        raise 'registerService fail'
+      end
+
+    end
+
+    def delete_service_server(service)
+      master = XMLRPC::Client.new2(@node.master_uri)
+      result = master.call('unregisterService',
+                           @caller_id,
+                           service.service_name,
+                           service,service_uri)
+      if result[0] == 0
+        @service_servers.delete(service)
+      else
+        raise 'unregisterService fail'
+      end
+    end
+
     def add_subscriber(subscriber)
       master = XMLRPC::Client.new2(@node.master_uri)
       result = master.call("registerSubscriber",
@@ -189,6 +221,9 @@ module ROS
     def spin_once
       for subscriber in @subscribers
         subscriber.process_queue
+      end
+      for service_server in @service_servers
+        service_server.process_queue
       end
     end
 
