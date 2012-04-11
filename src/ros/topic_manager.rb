@@ -31,13 +31,13 @@ module ROS
 
       @server.add_handler('getSubscriptions') do |caller_id|
         @subscribers.map do |sub|
-          [sub.topic_name, sub.topic_type.type_string]
+          [sub.topic_name, sub.topic_type.type]
         end
       end
 
       @server.add_handler('getPublications') do |caller_id|
         @publishers.map do |pub|
-          [pub.topic_name, pub.topic_type.type_string]
+          [pub.topic_name, pub.topic_type.type]
         end
       end
 
@@ -182,7 +182,7 @@ module ROS
       result = master.call("registerSubscriber",
                            @caller_id,
                            subscriber.topic_name,
-                           subscriber.topic_type.type_string,
+                           subscriber.topic_type.type,
                            get_uri)
       if result[0] == 1
         for publisher_uri in result[2]
@@ -214,7 +214,7 @@ module ROS
       result = master.call("registerPublisher",
                            @caller_id,
                            publisher.topic_name,
-                           publisher.topic_type.type_string,
+                           publisher.topic_type.type,
                            get_uri)
       if result[0] == 1
         #        for subscriber_uri in result[2]

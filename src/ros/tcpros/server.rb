@@ -1,3 +1,4 @@
+require 'stringio'
 require 'socket'
 require 'thread'
 require 'ros/tcpros'
@@ -17,6 +18,14 @@ module ROS::TCPROS
       @msg_queue = Queue.new
     end
 
+    def write_msg(msg, socket)
+      sio = StringIO.new('', 'r+')
+      msg.serialize(sio)
+      sio.rewind
+      data = sio.readline
+      socket.write([data.length, data].pack("Va*"))
+    end
+
     def start
       @accept_thread = Thread.new do
         while socket = @server.accept
@@ -31,8 +40,7 @@ module ROS::TCPROS
             end
             send_header(socket)
             loop do
-              msg = @msg_queue.pop
-              socket.write(msg.serialize)
+              write_msg(@msg_queue.pop, socket)
             end
           else
             socket.close
@@ -47,7 +55,7 @@ module ROS::TCPROS
     attr_accessor :msg_queue
 
     def check_header(header)
-      if header['type'] == @topic_type.type_string and header['md5sum'] == @topic_type.md5sum
+      if header['type'] == @topic_type.type and header['md5sum'] == @topic_type.md5sum
         return true
       end
       return false
@@ -58,9 +66,9 @@ module ROS::TCPROS
       header.push_data("callerid", @caller_id)
       header.push_data("topic", @topic_name)
       header.push_data("md5sum", @topic_type.md5sum)
-      header.push_data("type", @topic_type.type_string)
+      header.push_data("type", @topic_type.type)
       header.push_data("tcp_nodelay", '1')
-      socket.write(header.serialize)
+      header.serialize(socket)
       socket.flush
     end
     

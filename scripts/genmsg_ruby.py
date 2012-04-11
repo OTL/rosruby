@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 # Software License Agreement (BSD License)
 #
 # Copyright (c) 2008, Willow Garage, Inc.
@@ -179,7 +180,7 @@ class Special:
             return None
         
 _SPECIAL_TYPES = {
-    roslib.msgs.HEADER:   Special('Std_msgs::Msg::_Header.Header()',     None, 'require "std_msgs/msg/header"'),
+    roslib.msgs.HEADER:   Special('Std_msgs::Header.new',     None, 'require "std_msgs/header"'),
     roslib.msgs.TIME:     Special('ROS::Time.new',     None, 'require "ros/time"'),
     roslib.msgs.DURATION: Special('ROS::Duration.new', None, 'require "ros/duration'), 
     }
@@ -317,7 +318,7 @@ def compute_constructor(package, type_):
         if not roslib.msgs.is_registered("%s/%s"%(base_pkg,base_type_)):
             return None
         else:
-            return '%s::msg::%s.new'%(base_pkg, base_type_)
+            return '%s::%s.new'%(base_pkg.capitalize(), base_type_)
 
 def compute_pkg_type(package, type_):
     """
@@ -368,7 +369,8 @@ def compute_import(package, type_):
     elif not roslib.msgs.is_registered(type_str):
         retval = []
     else:
-        retval = ['rquire "%s/msg"'%pkg]
+#        retval = ['rquire "%s/msg"'%pkg]
+        retval = ['require "%s/%s"'%(pkg, base_type.lower())]
         for t in get_registered_ex(type_str).types:
             sub = compute_import(package, t)
             retval.extend([x for x in sub if not x in retval])
@@ -431,7 +433,7 @@ def int32_pack(var):
     @type  var: str
     @return: struct packing code for an int32
     """
-    return serialize('@struct_I.pack(%s)'%var)
+    return serialize('@struct_V.pack(%s)'%var)
 
 # int32 is very common due to length serialization, so it is special cased
 def int32_unpack(var, buff):
@@ -440,7 +442,7 @@ def int32_unpack(var, buff):
     @type  var: str
     @return: struct unpacking code for an int32
     """
-    return '(%s,) = @struct_I.unpack(%s)'%(var, buff)
+    return '(%s,) = @struct_V.unpack(%s)'%(var, buff)
 
 #NOTE: '<' = little endian
 def pack(pattern, vars):
@@ -454,7 +456,8 @@ def pack(pattern, vars):
     # - store pattern in context
     pattern = reduce_pattern(pattern)
     add_pattern(pattern)
-    return serialize("@struct_%s.pack(%s)"%(pattern, vars))
+    return serialize("@struct_%s.pack(%s)"%(convert_to_ruby_pattern(pattern),
+                                            vars))
 def pack2(pattern, vars):
     """
     create struct.pack call for when pattern is the name of a variable
@@ -463,7 +466,7 @@ def pack2(pattern, vars):
     @param vars: name of variables to pack
     @type  vars: str
     """
-    return serialize("struct.pack(%s, %s)"%(pattern, vars))
+    return serialize("%s.pack(%s)"%(vars, pattern))
 def unpack(var, pattern, buff):
     """
     create struct.unpack call for when pattern is a string pattern
@@ -477,7 +480,8 @@ def unpack(var, pattern, buff):
     # - store pattern in context
     pattern = reduce_pattern(pattern)
     add_pattern(pattern)
-    return var + " = @struct_%s.unpack(%s)"%(pattern, buff)
+    return var + " = @struct_%s.unpack(%s)"%(convert_to_ruby_pattern(pattern),
+                                             buff)
 def unpack2(var, pattern, buff):
     """
     Create struct.unpack call for when pattern refers to variable
@@ -512,19 +516,6 @@ _NUMPY_DTYPE = {
     'char' : 'numpy.uint8',
     'byte' : 'numpy.int8',
     }
-# TODO: this doesn't explicitly specify little-endian byte order on the numpy data instance
-def unpack_numpy(var, count, dtype, buff):
-    """
-    create numpy deserialization code
-    """
-    return var + " = numpy.frombuffer(%s, dtype=%s, count=%s)"%(buff, dtype, count)
-
-def pack_numpy(var):
-    """
-    create numpy serialization code
-    @param vars: name of variables to pack
-    """
-    return serialize("%s.tostring()"%var)
 
 ################################################################################
 # (De)serialization generators
@@ -593,7 +584,7 @@ def len_serializer_generator(var, is_string, serialize):
     @type  serialize: bool
     """
     if serialize:
-        yield "length = len(%s)"%var
+        yield "length = %s.length"%var
         # NOTE: it's more difficult to save a call to struct.pack with
         # the array length as we are already using *array_val to pass
         # into struct.pack as *args. Although it's possible that
@@ -642,19 +633,19 @@ def string_serializer_generator(package, type_, name, serialize):
             yield "# - if encoded as a list instead, serialize as bytes instead of string"
             if array_len is None:
                 yield "if type(%s) in [list, tuple]:"%var
-                yield INDENT+pack2("'<I%sB'%length", "length, *%s"%var)
+                yield INDENT+pack2('"Va#{length}"', "[length, *%s]"%var)
                 yield "else:"
-                yield INDENT+pack2("'<I%ss'%length", "length, %s"%var)
+                yield INDENT+pack2('"Va#{length}"', "[length, %s]"%var)
             else:
                 yield "if type(%s) in [list, tuple]:"%var
-                yield INDENT+pack('%sC'%array_len, "*%s"%var)
+                yield INDENT+pack('C%s'%array_len, "*%s"%var)
                 yield "else:"
-                yield INDENT+pack('%sC'%array_len, var)
+                yield INDENT+pack('C%s'%array_len, var)
         else:
             # py3k: struct.pack() now only allows bytes for the s string pack code.
             # FIXME: for py3k, this needs to be w/ encode, but this interferes with actual byte data
             #yield pack2("'<I%ss'%length", "length, %s.encode()"%var) #Py3k bugfix (see http://docs.python.org/dev/whatsnew/3.2.html#porting-to-python-3-2)            
-            yield pack2("'<I%ss'%length", "length, %s"%var)
+            yield pack2('"Va#{length}"', "[length, %s]"%var)
     else:
         yield "start = end_point"
         if array_len is not None:
@@ -915,8 +906,8 @@ def deserialize_fn_generator(package, spec, is_numpy=False):
     #Instantiate embedded type classes
     for type_, name in spec.fields():
         if roslib.msgs.is_registered(type_):
-            yield "  if self.%s is None:"%name
-            yield "    self.%s = %s"%(name, compute_constructor(package, type_))
+            yield "  if @%s is nil:"%name
+            yield "    @%s = %s"%(name, compute_constructor(package, type_))
     yield "  end_point = 0" #initialize var
 
     # method-var context #########
@@ -929,7 +920,7 @@ def deserialize_fn_generator(package, spec, is_numpy=False):
 
     # generate post-deserialization code 
     for type_, name in spec.fields():
-        code = compute_post_deserialize(type_, "self.%s"%name)
+        code = compute_post_deserialize(type_, "@%s"%name)
         if code:
             yield "  %s"%code
     
@@ -973,7 +964,6 @@ def msg_generator_internal(package, name, spec):
 
     yield '# autogenerated by genmsg_ruby from %s.msg. Do not edit.'%name
     yield "require 'ros/message'\n"
-    yield "module %s\n"%package.capitalize()
     import_strs = []
     for t in spec.types:
         import_strs.extend(compute_import(package, t))
@@ -983,6 +973,8 @@ def msg_generator_internal(package, name, spec):
             yield i
 
     yield ''
+
+    yield "module %s\n"%package.capitalize()
     
     fulltype = '%s%s%s'%(package, roslib.msgs.SEP, name)
 
@@ -1044,9 +1036,10 @@ def msg_generator_internal(package, name, spec):
     yield '_REPLACE_FOR_STRUCT_'
     if len(spec_names):
         yield "    @slot_types = ['"+"','".join(spec.types)+"']"        
+        yield "    @struct_V = ::ROS::Struct.new(\"V\")"
     else:
         yield "    @slot_types = []"
-        yield "    @struct_I = Struct.new(\"V\")"
+        yield "    @struct_V = ::ROS::Struct.new(\"V\")"
     if len(spec_names):
         yield "    # message fields cannot be None, assign default values for those that are"
     if len(spec_names) > 0:
@@ -1078,12 +1071,16 @@ def msg_generator_internal(package, name, spec):
     yield "end # end of class"
     yield "end # end of module" 
 
+import copy
+import re
+
 def convert_to_ruby_pattern(python_pattern):
+    ruby_pattern = copy.copy(python_pattern)
     # get python key
-    import re
     for (py, ru) in PYTHON_RUBY_DICT.iteritems():
-        re.subn(py, ru, python_pattern)
-    return python_pattern
+        ruby_pattern = re.sub(py, ru, ruby_pattern)
+    # swap number and char
+    return re.sub(r"([0-9]+)([A-Za-z])", r'\2\1', ruby_pattern)
 
 def msg_generator(package, base_name, spec):
     generated = ''
@@ -1093,10 +1090,9 @@ def msg_generator(package, base_name, spec):
     patterns = get_patterns()
     structs = ''
     for p in set(patterns):
-#        var_name = '@struct_%s'%(p.replace('<',''))
         ruby_p = convert_to_ruby_pattern(p)
         var_name = '    @struct_%s'%ruby_p
-        structs += '%s = Struct.new("%s")\n'%(var_name, ruby_p)
+        structs += '%s = ::ROS::Struct.new("%s")\n'%(var_name, ruby_p)
     clear_patterns()
     import re
     return re.sub('_REPLACE_FOR_STRUCT_', structs, generated, 1)
@@ -1237,9 +1233,19 @@ def generate_dynamic(core_type, msg_cat):
 
     return messages
 
-f = os.path.abspath(ARGV[1])
-(package_dir, package) = roslib.packages.get_dir_pkg(f)
-infile_name = os.path.basename(f)
-(name, spec) = roslib.msgs.load_from_file(f, package)
-base_name = roslib.names.resource_name_base(name)
-print msg_generator(package, base_name, spec)
+def gen_msg(path):
+    f = os.path.abspath(path)
+    (package_dir, package) = roslib.packages.get_dir_pkg(f)
+    infile_name = os.path.basename(f)
+    (name, spec) = roslib.msgs.load_from_file(f, package)
+    base_name = roslib.names.resource_name_base(name)
+    output_dir = '%s/msg_gen/ruby/%s'%(package_dir, package)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    out = open('%s/%s.rb'%(output_dir, base_name.lower()), 'w')
+    out.write(msg_generator(package, base_name, spec))
+    out.close()
+
+if __name__ == '__main__':
+    for arg in sys.argv[1:]:
+        gen_msg(arg)
