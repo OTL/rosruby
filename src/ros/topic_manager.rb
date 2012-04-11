@@ -1,5 +1,6 @@
 require 'xmlrpc/server'
 require 'xmlrpc/client'
+require 'timeout'
 
 module ROS
   class TopicManager
@@ -123,15 +124,25 @@ module ROS
       "http://" + @host + ":" + @port.to_s + "/"
     end
 
-    def add_service_client(service_client)
-      master = XMLRPC::Client.new2(@node.master_uri)
-      result = master.call('lookupService',
-                           @caller_id,
-                           service_client.service_name)
-      if result[0] == 1
-        service_client.connect(result[2])
-      else
-        raise 'lookupService fail'
+    def wait_for_service(service_name, timeout_sec)
+      begin
+        timeout(timeout_sec) do
+          while @node.ok?
+            master = XMLRPC::Client.new2(@node.master_uri)
+            code, message, uri = master.call('lookupService',
+                                             @caller_id,
+                                             service_name)
+            if code == 1
+              return true
+            end
+            sleep(0.1)
+          end
+        end
+      rescue Timeout::Error
+        puts "time outed for wait service #{service_name}"
+        return nil
+      rescue
+        raise "connection with master failed. master = #{@node.master_uri}"
       end
     end
 
@@ -206,9 +217,9 @@ module ROS
                            publisher.topic_type.type_string,
                            get_uri)
       if result[0] == 1
-#        for subscriber_uri in result[2]
-#          publisher.add_connection(subscriber_uri)
-#        end
+        #        for subscriber_uri in result[2]
+        #          publisher.add_connection(subscriber_uri)
+        #        end
         @publishers.push(publisher)
         return publisher
       else
@@ -240,13 +251,18 @@ module ROS
     end
 
     def shutdown
-      for publisher in @publishers
+      @publishers.each do |publisher|
         delete_publisher(publisher)
         publisher.shutdown
       end
-      for subscriber in @subscribers
+      @subscribers.each do |subscriber|
         delete_subscriber(subscriber)
         subscriber.shutdown
+      end
+
+      @service_servers.each do |service|
+        delete_service_server(service)
+        service.shutdown
       end
 
       @server.shutdown

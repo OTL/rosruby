@@ -33,20 +33,25 @@ module ROS::TCPROS
       if check_header(header)
         @socket.write(srv_request.serialize)
         @socket.flush
-        ok_byte = @socket.recv(1).unpack('c')[0]
+        ok_byte = read_ok_byte
         if ok_byte == 1
           data = read_response
           srv_response.deserialize(data)
           return true
         end
       end
+      false
+    end
+
+    def read_ok_byte
+      @socket.recv(1).unpack('c')[0]
     end
 
     def check_header(header)
       if header['md5sum'] == @service_type.md5sum
         return true
       end
-      return false
+      false
     end
 
     def read_header
@@ -54,13 +59,12 @@ module ROS::TCPROS
       data = @socket.recv(total_bytes)
       header = ::ROS::TCPROS::Header.new
       header.deserialize(data)
-      return header
+      header
     end
     
     def read_response
       total_bytes = @socket.recv(4).unpack("V")[0]
-      data = @socket.recv(total_bytes)
-      return data
+      @socket.recv(total_bytes)
     end
     
     def close
@@ -68,5 +72,6 @@ module ROS::TCPROS
     end
 
     attr_reader :port, :host
+
   end
 end

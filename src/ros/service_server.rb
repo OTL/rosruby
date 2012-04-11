@@ -18,5 +18,9 @@ module ROS
       'rosrpc://' + @server.host + ':' + @server.port.to_s
     end
 
+    def shutdown
+      @server.close
+    end
+
   end
 end
