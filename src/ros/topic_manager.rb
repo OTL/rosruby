@@ -169,8 +169,8 @@ module ROS
       result = master.call('unregisterService',
                            @caller_id,
                            service.service_name,
-                           service,service_uri)
-      if result[0] == 0
+                           service.service_uri)
+      if result[0] == 1
         @service_servers.delete(service)
       else
         raise 'unregisterService fail'

@@ -11,6 +11,7 @@
   <depend package="roslang"/>
   <depend package="rosgraph_msgs"/>
   <depend package="std_msgs"/>
+  <depend package="roscpp_tutorials"/>
 
 </package>
 

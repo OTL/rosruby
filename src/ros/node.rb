@@ -63,9 +63,9 @@ module ROS
 
     def advertise_service(service_name, service_type, callback)
       @manager.add_service_server(::ROS::ServiceServer.new(@node_name,
-                                                           resolve_name(service_name,
+                                                           resolve_name(service_name),
                                                            service_type,
-                                                           callback)))
+                                                           callback))
     end
 
     def wait_for_service(service_name, timeout_sec=nil)

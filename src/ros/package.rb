@@ -20,6 +20,7 @@ module ROS
       IO.popen("rospack find #{package}", 'r') do |iof|
         path = iof.gets[0..-2]
         $:.push("#{path}/msg_gen/ruby")
+        $:.push("#{path}/srv_gen/ruby")
         $:.push("#{path}/src")
       end
     end

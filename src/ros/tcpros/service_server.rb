@@ -1,9 +1,11 @@
 require 'socket'
 require 'thread'
 require 'ros/tcpros'
+require 'ros/tcpros/message'
 
 module ROS::TCPROS
   class ServiceServer
+    include ::ROS::TCPROS::Message
 
     def initialize(caller_id, service_name, service_type, callback, port=0)
       @host = "localhost"
@@ -22,8 +24,8 @@ module ROS::TCPROS
 
     def read_and_callback(socket)
       data_bytes = socket.recv(4).unpack("V")[0]
-      request = @service_type::Request.new
-      response = @service_type::Response.new
+      request = @service_type.request_class.new
+      response = @service_type.response_class.new
       if data_bytes > 0
         data = socket.recv(data_bytes)
         request.deserialize(data)
@@ -31,7 +33,7 @@ module ROS::TCPROS
       result = @callback.call(request, response)
       if result
         send_ok_byte(socket)
-        socket.write(response.serialize)
+        write_msg(response, socket)
         socket.flush
       else
         send_header(socket, true)
@@ -43,7 +45,6 @@ module ROS::TCPROS
     def start
       @accept_thread = Thread.new do
         while socket = @server.accept do
-        p 'accept'
         @thread = Thread.new do
           total_bytes = socket.recv(4).unpack("V")[0]
           data = socket.recv(total_bytes)
@@ -79,9 +80,9 @@ module ROS::TCPROS
     def send_header (socket)
       header = Header.new
       header["callerid"] = @caller_id
-      header['type'] = @service_type.type_string
+      header['type'] = @service_type.type
       header['md5sum'] = @service_type.md5sum
-      socket.write(header.serialize)
+      header.serialize(socket)
       socket.flush
     end
     

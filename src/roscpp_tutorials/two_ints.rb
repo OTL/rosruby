@@ -4,7 +4,7 @@ module Roscpp_tutorials
       return '6a2e34150c00229791cc89ff309fff21'
     end
 
-    def self.type_string
+    def self.type
       return 'roscpp_tutorials/TwoInts'
     end
 

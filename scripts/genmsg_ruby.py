@@ -1236,7 +1236,6 @@ def generate_dynamic(core_type, msg_cat):
 def gen_msg(path):
     f = os.path.abspath(path)
     (package_dir, package) = roslib.packages.get_dir_pkg(f)
-    infile_name = os.path.basename(f)
     (name, spec) = roslib.msgs.load_from_file(f, package)
     base_name = roslib.names.resource_name_base(name)
     output_dir = '%s/msg_gen/ruby/%s'%(package_dir, package)
