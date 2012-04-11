@@ -1,2 +1,8 @@
+require 'ros/node'
+require 'ros/package'
+
 module ROS
 end
+p ROS::Package.find_this_package
+this_package = ROS::Package.new(ROS::Package.find_this_package)
+this_package.add_depend_package_path

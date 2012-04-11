@@ -1,6 +1,6 @@
 #! /usr/bin/ruby 
 
-require 'ros/node'
+require 'ros/ros'
 require 'std_msgs/string'
 
 def main

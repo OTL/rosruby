@@ -19,20 +19,24 @@ module ROS::TCPROS
       header.push_data("callerid", @caller_id)
       header.push_data("topic", @topic_name)
       header.push_data("md5sum", @topic_type.md5sum)
-      header.push_data("type", @topic_type.type_string)
+      header.push_data("type", @topic_type.type)
       header.push_data("tcp_nodelay", '1')
-      p header.serialize
-      @socket.write(header.serialize)
+      p header.serialize(@socket)
       @socket.flush
     end
 
     def read_start
       @thread = Thread.start do
         loop do
+          p 'hoge1'
           total_bytes = @socket.recv(4).unpack("V")[0]
           data = @socket.recv(total_bytes)
+          p 'hoge2'
           msg = @topic_type.new
+          p @topic_type
+          p data
           msg.deserialize(data)
+          p 'hoge3'
           @msg_queue.push(msg)
         end
       end
@@ -52,7 +56,9 @@ module ROS::TCPROS
     end
     
     def close
-      @socket.close
+      if not @socket.closed?
+        @socket.close
+      end
     end
 
     attr_reader :port, :host

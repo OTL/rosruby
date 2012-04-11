@@ -1,11 +1,11 @@
 #!/usr/bin/ruby
 
-require 'ros/node'
+require 'ros/ros'
 require 'std_msgs/string'
 
 def main
   node = ROS::Node.new('hoge')
-  subscriber = node.subscribe('/chutter',
+  subscriber = node.subscribe('/chatter',
                               Std_msgs::String,
                               Proc.new do |data|
                                 p data
