@@ -2,9 +2,12 @@ require 'stringio'
 require 'socket'
 require 'thread'
 require 'ros/tcpros'
+require 'ros/tcpros/message'
 
 module ROS::TCPROS
   class Server
+
+    include ::ROS::TCPROS::Message
 
     def initialize(caller_id, topic_name, topic_type, port=0)
       @host = "localhost"
@@ -16,14 +19,6 @@ module ROS::TCPROS
       @port = Socket.unpack_sockaddr_in(saddr)[0]
       @write_queue = Queue.new
       @msg_queue = Queue.new
-    end
-
-    def write_msg(msg, socket)
-      sio = StringIO.new('', 'r+')
-      msg.serialize(sio)
-      sio.rewind
-      data = sio.readline
-      socket.write([data.length, data].pack("Va*"))
     end
 
     def start

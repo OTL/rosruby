@@ -1,14 +1,12 @@
 #! /usr/bin/ruby 
 
-require 'ros/node'
-require 'std_srvs/empty'
+require 'ros/ros'
+require 'roscpp_tutorials/twoints'
 
 def main
   node = ROS::Node.new('hoge')
-  server = node.advertise_service('/service', Std_srvs::Empty,
-                                  proc {p 'service come!';
-                                  return true})
-
+  server = node.advertise_service('/add_two_ints', Roscpp_tutorials::TwoInts,
+                                  proc {|req, res| res.sum = req.a + req.b; true})
   while node.ok?
     sleep (1.0)
   end

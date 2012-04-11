@@ -7,8 +7,8 @@ def main
   node = ROS::Node.new('hoge')
   subscriber = node.subscribe('/chatter',
                               Std_msgs::String,
-                              Proc.new do |data|
-                                p data
+                              Proc.new do |msg|
+                                p msg.data
                               end)
   while node.ok?
     node.spin_once

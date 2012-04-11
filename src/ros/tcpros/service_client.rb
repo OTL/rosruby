@@ -1,8 +1,12 @@
 require 'socket'
 require 'ros/tcpros/header'
+require 'ros/tcpros/message'
 
 module ROS::TCPROS
   class ServiceClient
+
+    include ::ROS::TCPROS::Message
+
     def initialize(host, port, caller_id, service_name, service_type, persistent)
       @caller_id = caller_id
       @service_name = service_name
@@ -19,11 +23,11 @@ module ROS::TCPROS
       header.push_data("callerid", @caller_id)
       header.push_data("service", @service_name)
       header.push_data("md5sum", @service_type.md5sum)
-      header.push_data("type", @service_type.type_string)
+      header.push_data("type", @service_type.type)
       if @persistent
         header.push_data("persistent", '1')
       end
-      @socket.write(header.serialize)
+      header.serialize(@socket)
       @socket.flush
     end
 
@@ -31,7 +35,7 @@ module ROS::TCPROS
       send_header
       header = read_header
       if check_header(header)
-        @socket.write(srv_request.serialize)
+        write_msg(srv_request, @socket)
         @socket.flush
         ok_byte = read_ok_byte
         if ok_byte == 1
@@ -39,6 +43,7 @@ module ROS::TCPROS
           srv_response.deserialize(data)
           return true
         end
+        false
       end
       false
     end
