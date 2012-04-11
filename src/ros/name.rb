@@ -20,7 +20,7 @@ module ROS
 
     def resolve_name_with_call_id(caller_id, ns, name)
       if name[0] == '~'[0]
-        name = caller_id + '/' + name[1..-1]
+        name = caller_id + SEP + name[1..-1]
       end
       name = canonicalize_name(name)
       if @remappings
@@ -31,7 +31,7 @@ module ROS
         end
       end
       if ns
-        name = ns + '/' + name
+        name = ns + SEP + name
       end
       return canonicalize_name(name)
     end

@@ -4,26 +4,80 @@ module ROS
 
   class ParameterManager
 
-    def initialize(caller_id, node)
-      @node = node
+    def initialize(master_uri, caller_id)
       @caller_id = caller_id
-      @server = XMLRPC::Client.new2(node.master_uri)
+      @master_uri = master_uri
+      @server = XMLRPC::Client.new2(@master_uri)
     end
 
     def get_param(key)
-      result = @server.call("getParam", @caller_id, key)
-      if result[0] == 1
-        return result[2]
+      code, message, value = @server.call("getParam", @caller_id, key)
+      case code
+      when 1
+        return value
+      else
+        return false
       end
-      return false
     end
     
     def set_param(key, value)
-      result = @server.call("setParam", @caller_id, key, value)
-      if result[0] == 1
+      code, message, value = @server.call("setParam", @caller_id, key, value)
+      case code
+      when 1
         return true
+      when -1
+        raise message
+      else
+        return false
       end
-      return false
+    end
+
+    def delete_param(key)
+      code, message, value = @server.call("deleteParam", @caller_id, key)
+      case code
+      when 1
+        return true
+      when -1
+        raise message
+      else
+        return false
+      end
+    end
+
+    def search_param(key)
+      code, message, value = @server.call("searchParam", @caller_id, key)
+      case code
+      when 1
+        return value
+      when -1
+        raise message
+      else
+        return false
+      end
+    end
+
+    def has_param(key)
+      code, message, value = @server.call("hasParam", @caller_id, key)
+      case code
+      when 1
+        return value
+      when -1
+        raise message
+      else
+        return false
+      end
+    end
+
+    def get_param_names
+      code, message, value = @server.call("getParamNames", @caller_id)
+      case code
+      when 1
+        return value
+      when -1
+        raise message
+      else
+        return false
+      end
     end
   end
 end

@@ -2,7 +2,6 @@
 
 require 'test/unit'
 require 'ros/node'
-require 'ros/string'
 
 class TestParam_Normal < Test::Unit::TestCase
   def test_set_get
@@ -19,6 +18,10 @@ class TestParam_Normal < Test::Unit::TestCase
     # string
     assert(node.set_param('/test_s', 'hoge'))
     assert_equal('hoge', node.get_param('/test_s'))
+
+    assert(node.has_param('/test_s'))
+    assert(node.delete_param('/test_s'))
+    assert(!node.has_param('/test_s'))
 
     node.shutdown
   end
