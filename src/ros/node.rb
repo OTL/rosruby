@@ -5,9 +5,11 @@ require 'ros/publisher'
 require 'ros/subscriber'
 require 'ros/service_server'
 require 'ros/service_client'
+require 'ros/log'
 
 module ROS
   class Node
+
     include Name
 
     def initialize(node_name)
@@ -23,13 +25,15 @@ module ROS
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
       trap_signals
+
+      @logger = ::ROS::Log.new(self)
     end
 
     def ok?
       return @is_ok
     end
 
-    attr_reader :master_uri, :host
+    attr_reader :master_uri, :host, :node_name
 
     def resolve_name(name)
       resolve_name_with_call_id(@node_name, @ns, name)
@@ -55,9 +59,14 @@ module ROS
       @parameter.set_param(resolve_name(key), value)
     end
 
-    def advertise(topic_name, topic_type)
+    def advertise(topic_name, topic_type, resolve=true)
+      if resolve
+        name = resolve_name(topic_name)
+      else
+        name = topic_name
+      end
       @manager.add_publisher(Publisher.new(@node_name,
-                                           resolve_name(topic_name),
+                                           name,
                                            topic_type))
     end
 
@@ -93,6 +102,39 @@ module ROS
     def shutdown
       @is_ok = false
       @manager.shutdown
+    end
+
+    def loginfo(message)
+      file, line, function = caller[0].split(':')
+      @logger.log('INFO', message, file, function, line.to_i)
+    end
+
+    def logdebug(message)
+      file, line, function = caller[0].split(':')
+      @logger.log('DEBUG', message, file, function, line.to_i)
+    end
+
+    def logwarn(message)
+      file, line, function = caller[0].split(':')
+      @logger.log('WARN', message, file, function, line.to_i)
+    end
+
+    def logerror(message)
+      file, line, function = caller[0].split(':')
+      @logger.log('ERROR', message, file, function, line.to_i)
+    end
+
+    alias_method :logerr, :logerror
+
+    def logfatal(message)
+      file, line, function = caller[0].split(':')
+      @logger.log('FATAL', message, file, function, line.to_i)
+    end
+
+    def get_published_topics
+      @manager.publishers.map do |pub|
+        pub.topic_name
+      end
     end
 
     private
