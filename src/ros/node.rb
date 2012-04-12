@@ -88,7 +88,7 @@ module ROS
                              service_type)
     end
 
-    def subscribe(topic_name, topic_type, callback)
+    def subscribe(topic_name, topic_type, &callback)
       @manager.add_subscriber(Subscriber.new(@node_name,
                                              resolve_name(topic_name),
                                              topic_type,
