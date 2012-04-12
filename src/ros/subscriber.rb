@@ -30,7 +30,7 @@ module ROS
         if protocol == "TCPROS"
           new_connection = TCPROS::Client.new(host, port, caller_id, topic_name, topic_type)
           new_connection.send_header
-          p new_connection.read_header
+          new_connection.read_header
           new_connection.read_start
         else
           raise "not support protocol" + protocol

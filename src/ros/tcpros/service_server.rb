@@ -30,7 +30,7 @@ module ROS::TCPROS
       response = @service_type.response_class.new
       if data_bytes > 0
         data = socket.recv(data_bytes)
-        @num_received += data.length
+        @byte_received += data.length
         request.deserialize(data)
       end
       result = @callback.call(request, response)
