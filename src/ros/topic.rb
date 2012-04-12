@@ -8,6 +8,7 @@ module ROS
       @topic_type = topic_type
       @host = "localhost"
       @connections = {}
+      @connection_id_number = 0
     end
     
     attr_reader :caller_id, :topic_name, :topic_type

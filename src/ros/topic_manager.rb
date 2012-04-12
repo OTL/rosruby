@@ -7,7 +7,6 @@ module ROS
 
     attr_reader :publishers, :subscribers, :service_servers, :host, :port
 
-
     def initialize(caller_id, node)
       @caller_id = caller_id
       @node = node
@@ -25,7 +24,16 @@ module ROS
       end
 
       @server.add_handler('getBusStats') do |caller_id|
-        [-1, "stats", 'not implemented yet']
+        pubstats = @publishers.map do |pub|
+          [pub.topic_name, pub.topic_type.type, pub.get_connection_data]
+        end
+        substats = @subscribers.map do |sub|
+          [sub.topic_name, sub.get_connection_data]
+        end
+        servstats = @service_servers.map do |service|
+          [service.get_connection_data]
+        end
+        [1, "stats", [pubstats, substats, servstats]]
       end
 
       @server.add_handler('getMasterUri') do |caller_id|
@@ -73,32 +81,25 @@ module ROS
 
       @server.add_handler('getBusInfo') do |caller_id|
         info = []
-        i = 0
-        for publisher in @publishers
-          for uri in publisher.get_connected_uri
-            info.push(['connection' + i.to_s, uri, 'o', 'TCPROS', publisher.topic_name])
-          end
+        @publishers.each do |publisher|
+          info.concat(publisher.get_connection_info)
         end
-        for subscriber in @subscribers
-          for uri in subscriber.get_connected_uri
-            info.push(['connection' + i.to_s, uri, 'i', 'TCPROS', subscriber.topic_name])
-          end
+        @subscribers.each do |subscriber|
+          info.concat(subscriber.get_connection_info)
         end
         [1, "getBusInfo ok", info]
       end
 
       @server.add_handler('publisherUpdate') do |caller_id, topic, publishers|
-        for subscriber in @subscribers
-          if subscriber.topic_name == topic
-            for publisher_uri in publishers
-              if not subscriber.has_connection_with?(publisher_uri)
-                subscriber.add_connection(publisher_uri)
-              end
+        @subscribers.select {|sub| sub.topic_name == topic}.each do |sub|
+          for publisher_uri in publishers
+            if not sub.has_connection_with?(publisher_uri)
+              sub.add_connection(publisher_uri)
             end
           end
-          for uri in subscriber.get_connected_uri
+          for uri in sub.get_connected_uri
             if not publishers.index(uri)
-              subscriber.drop_connection(uri)
+              sub.drop_connection(uri)
             end
           end
         end
@@ -110,6 +111,7 @@ module ROS
       end
       
     end
+
 
     def get_available_port
       server = TCPServer.open(0)

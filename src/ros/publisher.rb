@@ -23,9 +23,23 @@ module ROS
 
     def add_connection(caller_id)
       new_connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type)
+      new_connection.id = "#{@topic_name}_out_#{@connection_id_number}"
       @connections[caller_id] = new_connection
       return new_connection
     end
 
+    def get_connection_data
+      @connections.values.map do |connection|
+        [connection.id, connection.byte_sent, connection.num_sent, 1]
+      end
+    end
+
+    def get_connection_info
+      info = []
+      @connections.each do |uri, connection|
+        info.push([connection.id, uri, 'o', 'TCPROS', @topic_name])
+      end
+      info
+    end
   end
 end

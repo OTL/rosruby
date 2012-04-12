@@ -36,10 +36,25 @@ module ROS
           raise "not support protocol" + protocol
         end
         @connections[uri] = new_connection
+        new_connection.id = "#{@topic_name}_in_#{@connection_id_number}"
         return new_connection
       else
         raise "requestTopic fail"
       end
+    end
+
+    def get_connection_data
+      @connections.values.map do |connection|
+        [connection.id, connection.byte_received, 1]
+      end
+    end
+
+    def get_connection_info
+      info = []
+      @connections.each do |uri, connection|
+        info.push([connection.id, uri, 'i', 'TCPROS', @topic_name])
+      end
+      info
     end
 
   end
