@@ -184,7 +184,7 @@ class Special:
             return None
         
 _SPECIAL_TYPES = {
-    roslib.msgs.HEADER:   Special('Std_msgs::Header.new',     None, 'require "std_msgs/header"'),
+    roslib.msgs.HEADER:   Special('Std_msgs::Header.new',     None, 'require "std_msgs/Header"'),
     roslib.msgs.TIME:     Special('ROS::Time.new',     None, 'require "ros/time"'),
     roslib.msgs.DURATION: Special('ROS::Duration.new', None, 'require "ros/duration'), 
     }

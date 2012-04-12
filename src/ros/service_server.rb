@@ -10,8 +10,14 @@ module ROS
       @server = TCPROS::ServiceServer.new(@caller_id,
                                           @service_name,
                                           @service_type,
-                                          @callback)
+                                          self)
       @server.start
+      @num_request = 0
+    end
+
+    def call(request, response)
+      @num_request += 1
+      @callback.call(request, response)
     end
 
     def service_uri
@@ -22,5 +28,10 @@ module ROS
       @server.close
     end
 
+    def get_connection_data
+      [@num_request, @server.byte_received, @server.byte_sent]
+    end
+
+    attr_reader :num_request
   end
 end

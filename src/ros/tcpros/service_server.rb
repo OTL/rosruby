@@ -16,6 +16,8 @@ module ROS::TCPROS
       saddr = @server.getsockname
       @port = Socket.unpack_sockaddr_in(saddr)[0]
       @callback = callback
+      @byte_received = 0
+      @byte_sent = 0
     end
 
     def send_ok_byte(socket)
@@ -28,12 +30,14 @@ module ROS::TCPROS
       response = @service_type.response_class.new
       if data_bytes > 0
         data = socket.recv(data_bytes)
+        @num_received += data.length
         request.deserialize(data)
       end
       result = @callback.call(request, response)
       if result
         send_ok_byte(socket)
-        write_msg(response, socket)
+        data = write_msg(response, socket)
+        @byte_sent += data.length
         socket.flush
       else
         send_header(socket, true)
@@ -90,7 +94,7 @@ module ROS::TCPROS
       @server.close
     end
     
-    attr_reader :port, :host
+    attr_reader :port, :host, :byte_received, :byte_sent
     
   end
 end

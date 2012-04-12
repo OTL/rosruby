@@ -12,6 +12,7 @@ module ROS::TCPROS
       @msg_queue = Queue.new
       @socket = TCPSocket.open(@host, @port)
       @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
+      @byte_received = 0
     end
     
     def send_header
@@ -32,6 +33,7 @@ module ROS::TCPROS
           data = @socket.recv(total_bytes)
           msg = @topic_type.new
           msg.deserialize(data)
+          @byte_received += total_bytes
           @msg_queue.push(msg)
         end
       end
@@ -56,7 +58,7 @@ module ROS::TCPROS
       end
     end
 
-    attr_reader :port, :host
-    attr_accessor :msg_queue
+    attr_reader :port, :host, :msg_queue, :byte_received
+    attr_accessor :id
   end
 end

@@ -17,8 +17,9 @@ module ROS::TCPROS
       @server = TCPServer.open(port)
       saddr = @server.getsockname
       @port = Socket.unpack_sockaddr_in(saddr)[0]
-      @write_queue = Queue.new
       @msg_queue = Queue.new
+      @byte_sent = 0
+      @num_sent = 0
     end
 
     def start
@@ -35,11 +36,15 @@ module ROS::TCPROS
             end
             send_header(socket)
             loop do
-              write_msg(@msg_queue.pop, socket)
+                data = write_msg(@msg_queue.pop, socket)
+                # for getBusStats
+                @byte_sent += data.length
+                @num_sent += 1
             end
           else
             socket.close
             p 'header check error'
+            p header
             raise 'header check error'
           end
         end
@@ -47,10 +52,12 @@ module ROS::TCPROS
       end
     end
 
-    attr_reader :msg_queue
+    attr_reader :caller_id, :msg_queue, :byte_sent, :num_sent
+    attr_accessor :id
 
     def check_header(header)
-      if header['type'] == @topic_type.type and header['md5sum'] == @topic_type.md5sum
+      if (header['type'] == @topic_type.type or header['type'] == '*') and
+          (header['md5sum'] == @topic_type.md5sum or header['md5sum'] == '*')
         return true
       end
       return false
