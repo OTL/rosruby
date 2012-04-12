@@ -1,6 +1,10 @@
 #! /usr/bin/env python
 # Software License Agreement (BSD License)
 #
+# Copyright (c) 2012, Takashi Ogura
+#
+# based on 
+#
 # Copyright (c) 2008, Willow Garage, Inc.
 # All rights reserved.
 #
@@ -31,10 +35,10 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
-# Revision $Id: genpy.py 15930 2012-01-12 00:38:31Z kwc $
+# Revision $Id:$
 
 """
-Library for Python message generation.
+Library for Ruby message generation.
 
 The structure of the serialization descends several levels of serializers:
  - msg_generator: generator for an individual msg file
@@ -1102,142 +1106,6 @@ def msg_generator(package, base_name, spec):
     clear_patterns()
     import re
     return re.sub('_REPLACE_FOR_STRUCT_', structs, generated, 1)
-    
-################################################################################
-# dynamic generation of deserializer
-
-def _generate_dynamic_specs(specs, dep_msg):
-    """
-    @param dep_msg: text of dependent .msg definition
-    @type  dep_msg: str
-    @return: type name, message spec
-    @rtype: str, MsgSpec
-    @raise MsgGenerationException: if dep_msg is improperly formatted
-    """
-    line1 = dep_msg.find('\n')
-    msg_line = dep_msg[:line1]
-    if not msg_line.startswith("MSG: "):
-        raise MsgGenerationException("invalid input to generate_dynamic: dependent type is missing 'MSG:' type declaration header")
-    dep_type = msg_line[5:].strip()
-    dep_pkg, dep_base_type = roslib.names.package_resource_name(dep_type)
-    dep_spec = roslib.msgs.load_from_string(dep_msg[line1+1:], dep_pkg)
-    return dep_type, dep_spec
-    
-def _gen_dyn_name(pkg, base_type):
-    """
-    Modify pkg/base_type name so that it can safely co-exist with
-    statically generated files.
-    
-    @return: name to use for pkg/base_type for dynamically generated message class. 
-    @rtype: str
-    """
-    return "_%s__%s"%(pkg, base_type)
-
-def _gen_dyn_modify_references(py_text, types):
-    """
-    Modify the generated code to rewrite names such that the code can
-    safely co-exist with messages of the same name.
-    
-    @param py_text: genmsg_py-generated Python source code
-    @type  py_text: str
-    @return: updated text
-    @rtype: str
-    """
-    for t in types:
-        pkg, base_type = roslib.names.package_resource_name(t)
-        gen_name = _gen_dyn_name(pkg, base_type)
-        
-        # Several things we have to rewrite:
-        # - remove any import statements
-        py_text = py_text.replace("import %s.msg"%pkg, '')
-        # - rewrite any references to class
-        py_text = py_text.replace("%s.msg.%s"%(pkg, base_type), gen_name)
-        # - class declaration
-        py_text = py_text.replace('class %s('%base_type, 'class %s('%gen_name)
-        # - super() references for __init__
-        py_text = py_text.replace('super(%s,'%base_type, 'super(%s,'%gen_name)
-    # std_msgs/Header also has to be rewritten to be a local reference
-    py_text = py_text.replace('std_msgs.msg._Header.Header', _gen_dyn_name('std_msgs', 'Header'))
-    return py_text
-
-def generate_dynamic(core_type, msg_cat):
-    """
-    Dymamically generate message classes from msg_cat .msg text
-    gendeps dump. This method modifies sys.path to include a temp file
-    directory.
-    @param core_type str: top-level ROS message type of concatenanted .msg text
-    @param msg_cat str: concatenation of full message text (output of gendeps --cat)
-    @raise MsgGenerationException: if dep_msg is improperly formatted
-    """
-    core_pkg, core_base_type = roslib.names.package_resource_name(core_type)
-    
-    # REP 100: pretty gross hack to deal with the fact that we moved
-    # Header. Header is 'special' because it can be used w/o a package
-    # name, so the lookup rules end up failing. We are committed to
-    # never changing std_msgs/Header, so this is generally fine.
-    msg_cat = msg_cat.replace('roslib/Header', 'std_msgs/Header')
-
-    # separate msg_cat into the core message and dependencies
-    splits = msg_cat.split('\n'+'='*80+'\n')
-    core_msg = splits[0]
-    deps_msgs = splits[1:]
-
-    # create MsgSpec representations of .msg text
-    specs = { core_type: roslib.msgs.load_from_string(core_msg, core_pkg) }
-    # - dependencies
-    for dep_msg in deps_msgs:
-        # dependencies require more handling to determine type name
-        dep_type, dep_spec = _generate_dynamic_specs(specs, dep_msg)
-        specs[dep_type] = dep_spec
-    
-    # clear the message registration table and register loaded
-    # types. The types have to be registered globally in order for
-    # message generation of dependents to work correctly.
-    roslib.msgs.reinit()
-    for t, spec in specs.items():
-        roslib.msgs.register(t, spec)
-
-    # process actual MsgSpecs: we accumulate them into a single file,
-    # rewriting the generated text as needed
-    buff = StringIO()
-    for t, spec in specs.items():
-        pkg, s_type = roslib.names.package_resource_name(t)
-        # dynamically generate python message code
-        for l in msg_generator(pkg, s_type, spec):
-            l = _gen_dyn_modify_references(l, list(specs.keys()))
-            buff.write(l + '\n')
-    full_text = buff.getvalue()
-
-    # Create a temporary directory
-    tmp_dir = tempfile.mkdtemp(prefix='genpy_')
-
-    # Afterwards, we are going to remove the directory so that the .pyc file gets cleaned up if it's still around
-    atexit.register(shutil.rmtree, tmp_dir)
-    
-    # write the entire text to a file and import it
-    tmp_file = tempfile.NamedTemporaryFile(suffix=".py",dir=tmp_dir)
-    tmp_file.file.write(full_text)
-    tmp_file.file.close()
-
-    # import our temporary file as a python module, which requires modifying sys.path
-    sys.path.append(os.path.dirname(tmp_file.name))
-
-    # - strip the prefix to turn it into the python module name
-    mod = __import__(os.path.basename(tmp_file.name)[:-3])
-
-    # finally, retrieve the message classes from the dynamic module
-    messages = {}
-    for t in specs.keys():
-        pkg, s_type = roslib.names.package_resource_name(t)
-        try:
-            messages[t] = getattr(mod, _gen_dyn_name(pkg, s_type))
-        except AttributeError:
-            raise MsgGenerationException("cannot retrieve message class for %s/%s"%(pkg, s_type))
-        
-    # erase the dirty work we've done
-    roslib.msgs.reinit()
-
-    return messages
 
 def gen_msg(path):
     f = os.path.abspath(path)
@@ -1247,10 +1115,12 @@ def gen_msg(path):
     output_dir = '%s/msg_gen/ruby/%s'%(package_dir, package)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-    out = open('%s/%s.rb'%(output_dir, base_name.lower()), 'w')
+    out = open('%s/%s.rb'%(output_dir, base_name), 'w')
     out.write(msg_generator(package, base_name, spec))
     out.close()
 
 if __name__ == '__main__':
+    print '=============='
+    print sys.argv
     for arg in sys.argv[1:]:
         gen_msg(arg)

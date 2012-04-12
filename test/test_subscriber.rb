@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 require 'ros/ros'
-require 'std_msgs/string'
+require 'std_msgs/String'
 
 def main
   node = ROS::Node.new('hoge')

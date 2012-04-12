@@ -10,7 +10,7 @@ def main
   node.logerr('some error information')
   node.logerror('some error information')
   node.logfatal('some fatal information')
-  sleep(5)
+  sleep(1)
 end
 
 main
