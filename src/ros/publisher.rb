@@ -8,9 +8,14 @@ module ROS
     def initialize(caller_id, topic_name, topic_type, is_latched=false)
       super(caller_id, topic_name, topic_type)
       @is_latched = is_latched
+      @seq = 0
     end
 
     def publish(message) 
+      @seq += 1
+      if message.has_header?
+        message.header.seq = @seq
+      end
       @connections.each_value do |connection|
         connection.msg_queue.push(message)
       end

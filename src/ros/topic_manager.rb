@@ -5,6 +5,9 @@ require 'timeout'
 module ROS
   class TopicManager
 
+    attr_reader :publishers, :subscribers, :service_servers, :host, :port
+
+
     def initialize(caller_id, node)
       @caller_id = caller_id
       @node = node

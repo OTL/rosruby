@@ -6,7 +6,8 @@ module ROS::TCPROS
       sio = StringIO.new('', 'r+')
       len = msg.serialize(sio)
       sio.rewind
-      data = sio.read(len)
+      data = sio.read
+      len = data.length
       socket.write([len, data].pack("Va#{len}"))
     end
   end

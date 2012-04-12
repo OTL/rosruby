@@ -47,7 +47,7 @@ module ROS::TCPROS
       end
     end
 
-    attr_accessor :msg_queue
+    attr_reader :msg_queue
 
     def check_header(header)
       if header['type'] == @topic_type.type and header['md5sum'] == @topic_type.md5sum
