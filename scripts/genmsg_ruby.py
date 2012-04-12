@@ -739,9 +739,9 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
             else:
                 yield '%s = []'%var
                 if var_length:
-                    yield 'for i in range(0, length):'
+                    yield 'for i in 0..length'
                 else:
-                    yield 'for i in range(0, %s):'%length
+                    yield 'for i in 0..%s'%length
                 if base_type != 'string':
                     yield INDENT + '%s = %s'%(loop_var, compute_constructor(package, base_type))
             for y in factory:
@@ -749,6 +749,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
             if not serialize:
                 yield INDENT + '%s.append(%s)'%(var, loop_var)
             pop_context()
+            yield 'end'
 
     except MsgGenerationException:
         raise #re-raise
@@ -906,8 +907,9 @@ def deserialize_fn_generator(package, spec, is_numpy=False):
     #Instantiate embedded type classes
     for type_, name in spec.fields():
         if roslib.msgs.is_registered(type_):
-            yield "  if @%s is nil:"%name
+            yield "  if @%s == nil:"%name
             yield "    @%s = %s"%(name, compute_constructor(package, type_))
+            yield "  end"
     yield "  end_point = 0" #initialize var
 
     # method-var context #########
@@ -989,10 +991,14 @@ def msg_generator_internal(package, name, spec):
     \"%s\"
   end
 """%(fulltype)
+    if spec.has_header():
+        bool_val = 'true'
+    else:
+        bool_val = 'false'
     yield """  def has_header?
     %s
   end
-"""%spec.has_header()
+"""%bool_val
     # note: we introduce an extra newline to protect the escaping from quotes in the message
     yield """  def message_definition
     \"%s\n\"
