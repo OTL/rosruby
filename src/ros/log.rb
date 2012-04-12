@@ -1,5 +1,5 @@
 require 'ros/ros'
-require 'rosgraph_msgs/log'
+require 'rosgraph_msgs/Log'
 require 'logger'
 
 module ROS

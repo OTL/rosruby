@@ -1,7 +1,7 @@
 #! /usr/bin/ruby 
 
 require 'ros/ros'
-require 'roscpp_tutorials/twoints'
+require 'roscpp_tutorials/TwoInts'
 
 def main
   node = ROS::Node.new('hoge')

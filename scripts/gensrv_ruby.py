@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # Software License Agreement (BSD License)
 #
+# Copyright (c) 2012, Takashi Ogura
+#
+# based on 
+#
 # Copyright (c) 2008, Willow Garage, Inc.
 # All rights reserved.
 #
@@ -31,7 +35,7 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
-# Revision $Id: gensrv_py.py 1030 2008-05-22 22:11:12Z sfkwc $
+# Revision $Id:$
 
 
 """
@@ -86,7 +90,7 @@ def gen_srv(path):
     output_dir = '%s/srv_gen/ruby/%s'%(package_dir, package)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-    out = open('%s/%s.rb'%(output_dir, base_name.lower()), 'w')
+    out = open('%s/%s.rb'%(output_dir, base_name), 'w')
     for mspec, suffix in ((spec.request, REQUEST), (spec.response, RESPONSE)):
         out.write(genmsg_ruby.msg_generator(package, base_name+suffix, mspec))
     for l in srv_generator(package, base_name, spec):
