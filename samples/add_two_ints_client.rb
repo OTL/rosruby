@@ -1,4 +1,4 @@
-#! /usr/bin/ruby 
+#!/usr/bin/env ruby 
 
 require 'ros/node'
 require 'roscpp_tutorials/TwoInts'
