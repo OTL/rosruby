@@ -437,7 +437,7 @@ def int32_pack(var):
     @type  var: str
     @return: struct packing code for an int32
     """
-    return serialize('@struct_V.pack(%s)'%var)
+    return serialize('@@struct_V.pack(%s)'%var)
 
 # int32 is very common due to length serialization, so it is special cased
 def int32_unpack(var, buff):
@@ -446,7 +446,7 @@ def int32_unpack(var, buff):
     @type  var: str
     @return: struct unpacking code for an int32
     """
-    return '(%s,) = @struct_V.unpack(%s)'%(var, buff)
+    return '(%s,) = @@struct_V.unpack(%s)'%(var, buff)
 
 #NOTE: '<' = little endian
 def pack(pattern, vars):
@@ -460,7 +460,7 @@ def pack(pattern, vars):
     # - store pattern in context
     pattern = reduce_pattern(pattern)
     add_pattern(pattern)
-    return serialize("@struct_%s.pack(%s)"%(convert_to_ruby_pattern(pattern),
+    return serialize("@@struct_%s.pack(%s)"%(convert_to_ruby_pattern(pattern),
                                             vars))
 def pack2(pattern, vars):
     """
@@ -484,7 +484,7 @@ def unpack(var, pattern, buff):
     # - store pattern in context
     pattern = reduce_pattern(pattern)
     add_pattern(pattern)
-    return var + " = @struct_%s.unpack(%s)"%(convert_to_ruby_pattern(pattern),
+    return var + " = @@struct_%s.unpack(%s)"%(convert_to_ruby_pattern(pattern),
                                              buff)
 def unpack2(var, pattern, buff):
     """
@@ -496,7 +496,7 @@ def unpack2(var, pattern, buff):
     @param buff: buffer that the unpack reads from
     @type  buff: StringIO
     """
-    return "%s = struct.unpack(%s, %s)"%(var, pattern, buff)
+    return "%s = %s.unpack(%s)"%(var, buff, pattern)
 
 ################################################################################
 # numpy support
@@ -689,7 +689,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
         if is_simple(base_type):
             if var_length:
                 pattern = compute_struct_pattern([base_type])
-                yield "pattern = '<%%s%s'%%length"%pattern
+                yield "pattern = '%%s%s'%%length"%pattern
                 if serialize:
                     if is_numpy:
                         yield pack_numpy(var)                        
@@ -712,7 +712,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
                         yield pack(pattern, "*"+var)
                 else:
                     yield "start = end_point"
-                    yield "end_point += %s"%struct.calcsize('<%s'%pattern)
+                    yield "end_point += %s"%struct.calcsize('%s'%pattern)
                     if is_numpy:
                         dtype = _NUMPY_DTYPE[base_type]
                         yield unpack_numpy(var, length, dtype, 'str[start..end_point]') 
@@ -827,7 +827,7 @@ def simple_serializer_generator(spec, start, end_point, serialize): #primitives 
         yield pack(pattern, vars_)
     else:
         yield "start = end_point"
-        yield "end_point += %s"%struct.calcsize('<%s'%reduce_pattern(pattern))
+        yield "end_point += %s"%struct.calcsize('%s'%reduce_pattern(pattern))
         yield unpack('(%s,)'%vars_, pattern, 'str[start..end_point]')
         
         # convert uint8 to bool. this doesn't add much value as Python
@@ -1028,6 +1028,15 @@ def msg_generator_internal(package, name, spec):
                 yield '  %s = %s'%(c.name, c.val)
         yield ''
     yield "  attr_accessor "+", ".join([":"+x for x in spec_names])+"\n"
+
+    yield '_REPLACE_FOR_STRUCT_'
+    if len(spec_names):
+        yield "  @@struct_V = ::ROS::Struct.new(\"V\")"
+        yield "  @@slot_types = ['"+"','".join(spec.types)+"']"
+    else:
+        yield "  @@struct_V = ::ROS::Struct.new(\"V\")"
+        yield "  @@slot_types = []"
+
     yield """
   def initialize
     #    Constructor. Any message fields that are implicitly/explicitly
@@ -1043,13 +1052,6 @@ def msg_generator_internal(package, name, spec):
     #    to set specific fields. 
     #
 """%','.join(spec_names)
-    yield '_REPLACE_FOR_STRUCT_'
-    if len(spec_names):
-        yield "    @slot_types = ['"+"','".join(spec.types)+"']"        
-        yield "    @struct_V = ::ROS::Struct.new(\"V\")"
-    else:
-        yield "    @slot_types = []"
-        yield "    @struct_V = ::ROS::Struct.new(\"V\")"
     if len(spec_names):
         yield "    # message fields cannot be None, assign default values for those that are"
     if len(spec_names) > 0:
@@ -1100,8 +1102,10 @@ def msg_generator(package, base_name, spec):
     patterns = get_patterns()
     structs = ''
     for p in set(patterns):
+        if p == 'I':
+            continue
         ruby_p = convert_to_ruby_pattern(p)
-        var_name = '    @struct_%s'%ruby_p
+        var_name = '  @@struct_%s'%ruby_p
         structs += '%s = ::ROS::Struct.new("%s")\n'%(var_name, ruby_p)
     clear_patterns()
     import re
@@ -1120,7 +1124,5 @@ def gen_msg(path):
     out.close()
 
 if __name__ == '__main__':
-    print '=============='
-    print sys.argv
     for arg in sys.argv[1:]:
         gen_msg(arg)
