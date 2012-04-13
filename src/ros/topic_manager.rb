@@ -2,17 +2,22 @@ require 'xmlrpc/server'
 require 'xmlrpc/client'
 require 'timeout'
 
+require 'webrick'
+
 module ROS
+
   class TopicManager
+
+    MAX_CONNECTION = 100
 
     attr_reader :publishers, :subscribers, :service_servers, :host, :port
 
     def initialize(caller_id, node)
       @caller_id = caller_id
       @node = node
-      @host = "localhost"
+      @host = node.host
       @port = get_available_port
-      @server = XMLRPC::Server.new(@port)
+      @server = XMLRPC::Server.new(@port, @host, MAX_CONNECTION, $stderr, false, false)
       @publishers = []
       @subscribers = []
       @service_servers = []
@@ -54,23 +59,19 @@ module ROS
 
       @server.add_handler('requestTopic') do |caller_id, topic, protocols|
         message = [0, "I DON'T KNOW", 0]
-        for protocol in protocols
-          if protocol[0] == 'TCPROS'
-            for publisher in @publishers
-              if publisher.topic_name == topic
-                connection = publisher.add_connection(caller_id)
-                connection.start
-                message = [1, "OK! WAIT!!!", ['TCPROS',
-                                              connection.host,
-                                              connection.port]]
-              end
-            end
+        protocols.select {|x| x[0] == 'TCPROS'}.each do |protocol|
+          @publishers.select {|pub| pub.topic_name == topic}.each do |publisher|
+            connection = publisher.add_connection(caller_id)
+            message = [1, "OK! WAIT!!!", ['TCPROS',
+                                          connection.host,
+                                          connection.port]]
           end
         end
         message
       end
 
       @server.add_handler('shutdown') do |caller_id, msg|
+        puts "shutting down by master request: #{msg}"
         @node.shutdown
         [1, 'shutdown ok', 0]
       end
@@ -92,15 +93,11 @@ module ROS
 
       @server.add_handler('publisherUpdate') do |caller_id, topic, publishers|
         @subscribers.select {|sub| sub.topic_name == topic}.each do |sub|
-          for publisher_uri in publishers
-            if not sub.has_connection_with?(publisher_uri)
-              sub.add_connection(publisher_uri)
-            end
+          publishers.select {|uri| not sub.has_connection_with?(uri)}.each do |uri|
+            sub.add_connection(uri)
           end
-          for uri in sub.get_connected_uri
-            if not publishers.index(uri)
-              sub.drop_connection(uri)
-            end
+          sub.get_connected_uri.select {|uri| not publishers.include?(uri)}.each do |uri|
+            sub.drop_connection(uri)
           end
         end
         [1, "OK! Updated!!", 0]
@@ -118,11 +115,7 @@ module ROS
       saddr = server.getsockname
       port = Socket.unpack_sockaddr_in(saddr)[0]
       server.close
-      return port
-    end
-
-    def test_serve
-      @server.serve
+      port
     end
 
     def get_uri
@@ -161,9 +154,7 @@ module ROS
       if result[0] == 1
         @service_servers.push(service_server)
       else
-        p result[0]
-        p result[1]
-        p result[2]
+        p result
         raise 'registerService fail'
       end
 
@@ -256,6 +247,9 @@ module ROS
     end
 
     def shutdown
+      @server.shutdown
+      @thread.join
+
       @publishers.each do |publisher|
         delete_publisher(publisher)
         publisher.shutdown
@@ -270,8 +264,6 @@ module ROS
         service.shutdown
       end
 
-      @server.shutdown
-      @thread.join
     end
 
   end

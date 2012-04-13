@@ -1,9 +1,13 @@
 require 'socket'
+require 'ros/tcpros/message'
 require 'ros/tcpros/header'
 
 module ROS::TCPROS
   class Client
-    def initialize(host, port, caller_id, topic_name, topic_type)
+
+    include ::ROS::TCPROS::Message
+
+    def initialize(host, port, caller_id, topic_name, topic_type, tcp_no_delay=false)
       @caller_id = caller_id
       @topic_name = topic_name
       @topic_type = topic_type
@@ -11,48 +15,44 @@ module ROS::TCPROS
       @host = host
       @msg_queue = Queue.new
       @socket = TCPSocket.open(@host, @port)
-      @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
+      @tcp_no_delay = tcp_no_delay
+      if tcp_no_delay
+        @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
+      end
       @byte_received = 0
+      @is_running = true
     end
-    
-    def send_header
+
+    def build_header
       header = Header.new
       header.push_data("callerid", @caller_id)
       header.push_data("topic", @topic_name)
       header.push_data("md5sum", @topic_type.md5sum)
       header.push_data("type", @topic_type.type)
-      header.push_data("tcp_nodelay", '1')
-      header.serialize(@socket)
-      @socket.flush
+      if @tcp_no_delay
+        header.push_data("tcp_nodelay", '1')
+      else
+        header.push_data("tcp_nodelay", '0')
+      end
     end
 
-    def read_start
+    def start
+      write_header(@socket, build_header)
+      read_header(@socket)
       @thread = Thread.start do
-        loop do
-          total_bytes = @socket.recv(4).unpack("V")[0]
-          data = @socket.recv(total_bytes)
+        while @is_running
+          data = read_all(@socket)
           msg = @topic_type.new
           msg.deserialize(data)
-          @byte_received += total_bytes
+          @byte_received += data.length
           @msg_queue.push(msg)
         end
       end
     end
-
-    def read_header
-      total_bytes = @socket.recv(4).unpack("V")[0]
-      data = @socket.recv(total_bytes)
-    end
     
-    def read_msg
-      msg = @topic_type.new
-      total_bytes = @socket.recv(4).unpack("V")[0]
-      data = @socket.recv(total_bytes)
-      msg.deserialize(msg)
-      return msg
-    end
-    
-    def close
+    def shutdown
+      @is_running = false
+      @thread.join
       if not @socket.closed?
         @socket.close
       end

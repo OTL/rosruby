@@ -59,7 +59,7 @@ module ROS
       @parameter.set_param(resolve_name(key), value)
     end
 
-    def advertise(topic_name, topic_type, resolve=true)
+    def advertise(topic_name, topic_type, latched=false, resolve=true)
       if resolve
         name = resolve_name(topic_name)
       else
@@ -67,7 +67,9 @@ module ROS
       end
       @manager.add_publisher(Publisher.new(@node_name,
                                            name,
-                                           topic_type))
+                                           topic_type,
+                                           latched,
+                                           @manager.host))
     end
 
     def advertise_service(service_name, service_type, callback)

@@ -18,7 +18,7 @@ module ROS::TCPROS
       @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
     end
     
-    def send_header
+    def build_header
       header = Header.new
       header.push_data("callerid", @caller_id)
       header.push_data("service", @service_name)
@@ -27,20 +27,16 @@ module ROS::TCPROS
       if @persistent
         header.push_data("persistent", '1')
       end
-      header.serialize(@socket)
-      @socket.flush
     end
 
     def call(srv_request, srv_response)
-      send_header
-      header = read_header
-      if check_header(header)
+      write_header(@socket, build_header)
+      if check_header(read_header)
         write_msg(srv_request, @socket)
         @socket.flush
         ok_byte = read_ok_byte
         if ok_byte == 1
-          data = read_response
-          srv_response.deserialize(data)
+          srv_response.deserialize(read_all(@socket))
           return true
         end
         false
@@ -53,26 +49,10 @@ module ROS::TCPROS
     end
 
     def check_header(header)
-      if header['md5sum'] == @service_type.md5sum
-        return true
-      end
-      false
-    end
-
-    def read_header
-      total_bytes = @socket.recv(4).unpack("V")[0]
-      data = @socket.recv(total_bytes)
-      header = ::ROS::TCPROS::Header.new
-      header.deserialize(data)
-      header
+      header.valid?('md5sum', @service_type.md5sum)
     end
     
-    def read_response
-      total_bytes = @socket.recv(4).unpack("V")[0]
-      @socket.recv(total_bytes)
-    end
-    
-    def close
+    def shutdown
       @socket.close
     end
 
