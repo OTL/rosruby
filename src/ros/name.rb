@@ -12,6 +12,8 @@
 # ROS naming module.
 #
 
+require 'socket' # for gethostname
+
 module ROS
 
   module Name
@@ -38,6 +40,16 @@ module ROS
       else
         name
       end
+    end
+
+    def anonymous_name(id)
+      # Generate a ROS-legal 'anonymous' name
+      # @param id: prefix for anonymous name
+      # @type  id: str
+      name = "#{id}_#{Socket.gethostname}_#{Process.pid}_#{rand(1000000)}"
+      name = name.gsub('.', '_')
+      name = name.gsub('-', '_')
+      name.gsub(':', '_')
     end
 
     def resolve_name_with_call_id(caller_id, ns, name)

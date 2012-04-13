@@ -30,8 +30,11 @@ module ROS
     #
     @@all_nodes = []
 
-    def initialize(node_name)
+    def initialize(node_name, anonymous=nil)
       get_env
+      if anonymous
+        node_name = anonymous_name(node_name)
+      end
       @node_name = resolve_name(node_name)
       parse_args(ARGV)
       if not @master_uri
