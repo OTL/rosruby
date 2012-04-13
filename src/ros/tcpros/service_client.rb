@@ -27,12 +27,13 @@ module ROS::TCPROS
       if @persistent
         header.push_data("persistent", '1')
       end
+      header
     end
 
     def call(srv_request, srv_response)
       write_header(@socket, build_header)
-      if check_header(read_header)
-        write_msg(srv_request, @socket)
+      if check_header(read_header(@socket))
+        write_msg(@socket, srv_request)
         @socket.flush
         ok_byte = read_ok_byte
         if ok_byte == 1

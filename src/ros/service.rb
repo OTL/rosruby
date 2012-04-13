@@ -1,3 +1,15 @@
+#  service.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# =Super Class of ServiceServer and ServiceClient
+#
+
 module ROS
 
   class Service

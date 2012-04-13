@@ -1,3 +1,14 @@
+#  time.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# Time object for ROS.
+#
 module ROS
   
   class TVal
@@ -6,6 +17,8 @@ module ROS
 
     attr_accessor :secs, :nsecs
 
+    ##
+    # super class of times
     def canonicalize
       while @nsecs >= 1e9.to_i
         @secs += 1
@@ -40,6 +53,9 @@ module ROS
 
   end
 
+  ##
+  # ROS Time object. This is used as msg object for time
+  #
   class Time < TVal
 
     def self.now
@@ -74,6 +90,9 @@ module ROS
 
   end
 
+  ##
+  # ROS Duration object. This is used as msg object for duration
+  #
   class Duration < TVal
 
     def initialize(secs=0, nsecs=nil)

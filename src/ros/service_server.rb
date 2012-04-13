@@ -1,3 +1,16 @@
+#  service_server.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# =ROS Service Server
+# server of ROS Service.
+# This uses ROS::TCPROS::ServiceServer for data transfer.
+#
 require 'ros/service'
 require 'ros/tcpros/service_server'
 
@@ -25,7 +38,7 @@ module ROS
     end
 
     def shutdown
-      @server.close
+      @server.shutdown
     end
 
     def get_connection_data
