@@ -6,11 +6,14 @@ module ROS
 
   class Subscriber < Topic
     
-    def initialize(caller_id, topic_name, topic_type, callback=nil)
+    def initialize(caller_id, topic_name, topic_type, callback=nil, tcp_no_delay=nil)
       super(caller_id, topic_name, topic_type)
       @callback = callback
+      @tcp_no_delay = tcp_no_delay
     end
     
+    attr_reader :tcp_no_delay, :callback
+
     def process_queue
       @connections.each_value do |connection|
         while not connection.msg_queue.empty?
@@ -21,19 +24,16 @@ module ROS
 
     def add_connection(uri)
       publisher = XMLRPC::Client.new2(uri)
-      result = publisher.call("requestTopic",
-                              caller_id,
-                              topic_name,
-                              [["TCPROS"]])
-      if result[0] == 1
-        protocol, host, port = result[2]
+      code, message, val = publisher.call("requestTopic",
+                                          @caller_id, @topic_name, [["TCPROS"]])
+      if code == 1
+        protocol, host, port = val
         if protocol == "TCPROS"
-          new_connection = TCPROS::Client.new(host, port, caller_id, topic_name, topic_type)
-          new_connection.send_header
-          new_connection.read_header
-          new_connection.read_start
+          new_connection = TCPROS::Client.new(host, port, @caller_id, @topic_name, @topic_type, @tcp_no_delay)
+          new_connection.start
         else
-          raise "not support protocol" + protocol
+          puts "not support protocol: #{protocol}"
+          raise "not support protocol: #{protocol}"
         end
         @connections[uri] = new_connection
         new_connection.id = "#{@topic_name}_in_#{@connection_id_number}"

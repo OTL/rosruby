@@ -17,20 +17,19 @@ module ROS
     end
 
     def add_path_of_package(package)
-      IO.popen("rospack find #{package}", 'r') do |iof|
-        path = iof.gets[0..-2]
-        $:.push("#{path}/msg_gen/ruby")
-        $:.push("#{path}/srv_gen/ruby")
-        $:.push("#{path}/src")
+      `rospack find #{package}`.chop.each do |path|
+        ["#{path}/msg_gen/ruby", "#{path}/srv_gen/ruby", "#{path}/src"].each do |path|
+          if File.exists?(path)
+            $:.push(path)
+          end
+        end
       end
     end
 
     def add_depend_package_path
       add_path_of_package(@package_name)
-      IO.popen("rospack depends #{@package_name}", 'r') do |io|
-        while l = io.gets
-          add_path_of_package(l[0..-2])
-        end
+      `rospack depends #{@package_name}`.each do |pack|
+        add_path_of_package(pack.chop)
       end
     end
   end

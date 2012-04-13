@@ -2,6 +2,9 @@ require 'ros/tcpros'
 
 module ROS::TCPROS
   class Header
+
+    WILD_CARD = '*'
+
     def initialize
       @data = {}
     end
@@ -9,15 +12,16 @@ module ROS::TCPROS
     # key and value must be string
     def push_data(key, value)
       @data[key] = value
+      self
     end
-    
+
     def get_data(key)
       @data[key]
     end
-    
+
     alias_method :[]=, :push_data
     alias_method :[], :get_data
-    
+
     # not contain total byte
     def deserialize(data)
       while data.length > 0
@@ -31,7 +35,11 @@ module ROS::TCPROS
       end
       self
     end
-    
+
+    def valid?(key, value)
+      (@data[key] == value) or value == WILD_CARD
+    end
+
     # contains total byte
     def serialize(buff)
       serialized_data = ''
@@ -42,7 +50,7 @@ module ROS::TCPROS
       total_byte = serialized_data.length
       return buff.write([total_byte, serialized_data].pack('Va*'))
     end
-    
+
   end
 end
-        
+

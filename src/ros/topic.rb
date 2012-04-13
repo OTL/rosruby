@@ -6,7 +6,6 @@ module ROS
       @caller_id = caller_id
       @topic_name = topic_name
       @topic_type = topic_type
-      @host = "localhost"
       @connections = {}
       @connection_id_number = 0
     end
@@ -15,7 +14,7 @@ module ROS
 
     def shutdown
       @connections.each_value do |connection|
-        connection.close
+        connection.shutdown
       end
     end
 

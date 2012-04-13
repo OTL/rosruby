@@ -10,7 +10,7 @@ module ROS
 
     def initialize(node)
       @node = node
-      @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil)
+      @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil, nil)
       @ruby_dict = {'FATAL'=>Logger::FATAL,
         'ERROR'=>Logger::ERROR,
         'WARN'=>Logger::WARN,

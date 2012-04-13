@@ -5,8 +5,9 @@ module ROS
 
   class Publisher < Topic
 
-    def initialize(caller_id, topic_name, topic_type, is_latched=false)
+    def initialize(caller_id, topic_name, topic_type, is_latched, host)
       super(caller_id, topic_name, topic_type)
+      @host = host
       @is_latched = is_latched
       @seq = 0
     end
@@ -22,10 +23,12 @@ module ROS
     end
 
     def add_connection(caller_id)
-      new_connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type)
-      new_connection.id = "#{@topic_name}_out_#{@connection_id_number}"
-      @connections[caller_id] = new_connection
-      return new_connection
+      connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type, @is_latched,
+                                      0, @host)
+      connection.start
+      connection.id = "#{@topic_name}_out_#{@connection_id_number}"
+      @connections[caller_id] = connection
+      return connection
     end
 
     def get_connection_data
