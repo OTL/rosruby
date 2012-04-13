@@ -21,7 +21,7 @@ module ROS
       end
 
       @manager = TopicManager.new(@node_name, self)
-      @parameter = ParameterManager.new(@master_uri, @node_name)
+      @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
       trap_signals
@@ -40,7 +40,12 @@ module ROS
     end
 
     def get_param(key)
-      @parameter.get_param(resolve_name(key))
+      key = expand_local_name(@node_name, key)
+      if @remappings[key]
+        return @remappings[key]
+      else
+        @parameter.get_param(key)
+      end
     end
 
     def get_param_names
@@ -56,7 +61,7 @@ module ROS
     end
 
     def set_param(key, value)
-      @parameter.set_param(resolve_name(key), value)
+      @parameter.set_param(expand_local_name(@node_name, key), value)
     end
 
     def advertise(topic_name, topic_type, latched=false, resolve=true)
@@ -151,6 +156,16 @@ module ROS
       end
     end
 
+    def convert_if_needed(value)
+      if value =~ /^[+-]?\d+\.?\d*$/ # float
+        value = value.to_f
+      elsif value =~ /^[+-]?\d+$/ # int
+        value = value.to_i
+      else
+        value
+      end
+    end
+
     def parse_args(args)
       remapping = {}
       for arg in args
@@ -167,9 +182,13 @@ module ROS
             @master_uri = value
           elsif key == '__ns'
             @ns = value
+          elsif key[0] == '_'[0]
+            # local name remaps
+            key[0] = '~'
+            remapping[resolve_name(key)] = convert_if_needded(value)
           else
             # remaps
-            remapping[key] = value
+            remapping[key] = convert_if_needded(value)
           end
         end
       end

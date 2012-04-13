@@ -18,11 +18,16 @@ module ROS
       @remappings = remappings
     end
 
-    def resolve_name_with_call_id(caller_id, ns, name)
+    def expand_local_name(caller_id, name)
       if name[0] == '~'[0]
-        name = caller_id + SEP + name[1..-1]
+        caller_id + SEP + name[1..-1]
+      else
+        name
       end
-      name = canonicalize_name(name)
+    end
+
+    def resolve_name_with_call_id(caller_id, ns, name)
+      name = canonicalize_name(expand_local_name(caller_id, name))
       if @remappings
         @remappings.each_pair do |key, value|
           if name == canonicalize_name(key)
