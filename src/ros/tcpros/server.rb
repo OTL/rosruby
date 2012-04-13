@@ -9,7 +9,8 @@ module ROS::TCPROS
 
     MAX_CONNECTION = 100
 
-    def initialize(caller_id, topic_name, topic_type, is_latched, port=0, host=GServer::DEFAULT_HOST)
+    def initialize(caller_id, topic_name, topic_type, is_latched,
+                   port=0, host=GServer::DEFAULT_HOST)
       super(port, host, MAX_CONNECTION)
       @caller_id = caller_id
       @topic_name = topic_name
@@ -45,15 +46,14 @@ module ROS::TCPROS
             publish_msg(@last_published_msg, socket)
           end
           loop do
-            publish_msg(@msg_queue.pop)
+            publish_msg(@msg_queue.pop, socket)
           end
         rescue
           socket.shutdown
         end
       else
         socket.shutdown
-        p 'header check error'
-        p header
+        p "header check error: #{header}"
         raise 'header check error'
       end
     end

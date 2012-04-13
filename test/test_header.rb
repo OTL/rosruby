@@ -19,4 +19,3 @@ class TestParam_Normal < Test::Unit::TestCase
     assert_equal('5', header2['aa'])
   end
 end
-

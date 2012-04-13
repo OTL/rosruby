@@ -7,12 +7,15 @@ module ROS::TCPROS
 
     include ::ROS::TCPROS::Message
 
-    def initialize(host, port, caller_id, topic_name, topic_type, tcp_no_delay=false)
+    def initialize(host, port,
+                   caller_id, topic_name, topic_type, target_uri,
+                   tcp_no_delay)
       @caller_id = caller_id
       @topic_name = topic_name
       @topic_type = topic_type
       @port = port
       @host = host
+      @target_uri = target_uri
       @msg_queue = Queue.new
       @socket = TCPSocket.open(@host, @port)
       @tcp_no_delay = tcp_no_delay
@@ -52,13 +55,15 @@ module ROS::TCPROS
     
     def shutdown
       @is_running = false
-      @thread.join
+      if not @thread.join(0.1)
+        Thread::kill(@thread)
+      end
       if not @socket.closed?
         @socket.close
       end
     end
 
-    attr_reader :port, :host, :msg_queue, :byte_received
+    attr_reader :port, :host, :msg_queue, :byte_received, :target_uri
     attr_accessor :id
   end
 end

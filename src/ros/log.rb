@@ -1,4 +1,4 @@
-require 'ros/ros'
+require 'ros'
 require 'rosgraph_msgs/Log'
 require 'logger'
 

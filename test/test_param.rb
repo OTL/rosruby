@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'test/unit'
-require 'ros/node'
+require 'ros'
 
 class TestParam_Normal < Test::Unit::TestCase
   def test_set_get

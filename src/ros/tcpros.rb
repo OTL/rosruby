@@ -1,4 +1,4 @@
-require 'ros/ros'
+require 'ros'
 
 module ROS::TCPROS
 end

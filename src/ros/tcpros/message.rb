@@ -20,7 +20,7 @@ module ROS::TCPROS
 
     def read_all(socket)
       total_bytes = socket.recv(4).unpack("V")[0]
-      if total_bytes > 0
+      if total_bytes and total_bytes > 0
         socket.recv(total_bytes)
       else
         ''

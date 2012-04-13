@@ -82,12 +82,14 @@ def srv_generator(package, name, spec):
 end
 end"""%resp
 
-def gen_srv(path):
+def gen_srv(path, output_dir_prefix=None):
     f = os.path.abspath(path)
     (package_dir, package) = roslib.packages.get_dir_pkg(f)
     (name, spec) = roslib.srvs.load_from_file(f, package)
     base_name = roslib.names.resource_name_base(name)
-    output_dir = '%s/srv_gen/ruby/%s'%(package_dir, package)
+    if not output_dir_prefix:
+        output_dir_prefix = '%s/srv_gen/ruby"'%package_dir
+    output_dir = '%s/%s'%(output_dir_prefix, package)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     out = open('%s/%s.rb'%(output_dir, base_name), 'w')
