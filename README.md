@@ -15,9 +15,14 @@ $ roscd rosgraph_msgs
 $ sudo chmod 777 .
 $ sudo chmod 777 msg_gen
 $ make
+$ sudo chmod 755 .
+$ sudo chmod 755 msg_gen
 
 $ roscd std_msgs
 $ sudo chmod 777 .
 $ sudo chmod 777 msg_gen
 $ make
+$ sudo chmod 755 .
+$ sudo chmod 755 msg_gen
+
 ```

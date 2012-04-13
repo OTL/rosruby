@@ -4,19 +4,23 @@ module ROS
 
   class ParameterManager
 
-    def initialize(master_uri, caller_id)
+    def initialize(master_uri, caller_id, remappings)
       @caller_id = caller_id
       @master_uri = master_uri
+      @remappings = remappings
       @server = XMLRPC::Client.new2(@master_uri)
     end
 
     def get_param(key)
+      if @remappings[key]
+        return @remappings[key]
+      end
       code, message, value = @server.call("getParam", @caller_id, key)
       case code
       when 1
         return value
       else
-        return false
+        return nil
       end
     end
     
