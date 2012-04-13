@@ -12,6 +12,8 @@ module ROS
 
     include Name
 
+    @@all_nodes = []
+
     def initialize(node_name)
       get_env
       @node_name = resolve_name(node_name)
@@ -24,9 +26,11 @@ module ROS
       @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
+      @@all_nodes.push(self)
       trap_signals
 
       @logger = ::ROS::Log.new(self)
+      ObjectSpace.define_finalizer(self, proc {|id| self.shutdown})
     end
 
     def ok?
@@ -107,8 +111,12 @@ module ROS
     end
 
     def shutdown
-      @is_ok = false
-      @manager.shutdown
+      if @is_ok
+        @is_ok = false
+        @manager.shutdown
+        @@all_nodes.delete(self)
+      end
+      self
     end
 
     def loginfo(message)
@@ -199,9 +207,11 @@ module ROS
       [:INT, :TERM, :HUP].each do |signal|
         Signal.trap(signal,
                     proc do
-                      if @is_ok
-                        puts 'shutdown by signal'
-                        shutdown
+                      @@all_nodes.each do |node|
+                        if node.ok?
+                          puts 'shutdown by signal'
+                          node.shutdown
+                        end
                       end
                     end)
       end

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby 
 
-require 'ros/node'
+require 'ros'
 require 'roscpp_tutorials/TwoInts'
 
 def main

@@ -4,14 +4,13 @@ require 'ros/rate'
 require 'test/unit'
 
 class TestRate_rate < Test::Unit::TestCase
-  def test1
+  def test_sleep
     r = ROS::Rate.new(10)
-    start = Time.now
     (1..10).each do |i|
-      puts "this is #{i}"
+      start = ::Time.now
       r.sleep
+      stop = ::Time.now
+      assert_in_delta(0.1, (stop - start), 0.01, "rating #{i}")
     end
-    stop = Time.now
-    assert_in_delta(1.0, (stop - start), 0.1)
   end
 end

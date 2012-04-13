@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby 
 
-require 'ros/ros'
+require 'ros'
 require 'std_msgs/String'
 
 def main
@@ -8,10 +8,12 @@ def main
   publisher = node.advertise('/chatter', Std_msgs::String)
   sleep(1)
   msg = Std_msgs::String.new
-  msg.data = 'Hello, rosruby!'
+  i = 0
   while node.ok?
+    msg.data = "Hello, rosruby!: #{i}"
     publisher.publish(msg)
-    sleep (1.0)
+    sleep(1.0)
+    i += 1
   end
 end
 

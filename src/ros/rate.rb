@@ -2,11 +2,11 @@ module ROS
   class Rate
     def initialize(hz)
       @sleep_duration = 1.0 / hz
-      @last_time = Time.now
+      @last_time = ::Time.now
     end
 
     def sleep
-      current_time = Time.now
+      current_time = ::Time.now
       elapsed = current_time - @last_time
       Kernel.sleep(@sleep_duration - elapsed)
       @last_time = @last_time + @sleep_duration

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'ros/ros'
+require 'ros'
 require 'std_msgs/String'
 
 def main

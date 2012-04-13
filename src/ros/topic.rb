@@ -6,17 +6,11 @@ module ROS
       @caller_id = caller_id
       @topic_name = topic_name
       @topic_type = topic_type
-      @connections = {}
+      @connections = []
       @connection_id_number = 0
     end
     
     attr_reader :caller_id, :topic_name, :topic_type
-
-    def shutdown
-      @connections.each_value do |connection|
-        connection.shutdown
-      end
-    end
 
     def get_connected_uri
       return @connections.keys
@@ -28,6 +22,10 @@ module ROS
 
     def has_connection_with?(uri)
       return @connections[uri]
+    end
+
+    def shutdown
+      @connections.each {|connection| connection.shutdown}
     end
 
   end

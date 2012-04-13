@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby 
 
-require 'ros/ros'
+require 'ros'
 
 def main
   node = ROS::Node.new('/hoge')

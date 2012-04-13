@@ -2,8 +2,6 @@ require 'xmlrpc/server'
 require 'xmlrpc/client'
 require 'timeout'
 
-require 'webrick'
-
 module ROS
 
   class TopicManager
@@ -17,6 +15,7 @@ module ROS
       @node = node
       @host = node.host
       @port = get_available_port
+      @master = XMLRPC::Client.new2(@node.master_uri).proxy
       @server = XMLRPC::Server.new(@port, @host, MAX_CONNECTION, $stderr, false, false)
       @publishers = []
       @subscribers = []
@@ -24,7 +23,7 @@ module ROS
       @server.set_default_handler do |method, *args|
         p 'call!! unhandled'
         p method
-        p *args
+        p args
         [0, "I DON'T KNOW", 0]
       end
 
@@ -126,10 +125,8 @@ module ROS
       begin
         timeout(timeout_sec) do
           while @node.ok?
-            master = XMLRPC::Client.new2(@node.master_uri)
-            code, message, uri = master.call('lookupService',
-                                             @caller_id,
-                                             service_name)
+            code, message, uri = @master.lookupService(@caller_id,
+                                                       service_name)
             if code == 1
               return true
             end
@@ -145,43 +142,36 @@ module ROS
     end
 
     def add_service_server(service_server)
-      master = XMLRPC::Client.new2(@node.master_uri)
-      result = master.call('registerService',
-                           @caller_id,
-                           service_server.service_name,
-                           service_server.service_uri,
-                           get_uri)
-      if result[0] == 1
+      code, message, val = @master.registerService(@caller_id,
+                                                   service_server.service_name,
+                                                   service_server.service_uri,
+                                                   get_uri)
+      if code == 1
         @service_servers.push(service_server)
       else
-        p result
-        raise 'registerService fail'
+        raise 'registerService fail: #{message}'
       end
 
     end
 
-    def delete_service_server(service)
-      master = XMLRPC::Client.new2(@node.master_uri)
-      result = master.call('unregisterService',
-                           @caller_id,
-                           service.service_name,
-                           service.service_uri)
-      if result[0] == 1
-        @service_servers.delete(service)
+    def unregister_service_server(service)
+      code, message, val = @master.unregisterService(@caller_id,
+                                                     service.service_name,
+                                                     service.service_uri)
+      if code == 1
+        return service
       else
-        raise 'unregisterService fail'
+        raise "unregisterService fail: #{message}"
       end
     end
 
     def add_subscriber(subscriber)
-      master = XMLRPC::Client.new2(@node.master_uri)
-      result = master.call("registerSubscriber",
-                           @caller_id,
-                           subscriber.topic_name,
-                           subscriber.topic_type.type,
-                           get_uri)
-      if result[0] == 1
-        for publisher_uri in result[2]
+      code, message, uris = @master.registerSubscriber(@caller_id,
+                                                       subscriber.topic_name,
+                                                       subscriber.topic_type.type,
+                                                       get_uri)
+      if code == 1
+        uris.each do |publisher_uri|
           subscriber.add_connection(publisher_uri)
         end
         @subscribers.push(subscriber)
@@ -191,78 +181,65 @@ module ROS
       end
     end
 
-    def delete_subscriber(subscriber)
-      master = XMLRPC::Client.new2(@node.master_uri)
-      result = master.call("unregisterSubscriber",
-                           @caller_id,
-                           subscriber.topic_name,
-                           get_uri)
-      if result[0] == 1
-        @subscribers.delete(subscriber)
+    def unregister_subscriber(subscriber)
+      code, message,val = @master.unregisterSubscriber(@caller_id,
+                                                       subscriber.topic_name,
+                                                       get_uri)
+      if code == 1
         return subscriber
       else
-        raise "registration of subscriber failed"
+        raise "registration of subscriber failed: #{message}"
       end
     end
 
     def add_publisher(publisher)
-      master = XMLRPC::Client.new2(@node.master_uri)
-      result = master.call("registerPublisher",
-                           @caller_id,
-                           publisher.topic_name,
-                           publisher.topic_type.type,
-                           get_uri)
-      if result[0] == 1
-        #        for subscriber_uri in result[2]
-        #          publisher.add_connection(subscriber_uri)
-        #        end
+      code, message, uris = @master.registerPublisher(@caller_id,
+                                                      publisher.topic_name,
+                                                      publisher.topic_type.type,
+                                                      get_uri)
+      if code == 1
         @publishers.push(publisher)
         return publisher
       else
-        raise "registration of publisher failed"
+        raise "registration of publisher failed: #{message}"
       end
     end
 
-    def delete_publisher(publisher)
-      master = XMLRPC::Client.new2(@node.master_uri)
-      result = master.call("unregisterPublisher",
-                           @caller_id,
-                           publisher.topic_name,
-                           get_uri)
-      if result[0] == 1
-        @publishers.delete(publisher)
+    def unregister_publisher(publisher)
+      code, message, val = @master.unregisterPublisher(@caller_id,
+                                                       publisher.topic_name,
+                                                       get_uri)
+      if code == 1
         return publisher
       else
-        raise "registration of publisher failed"
+        raise "registration of publisher failed: #{message}"
       end
     end
 
     def spin_once
-      for subscriber in @subscribers
-        subscriber.process_queue
-      end
-      for service_server in @service_servers
-        service_server.process_queue
-      end
+      @subscribers.each {|subscriber| subscriber.process_queue}
+      @service_servers.each {|service_server| service_server.process_queue}
     end
 
     def shutdown
       @server.shutdown
       @thread.join
-
       @publishers.each do |publisher|
-        delete_publisher(publisher)
+        unregister_publisher(publisher)
         publisher.shutdown
       end
+      @publishers = nil
+
       @subscribers.each do |subscriber|
-        delete_subscriber(subscriber)
+        unregister_subscriber(subscriber)
         subscriber.shutdown
       end
-
+      @subscribers = nil
       @service_servers.each do |service|
-        delete_service_server(service)
+        unregister_service_server(service)
         service.shutdown
       end
+      @service_servers = nil
 
     end
 
