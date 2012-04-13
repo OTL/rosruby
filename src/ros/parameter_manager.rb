@@ -1,3 +1,17 @@
+#  parameter_manager.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# =Control Parameter Server Interface
+#
+# ROS parameter sever inteface.
+# API document is here http://ros.org/wiki/ROS/Parameter%20Server%20API
+#
 require "xmlrpc/client"
 
 module ROS

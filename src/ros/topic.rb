@@ -1,3 +1,14 @@
+#  topic.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# Super class of Publisher/Subscriber
+#
 module ROS
 
   class Topic

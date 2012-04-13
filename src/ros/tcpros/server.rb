@@ -26,8 +26,8 @@ module ROS::TCPROS
       @is_latched
     end
 
-    def publish_msg(msg, socket)
-      data = write_msg(msg, socket)
+    def publish_msg(socket, msg)
+      data = write_msg(socket, msg)
       @last_published_msg = msg
       # for getBusStats
       @byte_sent += data.length
@@ -43,10 +43,10 @@ module ROS::TCPROS
         begin
           write_header(socket, build_header)
           if latching?
-            publish_msg(@last_published_msg, socket)
+            publish_msg(socket, @last_published_msg)
           end
           loop do
-            publish_msg(@msg_queue.pop, socket)
+            publish_msg(socket, @msg_queue.pop)
           end
         rescue
           socket.shutdown

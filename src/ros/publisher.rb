@@ -1,3 +1,37 @@
+#  publisher.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+=begin
+
+=ROS Topic Publisher
+
+This is impl class of publisher. rosruby should hide the interfaces
+by impl pattern or so on.
+
+=Usage
+
+  node = ROS::Node.new('/rosruby/sample_publisher')
+  publisher = node.advertise('/chatter', Std_msgs::String)
+  sleep(1)
+  msg = Std_msgs::String.new
+  i = 0
+  while node.ok?
+    msg.data = "Hello, rosruby!: #{i}"
+    publisher.publish(msg)
+
+=System
+
+a publisher contains multi connection with subscribers.
+TCPROS protocol is in ROS::TCPROS::Server class
+
+=end
+
 require 'ros/topic'
 require 'ros/tcpros/server'
 
@@ -12,6 +46,9 @@ module ROS
       @seq = 0
     end
 
+    ##
+    # publish msg object
+    #
     def publish(message) 
       @seq += 1
       if message.has_header?

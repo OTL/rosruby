@@ -1,3 +1,17 @@
+#  name.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# = Naming module
+#
+# ROS naming module.
+#
+
 module ROS
 
   module Name

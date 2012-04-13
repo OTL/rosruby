@@ -1,3 +1,22 @@
+#  rate.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# =Rate
+#
+#   sleep in a Hz timing.
+#
+# =Usage
+#
+#   r = ROS::Rate.new(10)
+#   r.sleep
+#
+
 module ROS
   class Rate
     def initialize(hz)

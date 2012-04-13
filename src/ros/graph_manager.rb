@@ -1,10 +1,28 @@
+# graph_manager.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+#=Manager of ROS graph
+#
+# this contains all subscribers, publishers, service_servers of a node.
+# Master API document is http://ros.org/wiki/ROS/Master_API
+# Slave API is http://ros.org/wiki/ROS/Slave_API
+#
 require 'xmlrpc/server'
 require 'xmlrpc/client'
 require 'timeout'
 
 module ROS
 
-  class TopicManager
+  ##
+  # connect with master and manage pub/sub and services
+  #
+  class GraphManager
 
     MAX_CONNECTION = 100
 

@@ -1,6 +1,19 @@
+#  node.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# = ROS Node
+#
+# user interface of ROS. 
+#
 require 'ros/parameter_manager'
 require 'ros/name'
-require 'ros/topic_manager'
+require 'ros/graph_manager'
 require 'ros/publisher'
 require 'ros/subscriber'
 require 'ros/service_server'
@@ -12,6 +25,9 @@ module ROS
 
     include Name
 
+    ##
+    # corrent nodes. This is for shutdown all nodes
+    #
     @@all_nodes = []
 
     def initialize(node_name)
@@ -22,7 +38,7 @@ module ROS
         raise 'ROS_MASTER_URI is nos set. please check environment variables'
       end
 
-      @manager = TopicManager.new(@node_name, self)
+      @manager = GraphManager.new(@node_name, self)
       @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
@@ -33,6 +49,8 @@ module ROS
       ObjectSpace.define_finalizer(self, proc {|id| self.shutdown})
     end
 
+    ##
+    #  Is node running?
     def ok?
       return @is_ok
     end
@@ -81,7 +99,7 @@ module ROS
                                            @manager.host))
     end
 
-    def advertise_service(service_name, service_type, callback)
+    def advertise_service(service_name, service_type, &callback)
       @manager.add_service_server(::ROS::ServiceServer.new(@node_name,
                                                            resolve_name(service_name),
                                                            service_type,
@@ -106,10 +124,26 @@ module ROS
                                              callback))
     end
 
+    ##
+    # spin once. This invoke subscription/service_server callbacks
+    #
     def spin_once
       @manager.spin_once
     end
 
+    ##
+    # spin forever
+    #
+    def spin
+      while ok?
+        spin_once
+        sleep(0.01)
+      end
+    end
+
+    ##
+    # unregister to master and shutdown all connections
+    #
     def shutdown
       if @is_ok
         @is_ok = false
@@ -154,6 +188,9 @@ module ROS
 
     private
 
+    ##
+    # parse all environment variables
+    #
     def get_env
       @master_uri = ENV['ROS_MASTER_URI']
       @ns = ENV['ROS_NAMESPACE']

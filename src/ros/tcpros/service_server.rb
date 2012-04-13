@@ -24,21 +24,27 @@ module ROS::TCPROS
       socket.write([1].pack('c'))
     end
 
+    def send_ng_byte(socket)
+      socket.write([0].pack('c'))
+    end
+
     def read_and_callback(socket)
       request = @service_type.request_class.new
       response = @service_type.response_class.new
-      read_all(socket)
+      data = read_all(socket)
       @byte_received += data.length
       request.deserialize(data)
       result = @callback.call(request, response)
       if result
         send_ok_byte(socket)
-        data = write_msg(response, socket)
+        data = write_msg(socket, response)
         @byte_sent += data.length
       else
+        send_ng_byte(socket)
         write_header(socket, build_header)
         # write some message
       end
+      result
     end
 
     def serve(socket)
@@ -69,6 +75,7 @@ module ROS::TCPROS
       header["callerid"] = @caller_id
       header['type'] = @service_type.type
       header['md5sum'] = @service_type.md5sum
+      header
     end
     
     attr_reader :byte_received, :byte_sent

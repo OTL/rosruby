@@ -1,3 +1,30 @@
+#  service.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+=begin
+=ROS Service Clinet
+
+ This is an interface of ROS server.
+
+=Usage
+
+  node = ROS::Node.new('/rosruby/sample_service_client')
+  if node.wait_for_service('/add_two_ints', 1)
+    service = node.service('/add_two_ints', Roscpp_tutorials::TwoInts)
+    req = Roscpp_tutorials::TwoInts.request_class.new
+    res = Roscpp_tutorials::TwoInts.response_class.new
+    req.a = 1
+    req.b = 2
+    if service.call(req, res)
+
+=end
+
 require 'ros/service'
 require 'ros/tcpros/service_client'
 require 'uri'

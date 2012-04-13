@@ -1,3 +1,17 @@
+#  log.rb 
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+# = Logger for ROS
+#
+# creates /rosout publisher and combine Ruby Logger
+# 
+
 require 'ros'
 require 'rosgraph_msgs/Log'
 require 'logger'
@@ -5,7 +19,8 @@ require 'logger'
 module ROS
 
   class Log
-
+    
+    # topic name of rosout
     ROSOUT_TOPIC='/rosout'
 
     def initialize(node)

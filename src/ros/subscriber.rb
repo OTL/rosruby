@@ -1,3 +1,32 @@
+#  subscriber.rb
+#
+# $Revision: $
+# $Id:$
+# $Date:$
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
+=begin
+
+=ROS Subscriber
+ subscriber of ROS topic. Please use proc block for callback method.
+ See below usage.
+
+=Usage
+
+  node = ROS::Node.new('/rosruby/sample_subscriber')
+  node.subscribe('/chatter', Std_msgs::String) do |msg|
+    puts "message come! = \'#{msg.data}\'"
+  end
+
+  while node.ok?
+    node.spin_once
+    sleep(1)
+  end
+
+=end
+
 require 'ros/topic'
 require 'ros/tcpros/client'
 require 'xmlrpc/client'
