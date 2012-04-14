@@ -1,4 +1,4 @@
-# graph_manager.rb
+# ros/graph_manager.rb
 #
 # License: BSD
 #
@@ -130,7 +130,7 @@ module ROS
       @thread = Thread.new do
         @server.serve
       end
-      
+
     end
 
     ##
@@ -180,7 +180,7 @@ module ROS
     end
 
     ##
-    # register a service to master, 
+    # register a service to master,
     # and add it in the controlling server list.
     # raise if fail.
     def add_service_server(service_server)

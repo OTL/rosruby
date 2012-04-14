@@ -1,8 +1,5 @@
-#  parameter_manager.rb
+# ros/parameter_manager.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
@@ -37,7 +34,7 @@ module ROS
         return nil
       end
     end
-    
+
     def set_param(key, value)
       code, message, value = @server.call("setParam", @caller_id, key, value)
       case code

@@ -1,14 +1,24 @@
-require 'ros/tcpros'
-
+# ros/tcpros/message.rb
+#
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
 module ROS::TCPROS
+
+  ##
+  # header of rorpc's protocol
+  #
   class Header
 
+    # rosrpc uses this wild card for cancel md5sum check or any.
     WILD_CARD = '*'
 
     def initialize
       @data = {}
     end
 
+    # add key-value data to this header.
     # key and value must be string
     def push_data(key, value)
       @data[key] = value
@@ -22,7 +32,8 @@ module ROS::TCPROS
     alias_method :[]=, :push_data
     alias_method :[], :get_data
 
-    # not contain total byte
+    # deserialize the data to header.
+    # this does not contain total byte number.
     def deserialize(data)
       while data.length > 0
         len, data = data.unpack('Va*')
@@ -36,11 +47,15 @@ module ROS::TCPROS
       self
     end
 
+    ##
+    # validate the key with the value.
+    # if it is WILD_CARD, it is ok!
     def valid?(key, value)
       (@data[key] == value) or value == WILD_CARD
     end
 
-    # contains total byte
+    # serialize the data into header
+    # this contains total byte number because of convenient.
     def serialize(buff)
       serialized_data = ''
       @data.each_pair do |key, value|
@@ -53,4 +68,3 @@ module ROS::TCPROS
 
   end
 end
-

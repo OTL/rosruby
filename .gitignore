@@ -4,3 +4,5 @@ trash/
 *.o
 *.old
 #*
+msg_gen/
+srv_gen/

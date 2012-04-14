@@ -1,12 +1,22 @@
+# ros/subscriber.rb
+#
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
 require 'ros/tcpros/message'
 require 'gserver'
 
 module ROS::TCPROS
 
+  ##
+  # This is TCPROS connection for ROS::Publihser
+  #
   class Server < ::GServer
 
     include ::ROS::TCPROS::Message
 
+    # max number of connections with ROS::TCPROS::Client (ROS::Subscriber)
     MAX_CONNECTION = 100
 
     def initialize(caller_id, topic_name, topic_type, is_latched,
@@ -22,10 +32,15 @@ module ROS::TCPROS
       @last_published_msg = nil
     end
 
+    ##
+    # Is this latching publisher?
     def latching?
       @is_latched
     end
 
+    ##
+    # send a message to reciever
+    #
     def publish_msg(socket, msg)
       data = write_msg(socket, msg)
       @last_published_msg = msg
@@ -34,6 +49,9 @@ module ROS::TCPROS
       @num_sent += 1
     end
 
+    ##
+    # this is called if a socket accept a connection.
+    # This is GServer's function
     def serve(socket)
       header = read_header(socket)
       if check_header(header)
@@ -59,13 +77,21 @@ module ROS::TCPROS
     end
 
     attr_reader :caller_id, :msg_queue, :byte_sent, :num_sent
+
+    # id for slave API
     attr_accessor :id
 
+    ##
+    # validate header for this publisher
+    #
     def check_header(header)
       header.valid?('type', @topic_type.type) and
         header.valid?('md5sum', @topic_type.md5sum)
     end
 
+    ##
+    # build ROS::TCPROS::Header message for this publisher
+    # @return header (ROS::TCPROS::Header)
     def build_header
       header = Header.new
       header["callerid"] = @caller_id

@@ -1,8 +1,5 @@
-#  name.rb
+# ros/name.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
@@ -16,10 +13,19 @@ require 'socket' # for gethostname
 
 module ROS
 
+  ##
+  # this module provides naming functions.
+  #
   module Name
 
+    # name sparation char
     SEP = '/'
 
+    ##
+    # start with '/' and use single '/' for names
+    #
+    # @param[in] name input name
+    # @return canonicalized name
     def canonicalize_name(name)
       if name == nil or name == SEP
         return name
@@ -30,10 +36,9 @@ module ROS
       end
     end
 
-    def set_remappings(remappings)
-      @remappings = remappings
-    end
-
+    ##
+    # expand ~local_param like names
+    #
     def expand_local_name(caller_id, name)
       if name[0] == '~'[0]
         caller_id + SEP + name[1..-1]
@@ -42,6 +47,10 @@ module ROS
       end
     end
 
+    ##
+    # generate anonymous name using input id
+    # (arange from roslib)
+    #
     def anonymous_name(id)
       # Generate a ROS-legal 'anonymous' name
       # @param id: prefix for anonymous name
@@ -52,10 +61,14 @@ module ROS
       name.gsub(':', '_')
     end
 
-    def resolve_name_with_call_id(caller_id, ns, name)
+
+    ##
+    # expand local, canonicalize, remappings
+    #
+    def resolve_name_with_call_id(caller_id, ns, name, remappings)
       name = canonicalize_name(expand_local_name(caller_id, name))
-      if @remappings
-        @remappings.each_pair do |key, value|
+      if remappings
+        remappings.each_pair do |key, value|
           if name == canonicalize_name(key)
             name = value
           end
@@ -68,5 +81,3 @@ module ROS
     end
   end
 end
-
-

@@ -1,10 +1,22 @@
-require 'ros/tcpros'
+# ros/tcpros/service_server.rb
+#
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
 require 'ros/tcpros/message'
 require 'gserver'
 
 module ROS::TCPROS
+
+  ##
+  # TCPROS protocol Service Server
+  #
   class ServiceServer < ::GServer
 
+    ##
+    # max number of connection with clients
+    #
     MAX_CONNECTION = 100
 
     include ::ROS::TCPROS::Message
@@ -20,10 +32,16 @@ module ROS::TCPROS
       @byte_sent = 0
     end
 
+    ##
+    # message must send 1 byte for service call result (true)
+    #
     def send_ok_byte(socket)
       socket.write([1].pack('c'))
     end
 
+    ##
+    # message must send 1 byte for service call result (false)
+    #
     def send_ng_byte(socket)
       socket.write([0].pack('c'))
     end
@@ -47,6 +65,9 @@ module ROS::TCPROS
       result
     end
 
+    ##
+    # this is called by socket accept
+    #
     def serve(socket)
       header = read_header(socket)
       # not documented protocol?
@@ -66,10 +87,15 @@ module ROS::TCPROS
       end
     end
 
+    ##
+    # check header
     def check_header(header)
       header.valid?('md5sum', @service_type.md5sum)
     end
 
+    ##
+    # build header message for service server
+    # @return ROS::TCPROS::Header
     def build_header
       header = Header.new
       header["callerid"] = @caller_id
@@ -77,8 +103,12 @@ module ROS::TCPROS
       header['md5sum'] = @service_type.md5sum
       header
     end
-    
-    attr_reader :byte_received, :byte_sent
-    
+
+    # received data amout for slave api
+    attr_reader :byte_received
+
+    # sent data amout for slave api
+    attr_reader :byte_sent
+
   end
 end

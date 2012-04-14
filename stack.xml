@@ -1,10 +1,10 @@
 <stack>
   <description brief="rosruby">rosruby</description>
   <author>Maintained by Takashi Ogura</author>
-  <license>BSD</license>  
+  <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/rosruby</url>
-  <depend stack="ros" /> <!-- roslang -->
+  <depend stack="ros" /> <!-- roslang, rospack -->
   <depend stack="ros_comm" /> <!-- rosgraph_msgs, std_msgs -->
-
+  <depend stack="ros_tutorials" /> <!-- for test and samples -->
 </stack>

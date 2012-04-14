@@ -1,4 +1,4 @@
-#  package.rb 
+# ros/package.rb
 #
 # License: BSD
 #
@@ -23,7 +23,7 @@ module ROS
       @package_name = package_name
     end
 
-    #
+    ##
     # get the current program's package
     #
     def self.find_this_package
@@ -37,7 +37,7 @@ module ROS
       nil
     end
 
-    #
+    ##
     # add package's [lib/, msg_gen/ruby, srv_gen/ruby] to '$:'.
     # this enables load ruby files easily
     #
@@ -51,7 +51,7 @@ module ROS
       end
     end
 
-    #
+    ##
     # add [lib/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages
     # to RUBYLIB
     #
