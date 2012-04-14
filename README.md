@@ -1,7 +1,7 @@
 ROS Ruby Client: rosruby
 =======
 
-Read latest document on [https://github.com/OTL/rosruby/wiki/rosruby](GitHub Wiki).
+Read latest document on [GitHub Wiki](https://github.com/OTL/rosruby/wiki/rosruby)
 
 I'm a beginner of Ruby.
 I start this project to learn Ruby.
