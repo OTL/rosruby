@@ -1,15 +1,12 @@
-#  node.rb
+# ros/node.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
 # = ROS Node
 #
-# user interface of ROS. 
+# user interface of ROS.
 #
 require 'ros/parameter_manager'
 require 'ros/name'
@@ -21,16 +18,27 @@ require 'ros/service_client'
 require 'ros/log'
 
 module ROS
+
+  ##
+  # main interface of rosruby.
+  # This class has many inner informations.
+  # It may be better to use pimpl pattern.
+  #
   class Node
 
     include Name
 
     ##
-    # corrent nodes. This is for shutdown all nodes
+    # current running all nodes. This is for shutdown all nodes
     #
     @@all_nodes = []
 
+    ##
+    # initialization of ROS node
+    # get env, parse args, and start slave xmlrpc servers.
+    #
     def initialize(node_name, anonymous=nil)
+      @remappings = {}
       get_env
       if anonymous
         node_name = anonymous_name(node_name)
@@ -53,7 +61,8 @@ module ROS
     end
 
     ##
-    #  Is node running?
+    #  Is this node running? Please use for 'while loop' and so on..
+    #
     def ok?
       return @is_ok
     end
@@ -61,7 +70,7 @@ module ROS
     attr_reader :master_uri, :host, :node_name
 
     def resolve_name(name)
-      resolve_name_with_call_id(@node_name, @ns, name)
+      resolve_name_with_call_id(@node_name, @ns, name, @remappings)
     end
 
     def get_param(key)
@@ -240,7 +249,6 @@ module ROS
           end
         end
       end
-      set_remappings(remapping)
     end
 
     def trap_signals

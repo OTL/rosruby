@@ -27,12 +27,13 @@ To use with precompiled electric release
 -----------------------
 If you are using precompiled ROS distro, use the msg/srv generation script
 (gen_for_precompiled.py)
-If you are using ROS from source, it requires just recompile the msg/srv 
+If you are using ROS from source, it requires just recompile the msg/srv
 packages.
 
 ```bash
 $ rosrun rosruby gen_for_precompiled.py
 ```
+
 This converts msg/srv to .rb which is needed by sample programs.
 If you want to make other packages, add package names for args.
 
@@ -45,7 +46,7 @@ $ rosrun rosruby gen_for_precompiled.py geometry_msgs nav_msgs
 
 Sample Source
 --------------
-Subscriber
+=== Subscriber
 
 ```ruby
 #!/usr/bin/env ruby
@@ -65,10 +66,10 @@ end
 
 ```
 
-Publisher
+===Publisher
 
 ```ruby
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby
 
 require 'ros'
 require 'std_msgs/String'
@@ -90,7 +91,14 @@ end
 
 Try Publish and Subscribe
 ----------------------
-run publisher sample is
+You needs three terminal as it is often for ROS users.
+Then you run roscore if is not running.
+
+```bash
+$ roscore
+```
+
+run publisher sample
 
 ```bash
 $ rosrun rosruby sample_publisher.rb
@@ -102,8 +110,36 @@ run subscription sample
 $ rosrun rosruby sample_publisher.rb
 ```
 
+Try Service?
+----------------------
+
+```bash
+$ rosrun rosruby add_two_ints_server.rb
+```
+
+run client with args ('a' and 'b' for roscpp_tutorials/TwoInts)
+```bash
+$ rosrun rosruby add_two_ints_client.rb 10 20
+```
+
+
 do all tests
 -------------------------
+run roscore if is not running.
+
+```bash
+$ roscore
+```
+
+and run the unit tests.
+
 ```bash
 $ rosrun rosruby run-test.rb
+```
+
+or
+
+```bash
+$ roscd rosruby
+$ rake test
 ```

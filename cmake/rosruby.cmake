@@ -1,3 +1,7 @@
+#
+# I don't know much about cmake...
+# generation of msg/srv -> *.rb
+#
 rosbuild_find_ros_package(rosruby)
 
 # Message-generation support.
@@ -12,17 +16,17 @@ macro(genmsg_ruby)
     set(_input ${PROJECT_SOURCE_DIR}/msg/${_msg})
     # Append it to a list, which we'll pass back to gensrv below
     list(APPEND _inlist ${_input})
-  
+
     rosbuild_gendeps(${PROJECT_NAME} ${_msg})
-  
+
 
     set(_output_ruby ${PROJECT_SOURCE_DIR}/msg_gen/ruby/${PROJECT_NAME}/${_msg})
     string(REPLACE ".msg" ".rb" _output_ruby ${_output_ruby})
-  
+
     # Add the rule to build the .rb from the .msg.
-    add_custom_command(OUTPUT ${_output_ruby} 
-                       COMMAND ${genmsg_ruby_exe} ${_input}
-                       DEPENDS ${_input} ${genmsg_ruby_exe} ${gendeps_exe} ${${PROJECT_NAME}_${_msg}_GENDEPS} ${ROS_MANIFEST_LIST})
+    add_custom_command(OUTPUT ${_output_ruby}
+		       COMMAND ${genmsg_ruby_exe} ${_input}
+		       DEPENDS ${_input} ${genmsg_ruby_exe} ${gendeps_exe} ${${PROJECT_NAME}_${_msg}_GENDEPS} ${ROS_MANIFEST_LIST})
     list(APPEND _autogen ${_output_ruby})
   endforeach(_msg)
 
@@ -58,16 +62,16 @@ macro(gensrv_ruby)
     set(_input ${PROJECT_SOURCE_DIR}/srv/${_srv})
     # Append it to a list, which we'll pass back to gensrv below
     list(APPEND _inlist ${_input})
-  
+
     rosbuild_gendeps(${PROJECT_NAME} ${_srv})
-  
+
     set(_output_ruby ${PROJECT_SOURCE_DIR}/srv_gen/ruby/${PROJECT_NAME}/${_srv})
     string(REPLACE ".srv" ".rb" _output_ruby ${_output_ruby})
-  
+
     # Add the rule to build the .rb from the .srv
-    add_custom_command(OUTPUT ${_output_ruby} 
-                       COMMAND ${gensrv_ruby_exe} ${_input}
-                       DEPENDS ${_input} ${gensrv_ruby_exe} ${gendeps_exe} ${${PROJECT_NAME}_${_srv}_GENDEPS} ${ROS_MANIFEST_LIST})
+    add_custom_command(OUTPUT ${_output_ruby}
+		       COMMAND ${gensrv_ruby_exe} ${_input}
+		       DEPENDS ${_input} ${gensrv_ruby_exe} ${gendeps_exe} ${${PROJECT_NAME}_${_srv}_GENDEPS} ${ROS_MANIFEST_LIST})
     list(APPEND _autogen ${_output_ruby})
   endforeach(_srv)
 
@@ -90,4 +94,3 @@ endmacro(gensrv_ruby)
 
 # Call the macro we just defined.
 gensrv_ruby()
-

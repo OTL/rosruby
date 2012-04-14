@@ -1,8 +1,5 @@
-#  time.rb
+# ros/time.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
@@ -10,7 +7,7 @@
 # Time object for ROS.
 #
 module ROS
-  
+
   class TVal
 
     include Comparable
@@ -30,7 +27,7 @@ module ROS
       end
       self
     end
-    
+
     def to_sec
       @secs + (@nsecs / 1e9)
     end
@@ -39,7 +36,7 @@ module ROS
       @nsecs + (@secs * 1e9)
     end
 
-    
+
     def <=>(other)
       diff = self.to_nsec - other.to_nsec
       if diff > 0
@@ -104,7 +101,7 @@ module ROS
       end
       canonicalize
     end
-    
+
     def +(duration)
       tm = ::ROS::Duration.new
       tm.secs = @secs + duration.secs
@@ -118,7 +115,7 @@ module ROS
       d.nsecs = @nsecs - other.nsecs
       d.canonicalize
     end
-    
+
     def sleep
       Kernel.sleep(to_sec)
     end

@@ -1,4 +1,4 @@
-#  log.rb 
+#  log.rb
 #
 # $Revision: $
 # $Id:$
@@ -10,7 +10,7 @@
 # = Logger for ROS
 #
 # creates /rosout publisher and combine Ruby Logger
-# 
+#
 
 require 'ros'
 require 'rosgraph_msgs/Log'
@@ -20,9 +20,9 @@ module ROS
 
   # = Logging class for ROS
   # This class enable double logging: ROS Logging system and ruby log.
-  # 
+  #
   class Log
-    
+
     # topic name of rosout
     ROSOUT_TOPIC='/rosout'
 

@@ -1,8 +1,5 @@
 #  ros/tcpros/client.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
@@ -13,6 +10,10 @@ require 'ros/tcpros/message'
 require 'ros/tcpros/header'
 
 module ROS::TCPROS
+
+  ##
+  # rosrpc's client for subscriber
+  #
   class Client
 
     include ::ROS::TCPROS::Message
@@ -36,6 +37,9 @@ module ROS::TCPROS
       @is_running = true
     end
 
+    ##
+    # build header data for subscription
+    # @return ROS::TCPROS::Header
     def build_header
       header = Header.new
       header.push_data("callerid", @caller_id)
@@ -47,8 +51,12 @@ module ROS::TCPROS
       else
         header.push_data("tcp_nodelay", '0')
       end
+      header
     end
 
+    ##
+    # start recieving data.
+    # The received messages are pushed into a message queue.
     def start
       write_header(@socket, build_header)
       read_header(@socket)
@@ -62,7 +70,10 @@ module ROS::TCPROS
         end
       end
     end
-    
+
+    ##
+    # close the connection.
+    # kill the thread if it is not response.
     def shutdown
       @is_running = false
       if not @thread.join(0.1)
@@ -74,6 +85,8 @@ module ROS::TCPROS
     end
 
     attr_reader :port, :host, :msg_queue, :byte_received, :target_uri
+
+    # id for slave API
     attr_accessor :id
   end
 end

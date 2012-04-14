@@ -1,8 +1,5 @@
-#  message.rb
+# ros/tcpros/message.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
@@ -11,15 +8,19 @@
 # document is http://ros.org/wiki/ROS/TCPROS
 #
 require 'stringio'
-require 'ros/tcpros'
 require 'ros/tcpros/header'
 
+
+# == TCP connection between nodes.
+# protocol document is http://ros.org/wiki/ROS/TCPROS
 module ROS::TCPROS
+
+  # functions for TCPROS
   module Message
 
     ##
+    # write message to socket
     # @return wrote bytes
-    #
     def write_msg(socket, msg)
       sio = StringIO.new('', 'r+')
       len = msg.serialize(sio)
@@ -32,8 +33,8 @@ module ROS::TCPROS
     end
 
     ##
-    # read the size of data and read it.
-    #
+    # read the size of data and read it from socket
+    # @return received data (string)
     def read_all(socket)
       total_bytes = socket.recv(4).unpack("V")[0]
       if total_bytes and total_bytes > 0
@@ -45,7 +46,7 @@ module ROS::TCPROS
 
     ##
     # read a connection header from socket
-    #
+    # @return header (ROS::TCPROS::Header)
     def read_header(socket)
       header = ::ROS::TCPROS::Header.new
       header.deserialize(read_all(socket))

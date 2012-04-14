@@ -1,29 +1,40 @@
-#  rate.rb
+# ros/rate.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# =Rate
+# = Rate
 #
 #   sleep in a Hz timing.
 #
-# =Usage
+# = Usage
 #
 #   r = ROS::Rate.new(10)
 #   r.sleep
 #
 
 module ROS
+
+  ##
+  # = Rate
+  #
+  #   sleep in a Hz timing.
+  #
+  # = Usage
+  #
+  #   r = ROS::Rate.new(10)
+  #   r.sleep
+  #
   class Rate
     def initialize(hz)
       @sleep_duration = 1.0 / hz
       @last_time = ::Time.now
     end
 
+    ##
+    # sleep for preset rate [Hz]
+    #
     def sleep
       current_time = ::Time.now
       elapsed = current_time - @last_time
