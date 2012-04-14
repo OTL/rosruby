@@ -1,8 +1,5 @@
 # graph_manager.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
@@ -19,15 +16,25 @@ require 'timeout'
 
 module ROS
 
-  ##
+  #=Manager of ROS graph
+  #
+  # this contains all subscribers, publishers, service_servers of a node.
+  # Master API document is http://ros.org/wiki/ROS/Master_API
+  # Slave API is http://ros.org/wiki/ROS/Slave_API
+  #
   # connect with master and manage pub/sub and services
   #
   class GraphManager
 
+    # max number of connection with other slave nodes
     MAX_CONNECTION = 100
 
     attr_reader :publishers, :subscribers, :service_servers, :host, :port
 
+    ##
+    # add xmlrpc handlers for slave connections.
+    # Then start serve thread.
+    #
     def initialize(caller_id, node)
       @caller_id = caller_id
       @node = node
@@ -126,7 +133,10 @@ module ROS
       
     end
 
-
+    ##
+    # get available port number by opening port 0.
+    # @return port_num
+    #
     def get_available_port
       server = TCPServer.open(0)
       saddr = server.getsockname
@@ -135,10 +145,20 @@ module ROS
       port
     end
 
+    ##
+    # get this slave node's URI
+    # @return uri
+    #
     def get_uri
       "http://" + @host + ":" + @port.to_s + "/"
     end
 
+    ##
+    # wait until service is available
+    # @param [in] service_name
+    # @param [in] timeout_sec
+    # @return true: available, false: time out
+    #
     def wait_for_service(service_name, timeout_sec)
       begin
         timeout(timeout_sec) do
@@ -159,6 +179,10 @@ module ROS
       end
     end
 
+    ##
+    # register a service to master, 
+    # and add it in the controlling server list.
+    # raise if fail.
     def add_service_server(service_server)
       code, message, val = @master.registerService(@caller_id,
                                                    service_server.service_name,
@@ -172,6 +196,9 @@ module ROS
 
     end
 
+    ##
+    # unresiter a service.  raise if fail.
+    #
     def unregister_service_server(service)
       code, message, val = @master.unregisterService(@caller_id,
                                                      service.service_name,
@@ -183,6 +210,9 @@ module ROS
       end
     end
 
+    ##
+    # register a subscriber to master. raise if fail.
+    #
     def add_subscriber(subscriber)
       code, message, uris = @master.registerSubscriber(@caller_id,
                                                        subscriber.topic_name,
@@ -195,10 +225,13 @@ module ROS
         @subscribers.push(subscriber)
         return subscriber
       else
-        raise "registration of publisher failed"
+        raise "registration of publisher failed: #{message}"
       end
     end
 
+    ##
+    # unregister a subscriber.  raise if fail.
+    # raise if fail.
     def unregister_subscriber(subscriber)
       code, message,val = @master.unregisterSubscriber(@caller_id,
                                                        subscriber.topic_name,
@@ -210,6 +243,9 @@ module ROS
       end
     end
 
+    ##
+    # register a publisher. raise if fail.
+    #
     def add_publisher(publisher)
       code, message, uris = @master.registerPublisher(@caller_id,
                                                       publisher.topic_name,
@@ -234,14 +270,23 @@ module ROS
       end
     end
 
+    ##
+    # process all messages of subscribers and service servers.
+    #
     def spin_once
       @subscribers.each {|subscriber| subscriber.process_queue}
       @service_servers.each {|service_server| service_server.process_queue}
     end
 
+    ##
+    # shutdown this slave node.
+    # shutdown the xmlrpc server and all pub/sub connections.
+    # and delelte all pub/sub instance from connection list
     def shutdown
       @server.shutdown
-      @thread.join
+      if not @thread.join(0.1)
+        Thread::kill(@thread)
+      end
       @publishers.each do |publisher|
         unregister_publisher(publisher)
         publisher.shutdown

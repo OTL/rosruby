@@ -18,7 +18,7 @@ if __name__ == "__main__":
         packages = ['std_msgs', 'rosgraph_msgs', 'roscpp_tutorials']
     else:
         packages = sys.argv[1:]
-    output_prefix = "%s/src"%get_pkg_dir('rosruby')
+    output_prefix = "%s/lib"%get_pkg_dir('rosruby')
     for pack in packages:
         msg_dir = "%s/msg/"%get_pkg_dir(pack)
         if os.path.exists(msg_dir):

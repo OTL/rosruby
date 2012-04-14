@@ -18,11 +18,18 @@ require 'logger'
 
 module ROS
 
+  # = Logging class for ROS
+  # This class enable double logging: ROS Logging system and ruby log.
+  # 
   class Log
     
     # topic name of rosout
     ROSOUT_TOPIC='/rosout'
 
+    ##
+    # start publishing /rosout and
+    # make a ruby logger instance for local output
+    #
     def initialize(node)
       @node = node
       @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil, nil)
@@ -36,10 +43,13 @@ module ROS
         'WARN'=>::Rosgraph_msgs::Log::WARN,
         'INFO'=>::Rosgraph_msgs::Log::INFO,
         'DEBUG'=>::Rosgraph_msgs::Log::DEBUG}
-
       @local_logger = Logger.new(STDOUT)
     end
 
+    ##
+    # outputs log messages with level and informations which
+    # rosout needs.
+    #
     def log(severity, message, file='', function='', line=0)
       @local_logger.log(@ruby_dict[severity], message, @node.node_name)
       msg = Rosgraph_msgs::Log.new
