@@ -11,6 +11,7 @@ Let's start
 Install ROS and ruby first. ROS document is http://ros.org/wiki/ROS/Installation .
 
 You can install ruby by apt.
+
 ```bash
 $ sudo apt-get install ruby rake
 ```
@@ -29,7 +30,7 @@ If you are using precompiled ROS distro, use the msg/srv generation script
 If you are using ROS from source, it requires just recompile the msg/srv 
 packages.
 
-```
+```bash
 $ rosrun rosruby gen_for_precompiled.py
 ```
 This converts msg/srv to .rb which is needed by sample programs.
@@ -37,7 +38,7 @@ If you want to make other packages, add package names for args.
 
 For example,
 
-```
+```bash
 $ rosrun rosruby gen_for_precompiled.py geometry_msgs nav_msgs
 ```
 
