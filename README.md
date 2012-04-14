@@ -6,6 +6,22 @@ I start this project to learn Ruby.
 
 ROS is Robot Operating System developed by Willow Garage and open source communities.
 
+Let's start
+---------------
+Install ROS and ruby first. ROS document is http://ros.org/wiki/ROS/Installation .
+
+You can install ruby by apt.
+```bash
+$ sudo apt-get install ruby rake
+```
+
+please add RUBYLIB environment variable, like below (if you are using bash).
+
+```bash
+$ echo "export RUBYLIB=`rospack find rosruby`/lib" >> ~/.bashrc
+$ source ~/.bashrc
+```
+
 To use with precompiled electric release
 -----------------------
 If you are using precompiled ROS distro, use the msg/srv generation script
@@ -75,18 +91,18 @@ Try Publish and Subscribe
 ----------------------
 run publisher sample is
 
-```
+```bash
 $ rosrun rosruby sample_publisher.rb
 ```
 
 run subscription sample
 
-```
+```bash
 $ rosrun rosruby sample_publisher.rb
 ```
 
 do all tests
 -------------------------
-```
+```bash
 $ rosrun rosruby run-test.rb
 ```
