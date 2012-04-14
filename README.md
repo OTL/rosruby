@@ -1,19 +1,27 @@
-rosruby
+ROS Ruby Client: rosruby
 =======
+
+Read latest document on [https://github.com/OTL/rosruby/wiki/rosruby](GitHub Wiki).
 
 I'm a beginner of Ruby.
 I start this project to learn Ruby.
 
-ROS is Robot Operating System developed by Willow Garage and open source communities.
+[ROS](http://ros.org) is Robot Operating System developed by [Willow Garage](http://www.willowgarage.com/) and open source communities.
 
 Let's start
 ---------------
-Install ROS and ruby first. ROS document is http://ros.org/wiki/ROS/Installation .
+Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installation](http://ros.org/wiki/ROS/Installation) .
 
 You can install ruby by apt.
 
 ```bash
 $ sudo apt-get install ruby rake
+```
+
+Download rosruby into your ROS_PACKAGE_PATH.
+
+````bash
+$ git clone git://github.com/OTL/rosruby.git
 ```
 
 please add RUBYLIB environment variable, like below (if you are using bash).
@@ -28,7 +36,7 @@ To use with precompiled electric release
 If you are using precompiled ROS distro, use the msg/srv generation script
 (gen_for_precompiled.py)
 If you are using ROS from source, it requires just recompile the msg/srv
-packages.
+packages by rosmake rosruby.
 
 ```bash
 $ rosrun rosruby gen_for_precompiled.py
@@ -46,7 +54,7 @@ $ rosrun rosruby gen_for_precompiled.py geometry_msgs nav_msgs
 
 Sample Source
 --------------
-=== Subscriber
+## Subscriber
 
 ```ruby
 #!/usr/bin/env ruby
@@ -66,7 +74,7 @@ end
 
 ```
 
-===Publisher
+## Publisher
 
 ```ruby
 #!/usr/bin/env ruby
@@ -107,8 +115,16 @@ $ rosrun rosruby sample_publisher.rb
 run subscription sample
 
 ```bash
-$ rosrun rosruby sample_publisher.rb
+$ rosrun rosruby sample_subscriber.rb
 ```
+
+you can check publication by using rostopic.
+
+```bash
+$ rostopic list
+$ rostopic echo /chatter
+```
+
 
 Try Service?
 ----------------------
@@ -118,6 +134,7 @@ $ rosrun rosruby add_two_ints_server.rb
 ```
 
 run client with args ('a' and 'b' for roscpp_tutorials/TwoInts)
+
 ```bash
 $ rosrun rosruby add_two_ints_client.rb 10 20
 ```
