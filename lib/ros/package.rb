@@ -1,8 +1,5 @@
 #  package.rb 
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
@@ -10,12 +7,17 @@
 # = ROS Package manager
 #
 # This is used for adding RUBYLIB path.
-# Currently it uses +rospack+ executalbe of ROS.
-# I believe that it is better if rospack is removed.
+# This file will provide rospack functions, in the future
 #
 
 module ROS
 
+  # = Package
+  #
+  # This is used for adding RUBYLIB path.
+  # Currently it uses +rospack+ executalbe of ROS.
+  # I believe that it is better if rospack is removed.
+  #
   class Package
     def initialize(package_name)
       @package_name = package_name
@@ -36,12 +38,12 @@ module ROS
     end
 
     #
-    # add package's [src/, msg_gen/ruby, srv_gen/ruby] to '$:'.
+    # add package's [lib/, msg_gen/ruby, srv_gen/ruby] to '$:'.
     # this enables load ruby files easily
     #
     def add_path_of_package(package)
       `rospack find #{package}`.chop.each do |path|
-        ["#{path}/msg_gen/ruby", "#{path}/srv_gen/ruby", "#{path}/src"].each do |path|
+        ["#{path}/msg_gen/ruby", "#{path}/srv_gen/ruby", "#{path}/lib"].each do |path|
           if File.exists?(path)
             $:.push(path)
           end
@@ -50,7 +52,7 @@ module ROS
     end
 
     #
-    # add [src/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages
+    # add [lib/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages
     # to RUBYLIB
     #
     def add_path_with_depend_packages

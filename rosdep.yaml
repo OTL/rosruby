@@ -1,0 +1,4 @@
+ruby:
+  ubuntu: ruby
+rake:
+  ubuntu: rake
