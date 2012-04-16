@@ -23,7 +23,7 @@ class TestPubSubNormal < Test::Unit::TestCase
 
     message_has_come1 = [nil, nil]
     message_has_come2 = [nil, nil]
-    
+
     sub1 = node1.subscribe('/chatter', Std_msgs::String) do |msg|
       if msg.data == TEST_STRING1
         message_has_come1[0] = true
@@ -59,12 +59,12 @@ class TestPubSubNormal < Test::Unit::TestCase
     assert_equal(2, topics.length)
     assert(topics.include?('/chatter'))
     assert(topics.include?('/rosout'))
-    
+
     node1.shutdown
     node2.shutdown
   end
 
-  def aatest_single_pubsub
+  def test_single_pubsub
     node = ROS::Node.new('/test3')
     pub1 = node.advertise('/chatter', Std_msgs::String)
 
@@ -72,22 +72,40 @@ class TestPubSubNormal < Test::Unit::TestCase
     pub_msg1.data = TEST_STRING1
 
     message_has_come1 = nil
-    
+
     sub1 = node.subscribe('/chatter', Std_msgs::String) do |msg|
       if msg.data == TEST_STRING1
         message_has_come1 = true
       end
     end
 
-    
+
     sleep(1) # wait for registration and update
 
     pub1.publish(pub_msg1)
     sleep(1)
     node.spin_once
     assert(message_has_come1)
+
+    assert_equal([["/chatter_out_0", 13, 1, 1]], pub1.get_connection_data)
+    assert_equal([["/chatter_in_0", 9, 1]], sub1.get_connection_data)
+
+    pub_info = pub1.get_connection_info[0]
+    assert_equal("/chatter_out_0", pub_info[0])
+    # incomplete
+#    assert(/^http:.*:[0-9]+/=~, pub_info[1])
+    assert_equal("o", pub_info[2])
+    assert_equal("TCPROS", pub_info[3])
+    assert_equal("/chatter", pub_info[4])
+
+    sub_info = sub1.get_connection_info[0]
+    assert_equal("/chatter_in_0", sub_info[0])
+    assert(/^http:.*[0-9]+/=~ sub_info[1])
+    assert_equal("i", sub_info[2])
+    assert_equal("TCPROS", sub_info[3])
+    assert_equal("/chatter", sub_info[4])
+
     node.shutdown
   end
 
 end
-
