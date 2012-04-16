@@ -374,7 +374,8 @@ def compute_import(package, type_):
         retval = []
     else:
 #        retval = ['rquire "%s/msg"'%pkg]
-        retval = ['require "%s/%s"'%(pkg, base_type.lower())]
+        print base_type
+        retval = ['require "%s/%s"'%(pkg, base_type)]
         for t in get_registered_ex(type_str).types:
             sub = compute_import(package, t)
             retval.extend([x for x in sub if not x in retval])
