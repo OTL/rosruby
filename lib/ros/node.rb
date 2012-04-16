@@ -16,6 +16,8 @@ require 'ros/subscriber'
 require 'ros/service_server'
 require 'ros/service_client'
 require 'ros/log'
+require 'ros/time'
+require 'ros/duration'
 
 module ROS
 

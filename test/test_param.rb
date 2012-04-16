@@ -4,40 +4,22 @@ require 'test/unit'
 require 'ros'
 
 class TestParam_Normal < Test::Unit::TestCase
-  def test_set_get
-    node = ROS::Node.new('hoge')
-    # integer
-    assert(node.set_param('/test1', 1))
-    assert_equal(1, node.get_param('/test1'))
-    # float
-    assert(node.set_param('/test_f', 0.1))
-    assert_equal(0.1, node.get_param('/test_f'))
-    # list
-    assert(node.set_param('/test2', [1,2,3]))
-    assert_equal([1,2,3], node.get_param('/test2'))
-    # string
-    assert(node.set_param('/test_s', 'hoge'))
-    assert_equal('hoge', node.get_param('/test_s'))
+  def test_param_manager
+    remap = {'aa'=>1, 'bb'=>'xx'}
+    param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/test1', remap)
+    assert_equal(1, param.get_param('aa'))
+    assert(!param.get_param('cc'))
 
-    assert(node.has_param('/test_s'))
-    assert(node.delete_param('/test_s'))
-    assert(!node.has_param('/test_s'))
+    assert(param.set_param('cc', [1,2]))
+    assert_equal([1,2], param.get_param('cc'))
+    assert(param.delete_param('cc'))
+    assert(!param.get_param('cc'))
 
-    node.shutdown
-  end
-
-  def test_fail
-    node = ROS::Node.new('hoge')
-    assert(!node.get_param('/test_no_exists'))
-    node.shutdown
-  end
-
-  def test_resolve_name
-    node = ROS::Node.new('hoge')
-    
-    assert_equal('/aaa', node.resolve_name('aaa'))
-    assert_equal('/aaa/b/c', node.resolve_name('aaa/b////c'))
-    assert_equal('/hoge/private', node.resolve_name('~private'))
-    node.shutdown
+    assert(param.set_param('aa', -1))
+    assert_equal('/aa', param.search_param('aa'))
+    assert_raise(RuntimeError) {param.search_param('xx')}
+    assert(!param.has_param('a'))
+    assert(param.has_param('aa'))
+    assert(param.get_param_names)
   end
 end

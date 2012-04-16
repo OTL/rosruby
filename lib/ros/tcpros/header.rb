@@ -4,6 +4,9 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
+
+require 'ros/ros'
+
 module ROS::TCPROS
 
   ##
@@ -21,6 +24,9 @@ module ROS::TCPROS
     # add key-value data to this header.
     # key and value must be string
     def push_data(key, value)
+      if (not key.kind_of?(String)) or (not value.kind_of?(String))
+        raise ArgumentError::new('header key and value must be string')
+      end
       @data[key] = value
       self
     end

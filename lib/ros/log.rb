@@ -30,7 +30,7 @@ module ROS
     # start publishing /rosout and
     # make a ruby logger instance for local output
     #
-    def initialize(node)
+    def initialize(node, output=$stdout)
       @node = node
       @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil, nil)
       @ruby_dict = {'FATAL'=>Logger::FATAL,
@@ -43,13 +43,17 @@ module ROS
         'WARN'=>::Rosgraph_msgs::Log::WARN,
         'INFO'=>::Rosgraph_msgs::Log::INFO,
         'DEBUG'=>::Rosgraph_msgs::Log::DEBUG}
-      @local_logger = Logger.new(STDOUT)
+      @local_logger = Logger.new(output)
     end
 
     ##
     # outputs log messages with level and informations which
     # rosout needs.
-    #
+    # [severity]  log level: one of 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'
+    # [message]  your message
+    # [file] file name in which called this method
+    # [function] function name in which called this method
+    # [line] line number (int) in which called this method
     def log(severity, message, file='', function='', line=0)
       @local_logger.log(@ruby_dict[severity], message, @node.node_name)
       msg = Rosgraph_msgs::Log.new
