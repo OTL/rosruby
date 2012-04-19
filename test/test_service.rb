@@ -29,7 +29,6 @@ class TestService < Test::Unit::TestCase
     req.a = -1
     assert(!service.call(req, res))
     assert(!node.wait_for_service('/xxxxxxx', 0.1))
-    
+    node.shutdown
   end
 end
-

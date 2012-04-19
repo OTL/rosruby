@@ -47,6 +47,7 @@ class TestNode < Test::Unit::TestCase
     sleep(0.5)
     assert(!node1.ok?) # killed by master
     assert(node2.ok?)
+    node1.shutdown
     node2.shutdown
     assert(!node2.ok?)
   end
