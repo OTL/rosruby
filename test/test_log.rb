@@ -14,28 +14,32 @@ class TestLog < Test::Unit::TestCase
     node1.loginfo('msg1')
     sleep(0.5)
     node1.spin_once
-    assert('msg1', check_msg.msg)
-    assert('INFO', check_msg.level)
+    assert_equal('msg1', check_msg.msg)
+    assert_equal(Rosgraph_msgs::Log::INFO, check_msg.level)
 
     node1.logerror('msg2')
+    sleep(0.1)
     node1.spin_once
-    assert('msg2', check_msg.msg)
-    assert('ERROR', check_msg.level)
+    assert_equal('msg2', check_msg.msg)
+    assert_equal(Rosgraph_msgs::Log::ERROR, check_msg.level)
 
     node1.logfatal('msg3')
+    sleep(0.1)
     node1.spin_once
-    assert('msg3', check_msg.msg)
-    assert('FATAL', check_msg.level)
+    assert_equal('msg3', check_msg.msg)
+    assert_equal(Rosgraph_msgs::Log::FATAL, check_msg.level)
 
     node1.logfatal('msg4')
+    sleep(0.1)
     node1.spin_once
-    assert('msg4', check_msg.msg)
-    assert('DEUBG', check_msg.level)
+    assert_equal('msg4', check_msg.msg)
+    assert_equal(Rosgraph_msgs::Log::FATAL, check_msg.level)
 
     node1.logwarn('msg5')
+    sleep(0.1)
     node1.spin_once
-    assert('msg5', check_msg.msg)
-    assert('WARN', check_msg.level)
+    assert_equal('msg5', check_msg.msg)
+    assert_equal(Rosgraph_msgs::Log::WARN, check_msg.level)
 
     node1.shutdown
   end
