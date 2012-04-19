@@ -1,4 +1,4 @@
-#  ros.rb 
+#  ros.rb
 #
 # License: BSD
 #
@@ -11,8 +11,5 @@
 #
 
 require 'ros/package'
-
-this_package = ROS::Package.new(ROS::Package.find_this_package)
-this_package.add_path_with_depend_packages
-
+ROS::load_manifest('rosruby')
 require 'ros/node'

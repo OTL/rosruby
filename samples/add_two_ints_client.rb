@@ -1,6 +1,7 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby
 
 require 'ros'
+
 require 'roscpp_tutorials/TwoInts'
 
 def main
@@ -16,7 +17,7 @@ def main
     req.a = ARGV[0].to_i
     req.b = ARGV[1].to_i
     if service.call(req, res)
-      p res.sum 
+      p res.sum
     end
   end
 end
