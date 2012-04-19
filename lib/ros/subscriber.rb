@@ -71,8 +71,9 @@ module ROS
           puts "not support protocol: #{protocol}"
           raise "not support protocol: #{protocol}"
         end
-        @connections.push(connection)
         connection.id = "#{@topic_name}_in_#{@connection_id_number}"
+        @connection_id_number += 1
+        @connections.push(connection)
         return connection
       else
         raise "requestTopic fail"

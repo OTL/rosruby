@@ -90,6 +90,7 @@ TCPROS protocol is in ROS::TCPROS::Server class
                                       0, @host)
       connection.start
       connection.id = "#{@topic_name}_out_#{@connection_id_number}"
+      @connection_id_number += 1
       @connections.push(connection)
       return connection
     end
