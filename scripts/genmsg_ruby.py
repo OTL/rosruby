@@ -598,7 +598,7 @@ def len_serializer_generator(var, is_string, serialize):
     else:
         yield "start = end_point"
         yield "end_point += 4"
-        yield int32_unpack('length', 'str[start..end_point]') #4 = struct.calcsize('<i')
+        yield int32_unpack('length', 'str[start..(end_point-1)]') #4 = struct.calcsize('<i')
 
 def string_serializer_generator(package, type_, name, serialize):
     """
@@ -657,7 +657,7 @@ def string_serializer_generator(package, type_, name, serialize):
             yield "end_point += %s" % array_len
         else:
             yield "end_point += length"
-        yield "%s = str[start..end_point]" % var
+        yield "%s = str[start..(end_point-1)]" % var
 
 def array_serializer_generator(package, type_, name, serialize, is_numpy):
     """
@@ -701,9 +701,9 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
                     yield "end_point += struct.calcsize(pattern)"
                     if is_numpy:
                         dtype = _NUMPY_DTYPE[base_type]
-                        yield unpack_numpy(var, 'length', dtype, 'str[start..end_point]')
+                        yield unpack_numpy(var, 'length', dtype, 'str[start..(end_point-1)]')
                     else:
-                        yield unpack2(var, 'pattern', 'str[start..end_point]')
+                        yield unpack2(var, 'pattern', 'str[start..(end_point-1)]')
             else:
                 pattern = "%s%s"%(length, compute_struct_pattern([base_type]))
                 if serialize:
@@ -716,9 +716,9 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
                     yield "end_point += %s"%struct.calcsize('%s'%pattern)
                     if is_numpy:
                         dtype = _NUMPY_DTYPE[base_type]
-                        yield unpack_numpy(var, length, dtype, 'str[start..end_point]')
+                        yield unpack_numpy(var, length, dtype, 'str[start..(end_point-1)]')
                     else:
-                        yield unpack(var, pattern, 'str[start..end_point]')
+                        yield unpack(var, pattern, 'str[start..(end_point-1)]')
             if not serialize and base_type == 'bool':
                 # convert uint8 to bool
                 if base_type == 'bool':
@@ -829,7 +829,7 @@ def simple_serializer_generator(spec, start, end_point, serialize): #primitives 
     else:
         yield "start = end_point"
         yield "end_point += %s"%struct.calcsize('%s'%reduce_pattern(pattern))
-        yield unpack('(%s,)'%vars_, pattern, 'str[start..end_point]')
+        yield unpack('(%s,)'%vars_, pattern, 'str[start..(end_point-1)]')
 
         # convert uint8 to bool. this doesn't add much value as Python
         # equality test on a field will return that True == 1, but I
