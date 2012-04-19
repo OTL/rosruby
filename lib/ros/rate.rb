@@ -43,8 +43,8 @@ module ROS
 
       # detect time jumping forwards, as well as loops that are
       # inherently too slow
-      if current_time - @last_time > @sleep_duration * 2:
-          @last_time = current_time
+      if current_time - @last_time > @sleep_duration * 2
+	  @last_time = current_time
       end
     end
   end
