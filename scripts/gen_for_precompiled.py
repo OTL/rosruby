@@ -15,17 +15,18 @@ import os
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-	packages = ['std_msgs', 'rosgraph_msgs', 'roscpp_tutorials']
+        packages = ['std_msgs', 'rosgraph_msgs', 'roscpp_tutorials']
     else:
-	packages = sys.argv[1:]
+        packages = sys.argv[1:]
     for pack in packages:
-	msg_dir = "%s/msg/"%get_pkg_dir(pack)
-	msg_output_prefix = "%s/msg_gen/ruby"%get_pkg_dir('rosruby')
-	if os.path.exists(msg_dir):
-	    for file in os.listdir(msg_dir):
-		genmsg_ruby.gen_msg(msg_dir+file, msg_output_prefix)
-	srv_dir = "%s/srv/"%get_pkg_dir(pack)
-	srv_output_prefix = "%s/msg_gen/ruby"%get_pkg_dir('rosruby')
-	if os.path.exists(srv_dir):
-	    for file in os.listdir(srv_dir):
-		gensrv_ruby.gen_srv(srv_dir+file, srv_output_prefix)
+        msg_dir = "%s/msg/"%get_pkg_dir(pack)
+        msg_output_prefix = "%s/msg_gen/ruby"%get_pkg_dir('rosruby')
+        if os.path.exists(msg_dir):
+            for file in os.listdir(msg_dir):
+                genmsg_ruby.gen_msg(msg_dir+file, msg_output_prefix)
+
+        srv_dir = "%s/srv/"%get_pkg_dir(pack)
+        srv_output_prefix = "%s/srv_gen/ruby"%get_pkg_dir('rosruby')
+        if os.path.exists(srv_dir):
+            for file in os.listdir(srv_dir):
+                gensrv_ruby.gen_srv(srv_dir+file, srv_output_prefix)
