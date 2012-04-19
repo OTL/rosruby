@@ -373,8 +373,6 @@ def compute_import(package, type_):
     elif not roslib.msgs.is_registered(type_str):
         retval = []
     else:
-#        retval = ['rquire "%s/msg"'%pkg]
-        print base_type
         retval = ['require "%s/%s"'%(pkg, base_type)]
         for t in get_registered_ex(type_str).types:
             sub = compute_import(package, t)
@@ -637,15 +635,17 @@ def string_serializer_generator(package, type_, name, serialize):
         if base_type in ['uint8', 'char']:
             yield "# - if encoded as a list instead, serialize as bytes instead of string"
             if array_len is None:
-                yield "if type(%s) in [list, tuple]:"%var
+                yield "if type(%s) in [list, tuple]"%var
                 yield INDENT+pack2('"Va#{length}"', "[length, *%s]"%var)
-                yield "else:"
+                yield "else"
                 yield INDENT+pack2('"Va#{length}"', "[length, %s]"%var)
+                yield "end"
             else:
-                yield "if type(%s) in [list, tuple]:"%var
+                yield "if type(%s) in [list, tuple]"%var
                 yield INDENT+pack('C%s'%array_len, "*%s"%var)
-                yield "else:"
+                yield "else"
                 yield INDENT+pack('C%s'%array_len, var)
+                yield "end"
         else:
             # py3k: struct.pack() now only allows bytes for the s string pack code.
             # FIXME: for py3k, this needs to be w/ encode, but this interferes with actual byte data
@@ -740,7 +740,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
                 factory = serializer_generator(package, get_registered_ex(base_type), serialize, is_numpy)
 
             if serialize:
-                yield 'for %s in %s:'%(loop_var, var)
+                yield 'for %s in %s'%(loop_var, var)
             else:
                 yield '%s = []'%var
                 if var_length:
@@ -912,7 +912,7 @@ def deserialize_fn_generator(package, spec, is_numpy=False):
     #Instantiate embedded type classes
     for type_, name in spec.fields():
         if roslib.msgs.is_registered(type_):
-            yield "  if @%s == nil:"%name
+            yield "  if @%s == nil"%name
             yield "    @%s = %s"%(name, compute_constructor(package, type_))
             yield "  end"
     yield "  end_point = 0" #initialize var
