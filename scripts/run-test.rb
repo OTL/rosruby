@@ -4,6 +4,7 @@ require 'test/unit'
 
 test_file = "test/test_*.rb"
 
+$:.push("#{File.dirname(__FILE__)}/..")
 $:.unshift(File.join(File.expand_path("."), "lib"))
 $:.unshift(File.join(File.expand_path("."), "test"))
 

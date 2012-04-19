@@ -34,15 +34,15 @@ module ROS
       @node = node
       @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil, nil)
       @ruby_dict = {'FATAL'=>Logger::FATAL,
-        'ERROR'=>Logger::ERROR,
-        'WARN'=>Logger::WARN,
-        'INFO'=>Logger::INFO,
-        'DEBUG'=>Logger::DEBUG}
+	'ERROR'=>Logger::ERROR,
+	'WARN'=>Logger::WARN,
+	'INFO'=>Logger::INFO,
+	'DEBUG'=>Logger::DEBUG}
       @msg_dict = {'FATAL'=>::Rosgraph_msgs::Log::FATAL,
-        'ERROR'=>::Rosgraph_msgs::Log::ERROR,
-        'WARN'=>::Rosgraph_msgs::Log::WARN,
-        'INFO'=>::Rosgraph_msgs::Log::INFO,
-        'DEBUG'=>::Rosgraph_msgs::Log::DEBUG}
+	'ERROR'=>::Rosgraph_msgs::Log::ERROR,
+	'WARN'=>::Rosgraph_msgs::Log::WARN,
+	'INFO'=>::Rosgraph_msgs::Log::INFO,
+	'DEBUG'=>::Rosgraph_msgs::Log::DEBUG}
       @local_logger = Logger.new(output)
     end
 
@@ -59,6 +59,7 @@ module ROS
       msg = Rosgraph_msgs::Log.new
       msg.msg = message
       msg.header.stamp = ::ROS::Time.now
+      msg.header.frame_id = 'rosout'
       msg.level = @msg_dict[severity]
       msg.name = @node.node_name
       msg.file = file

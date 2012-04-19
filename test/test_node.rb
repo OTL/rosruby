@@ -54,7 +54,8 @@ class TestNode < Test::Unit::TestCase
 
   def test_signal
     node1 = ROS::Node.new('/test1')
-    Process.kill(:INT, Process.pid)
+    Process.kill("INT", Process.pid)
+    sleep(0.1)
     assert(!node1.ok?)
   end
 

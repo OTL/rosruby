@@ -56,9 +56,8 @@ module ROS
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
       @@all_nodes.push(self)
-      trap_signals
-
       @logger = ::ROS::Log.new(self)
+      trap_signals
       ObjectSpace.define_finalizer(self, proc {|id| self.shutdown})
     end
 
@@ -106,18 +105,24 @@ module ROS
       else
         name = topic_name
       end
-      @manager.add_publisher(Publisher.new(@node_name,
-                                           name,
-                                           topic_type,
-                                           latched,
-                                           @manager.host))
+      publisher = Publisher.new(@node_name,
+                                name,
+                                topic_type,
+                                latched,
+                                @manager.host)
+      @manager.add_publisher(publisher)
+      trap_signals
+      publisher
     end
 
     def advertise_service(service_name, service_type, &callback)
-      @manager.add_service_server(::ROS::ServiceServer.new(@node_name,
-                                                           resolve_name(service_name),
-                                                           service_type,
-                                                           callback))
+      server = ::ROS::ServiceServer.new(@node_name,
+                                        resolve_name(service_name),
+                                        service_type,
+                                        callback)
+      @manager.add_service_server(server)
+      trap_signals
+      server
     end
 
     def wait_for_service(service_name, timeout_sec=nil)
@@ -132,10 +137,13 @@ module ROS
     end
 
     def subscribe(topic_name, topic_type, &callback)
-      @manager.add_subscriber(Subscriber.new(@node_name,
-                                             resolve_name(topic_name),
-                                             topic_type,
-                                             callback))
+      sub = Subscriber.new(@node_name,
+                           resolve_name(topic_name),
+                           topic_type,
+                           callback)
+      @manager.add_subscriber(sub)
+      trap_signals
+      sub
     end
 
     ##
@@ -254,16 +262,16 @@ module ROS
     end
 
     def trap_signals
-      [:INT, :TERM, :HUP].each do |signal|
-        Signal.trap(signal,
-                    proc do
-                      @@all_nodes.each do |node|
-                        if node.ok?
-                          puts 'shutdown by signal'
-                          node.shutdown
-                        end
-                      end
-                    end)
+#      [:INT, :TERM, :HUP].each do |signal|
+      ["INT", "TERM", "HUP"].each do |signal|
+        Signal.trap(signal) do
+          @@all_nodes.each do |node|
+            if node.ok?
+              puts 'shutdown by signal'
+              node.shutdown
+            end
+          end
+        end
       end
     end
   end
