@@ -1,12 +1,8 @@
 ROS Ruby Client: rosruby
 =======
-
-Read latest document on [GitHub Wiki](https://github.com/OTL/rosruby/wiki/rosruby)
-
-I'm a beginner of Ruby.
-I start this project to learn Ruby.
-
 [ROS](http://ros.org) is Robot Operating System developed by [Willow Garage](http://www.willowgarage.com/) and open source communities.
+
+This project supports ruby ROS client. You can program robots by ruby, very easily.
 
 Let's start
 ---------------
@@ -96,6 +92,10 @@ while node.ok?
 end
 ```
 
+Note
+----------------
+Ruby requires 'Start with Capital letter' for class or module names.
+So please use **S**td_msgs::String class instead of **s**td_msgs::String.
 
 Try Publish and Subscribe
 ----------------------
@@ -159,4 +159,3 @@ or
 ```bash
 $ roscd rosruby
 $ rake test
-```
