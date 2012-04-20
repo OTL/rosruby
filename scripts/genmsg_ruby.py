@@ -391,7 +391,7 @@ def compute_full_text_escaped(gen_deps_dict):
     @rtype: str
     """
     msg_definition = roslib.gentools.compute_full_text(gen_deps_dict)
-    msg_definition.replace('"""', r'\"\"\"')
+    msg_definition = msg_definition.replace('"', '\\"')
     return msg_definition
 
 def reduce_pattern(pattern):
@@ -965,6 +965,9 @@ def msg_generator_internal(package, name, spec):
     spec = make_ruby_safe(spec)
     spec_names = spec.names
 
+    # for not capital class like tfMessages
+    capitalized_name = name[0].upper() + name[1:]
+
     # #1807 : this will be much cleaner when msggenerator library is
     # rewritten to not use globals
     clear_patterns()
@@ -986,7 +989,7 @@ def msg_generator_internal(package, name, spec):
     fulltype = '%s%s%s'%(package, roslib.msgs.SEP, name)
 
     #Yield data class first, e.g. Point2D
-    yield 'class %s <::ROS::Message'%name
+    yield 'class %s <::ROS::Message'%capitalized_name
 
     yield """  def self.md5sum
     \"%s\"
