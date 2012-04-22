@@ -21,5 +21,9 @@ class TestParam_Normal < Test::Unit::TestCase
     assert(!param.has_param('a'))
     assert(param.has_param('aa'))
     assert(param.get_param_names)
+
+    assert(param.delete_param('aa'))
+    assert(param.delete_param('test1'))
+    assert(param.delete_param('test2'))
   end
 end

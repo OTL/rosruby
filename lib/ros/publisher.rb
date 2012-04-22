@@ -110,5 +110,12 @@ TCPROS protocol is in ROS::TCPROS::Server class
       end
       info
     end
+
+    ##
+    # user interface of shutdown this publisher
+    #
+    def shutdown
+      @manager.shutdown_publisher(self)
+    end
   end
 end

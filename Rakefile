@@ -1,3 +1,14 @@
+task :default => :msg_local
+
+task :clean => :clean_msg_local do
+  rm_r(['doc'], :force=>true)
+end
+
+desc "generate rudy docs"
+task :doc => :clean do
+  sh('rdoc -m ROS::Node')
+end
+
 desc "build all messages in local dir."
 task :msg_local do
   sh('scripts/gen_for_precompiled.py')

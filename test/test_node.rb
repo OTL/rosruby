@@ -74,6 +74,7 @@ class TestNode < Test::Unit::TestCase
     # float
     assert(node.set_param('/test_f', 0.1))
     assert_equal(0.1, node.get_param('/test_f'))
+    assert(node.delete_param('/test_f'))
     # list
     assert(node.set_param('/test2', [1,2,3]))
     assert_equal([1,2,3], node.get_param('/test2'))

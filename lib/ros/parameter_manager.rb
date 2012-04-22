@@ -13,6 +13,10 @@ require "xmlrpc/client"
 
 module ROS
 
+  # =Control Parameter Server Interface
+  #
+  # ROS parameter sever inteface.
+  # API document is here http://ros.org/wiki/ROS/Parameter%20Server%20API
   class ParameterManager
 
     def initialize(master_uri, caller_id, remappings)
@@ -22,6 +26,11 @@ module ROS
       @server = XMLRPC::Client.new2(@master_uri)
     end
 
+    ##
+    # get parameter named 'key'
+    # [key] name of parameter
+    # [return] parameter value
+    #
     def get_param(key)
       if @remappings[key]
         return @remappings[key]
@@ -35,6 +44,11 @@ module ROS
       end
     end
 
+    ##
+    # set parameter for 'key'
+    # [key] key of parameter
+    # [value] value of parameter
+    # [return] true if succeed
     def set_param(key, value)
       code, message, value = @server.call("setParam", @caller_id, key, value)
       case code
@@ -47,6 +61,11 @@ module ROS
       end
     end
 
+    ##
+    # delete parameter 'key'
+    # [key] key for remove
+    # [return] true if success
+    #
     def delete_param(key)
       code, message, value = @server.call("deleteParam", @caller_id, key)
       case code
@@ -59,6 +78,10 @@ module ROS
       end
     end
 
+    ##
+    # search the all namespace for key
+    # [key] key for search
+    # [return] value
     def search_param(key)
       code, message, value = @server.call("searchParam", @caller_id, key)
       case code
@@ -71,6 +94,10 @@ module ROS
       end
     end
 
+    ##
+    # check if the master has the key
+    # [key] key for check
+    # [return] value of key
     def has_param(key)
       code, message, value = @server.call("hasParam", @caller_id, key)
       case code
@@ -83,6 +110,10 @@ module ROS
       end
     end
 
+    ##
+    # get the all keys of parameters
+    # [return] all keys
+    #
     def get_param_names
       code, message, value = @server.call("getParamNames", @caller_id)
       case code

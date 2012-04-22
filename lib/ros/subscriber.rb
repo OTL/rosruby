@@ -100,5 +100,11 @@ module ROS
       info
     end
 
+    ##
+    # user interface of shutdown this subscriber
+    #
+    def shutdown
+      @manager.shutdown_subscriber(self)
+    end
   end
 end

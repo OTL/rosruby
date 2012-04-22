@@ -21,13 +21,41 @@ require 'ros/duration'
 
 module ROS
 
-  ##
-  # main interface of rosruby.
-  # This class has many inner informations.
-  # It may be better to use pimpl pattern.
-  #
+=begin rdoc
+
+= ROS Node
+  main interface of rosruby.
+  This class has many inner informations.
+  It may be better to use pimpl pattern.
+
+== Sample for Publisher
+
+  node = ROS::Node.new('/rosruby/sample_publisher')
+  publisher = node.advertise('/chatter', Std_msgs::String)
+  sleep(1)
+  msg = Std_msgs::String.new
+  i = 0
+  while node.ok?
+    msg.data = "Hello, rosruby!: #{i}"
+    publisher.publish(msg)
+
+== Sample for Subscriber
+
+  node = ROS::Node.new('/rosruby/sample_subscriber')
+  node.subscribe('/chatter', Std_msgs::String) do |msg|
+    puts "message come! = \'#{msg.data}\'"
+  end
+
+  while node.ok?
+    node.spin_once
+    sleep(1)
+  end
+=end
+
+
   class Node
 
+    # Naming functions of ROS
     include Name
 
     ##
@@ -39,6 +67,8 @@ module ROS
     # initialization of ROS node
     # get env, parse args, and start slave xmlrpc servers.
     #
+    # [+node_name+] name of this node
+    # [+anonymous+] anonymous node generates a unique name
     def initialize(node_name, anonymous=nil)
       @remappings = {}
       get_env
@@ -64,16 +94,36 @@ module ROS
     ##
     #  Is this node running? Please use for 'while loop' and so on..
     #
+    # [+return+] true if node is running.
+    #
     def ok?
       return @is_ok
     end
 
-    attr_reader :master_uri, :host, :node_name
+    # URI of master
+    attr_reader :master_uri
 
+    # hostname of this node
+    attr_reader :host
+
+    # name of this node (caller_id)
+    attr_reader :node_name
+
+    ##
+    # resolve the name by this node's remapping rule
+    #
+    # [+return+] resolved name
+    #
     def resolve_name(name)
       resolve_name_with_call_id(@node_name, @ns, name, @remappings)
     end
 
+    ##
+    # get the param for key
+    #
+    # [+key+] key for search the parameters
+    # [+return+] parameter value for key
+    #
     def get_param(key)
       key = expand_local_name(@node_name, key)
       if @remappings[key]
@@ -83,22 +133,46 @@ module ROS
       end
     end
 
+    ##
+    # get all parameters
+    #
+    # [+return+] all parameter list
+    #
     def get_param_names
       @parameter.get_param_names
     end
 
+    ##
+    # check if the parameter server has the param for 'key'
+    #
     def has_param(key)
       @parameter.has_param(key)
     end
 
+    ##
+    # delete the parameter for 'key'
+    #
+    # [+key+] key for delete
     def delete_param(key)
       @parameter.delete_param(key)
     end
 
+    ##
+    # set parameter for 'key'
+    # [key] key of parameter
+    # [value] value of parameter
+    # [return] true if succeed
     def set_param(key, value)
       @parameter.set_param(expand_local_name(@node_name, key), value)
     end
 
+    ##
+    # start publishing the topic
+    #
+    # [+topic_name+] name of topic (string)
+    # [+topic_type+] topic class
+    # [+latched+] is this latched topic?
+    # [+resolve+] if true, use resolve_name for this topic_name
     def advertise(topic_name, topic_type, latched=false, resolve=true)
       if resolve
         name = resolve_name(topic_name)
@@ -115,6 +189,12 @@ module ROS
       publisher
     end
 
+    ##
+    # start service
+    #
+    # [+service_name+] name of this service (string)
+    # [+service_type+] service class
+    # [+callback+] service definition
     def advertise_service(service_name, service_type, &callback)
       server = ::ROS::ServiceServer.new(@node_name,
                                         resolve_name(service_name),
@@ -125,10 +205,19 @@ module ROS
       server
     end
 
+    ##
+    # wait until start the service
+    # [+service_name+] name of service for waiting
+    # [+timeout_sec+] time out seconds. default infinity.
+    #
     def wait_for_service(service_name, timeout_sec=nil)
       @manager.wait_for_service(service_name, timeout_sec)
     end
 
+    ##
+    # create service client
+    # [+service_name+] name of this service (string)
+    # [+service_type+] service class
     def service(service_name, service_type)
       ROS::ServiceClient.new(@master_uri,
                              @node_name,
@@ -136,6 +225,11 @@ module ROS
                              service_type)
     end
 
+    ##
+    # start to subscribe
+    #
+    # [+topic_name+] name of topic (string)
+    # [+topic_type+] topic class
     def subscribe(topic_name, topic_type, &callback)
       sub = Subscriber.new(@node_name,
                            resolve_name(topic_name),
@@ -175,21 +269,33 @@ module ROS
       self
     end
 
+    ##
+    # outputs log message for INFO (INFORMATION)
+    #
     def loginfo(message)
       file, line, function = caller[0].split(':')
       @logger.log('INFO', message, file, function, line.to_i)
     end
 
+    ##
+    # outputs log message for DEBUG
+    #
     def logdebug(message)
       file, line, function = caller[0].split(':')
       @logger.log('DEBUG', message, file, function, line.to_i)
     end
 
+    ##
+    # outputs log message for WARN (WARING)
+    #
     def logwarn(message)
       file, line, function = caller[0].split(':')
       @logger.log('WARN', message, file, function, line.to_i)
     end
 
+    ##
+    # outputs log message for ERROR
+    #
     def logerror(message)
       file, line, function = caller[0].split(':')
       @logger.log('ERROR', message, file, function, line.to_i)
@@ -197,11 +303,18 @@ module ROS
 
     alias_method :logerr, :logerror
 
+    ##
+    # outputs log message for FATAL
+    #
     def logfatal(message)
       file, line, function = caller[0].split(':')
       @logger.log('FATAL', message, file, function, line.to_i)
     end
 
+    ##
+    # get all topics by this node
+    #
+    # [+return+] topic names
     def get_published_topics
       @manager.publishers.map do |pub|
         pub.topic_name
@@ -233,6 +346,8 @@ module ROS
       end
     end
 
+    ##
+    # parse all args
     def parse_args(args)
       remapping = {}
       for arg in args

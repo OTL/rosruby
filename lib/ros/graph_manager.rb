@@ -11,7 +11,7 @@
 # Slave API is http://ros.org/wiki/ROS/Slave_API
 #
 require 'xmlrpc/server'
-require 'xmlrpc/client'
+require 'ros/master_proxy'
 require 'timeout'
 
 module ROS
@@ -40,7 +40,7 @@ module ROS
       @node = node
       @host = node.host
       @port = get_available_port
-      @master = XMLRPC::Client.new2(@node.master_uri).proxy
+      @master = MasterProxy.new(@caller_id, @node.master_uri, get_uri)
       @server = XMLRPC::Server.new(@port, @host, MAX_CONNECTION, $stderr, false, false)
       @publishers = []
       @subscribers = []
@@ -163,9 +163,7 @@ module ROS
       begin
         timeout(timeout_sec) do
           while @node.ok?
-            code, message, uri = @master.lookupService(@caller_id,
-                                                       service_name)
-            if code == 1
+            if @master.lookup_service(service_name)
               return true
             end
             sleep(0.1)
@@ -184,90 +182,36 @@ module ROS
     # and add it in the controlling server list.
     # raise if fail.
     def add_service_server(service_server)
-      code, message, val = @master.registerService(@caller_id,
-                                                   service_server.service_name,
-                                                   service_server.service_uri,
-                                                   get_uri)
-      if code == 1
-        @service_servers.push(service_server)
-      else
-        raise 'registerService fail: #{message}'
-      end
-
+      @master.register_service(service_server.service_name,
+                               service_server.service_uri)
+      service_server.set_manager(self)
+      @service_servers.push(service_server)
     end
 
-    ##
-    # unresiter a service.  raise if fail.
-    #
-    def unregister_service_server(service)
-      code, message, val = @master.unregisterService(@caller_id,
-                                                     service.service_name,
-                                                     service.service_uri)
-      if code == 1
-        return service
-      else
-        raise "unregisterService fail: #{message}"
-      end
-    end
 
     ##
     # register a subscriber to master. raise if fail.
     #
     def add_subscriber(subscriber)
-      code, message, uris = @master.registerSubscriber(@caller_id,
-                                                       subscriber.topic_name,
-                                                       subscriber.topic_type.type,
-                                                       get_uri)
-      if code == 1
-        uris.each do |publisher_uri|
-          subscriber.add_connection(publisher_uri)
-        end
-        @subscribers.push(subscriber)
-        return subscriber
-      else
-        raise "registration of publisher failed: #{message}"
+      uris = @master.register_subscriber(subscriber.topic_name,
+                                         subscriber.topic_type.type)
+      subscriber.set_manager(self)
+      uris.each do |publisher_uri|
+        subscriber.add_connection(publisher_uri)
       end
-    end
-
-    ##
-    # unregister a subscriber.  raise if fail.
-    # raise if fail.
-    def unregister_subscriber(subscriber)
-      code, message,val = @master.unregisterSubscriber(@caller_id,
-                                                       subscriber.topic_name,
-                                                       get_uri)
-      if code == 1
-        return subscriber
-      else
-        raise "registration of subscriber failed: #{message}"
-      end
+      @subscribers.push(subscriber)
+      subscriber
     end
 
     ##
     # register a publisher. raise if fail.
     #
     def add_publisher(publisher)
-      code, message, uris = @master.registerPublisher(@caller_id,
-                                                      publisher.topic_name,
-                                                      publisher.topic_type.type,
-                                                      get_uri)
-      if code == 1
-        @publishers.push(publisher)
-        return publisher
-      else
-        raise "registration of publisher failed: #{message}"
-      end
-    end
-
-    def unregister_publisher(publisher)
-      code, message, val = @master.unregisterPublisher(@caller_id,
-                                                       publisher.topic_name,
-                                                       get_uri)
-      if code == 1
-        return publisher
-      else
-        raise "registration of publisher failed: #{message}"
-      end
+      @master.register_publisher(publisher.topic_name,
+                                 publisher.topic_type.type)
+      publisher.set_manager(self)
+      @publishers.push(publisher)
+      publisher
     end
 
     ##
@@ -276,6 +220,31 @@ module ROS
     def spin_once
       @subscribers.each {|subscriber| subscriber.process_queue}
       @service_servers.each {|service_server| service_server.process_queue}
+    end
+
+    def shutdown_publisher(publisher)
+      @master.unregister_publisher(publisher.topic_name)
+      @publishers.delete(publisher) do |pub|
+        raise "publisher not found"
+      end
+      publisher.close
+    end
+
+    def shutdown_subscriber(subscriber)
+      @master.unregister_subscriber(subscriber.topic_name)
+      @subscribers.delete(subscriber) do |pub|
+        raise "subscriber not found"
+      end
+      subscriber.close
+    end
+
+    def shutdown_service_server(service)
+      @master.unregister_service(service.service_name,
+                                 service.service_uri)
+      @service_servers.delete(service) do |pub|
+        raise "service_server not found"
+      end
+      service.close
     end
 
     ##
@@ -288,19 +257,21 @@ module ROS
         Thread::kill(@thread)
       end
       @publishers.each do |publisher|
-        unregister_publisher(publisher)
-        publisher.shutdown
+        @master.unregister_publisher(publisher.topic_name)
+        publisher.close
       end
       @publishers = nil
 
       @subscribers.each do |subscriber|
-        unregister_subscriber(subscriber)
-        subscriber.shutdown
+        @master.unregister_subscriber(subscriber.topic_name)
+        subscriber.close
       end
       @subscribers = nil
+
       @service_servers.each do |service|
-        unregister_service_server(service)
-        service.shutdown
+        @master.unregister_service(service.service_name,
+                                   service.service_uri)
+        service.close
       end
       @service_servers = nil
 

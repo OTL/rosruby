@@ -8,7 +8,6 @@ class TestLog < Test::Unit::TestCase
     node1 = ROS::Node.new('/test_log')
     check_msg = nil
     sub = node1.subscribe('/rosout', Rosgraph_msgs::Log) do |msg|
-      puts msg
       check_msg = msg
     end
     node1.loginfo('msg1')

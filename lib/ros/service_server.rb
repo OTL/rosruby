@@ -44,10 +44,21 @@ module ROS
     end
 
     ##
+    # user should not call this method. use shutdown method
+    #
+    def close
+      @server.shutdown
+    end
+
+    ##
     # shutdown the service connection
     #
     def shutdown
-      @server.shutdown
+      @master.shutdow_service_server(self)
+    end
+
+    def set_manager(manager)
+      @manager = manager
     end
 
     def get_connection_data

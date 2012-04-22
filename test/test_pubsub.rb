@@ -108,4 +108,22 @@ class TestPubSubNormal < Test::Unit::TestCase
     node.shutdown
   end
 
+  def test_shutdown_by_publisher_or_subscriber_directly
+    node = ROS::Node.new('/test4')
+    pub = node.advertise('/hoge', Std_msgs::String)
+    proxy = ROS::MasterProxy.new('/test_node', ENV['ROS_MASTER_URI'], 'http://dummy:11111')
+    assert(proxy.get_published_topics.include?(["/hoge", "std_msgs/String"]))
+    pub.shutdown
+    assert(!proxy.get_published_topics.include?(["/hoge", "std_msgs/String"]))
+
+    sub1 = node.subscribe('/hoge', Std_msgs::String)
+    pub, sub, ser = proxy.get_system_state
+    assert(sub.include?(["/hoge", ["/test4"]]))
+    sub1.shutdown
+    pub, sub, ser = proxy.get_system_state
+    assert(!sub.include?(["/hoge", ["/test4"]]))
+
+    node.shutdown
+  end
+
 end

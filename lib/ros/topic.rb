@@ -24,9 +24,12 @@ module ROS
     attr_reader :caller_id, :topic_name, :topic_type
 
     # shutdown all connections
-    def shutdown
+    def close
       @connections.each {|connection| connection.shutdown}
     end
 
+    def set_manager(manager)
+      @manager = manager
+    end
   end
 end
