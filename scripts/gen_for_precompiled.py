@@ -27,7 +27,6 @@ if __name__ == "__main__":
             all_deps.add(pack)
     for pack in packages:
         all_deps.add(pack)
-    print all_deps
     for pack in all_deps:
         msg_dir = "%s/msg/"%get_pkg_dir(pack)
         msg_output_prefix = "%s/msg_gen/ruby"%get_pkg_dir('rosruby')
