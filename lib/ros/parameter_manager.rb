@@ -64,15 +64,13 @@ module ROS
     ##
     # delete parameter 'key'
     # [key] key for remove
-    # [return] true if success
+    # [return] true if success, false if it is not exist
     #
     def delete_param(key)
       code, message, value = @server.call("deleteParam", @caller_id, key)
       case code
       when 1
         return true
-      when -1
-        raise message
       else
         return false
       end

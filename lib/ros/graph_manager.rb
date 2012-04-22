@@ -215,11 +215,10 @@ module ROS
     end
 
     ##
-    # process all messages of subscribers and service servers.
+    # process all messages of subscribers
     #
     def spin_once
       @subscribers.each {|subscriber| subscriber.process_queue}
-      @service_servers.each {|service_server| service_server.process_queue}
     end
 
     def shutdown_publisher(publisher)

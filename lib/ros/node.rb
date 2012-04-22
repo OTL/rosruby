@@ -76,7 +76,7 @@ module ROS
         node_name = anonymous_name(node_name)
       end
       @node_name = resolve_name(node_name)
-      parse_args(ARGV)
+      @remappings = parse_args(ARGV)
       if not @master_uri
         raise 'ROS_MASTER_URI is nos set. please check environment variables'
       end
@@ -154,6 +154,7 @@ module ROS
     # delete the parameter for 'key'
     #
     # [+key+] key for delete
+    # [return] true if success, false if it is not exist
     def delete_param(key)
       @parameter.delete_param(key)
     end
@@ -368,13 +369,14 @@ module ROS
           elsif key[0] == '_'[0]
             # local name remaps
             key[0] = '~'
-            remapping[resolve_name(key)] = convert_if_needded(value)
+            remapping[resolve_name(key)] = convert_if_needed(value)
           else
             # remaps
-            remapping[key] = convert_if_needded(value)
+            remapping[key] = convert_if_needed(value)
           end
         end
       end
+      remapping
     end
 
     def trap_signals

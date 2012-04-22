@@ -66,7 +66,7 @@ class TestNode < Test::Unit::TestCase
     node1.shutdown
   end
 
-  def test_set_get
+  def test_param_set_get
     node = ROS::Node.new('hoge')
     # integer
     assert(node.set_param('/test1', 1))
@@ -85,11 +85,24 @@ class TestNode < Test::Unit::TestCase
     # default param
     assert_equal('hoge', node.get_param('/test_xxxx', 'hoge'))
 
+    # delete not exist
+    assert(!node.delete_param('/xxxxx'))
+
     assert(node.has_param('/test_s'))
     assert(node.delete_param('/test_s'))
     assert(!node.has_param('/test_s'))
 
     node.shutdown
+  end
+
+  def test_param_private
+    node = ROS::Node.new('/hoge')
+    node.set_param('/hoge/param1', 100)
+    assert_equal(100, node.get_param('~param1'))
+
+    node.set_param('~param2', 10)
+    assert_equal(10, node.get_param('/hoge/param2'))
+    assert(node.delete_param('~param2'))
   end
 
   def test_fail
