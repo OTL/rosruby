@@ -82,6 +82,9 @@ class TestNode < Test::Unit::TestCase
     assert(node.set_param('/test_s', 'hoge'))
     assert_equal('hoge', node.get_param('/test_s'))
 
+    # default param
+    assert_equal('hoge', node.get_param('/test_xxxx', 'hoge'))
+
     assert(node.has_param('/test_s'))
     assert(node.delete_param('/test_s'))
     assert(!node.has_param('/test_s'))

@@ -124,12 +124,13 @@ module ROS
     # [+key+] key for search the parameters
     # [+return+] parameter value for key
     #
-    def get_param(key)
+    def get_param(key, default=nil)
       key = expand_local_name(@node_name, key)
-      if @remappings[key]
-        return @remappings[key]
+      param = @parameter.get_param(key)
+      if param
+        param
       else
-        @parameter.get_param(key)
+        default
       end
     end
 
