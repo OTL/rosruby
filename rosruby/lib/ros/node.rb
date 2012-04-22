@@ -265,7 +265,11 @@ module ROS
     def shutdown
       if @is_ok
         @is_ok = false
-        @manager.shutdown
+        begin
+          @manager.shutdown
+        rescue
+          puts 'ignoring errors'
+        end
         @@all_nodes.delete(self)
       end
       self
