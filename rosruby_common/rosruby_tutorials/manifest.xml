@@ -1,0 +1,15 @@
+<package>
+  <description brief="rosruby_tutorials">
+
+    rosruby_tutorials contains source codes of rosruby tutorials.
+
+  </description>
+  <author>Takashi Ogura</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rosruby_tutorials</url>
+  <depend package="rosruby"/>
+  <depend package="roscpp_tutorials"/>
+  <depend package="std_msgs"/>
+
+</package>

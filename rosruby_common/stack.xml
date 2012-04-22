@@ -1,0 +1,11 @@
+<stack>
+  <description brief="rosruby_common">
+    rosruby_common has tutorials and some ruby libraries for ROS.
+  </description>
+  <author>Maintained by Takashi Ogura</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rosruby_common</url>
+  <depend stack="ros" />
+
+</stack>
