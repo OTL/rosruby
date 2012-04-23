@@ -1121,7 +1121,7 @@ def gen_msg(path, output_dir_prefix=None):
     (name, spec) = roslib.msgs.load_from_file(f, package)
     base_name = roslib.names.resource_name_base(name)
     if not output_dir_prefix:
-        output_dir_prefix = '%s/msg_gen/ruby"'%package_dir
+        output_dir_prefix = '%s/msg_gen/ruby'%package_dir
     output_dir = '%s/%s'%(output_dir_prefix, package)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
