@@ -284,8 +284,9 @@ module ROS
         @is_ok = false
         begin
           @manager.shutdown
-        rescue
-          puts 'ignoring errors'
+        rescue => message
+          p message
+          puts 'ignoring errors while shutdown'
         end
         @@all_nodes.delete(self)
       end

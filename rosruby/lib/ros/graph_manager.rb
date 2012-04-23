@@ -272,10 +272,15 @@ module ROS
     # shutdown the xmlrpc server and all pub/sub connections.
     # and delelte all pub/sub instance from connection list
     def shutdown
-      @server.shutdown
-      if not @thread.join(0.1)
-        Thread::kill(@thread)
+      begin
+        @server.shutdown
+        if not @thread.join(0.1)
+          Thread::kill(@thread)
+        end
+      rescue
+        puts 'fail to kill thread'
       end
+
       @publishers.each do |publisher|
         @master.unregister_publisher(publisher.topic_name)
         publisher.close
