@@ -9,7 +9,7 @@ class TestSlaveProxy < Test::Unit::TestCase
   TEST_STRING2 = 'TEST2'
 
   def test_slave1
-    node = ROS::Node.new('/test1')
+    node = ROS::Node.new('/test_slave1')
     pub1 = node.advertise('/chatter', Std_msgs::String)
 
     pub_msg1 = Std_msgs::String.new

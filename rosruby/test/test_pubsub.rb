@@ -9,8 +9,8 @@ class TestPubSubNormal < Test::Unit::TestCase
   TEST_STRING2 = 'TEST2'
 
   def test_double_pubsub
-    node1 = ROS::Node.new('/test1')
-    node2 = ROS::Node.new('/test2')
+    node1 = ROS::Node.new('/test_pubsub1')
+    node2 = ROS::Node.new('/test_pubsub2')
     pub1 = node1.advertise('/chatter', Std_msgs::String)
 
     pub2 = node2.advertise('/chatter', Std_msgs::String)

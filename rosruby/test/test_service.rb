@@ -6,7 +6,7 @@ require 'roscpp_tutorials/TwoInts'
 
 class TestService < Test::Unit::TestCase
   def test_service
-    node = ROS::Node.new('/test1')
+    node = ROS::Node.new('/test_service1')
     server = node.advertise_service('/add_two_ints', Roscpp_tutorials::TwoInts) do |req, res|
       res.sum = req.a + req.b
       node.loginfo("a=#{req.a}, b=#{req.b}")

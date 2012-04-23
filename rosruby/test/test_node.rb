@@ -5,8 +5,8 @@ require 'test/unit'
 
 class TestNode < Test::Unit::TestCase
   def test_up_down
-    node1 = ROS::Node.new('/test1')
-    assert_equal('/test1', node1.node_name)
+    node1 = ROS::Node.new('/test_up_down')
+    assert_equal('/test_up_down', node1.node_name)
     assert(node1.ok?)
     node1.shutdown
     assert(!node1.ok?)
@@ -17,8 +17,8 @@ class TestNode < Test::Unit::TestCase
   end
 
   def test_multi_up_down
-    node1 = ROS::Node.new('/test1')
-    node2 = ROS::Node.new('/test2')
+    node1 = ROS::Node.new('/test_multi_1')
+    node2 = ROS::Node.new('/test_multi_2')
     assert(node1.ok?)
     assert(node2.ok?)
     node1.shutdown
@@ -28,10 +28,10 @@ class TestNode < Test::Unit::TestCase
   end
 
   def test_anonymous
-    node1 = ROS::Node.new('/test1', true)
-    assert_not_equal('/test1', node1.node_name)
-    node2 = ROS::Node.new('/test1', true)
-    assert_not_equal('/test1', node2.node_name)
+    node1 = ROS::Node.new('/test_anonymous1', true)
+    assert_not_equal('/test_anonymous1', node1.node_name)
+    node2 = ROS::Node.new('/test_anonymous1', true)
+    assert_not_equal('/test_anonymous1', node2.node_name)
     sleep(0.5)
     assert(node1.ok?)
     assert(node2.ok?)
@@ -42,8 +42,8 @@ class TestNode < Test::Unit::TestCase
   end
 
   def test_not_anonymous
-    node1 = ROS::Node.new('/test1')
-    node2 = ROS::Node.new('/test1')
+    node1 = ROS::Node.new('/test_not_anonymous1')
+    node2 = ROS::Node.new('/test_not_anonymous1')
     sleep(0.5)
     assert(!node1.ok?) # killed by master
     assert(node2.ok?)
@@ -53,14 +53,14 @@ class TestNode < Test::Unit::TestCase
   end
 
   def test_signal
-    node1 = ROS::Node.new('/test1')
+    node1 = ROS::Node.new('/test_signal1')
     Process.kill("INT", Process.pid)
     sleep(0.1)
     assert(!node1.ok?)
   end
 
   def test_master_uri
-    node1 = ROS::Node.new('/test1')
+    node1 = ROS::Node.new('/test_master_uri1')
     assert_equal(node1.master_uri, ENV['ROS_MASTER_URI'])
 
     node1.shutdown
