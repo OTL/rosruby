@@ -14,6 +14,7 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
   rdoc.rdoc_files = FileList["lib/**/*.rb"]
   rdoc.main = "ROS::Node"
+  rdoc.title = 'rosruby API'
 end
 
 desc "generate all messages in local dir."

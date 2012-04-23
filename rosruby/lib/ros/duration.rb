@@ -10,6 +10,7 @@
 require 'ros/time'
 
 module ROS
+
   ##
   # ROS Duration object. This is used as msg object for duration
   #

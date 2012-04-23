@@ -25,9 +25,10 @@ module ROS
 =begin rdoc
 
 = ROS Node
-  main interface of rosruby.
-  This class has many inner informations.
-  It may be better to use pimpl pattern.
+
+main interface of rosruby.
+This class has many inner informations.
+It may be better to use pimpl pattern.
 
 == Sample for Publisher
 
@@ -51,6 +52,7 @@ module ROS
     node.spin_once
     sleep(1)
   end
+
 =end
 
 

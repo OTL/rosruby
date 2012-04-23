@@ -24,8 +24,8 @@ module ROS
     ##
     # start with '/' and use single '/' for names
     #
-    # @param[in] name input name
-    # @return canonicalized name
+    # [+name+] input name
+    # [return] canonicalized name
     def canonicalize_name(name)
       if name == nil or name == SEP
         return name

@@ -18,7 +18,7 @@ module ROS
 
   #=Manager of ROS graph
   #
-  # this contains all subscribers, publishers, service_servers of a node.
+  # This contains all subscribers, publishers, service_servers of a node.
   # Master API document is http://ros.org/wiki/ROS/Master_API
   # Slave API is http://ros.org/wiki/ROS/Slave_API
   #
@@ -148,7 +148,7 @@ module ROS
 
     ##
     # get available port number by opening port 0.
-    # @return port_num
+    # [+return+] port_num
     #
     def get_available_port
       server = TCPServer.open(0)
@@ -160,7 +160,7 @@ module ROS
 
     ##
     # get this slave node's URI
-    # @return uri
+    # [+return+] uri
     #
     def get_uri
       "http://" + @host + ":" + @port.to_s + "/"
@@ -168,9 +168,9 @@ module ROS
 
     ##
     # wait until service is available
-    # @param [in] service_name
-    # @param [in] timeout_sec
-    # @return true: available, false: time out
+    # [+service_name+] name of service for waiting
+    # [+timeout_sec+] wait for this seconds, then time out
+    # [+return+] true: available, false: time out
     #
     def wait_for_service(service_name, timeout_sec)
       begin
