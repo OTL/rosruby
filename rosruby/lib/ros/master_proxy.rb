@@ -118,6 +118,15 @@ module ROS
       end
     end
 
+    def unsubscribe_param(key)
+      code, message, uri = @proxy.unsubscribeParam(@caller_id, @slave_uri, key)
+      if code == 1
+        return true
+      else
+        raise message
+      end
+    end
+
     def lookup_node(node_name)
       code, message, uri = @proxy.lookupNode(@caller_id, node_name)
       if code == 1

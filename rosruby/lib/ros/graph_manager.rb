@@ -220,6 +220,7 @@ module ROS
     # register callback for paramUpdate
     #
     def add_parameter_subscriber(subscriber)
+      subscriber.set_manager(self)
       @parameter_subscribers.push(subscriber)
       @master.subscribe_param(subscriber.key)
     end
@@ -267,6 +268,13 @@ module ROS
       service.close
     end
 
+    def shutdown_parameter_subscriber(subscriber)
+      @master.unsubscribe_param(subscriber.key)
+      @parameter_subscribers.delete(subscriber) do |sub|
+        raise "parameter server not found"
+      end
+    end
+
     ##
     # shutdown this slave node.
     # shutdown the xmlrpc server and all pub/sub connections.
@@ -300,6 +308,10 @@ module ROS
       end
       @service_servers = nil
 
+      @parameter_subscribers.each do |subscriber|
+        @master.unsubscribe_param(subscriber.key)
+      end
+      @parameter_subscribers = nil
     end
 
   end

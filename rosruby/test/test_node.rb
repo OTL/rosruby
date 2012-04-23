@@ -124,10 +124,14 @@ class TestNode < Test::Unit::TestCase
   def test_param_subscribe
     node = ROS::Node.new('/test_param_sub')
     called = false
-    node.subscribe_parameter('/test_param1') do |param|
+    subscriber = node.subscribe_parameter('/test_param1') do |param|
       called = param
     end
     node.set_param('/test_param1', 1)
+    sleep(0.5)
+    assert_equal(1, called)
+    node.set_param('/test_param1', 2)
+    subscriber.shutdown
     sleep(0.5)
     assert_equal(1, called)
     node.shutdown

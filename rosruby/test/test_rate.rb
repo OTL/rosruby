@@ -10,7 +10,7 @@ class TestRate_rate < Test::Unit::TestCase
       start = ::Time.now
       r.sleep
       stop = ::Time.now
-      assert_in_delta(0.1, (stop - start), 0.01, "rating #{i}")
+      assert_in_delta(0.1, (stop - start), 0.05, "rating #{i}")
     end
   end
 end

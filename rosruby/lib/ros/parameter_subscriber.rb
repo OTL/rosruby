@@ -21,6 +21,14 @@ module ROS
       @callback.call(value)
     end
 
+    def set_manager(manager)
+      @manager = manager
+    end
+
+    def shutdown
+      @manager.shutdown_parameter_subscriber(self)
+    end
+
     # key of parameter for subscription
     attr_accessor :key
 
