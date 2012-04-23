@@ -6,7 +6,7 @@ require 'ros'
 class TestParam_Normal < Test::Unit::TestCase
   def test_param_manager
     remap = {'aa'=>1, 'bb'=>'xx'}
-    param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/test1', remap)
+    param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/test_param', remap)
     assert_equal(1, param.get_param('aa'))
     assert(!param.get_param('cc'))
 
@@ -23,7 +23,5 @@ class TestParam_Normal < Test::Unit::TestCase
     assert(param.get_param_names)
 
     assert(param.delete_param('aa'))
-    assert(param.delete_param('test1'))
-    assert(param.delete_param('test2'))
   end
 end
