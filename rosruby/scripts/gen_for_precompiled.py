@@ -48,7 +48,8 @@ if __name__ == "__main__":
 
     for pack in get_all_deps(packages):
         msg_dir = "%s/msg/"%get_pkg_dir(pack)
-        msg_output_prefix = "%s/msg_gen/ruby"%get_pkg_dir('rosruby')
+        base_dir = os.environ.get("HOME") + "/.ros/rosruby"
+        msg_output_prefix = "%s/msg_gen/ruby"%base_dir
         if os.path.exists(msg_dir):
             for file in os.listdir(msg_dir):
                 base, ext = os.path.splitext(file)
@@ -57,7 +58,7 @@ if __name__ == "__main__":
                     genmsg_ruby.gen_msg(msg_dir+file, msg_output_prefix)
 
         srv_dir = "%s/srv/"%get_pkg_dir(pack)
-        srv_output_prefix = "%s/srv_gen/ruby"%get_pkg_dir('rosruby')
+        srv_output_prefix = "%s/srv_gen/ruby"%base_dir
         if os.path.exists(srv_dir):
             for file in os.listdir(srv_dir):
                 base, ext = os.path.splitext(file)

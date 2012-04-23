@@ -12,4 +12,11 @@
 
 require 'ros/package'
 ROS::load_manifest('rosruby')
+["#{ENV['HOME']}/.ros/rosruby/msg_gen/ruby", "#{ENV['HOME']}/.ros/rosruby/srv_gen/ruby"].each do |path|
+  if File.exists?(path)
+    if not $:.include?(path)
+      $:.push(path)
+    end
+  end
+end
 require 'ros/node'

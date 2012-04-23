@@ -123,7 +123,9 @@ module ROS
       path = @@all_packages[package]
       ["#{path}/msg_gen/ruby", "#{path}/srv_gen/ruby", "#{path}/lib"].each do |path|
         if File.exists?(path)
-          $:.push(path)
+          if not $:.include?(path)
+            $:.push(path)
+          end
         end
       end
     end

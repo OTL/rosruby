@@ -16,7 +16,7 @@ end
 
 desc "clean all messages in local dir."
 task :clean_msg_local do
-  rm_r(['msg_gen', 'srv_gen'], :force=>true)
+  rm_r(["#{ENV['HOME']}/.ros/rosruby"], :force=>true)
 end
 
 if RUBY_VERSION >= '1.9.0'
