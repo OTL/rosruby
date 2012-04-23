@@ -1,56 +1,29 @@
 task :default => :msg_local
 
-task :clean => :clean_msg_local do
-  rm_r(['doc'], :force=>true)
-end
+message_dir = "#{ENV['HOME']}/.ros/rosruby"
+
+desc "generate all messages in local dir"
+task :msg_local => message_dir
+
+require 'rake/clean'
+CLEAN << 'doc'
+CLEAN << message_dir
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
   rdoc.rdoc_files = FileList["lib/**/*.rb"]
+  rdoc.main = "ROS::Node"
 end
 
-desc "build all messages in local dir."
-task :msg_local do
+desc "generate all messages in local dir."
+file message_dir do |file|
   sh('scripts/gen_for_precompiled.py')
 end
 
-desc "clean all messages in local dir."
-task :clean_msg_local do
-  rm_r(["#{ENV['HOME']}/.ros/rosruby"], :force=>true)
+require 'rake/testtask'
+Rake::TestTask.new do |t|
+  t.test_files = FileList['test/test*.rb']
+  t.verbose = true
 end
-
-if RUBY_VERSION >= '1.9.0'
-  require 'rake/gempackagetask'
-
-  spec = Gem::Specification.new do |s|
-    s.name = "rosruby"
-    s.summary = "ROS ruby client"
-    s.description = File.read(File.join(File.dirname(__FILE__), 'README.md'))
-    s.requirements = ['ROS installed']
-    s.version = "0.1.2"
-    s.author = "Takashi Ogura"
-    s.email = "t.ogura@gmail.com"
-    s.homepage = "http://github.com/OTL/rosruby"
-    s.platform = Gem::Platform::RUBY
-    s.required_ruby_version = '>=1.8'
-    s.files = Dir['**/**']
-    s.executables = []
-    s.test_files = Dir["test/test*.rb"]
-    s.has_rdoc = true
-  end
-
-  Rake::GemPackageTask.new(spec).define
-end
-
-desc "do all tests"
-task :test do
-  require 'test/unit'
-  $:.push(File.dirname(__FILE__))
-  test_file = "test/test_*.rb"
-  $:.unshift(File.join(File.expand_path("."), "lib"))
-  $:.unshift(File.join(File.expand_path("."), "test"))
-  Dir.glob(test_file) do |file|
-    require file.sub(/\.rb$/, '')
-  end
-end
+task :test => [:msg_local]

@@ -55,7 +55,7 @@ class TestNode < Test::Unit::TestCase
   def test_signal
     node1 = ROS::Node.new('/test_signal1')
     Process.kill("INT", Process.pid)
-    sleep(0.1)
+    sleep(0.5)
     assert(!node1.ok?)
   end
 
@@ -128,7 +128,7 @@ class TestNode < Test::Unit::TestCase
       called = param
     end
     node.set_param('/test_param1', 1)
-    sleep(0.1)
+    sleep(0.5)
     assert_equal(1, called)
     node.shutdown
   end
