@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: ROS::TCPROS::ServiceClient</title>
+
+	<link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../lib/ros/tcpros/service_client_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/ros/tcpros/service_client.rb">lib/ros/tcpros/service_client.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-build_header">#build_header</a></li>
+					
+					<li><a href="#method-i-call">#call</a></li>
+					
+					<li><a href="#method-i-check_header">#check_header</a></li>
+					
+					<li><a href="#method-i-read_ok_byte">#read_ok_byte</a></li>
+					
+					<li><a href="#method-i-shutdown">#shutdown</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><span class="include">::ROS::TCPROS::Message</span></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../ROS.html">ROS</a></li>
+				
+					<li><a href="../../ROS/Duration.html">ROS::Duration</a></li>
+				
+					<li><a href="../../ROS/GraphManager.html">ROS::GraphManager</a></li>
+				
+					<li><a href="../../ROS/Log.html">ROS::Log</a></li>
+				
+					<li><a href="../../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
+				
+					<li><a href="../../ROS/Message.html">ROS::Message</a></li>
+				
+					<li><a href="../../ROS/Name.html">ROS::Name</a></li>
+				
+					<li><a href="../../ROS/Node.html">ROS::Node</a></li>
+				
+					<li><a href="../../ROS/Package.html">ROS::Package</a></li>
+				
+					<li><a href="../../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
+				
+					<li><a href="../../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
+				
+					<li><a href="../../ROS/Publisher.html">ROS::Publisher</a></li>
+				
+					<li><a href="../../ROS/Rate.html">ROS::Rate</a></li>
+				
+					<li><a href="../../ROS/Service.html">ROS::Service</a></li>
+				
+					<li><a href="../../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
+				
+					<li><a href="../../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
+				
+					<li><a href="../../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
+				
+					<li><a href="../../ROS/Struct.html">ROS::Struct</a></li>
+				
+					<li><a href="../../ROS/Subscriber.html">ROS::Subscriber</a></li>
+				
+					<li><a href="../../ROS/TCPROS.html">ROS::TCPROS</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
+				
+					<li><a href="../../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
+				
+					<li><a href="../../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
+				
+					<li><a href="../../ROS/TVal.html">ROS::TVal</a></li>
+				
+					<li><a href="../../ROS/Time.html">ROS::Time</a></li>
+				
+					<li><a href="../../ROS/Topic.html">ROS::Topic</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">ROS::TCPROS::ServiceClient</h1>
+
+		<div id="description">
+			<p>
+<a href="../TCPROS.html">TCPROS</a> protocol service client connection
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="port-attribute-method" class="method-detail">
+				<a name="port"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">port</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+port number of this socket
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="host-attribute-method" class="method-detail">
+				<a name="host"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">host</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+host of this connection
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(host, port, caller_id, service_name, service_type, persistent)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_client.rb, line 20</span>
+20:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>, <span class="ruby-identifier">persistent</span>)
+21:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
+22:       <span class="ruby-ivar">@service_name</span> = <span class="ruby-identifier">service_name</span>
+23:       <span class="ruby-ivar">@service_type</span> = <span class="ruby-identifier">service_type</span>
+24:       <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
+25:       <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">host</span>
+26:       <span class="ruby-ivar">@socket</span> = <span class="ruby-constant">TCPSocket</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@host</span>, <span class="ruby-ivar">@port</span>)
+27:       <span class="ruby-ivar">@persistent</span> = <span class="ruby-identifier">persistent</span>
+28:       <span class="ruby-ivar">@socket</span>.<span class="ruby-identifier">setsockopt</span>(<span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">IPPROTO_TCP</span>, <span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">TCP_NODELAY</span>, <span class="ruby-value">1</span>)
+29:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="build-header-method" class="method-detail ">
+				<a name="method-i-build_header"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">build_header</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+build header message for service client @return <a
+href="Header.html">ROS::TCPROS::Header</a>
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="build-header-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_client.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_header</span>
+35:       <span class="ruby-identifier">header</span> = <span class="ruby-constant">Header</span>.<span class="ruby-identifier">new</span>
+36:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">push_data</span>(<span class="ruby-value str">&quot;callerid&quot;</span>, <span class="ruby-ivar">@caller_id</span>)
+37:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">push_data</span>(<span class="ruby-value str">&quot;service&quot;</span>, <span class="ruby-ivar">@service_name</span>)
+38:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">push_data</span>(<span class="ruby-value str">&quot;md5sum&quot;</span>, <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">md5sum</span>)
+39:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">push_data</span>(<span class="ruby-value str">&quot;type&quot;</span>, <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">type</span>)
+40:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@persistent</span>
+41:         <span class="ruby-identifier">header</span>.<span class="ruby-identifier">push_data</span>(<span class="ruby-value str">&quot;persistent&quot;</span>, <span class="ruby-value str">'1'</span>)
+42:       <span class="ruby-keyword kw">end</span>
+43:       <span class="ruby-identifier">header</span>
+44:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="call-method" class="method-detail ">
+				<a name="method-i-call"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">call</span><span
+						class="method-args">(srv_request, srv_response)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+call the service by sending srv request message, and receive response
+message
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="call-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_client.rb, line 49</span>
+49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">srv_request</span>, <span class="ruby-identifier">srv_response</span>)
+50:       <span class="ruby-identifier">write_header</span>(<span class="ruby-ivar">@socket</span>, <span class="ruby-identifier">build_header</span>)
+51:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">check_header</span>(<span class="ruby-identifier">read_header</span>(<span class="ruby-ivar">@socket</span>))
+52:         <span class="ruby-identifier">write_msg</span>(<span class="ruby-ivar">@socket</span>, <span class="ruby-identifier">srv_request</span>)
+53:         <span class="ruby-ivar">@socket</span>.<span class="ruby-identifier">flush</span>
+54:         <span class="ruby-identifier">ok_byte</span> = <span class="ruby-identifier">read_ok_byte</span>
+55:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ok_byte</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+56:           <span class="ruby-identifier">srv_response</span>.<span class="ruby-identifier">deserialize</span>(<span class="ruby-identifier">read_all</span>(<span class="ruby-ivar">@socket</span>))
+57:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+58:         <span class="ruby-keyword kw">end</span>
+59:         <span class="ruby-keyword kw">false</span>
+60:       <span class="ruby-keyword kw">end</span>
+61:       <span class="ruby-keyword kw">false</span>
+62:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="check-header-method" class="method-detail ">
+				<a name="method-i-check_header"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">check_header</span><span
+						class="method-args">(header)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+check md5sum
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="check-header-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_client.rb, line 72</span>
+72:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_header</span>(<span class="ruby-identifier">header</span>)
+73:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">valid?</span>(<span class="ruby-value str">'md5sum'</span>, <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">md5sum</span>)
+74:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="read-ok-byte-method" class="method-detail ">
+				<a name="method-i-read_ok_byte"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">read_ok_byte</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+read ok byte for boolean service result
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="read-ok-byte-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_client.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_ok_byte</span>
+67:       <span class="ruby-ivar">@socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-value">1</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'c'</span>)[<span class="ruby-value">0</span>]
+68:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shutdown-method" class="method-detail ">
+				<a name="method-i-shutdown"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shutdown</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+close the socket
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="shutdown-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_client.rb, line 78</span>
+78:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
+79:       <span class="ruby-ivar">@socket</span>.<span class="ruby-identifier">close</span>
+80:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

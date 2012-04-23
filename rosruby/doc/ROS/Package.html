@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: ROS::Package</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/ros/package_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/ros/package.rb">lib/ros/package.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-depends">::depends</a></li>
+					
+					<li><a href="#method-c-find_all_packages">::find_all_packages</a></li>
+					
+					<li><a href="#method-c-find_this_package">::find_this_package</a></li>
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-c-read_cache_or_find_all">::read_cache_or_find_all</a></li>
+					
+					<li><a href="#method-i-add_path_of_package">#add_path_of_package</a></li>
+					
+					<li><a href="#method-i-add_path_with_depend_packages">#add_path_with_depend_packages</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../ROS.html">ROS</a></li>
+				
+					<li><a href="../ROS/Duration.html">ROS::Duration</a></li>
+				
+					<li><a href="../ROS/GraphManager.html">ROS::GraphManager</a></li>
+				
+					<li><a href="../ROS/Log.html">ROS::Log</a></li>
+				
+					<li><a href="../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
+				
+					<li><a href="../ROS/Message.html">ROS::Message</a></li>
+				
+					<li><a href="../ROS/Name.html">ROS::Name</a></li>
+				
+					<li><a href="../ROS/Node.html">ROS::Node</a></li>
+				
+					<li><a href="../ROS/Package.html">ROS::Package</a></li>
+				
+					<li><a href="../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
+				
+					<li><a href="../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
+				
+					<li><a href="../ROS/Publisher.html">ROS::Publisher</a></li>
+				
+					<li><a href="../ROS/Rate.html">ROS::Rate</a></li>
+				
+					<li><a href="../ROS/Service.html">ROS::Service</a></li>
+				
+					<li><a href="../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
+				
+					<li><a href="../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
+				
+					<li><a href="../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
+				
+					<li><a href="../ROS/Struct.html">ROS::Struct</a></li>
+				
+					<li><a href="../ROS/Subscriber.html">ROS::Subscriber</a></li>
+				
+					<li><a href="../ROS/TCPROS.html">ROS::TCPROS</a></li>
+				
+					<li><a href="../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
+				
+					<li><a href="../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
+				
+					<li><a href="../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
+				
+					<li><a href="../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
+				
+					<li><a href="../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
+				
+					<li><a href="../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
+				
+					<li><a href="../ROS/TVal.html">ROS::TVal</a></li>
+				
+					<li><a href="../ROS/Time.html">ROS::Time</a></li>
+				
+					<li><a href="../ROS/Topic.html">ROS::Topic</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">ROS::Package</h1>
+
+		<div id="description">
+			<h1><a href="Package.html">Package</a></h1>
+<p>
+This is used for adding RUBYLIB path.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="depends-method" class="method-detail ">
+				<a name="method-c-depends"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">depends</span><span
+						class="method-args">(package, packages=[])</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+get the depend packages of the arg
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="depends-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/package.rb, line 82</span>
+82:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">depends</span>(<span class="ruby-identifier">package</span>, <span class="ruby-identifier">packages</span>=[])
+83:       <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@all_packages[package]}/manifest.xml&quot;</span>)
+84:       <span class="ruby-identifier">doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>)
+85:       <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-value str">'/package/depend'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
+86:         <span class="ruby-identifier">depend_package</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'package'</span>]
+87:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">packages</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">depend_package</span>)
+88:           <span class="ruby-identifier">packages</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">depend_package</span>)
+89:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">depends</span>(<span class="ruby-identifier">depend_package</span>, <span class="ruby-identifier">packages</span>)
+90:         <span class="ruby-keyword kw">end</span>
+91:       <span class="ruby-keyword kw">end</span>
+92:       <span class="ruby-identifier">packages</span>
+93:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="find-all-packages-method" class="method-detail ">
+				<a name="method-c-find_all_packages"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">find_all_packages</span><span
+						class="method-args">(packages={}, roots=ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT']))</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+search all packages that has manifest.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="find-all-packages-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/package.rb, line 55</span>
+55:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find_all_packages</span>(<span class="ruby-identifier">packages</span>={}, <span class="ruby-identifier">roots</span>=<span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_PACKAGE_PATH'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>).<span class="ruby-identifier">push</span>(<span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_ROOT'</span>]))
+56:       <span class="ruby-identifier">roots</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">root</span><span class="ruby-operator">|</span>
+57:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-node">&quot;#{root}/manifest.xml&quot;</span>)
+58:           <span class="ruby-identifier">packages</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">root</span>)] = <span class="ruby-identifier">root</span>
+59:         <span class="ruby-keyword kw">else</span>
+60:           <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">root</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+61:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;.&quot;</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;..&quot;</span>
+62:               <span class="ruby-identifier">full_path</span> = <span class="ruby-node">&quot;#{root}/#{path}&quot;</span>
+63:               <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">full_path</span>)
+64:                 <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find_all_packages</span>(<span class="ruby-identifier">packages</span>, [<span class="ruby-identifier">full_path</span>])
+65:               <span class="ruby-keyword kw">end</span>
+66:             <span class="ruby-keyword kw">end</span>
+67:           <span class="ruby-keyword kw">end</span>
+68:         <span class="ruby-keyword kw">end</span>
+69:       <span class="ruby-keyword kw">end</span>
+70:       <span class="ruby-identifier">packages</span>
+71:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="find-this-package-method" class="method-detail ">
+				<a name="method-c-find_this_package"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">find_this_package</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+get the current program&#8217;s package
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="find-this-package-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/package.rb, line 99</span>
+ 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find_this_package</span>
+100:       <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">dirname</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">$PROGRAM_NAME</span>))
+101:       <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">'/'</span>
+102:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-node">&quot;#{path}/manifest.xml&quot;</span>)
+103:           <span class="ruby-keyword kw">return</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">basename</span>(<span class="ruby-identifier">path</span>)
+104:         <span class="ruby-keyword kw">end</span>
+105:         <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>)
+106:       <span class="ruby-keyword kw">end</span>
+107:       <span class="ruby-keyword kw">nil</span>
+108:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(package_name)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+make instance of package_name
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/package.rb, line 114</span>
+114:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">package_name</span>)
+115:       <span class="ruby-ivar">@package_name</span> = <span class="ruby-identifier">package_name</span>
+116:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="read-cache-or-find-all-method" class="method-detail ">
+				<a name="method-c-read_cache_or_find_all"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">read_cache_or_find_all</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+at first check the rospack&#8217;s cache, if found use it. if not found,
+check all package path.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="read-cache-or-find-all-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/package.rb, line 32</span>
+32:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read_cache_or_find_all</span>
+33:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">@@cache_path</span>)
+34:         <span class="ruby-identifier">f</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">@@cache_path</span>)
+35:         <span class="ruby-identifier">root_line</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chop</span>
+36:         <span class="ruby-identifier">package_path_line</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chop</span>
+37:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">root_line</span> <span class="ruby-operator">==</span> <span class="ruby-node">&quot;#ROS_ROOT=#{ENV['ROS_ROOT']}&quot;</span> <span class="ruby-keyword kw">and</span>
+38:             <span class="ruby-identifier">package_path_line</span> <span class="ruby-operator">==</span> <span class="ruby-node">&quot;#ROS_PACKAGE_PATH=#{ENV['ROS_PACKAGE_PATH']}&quot;</span>
+39:           <span class="ruby-identifier">packages</span> = {}
+40:           <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">line</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">gets</span>
+41:             <span class="ruby-identifier">packages</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">line</span>.<span class="ruby-identifier">chop</span>)] = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chop</span>
+42:           <span class="ruby-keyword kw">end</span>
+43:           <span class="ruby-identifier">packages</span>
+44:         <span class="ruby-keyword kw">else</span>
+45:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find_all_packages</span>
+46:         <span class="ruby-keyword kw">end</span>
+47:       <span class="ruby-keyword kw">else</span>
+48:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find_all_packages</span>
+49:       <span class="ruby-keyword kw">end</span>
+50:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="add-path-of-package-method" class="method-detail ">
+				<a name="method-i-add_path_of_package"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_path_of_package</span><span
+						class="method-args">(package)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+add package&#8217;s [lib/, msg_gen/ruby, srv_gen/ruby] to &#8217;$:&#8217;.
+this enables load ruby files easily
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-path-of-package-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/package.rb, line 122</span>
+122:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_path_of_package</span>(<span class="ruby-identifier">package</span>)
+123:       <span class="ruby-identifier">path</span> = <span class="ruby-identifier">@@all_packages</span>[<span class="ruby-identifier">package</span>]
+124:       [<span class="ruby-node">&quot;#{path}/msg_gen/ruby&quot;</span>, <span class="ruby-node">&quot;#{path}/srv_gen/ruby&quot;</span>, <span class="ruby-node">&quot;#{path}/lib&quot;</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+125:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">path</span>)
+126:           <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">$:</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">path</span>)
+127:             <span class="ruby-identifier">$:</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">path</span>)
+128:           <span class="ruby-keyword kw">end</span>
+129:         <span class="ruby-keyword kw">end</span>
+130:       <span class="ruby-keyword kw">end</span>
+131:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="add-path-with-depend-packages-method" class="method-detail ">
+				<a name="method-i-add_path_with_depend_packages"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_path_with_depend_packages</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+add [lib/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages to
+RUBYLIB, if the directory exists
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-path-with-depend-packages-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/package.rb, line 137</span>
+137:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_path_with_depend_packages</span>
+138:       <span class="ruby-identifier">add_path_of_package</span>(<span class="ruby-ivar">@package_name</span>)
+139:       <span class="ruby-constant">Package</span><span class="ruby-operator">::</span><span class="ruby-identifier">depends</span>(<span class="ruby-ivar">@package_name</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pack</span><span class="ruby-operator">|</span>
+140:         <span class="ruby-identifier">add_path_of_package</span>(<span class="ruby-identifier">pack</span>.<span class="ruby-identifier">chop</span>)
+141:       <span class="ruby-keyword kw">end</span>
+142:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

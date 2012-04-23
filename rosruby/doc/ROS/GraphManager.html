@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: ROS::GraphManager</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/ros/graph_manager_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/ros/graph_manager.rb">lib/ros/graph_manager.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-add_parameter_subscriber">#add_parameter_subscriber</a></li>
+					
+					<li><a href="#method-i-add_publisher">#add_publisher</a></li>
+					
+					<li><a href="#method-i-add_service_server">#add_service_server</a></li>
+					
+					<li><a href="#method-i-add_subscriber">#add_subscriber</a></li>
+					
+					<li><a href="#method-i-get_available_port">#get_available_port</a></li>
+					
+					<li><a href="#method-i-get_uri">#get_uri</a></li>
+					
+					<li><a href="#method-i-shutdown">#shutdown</a></li>
+					
+					<li><a href="#method-i-shutdown_publisher">#shutdown_publisher</a></li>
+					
+					<li><a href="#method-i-shutdown_service_server">#shutdown_service_server</a></li>
+					
+					<li><a href="#method-i-shutdown_subscriber">#shutdown_subscriber</a></li>
+					
+					<li><a href="#method-i-spin_once">#spin_once</a></li>
+					
+					<li><a href="#method-i-wait_for_service">#wait_for_service</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../ROS.html">ROS</a></li>
+				
+					<li><a href="../ROS/Duration.html">ROS::Duration</a></li>
+				
+					<li><a href="../ROS/GraphManager.html">ROS::GraphManager</a></li>
+				
+					<li><a href="../ROS/Log.html">ROS::Log</a></li>
+				
+					<li><a href="../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
+				
+					<li><a href="../ROS/Message.html">ROS::Message</a></li>
+				
+					<li><a href="../ROS/Name.html">ROS::Name</a></li>
+				
+					<li><a href="../ROS/Node.html">ROS::Node</a></li>
+				
+					<li><a href="../ROS/Package.html">ROS::Package</a></li>
+				
+					<li><a href="../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
+				
+					<li><a href="../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
+				
+					<li><a href="../ROS/Publisher.html">ROS::Publisher</a></li>
+				
+					<li><a href="../ROS/Rate.html">ROS::Rate</a></li>
+				
+					<li><a href="../ROS/Service.html">ROS::Service</a></li>
+				
+					<li><a href="../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
+				
+					<li><a href="../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
+				
+					<li><a href="../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
+				
+					<li><a href="../ROS/Struct.html">ROS::Struct</a></li>
+				
+					<li><a href="../ROS/Subscriber.html">ROS::Subscriber</a></li>
+				
+					<li><a href="../ROS/TCPROS.html">ROS::TCPROS</a></li>
+				
+					<li><a href="../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
+				
+					<li><a href="../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
+				
+					<li><a href="../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
+				
+					<li><a href="../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
+				
+					<li><a href="../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
+				
+					<li><a href="../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
+				
+					<li><a href="../ROS/TVal.html">ROS::TVal</a></li>
+				
+					<li><a href="../ROS/Time.html">ROS::Time</a></li>
+				
+					<li><a href="../ROS/Topic.html">ROS::Topic</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">ROS::GraphManager</h1>
+
+		<div id="description">
+			<h1>Manager of <a href="../ROS.html">ROS</a> graph</h1>
+<pre>
+ This contains all subscribers, publishers, service_servers of a node.
+ Master API document is http://ros.org/wiki/ROS/Master_API
+ Slave API is http://ros.org/wiki/ROS/Slave_API
+
+ connect with master and manage pub/sub and services</pre>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="MAX_CONNECTION">MAX_CONNECTION</a></dt>
+				
+				<dd class="description"><p>
+max number of connection with other slave nodes
+</p></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="publishers-attribute-method" class="method-detail">
+				<a name="publishers"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">publishers</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="subscribers-attribute-method" class="method-detail">
+				<a name="subscribers"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">subscribers</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="service-servers-attribute-method" class="method-detail">
+				<a name="service_servers"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">service_servers</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="host-attribute-method" class="method-detail">
+				<a name="host"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">host</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="port-attribute-method" class="method-detail">
+				<a name="port"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">port</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(caller_id, node)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+add xmlrpc handlers for slave connections. Then start serve thread.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 38</span>
+ 38:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">node</span>)
+ 39:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
+ 40:       <span class="ruby-ivar">@node</span> = <span class="ruby-identifier">node</span>
+ 41:       <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">host</span>
+ 42:       <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">get_available_port</span>
+ 43:       <span class="ruby-ivar">@master</span> = <span class="ruby-constant">MasterProxy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">get_uri</span>)
+ 44:       <span class="ruby-ivar">@server</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Server</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@port</span>, <span class="ruby-ivar">@host</span>, <span class="ruby-constant">MAX_CONNECTION</span>, <span class="ruby-identifier">$stderr</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-keyword kw">false</span>)
+ 45:       <span class="ruby-ivar">@publishers</span> = []
+ 46:       <span class="ruby-ivar">@subscribers</span> = []
+ 47:       <span class="ruby-ivar">@service_servers</span> = []
+ 48:       <span class="ruby-ivar">@parameter_subscribers</span> = []
+ 49:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">set_default_handler</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">method</span>, *<span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+ 50:         <span class="ruby-identifier">p</span> <span class="ruby-value str">'call!! unhandled'</span>
+ 51:         <span class="ruby-identifier">p</span> <span class="ruby-identifier">method</span>
+ 52:         <span class="ruby-identifier">p</span> <span class="ruby-identifier">args</span>
+ 53:         [<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;I DON'T KNOW&quot;</span>, <span class="ruby-value">0</span>]
+ 54:       <span class="ruby-keyword kw">end</span>
+ 55: 
+ 56:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'getBusStats'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span><span class="ruby-operator">|</span>
+ 57:         <span class="ruby-identifier">pubstats</span> = <span class="ruby-ivar">@publishers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span>
+ 58:           [<span class="ruby-identifier">pub</span>.<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">pub</span>.<span class="ruby-identifier">topic_type</span>.<span class="ruby-identifier">type</span>, <span class="ruby-identifier">pub</span>.<span class="ruby-identifier">get_connection_data</span>]
+ 59:         <span class="ruby-keyword kw">end</span>
+ 60:         <span class="ruby-identifier">substats</span> = <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sub</span><span class="ruby-operator">|</span>
+ 61:           [<span class="ruby-identifier">sub</span>.<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">get_connection_data</span>]
+ 62:         <span class="ruby-keyword kw">end</span>
+ 63:         <span class="ruby-identifier">servstats</span> = <span class="ruby-ivar">@service_servers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">service</span><span class="ruby-operator">|</span>
+ 64:           [<span class="ruby-identifier">service</span>.<span class="ruby-identifier">get_connection_data</span>]
+ 65:         <span class="ruby-keyword kw">end</span>
+ 66:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;stats&quot;</span>, [<span class="ruby-identifier">pubstats</span>, <span class="ruby-identifier">substats</span>, <span class="ruby-identifier">servstats</span>]]
+ 67:       <span class="ruby-keyword kw">end</span>
+ 68: 
+ 69:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'getMasterUri'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span><span class="ruby-operator">|</span>
+ 70:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;master&quot;</span>, <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">master_uri</span>]
+ 71:       <span class="ruby-keyword kw">end</span>
+ 72: 
+ 73:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'getSubscriptions'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span><span class="ruby-operator">|</span>
+ 74:         <span class="ruby-identifier">topic_list</span> = <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sub</span><span class="ruby-operator">|</span>
+ 75:           [<span class="ruby-identifier">sub</span>.<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">topic_type</span>.<span class="ruby-identifier">type</span>]
+ 76:         <span class="ruby-keyword kw">end</span>
+ 77:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;ok&quot;</span>, <span class="ruby-identifier">topic_list</span>]
+ 78:       <span class="ruby-keyword kw">end</span>
+ 79: 
+ 80:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'getPublications'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span><span class="ruby-operator">|</span>
+ 81:         <span class="ruby-identifier">topic_list</span> = <span class="ruby-ivar">@publishers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span>
+ 82:           [<span class="ruby-identifier">pub</span>.<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">pub</span>.<span class="ruby-identifier">topic_type</span>.<span class="ruby-identifier">type</span>]
+ 83:         <span class="ruby-keyword kw">end</span>
+ 84:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;ok&quot;</span>, <span class="ruby-identifier">topic_list</span>]
+ 85:       <span class="ruby-keyword kw">end</span>
+ 86: 
+ 87:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'paramUpdate'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">parameter_key</span>, <span class="ruby-identifier">parameter_value</span><span class="ruby-operator">|</span>
+ 88:         <span class="ruby-ivar">@parameter_subscribers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
+ 89:           <span class="ruby-comment cmt"># parameter_key has / in the end</span>
+ 90:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">canonicalize_name</span>(<span class="ruby-identifier">parameter_key</span>)
+ 91:             <span class="ruby-identifier">param</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">parameter_value</span>)
+ 92:           <span class="ruby-keyword kw">end</span>
+ 93:         <span class="ruby-keyword kw">end</span>
+ 94:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;ok&quot;</span>, <span class="ruby-value">0</span>]
+ 95:       <span class="ruby-keyword kw">end</span>
+ 96: 
+ 97:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'requestTopic'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic</span>, <span class="ruby-identifier">protocols</span><span class="ruby-operator">|</span>
+ 98:         <span class="ruby-identifier">message</span> = [<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;I DON'T KNOW&quot;</span>, <span class="ruby-value">0</span>]
+ 99:         <span class="ruby-identifier">protocols</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'TCPROS'</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">protocol</span><span class="ruby-operator">|</span>
+100:           <span class="ruby-ivar">@publishers</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pub</span>.<span class="ruby-identifier">topic_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">topic</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">publisher</span><span class="ruby-operator">|</span>
+101:             <span class="ruby-identifier">connection</span> = <span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">add_connection</span>(<span class="ruby-identifier">caller_id</span>)
+102:             <span class="ruby-identifier">message</span> = [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;OK! WAIT!!!&quot;</span>, [<span class="ruby-value str">'TCPROS'</span>,
+103:                                           <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">host</span>,
+104:                                           <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">port</span>]]
+105:           <span class="ruby-keyword kw">end</span>
+106:         <span class="ruby-keyword kw">end</span>
+107:         <span class="ruby-identifier">message</span>
+108:       <span class="ruby-keyword kw">end</span>
+109: 
+110:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'shutdown'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+111:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;shutting down by master request: #{msg}&quot;</span>
+112:         <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">shutdown</span>
+113:         [<span class="ruby-value">1</span>, <span class="ruby-value str">'shutdown ok'</span>, <span class="ruby-value">0</span>]
+114:       <span class="ruby-keyword kw">end</span>
+115: 
+116:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'getPid'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span><span class="ruby-operator">|</span>
+117:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;pid ok&quot;</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>]
+118:       <span class="ruby-keyword kw">end</span>
+119: 
+120:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'getBusInfo'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span><span class="ruby-operator">|</span>
+121:         <span class="ruby-identifier">info</span> = []
+122:         <span class="ruby-ivar">@publishers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">publisher</span><span class="ruby-operator">|</span>
+123:           <span class="ruby-identifier">info</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">get_connection_info</span>)
+124:         <span class="ruby-keyword kw">end</span>
+125:         <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">subscriber</span><span class="ruby-operator">|</span>
+126:           <span class="ruby-identifier">info</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">get_connection_info</span>)
+127:         <span class="ruby-keyword kw">end</span>
+128:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;getBusInfo ok&quot;</span>, <span class="ruby-identifier">info</span>]
+129:       <span class="ruby-keyword kw">end</span>
+130: 
+131:       <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">add_handler</span>(<span class="ruby-value str">'publisherUpdate'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic</span>, <span class="ruby-identifier">publishers</span><span class="ruby-operator">|</span>
+132:         <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">sub</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">topic_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">topic</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sub</span><span class="ruby-operator">|</span>
+133:           <span class="ruby-identifier">publishers</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">uri</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">has_connection_with?</span>(<span class="ruby-identifier">uri</span>)}.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uri</span><span class="ruby-operator">|</span>
+134:             <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">add_connection</span>(<span class="ruby-identifier">uri</span>)
+135:           <span class="ruby-keyword kw">end</span>
+136:           <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">get_connected_uri</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">uri</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">publishers</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">uri</span>)}.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uri</span><span class="ruby-operator">|</span>
+137:             <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">drop_connection</span>(<span class="ruby-identifier">uri</span>)
+138:           <span class="ruby-keyword kw">end</span>
+139:         <span class="ruby-keyword kw">end</span>
+140:         [<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;OK! Updated!!&quot;</span>, <span class="ruby-value">0</span>]
+141:       <span class="ruby-keyword kw">end</span>
+142: 
+143:       <span class="ruby-ivar">@thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+144:         <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">serve</span>
+145:       <span class="ruby-keyword kw">end</span>
+146: 
+147:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="add-parameter-subscriber-method" class="method-detail ">
+				<a name="method-i-add_parameter_subscriber"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_parameter_subscriber</span><span
+						class="method-args">(subscriber)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+register callback for paramUpdate
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-parameter-subscriber-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 222</span>
+222:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_parameter_subscriber</span>(<span class="ruby-identifier">subscriber</span>)
+223:       <span class="ruby-ivar">@parameter_subscribers</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">subscriber</span>)
+224:       <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">subscribe_param</span>(<span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">key</span>)
+225:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="add-publisher-method" class="method-detail ">
+				<a name="method-i-add_publisher"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_publisher</span><span
+						class="method-args">(publisher)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+register a publisher. raise if fail.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-publisher-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 230</span>
+230:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_publisher</span>(<span class="ruby-identifier">publisher</span>)
+231:       <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">register_publisher</span>(<span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">topic_name</span>,
+232:                                  <span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">topic_type</span>.<span class="ruby-identifier">type</span>)
+233:       <span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">set_manager</span>(<span class="ruby-keyword kw">self</span>)
+234:       <span class="ruby-ivar">@publishers</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">publisher</span>)
+235:       <span class="ruby-identifier">publisher</span>
+236:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="add-service-server-method" class="method-detail ">
+				<a name="method-i-add_service_server"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_service_server</span><span
+						class="method-args">(service_server)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+register a service to master, and add it in the controlling server list.
+raise if fail.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-service-server-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 197</span>
+197:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_service_server</span>(<span class="ruby-identifier">service_server</span>)
+198:       <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">register_service</span>(<span class="ruby-identifier">service_server</span>.<span class="ruby-identifier">service_name</span>,
+199:                                <span class="ruby-identifier">service_server</span>.<span class="ruby-identifier">service_uri</span>)
+200:       <span class="ruby-identifier">service_server</span>.<span class="ruby-identifier">set_manager</span>(<span class="ruby-keyword kw">self</span>)
+201:       <span class="ruby-ivar">@service_servers</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">service_server</span>)
+202:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="add-subscriber-method" class="method-detail ">
+				<a name="method-i-add_subscriber"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_subscriber</span><span
+						class="method-args">(subscriber)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+register a subscriber to master. raise if fail.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-subscriber-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 208</span>
+208:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_subscriber</span>(<span class="ruby-identifier">subscriber</span>)
+209:       <span class="ruby-identifier">uris</span> = <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">register_subscriber</span>(<span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">topic_name</span>,
+210:                                          <span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">topic_type</span>.<span class="ruby-identifier">type</span>)
+211:       <span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">set_manager</span>(<span class="ruby-keyword kw">self</span>)
+212:       <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">publisher_uri</span><span class="ruby-operator">|</span>
+213:         <span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">add_connection</span>(<span class="ruby-identifier">publisher_uri</span>)
+214:       <span class="ruby-keyword kw">end</span>
+215:       <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">subscriber</span>)
+216:       <span class="ruby-identifier">subscriber</span>
+217:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-available-port-method" class="method-detail ">
+				<a name="method-i-get_available_port"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_available_port</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+get available port number by opening port 0.
+</p>
+<dl>
+<dt><tt>return</tt></dt><dd><p>
+port_num
+</p>
+</dd>
+</dl>
+					
+
+					
+					<div class="method-source-code"
+						id="get-available-port-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 153</span>
+153:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_available_port</span>
+154:       <span class="ruby-identifier">server</span> = <span class="ruby-constant">TCPServer</span>.<span class="ruby-identifier">open</span>(<span class="ruby-value">0</span>)
+155:       <span class="ruby-identifier">saddr</span> = <span class="ruby-identifier">server</span>.<span class="ruby-identifier">getsockname</span>
+156:       <span class="ruby-identifier">port</span> = <span class="ruby-constant">Socket</span>.<span class="ruby-identifier">unpack_sockaddr_in</span>(<span class="ruby-identifier">saddr</span>)[<span class="ruby-value">0</span>]
+157:       <span class="ruby-identifier">server</span>.<span class="ruby-identifier">close</span>
+158:       <span class="ruby-identifier">port</span>
+159:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-uri-method" class="method-detail ">
+				<a name="method-i-get_uri"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_uri</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+get this slave node&#8217;s URI
+</p>
+<dl>
+<dt><tt>return</tt></dt><dd><p>
+uri
+</p>
+</dd>
+</dl>
+					
+
+					
+					<div class="method-source-code"
+						id="get-uri-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 165</span>
+165:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_uri</span>
+166:       <span class="ruby-value str">&quot;http://&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@host</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@port</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;/&quot;</span>
+167:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shutdown-method" class="method-detail ">
+				<a name="method-i-shutdown"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shutdown</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+shutdown this slave node. shutdown the xmlrpc server and all pub/sub
+connections. and delelte all pub/sub instance from connection list
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="shutdown-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 274</span>
+274:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
+275:       <span class="ruby-keyword kw">begin</span>
+276:         <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">shutdown</span>
+277:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value">0.1</span>)
+278:           <span class="ruby-constant">Thread</span><span class="ruby-operator">::</span><span class="ruby-identifier">kill</span>(<span class="ruby-ivar">@thread</span>)
+279:         <span class="ruby-keyword kw">end</span>
+280:       <span class="ruby-keyword kw">rescue</span>
+281:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">'fail to kill thread'</span>
+282:       <span class="ruby-keyword kw">end</span>
+283: 
+284:       <span class="ruby-ivar">@publishers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">publisher</span><span class="ruby-operator">|</span>
+285:         <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">unregister_publisher</span>(<span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">topic_name</span>)
+286:         <span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">close</span>
+287:       <span class="ruby-keyword kw">end</span>
+288:       <span class="ruby-ivar">@publishers</span> = <span class="ruby-keyword kw">nil</span>
+289: 
+290:       <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">subscriber</span><span class="ruby-operator">|</span>
+291:         <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">unregister_subscriber</span>(<span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">topic_name</span>)
+292:         <span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">close</span>
+293:       <span class="ruby-keyword kw">end</span>
+294:       <span class="ruby-ivar">@subscribers</span> = <span class="ruby-keyword kw">nil</span>
+295: 
+296:       <span class="ruby-ivar">@service_servers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">service</span><span class="ruby-operator">|</span>
+297:         <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">unregister_service</span>(<span class="ruby-identifier">service</span>.<span class="ruby-identifier">service_name</span>,
+298:                                    <span class="ruby-identifier">service</span>.<span class="ruby-identifier">service_uri</span>)
+299:         <span class="ruby-identifier">service</span>.<span class="ruby-identifier">close</span>
+300:       <span class="ruby-keyword kw">end</span>
+301:       <span class="ruby-ivar">@service_servers</span> = <span class="ruby-keyword kw">nil</span>
+302: 
+303:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shutdown-publisher-method" class="method-detail ">
+				<a name="method-i-shutdown_publisher"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shutdown_publisher</span><span
+						class="method-args">(publisher)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="shutdown-publisher-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 245</span>
+245:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown_publisher</span>(<span class="ruby-identifier">publisher</span>)
+246:       <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">unregister_publisher</span>(<span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">topic_name</span>)
+247:       <span class="ruby-ivar">@publishers</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">publisher</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span>
+248:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;publisher not found&quot;</span>
+249:       <span class="ruby-keyword kw">end</span>
+250:       <span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">close</span>
+251:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shutdown-service-server-method" class="method-detail ">
+				<a name="method-i-shutdown_service_server"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shutdown_service_server</span><span
+						class="method-args">(service)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="shutdown-service-server-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 261</span>
+261:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown_service_server</span>(<span class="ruby-identifier">service</span>)
+262:       <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">unregister_service</span>(<span class="ruby-identifier">service</span>.<span class="ruby-identifier">service_name</span>,
+263:                                  <span class="ruby-identifier">service</span>.<span class="ruby-identifier">service_uri</span>)
+264:       <span class="ruby-ivar">@service_servers</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">service</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span>
+265:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;service_server not found&quot;</span>
+266:       <span class="ruby-keyword kw">end</span>
+267:       <span class="ruby-identifier">service</span>.<span class="ruby-identifier">close</span>
+268:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shutdown-subscriber-method" class="method-detail ">
+				<a name="method-i-shutdown_subscriber"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shutdown_subscriber</span><span
+						class="method-args">(subscriber)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="shutdown-subscriber-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 253</span>
+253:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown_subscriber</span>(<span class="ruby-identifier">subscriber</span>)
+254:       <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">unregister_subscriber</span>(<span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">topic_name</span>)
+255:       <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">subscriber</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span>
+256:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;subscriber not found&quot;</span>
+257:       <span class="ruby-keyword kw">end</span>
+258:       <span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">close</span>
+259:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="spin-once-method" class="method-detail ">
+				<a name="method-i-spin_once"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">spin_once</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+process all messages of subscribers
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="spin-once-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 241</span>
+241:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spin_once</span>
+242:       <span class="ruby-ivar">@subscribers</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">subscriber</span><span class="ruby-operator">|</span> <span class="ruby-identifier">subscriber</span>.<span class="ruby-identifier">process_queue</span>}
+243:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="wait-for-service-method" class="method-detail ">
+				<a name="method-i-wait_for_service"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">wait_for_service</span><span
+						class="method-args">(service_name, timeout_sec)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+wait until service is available
+</p>
+<dl>
+<dt><tt>service_name</tt></dt><dd><p>
+name of service for waiting
+</p>
+</dd>
+<dt><tt>timeout_sec</tt></dt><dd><p>
+wait for this seconds, then time out
+</p>
+</dd>
+<dt><tt>return</tt></dt><dd><p>
+true: available, false: time out
+</p>
+</dd>
+</dl>
+					
+
+					
+					<div class="method-source-code"
+						id="wait-for-service-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/graph_manager.rb, line 175</span>
+175:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait_for_service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">timeout_sec</span>)
+176:       <span class="ruby-keyword kw">begin</span>
+177:         <span class="ruby-identifier">timeout</span>(<span class="ruby-identifier">timeout_sec</span>) <span class="ruby-keyword kw">do</span>
+178:           <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">ok?</span>
+179:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@master</span>.<span class="ruby-identifier">lookup_service</span>(<span class="ruby-identifier">service_name</span>)
+180:               <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+181:             <span class="ruby-keyword kw">end</span>
+182:             <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0.1</span>)
+183:           <span class="ruby-keyword kw">end</span>
+184:         <span class="ruby-keyword kw">end</span>
+185:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>
+186:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;time outed for wait service #{service_name}&quot;</span>
+187:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+188:       <span class="ruby-keyword kw">rescue</span>
+189:         <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;connection with master failed. master = #{@node.master_uri}&quot;</span>
+190:       <span class="ruby-keyword kw">end</span>
+191:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

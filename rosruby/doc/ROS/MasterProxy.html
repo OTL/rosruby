@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: ROS::MasterProxy</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/ros/master_proxy_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/ros/master_proxy.rb">lib/ros/master_proxy.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-get_published_topics">#get_published_topics</a></li>
+					
+					<li><a href="#method-i-get_system_state">#get_system_state</a></li>
+					
+					<li><a href="#method-i-get_uri">#get_uri</a></li>
+					
+					<li><a href="#method-i-lookup_node">#lookup_node</a></li>
+					
+					<li><a href="#method-i-lookup_service">#lookup_service</a></li>
+					
+					<li><a href="#method-i-master_uri">#master_uri</a></li>
+					
+					<li><a href="#method-i-master_uri%3D">#master_uri=</a></li>
+					
+					<li><a href="#method-i-register_publisher">#register_publisher</a></li>
+					
+					<li><a href="#method-i-register_service">#register_service</a></li>
+					
+					<li><a href="#method-i-register_subscriber">#register_subscriber</a></li>
+					
+					<li><a href="#method-i-subscribe_param">#subscribe_param</a></li>
+					
+					<li><a href="#method-i-unregister_publisher">#unregister_publisher</a></li>
+					
+					<li><a href="#method-i-unregister_service">#unregister_service</a></li>
+					
+					<li><a href="#method-i-unregister_subscriber">#unregister_subscriber</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../ROS.html">ROS</a></li>
+				
+					<li><a href="../ROS/Duration.html">ROS::Duration</a></li>
+				
+					<li><a href="../ROS/GraphManager.html">ROS::GraphManager</a></li>
+				
+					<li><a href="../ROS/Log.html">ROS::Log</a></li>
+				
+					<li><a href="../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
+				
+					<li><a href="../ROS/Message.html">ROS::Message</a></li>
+				
+					<li><a href="../ROS/Name.html">ROS::Name</a></li>
+				
+					<li><a href="../ROS/Node.html">ROS::Node</a></li>
+				
+					<li><a href="../ROS/Package.html">ROS::Package</a></li>
+				
+					<li><a href="../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
+				
+					<li><a href="../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
+				
+					<li><a href="../ROS/Publisher.html">ROS::Publisher</a></li>
+				
+					<li><a href="../ROS/Rate.html">ROS::Rate</a></li>
+				
+					<li><a href="../ROS/Service.html">ROS::Service</a></li>
+				
+					<li><a href="../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
+				
+					<li><a href="../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
+				
+					<li><a href="../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
+				
+					<li><a href="../ROS/Struct.html">ROS::Struct</a></li>
+				
+					<li><a href="../ROS/Subscriber.html">ROS::Subscriber</a></li>
+				
+					<li><a href="../ROS/TCPROS.html">ROS::TCPROS</a></li>
+				
+					<li><a href="../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
+				
+					<li><a href="../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
+				
+					<li><a href="../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
+				
+					<li><a href="../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
+				
+					<li><a href="../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
+				
+					<li><a href="../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
+				
+					<li><a href="../ROS/TVal.html">ROS::TVal</a></li>
+				
+					<li><a href="../ROS/Time.html">ROS::Time</a></li>
+				
+					<li><a href="../ROS/Topic.html">ROS::Topic</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">ROS::MasterProxy</h1>
+
+		<div id="description">
+			<h1><a href="../ROS.html">ROS</a> Master Proxy</h1>
+<p>
+you can access to <a href="../ROS.html">ROS</a> Master easily.
+</p>
+<p>
+reference: <a
+href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="slave-uri-attribute-method" class="method-detail">
+				<a name="slave_uri"></a>
+				
+				<a name="slave_uri="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">slave_uri</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="caller-id-attribute-method" class="method-detail">
+				<a name="caller_id"></a>
+				
+				<a name="caller_id="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">caller_id</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(caller_id, master_uri, slave_uri)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 24</span>
+24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">slave_uri</span>)
+25:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
+26:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
+27:       <span class="ruby-ivar">@slave_uri</span> = <span class="ruby-identifier">slave_uri</span>
+28:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
+29:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="get-published-topics-method" class="method-detail ">
+				<a name="method-i-get_published_topics"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_published_topics</span><span
+						class="method-args">(subgraph='')</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="get-published-topics-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 130</span>
+130:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_published_topics</span>(<span class="ruby-identifier">subgraph</span>=<span class="ruby-value str">''</span>)
+131:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">topics</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getPublishedTopics</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">subgraph</span>)
+132:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+133:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">topics</span>
+134:       <span class="ruby-keyword kw">elsif</span>
+135:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+136:       <span class="ruby-keyword kw">end</span>
+137:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-system-state-method" class="method-detail ">
+				<a name="method-i-get_system_state"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_system_state</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="get-system-state-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 139</span>
+139:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_system_state</span>
+140:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">state</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getSystemState</span>(<span class="ruby-ivar">@caller_id</span>)
+141:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+142:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">state</span>
+143:       <span class="ruby-keyword kw">else</span>
+144:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+145:       <span class="ruby-keyword kw">end</span>
+146:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-uri-method" class="method-detail ">
+				<a name="method-i-get_uri"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_uri</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="get-uri-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 148</span>
+148:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_uri</span>
+149:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getUri</span>(<span class="ruby-ivar">@caller_id</span>)
+150:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+151:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">uri</span>
+152:       <span class="ruby-keyword kw">else</span>
+153:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+154:       <span class="ruby-keyword kw">end</span>
+155:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="lookup-node-method" class="method-detail ">
+				<a name="method-i-lookup_node"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">lookup_node</span><span
+						class="method-args">(node_name)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="lookup-node-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 121</span>
+121:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_node</span>(<span class="ruby-identifier">node_name</span>)
+122:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupNode</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">node_name</span>)
+123:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+124:         <span class="ruby-identifier">uri</span>
+125:       <span class="ruby-keyword kw">else</span>
+126:         <span class="ruby-keyword kw">nil</span>
+127:       <span class="ruby-keyword kw">end</span>
+128:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="lookup-service-method" class="method-detail ">
+				<a name="method-i-lookup_service"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">lookup_service</span><span
+						class="method-args">(service)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="lookup-service-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 157</span>
+157:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_service</span>(<span class="ruby-identifier">service</span>)
+158:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupService</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">service</span>)
+159:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+160:         <span class="ruby-identifier">uri</span>
+161:       <span class="ruby-keyword kw">else</span>
+162:         <span class="ruby-keyword kw">false</span>
+163:       <span class="ruby-keyword kw">end</span>
+164:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="master-uri-method" class="method-detail ">
+				<a name="method-i-master_uri"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">master_uri</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="master-uri-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 166</span>
+166:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri</span>
+167:       <span class="ruby-ivar">@master_uri</span>
+168:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="master-uri--method" class="method-detail ">
+				<a name="method-i-master_uri%3D"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">master_uri=</span><span
+						class="method-args">(uri)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="master-uri--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 170</span>
+170:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri=</span>(<span class="ruby-identifier">uri</span>)
+171:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">uri</span>
+172:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
+173:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="register-publisher-method" class="method-detail ">
+				<a name="method-i-register_publisher"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">register_publisher</span><span
+						class="method-args">(topic, topic_type)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="register-publisher-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 86</span>
+86:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_publisher</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
+87:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uris</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
+88:                                                      <span class="ruby-identifier">topic</span>,
+89:                                                      <span class="ruby-identifier">topic_type</span>,
+90:                                                      <span class="ruby-ivar">@slave_uri</span>)
+91:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+92:         <span class="ruby-identifier">uris</span>
+93:       <span class="ruby-keyword kw">else</span>
+94:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+95:       <span class="ruby-keyword kw">end</span>
+96:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="register-service-method" class="method-detail ">
+				<a name="method-i-register_service"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">register_service</span><span
+						class="method-args">(service, service_api)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="register-service-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
+32:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerService</span>(<span class="ruby-ivar">@caller_id</span>,
+33:                                                   <span class="ruby-identifier">service</span>,
+34:                                                   <span class="ruby-identifier">service_api</span>,
+35:                                                   <span class="ruby-ivar">@slave_uri</span>)
+36:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+37:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+38:       <span class="ruby-keyword kw">else</span>
+39:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+40:       <span class="ruby-keyword kw">end</span>
+41:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="register-subscriber-method" class="method-detail ">
+				<a name="method-i-register_subscriber"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">register_subscriber</span><span
+						class="method-args">(topic, topic_type)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="register-subscriber-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 57</span>
+57:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_subscriber</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
+58:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
+59:                                                     <span class="ruby-identifier">topic</span>,
+60:                                                     <span class="ruby-identifier">topic_type</span>,
+61:                                                     <span class="ruby-ivar">@slave_uri</span>)
+62:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+63:         <span class="ruby-identifier">val</span>
+64:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+65:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+66:         <span class="ruby-identifier">val</span>
+67:       <span class="ruby-keyword kw">else</span>
+68:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+69:       <span class="ruby-keyword kw">end</span>
+70:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="subscribe-param-method" class="method-detail ">
+				<a name="method-i-subscribe_param"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">subscribe_param</span><span
+						class="method-args">(key)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="subscribe-param-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 112</span>
+112:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe_param</span>(<span class="ruby-identifier">key</span>)
+113:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">subscribeParam</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@slave_uri</span>, <span class="ruby-identifier">key</span>)
+114:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+115:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+116:       <span class="ruby-keyword kw">else</span>
+117:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+118:       <span class="ruby-keyword kw">end</span>
+119:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="unregister-publisher-method" class="method-detail ">
+				<a name="method-i-unregister_publisher"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">unregister_publisher</span><span
+						class="method-args">(topic)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="unregister-publisher-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 98</span>
+ 98:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_publisher</span>(<span class="ruby-identifier">topic</span>)
+ 99:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
+100:                                                       <span class="ruby-identifier">topic</span>,
+101:                                                       <span class="ruby-ivar">@slave_uri</span>)
+102:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+103:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">val</span>
+104:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+105:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+106:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+107:       <span class="ruby-keyword kw">else</span>
+108:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+109:       <span class="ruby-keyword kw">end</span>
+110:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="unregister-service-method" class="method-detail ">
+				<a name="method-i-unregister_service"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">unregister_service</span><span
+						class="method-args">(service, service_api)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="unregister-service-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 43</span>
+43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
+44:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterService</span>(<span class="ruby-ivar">@caller_id</span>,
+45:                                                     <span class="ruby-identifier">service</span>,
+46:                                                     <span class="ruby-identifier">service_api</span>)
+47:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+48:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+49:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+50:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+51:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+52:       <span class="ruby-keyword kw">else</span>
+53:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+54:       <span class="ruby-keyword kw">end</span>
+55:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="unregister-subscriber-method" class="method-detail ">
+				<a name="method-i-unregister_subscriber"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">unregister_subscriber</span><span
+						class="method-args">(topic)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="unregister-subscriber-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 72</span>
+72:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_subscriber</span>(<span class="ruby-identifier">topic</span>)
+73:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
+74:                                                       <span class="ruby-identifier">topic</span>,
+75:                                                       <span class="ruby-ivar">@slave_uri</span>)
+76:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+77:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+78:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+79:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+80:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+81:       <span class="ruby-keyword kw">else</span>
+82:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+83:       <span class="ruby-keyword kw">end</span>
+84:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

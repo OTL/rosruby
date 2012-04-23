@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: ROS::TCPROS::Message</title>
+
+	<link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../lib/ros/tcpros/message_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/ros/tcpros/message.rb">lib/ros/tcpros/message.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-read_all">#read_all</a></li>
+					
+					<li><a href="#method-i-read_header">#read_header</a></li>
+					
+					<li><a href="#method-i-write_header">#write_header</a></li>
+					
+					<li><a href="#method-i-write_msg">#write_msg</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../ROS.html">ROS</a></li>
+				
+					<li><a href="../../ROS/Duration.html">ROS::Duration</a></li>
+				
+					<li><a href="../../ROS/GraphManager.html">ROS::GraphManager</a></li>
+				
+					<li><a href="../../ROS/Log.html">ROS::Log</a></li>
+				
+					<li><a href="../../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
+				
+					<li><a href="../../ROS/Message.html">ROS::Message</a></li>
+				
+					<li><a href="../../ROS/Name.html">ROS::Name</a></li>
+				
+					<li><a href="../../ROS/Node.html">ROS::Node</a></li>
+				
+					<li><a href="../../ROS/Package.html">ROS::Package</a></li>
+				
+					<li><a href="../../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
+				
+					<li><a href="../../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
+				
+					<li><a href="../../ROS/Publisher.html">ROS::Publisher</a></li>
+				
+					<li><a href="../../ROS/Rate.html">ROS::Rate</a></li>
+				
+					<li><a href="../../ROS/Service.html">ROS::Service</a></li>
+				
+					<li><a href="../../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
+				
+					<li><a href="../../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
+				
+					<li><a href="../../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
+				
+					<li><a href="../../ROS/Struct.html">ROS::Struct</a></li>
+				
+					<li><a href="../../ROS/Subscriber.html">ROS::Subscriber</a></li>
+				
+					<li><a href="../../ROS/TCPROS.html">ROS::TCPROS</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
+				
+					<li><a href="../../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
+				
+					<li><a href="../../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
+				
+					<li><a href="../../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
+				
+					<li><a href="../../ROS/TVal.html">ROS::TVal</a></li>
+				
+					<li><a href="../../ROS/Time.html">ROS::Time</a></li>
+				
+					<li><a href="../../ROS/Topic.html">ROS::Topic</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="module">ROS::TCPROS::Message</h1>
+
+		<div id="description">
+			<p>
+functions for <a href="../TCPROS.html">TCPROS</a>
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="read-all-method" class="method-detail ">
+				<a name="method-i-read_all"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">read_all</span><span
+						class="method-args">(socket)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+read the size of data and read it from socket @return received data
+(string)
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="read-all-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/message.rb, line 38</span>
+38:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_all</span>(<span class="ruby-identifier">socket</span>)
+39:       <span class="ruby-identifier">total_bytes</span> = <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">&quot;V&quot;</span>)[<span class="ruby-value">0</span>]
+40:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">total_bytes</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">total_bytes</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+41:         <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-identifier">total_bytes</span>)
+42:       <span class="ruby-keyword kw">else</span>
+43:         <span class="ruby-value str">''</span>
+44:       <span class="ruby-keyword kw">end</span>
+45:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="read-header-method" class="method-detail ">
+				<a name="method-i-read_header"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">read_header</span><span
+						class="method-args">(socket)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+read a connection header from socket @return header (<a
+href="Header.html">ROS::TCPROS::Header</a>)
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="read-header-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/message.rb, line 50</span>
+50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_header</span>(<span class="ruby-identifier">socket</span>)
+51:       <span class="ruby-identifier">header</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">TCPROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Header</span>.<span class="ruby-identifier">new</span>
+52:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">deserialize</span>(<span class="ruby-identifier">read_all</span>(<span class="ruby-identifier">socket</span>))
+53:       <span class="ruby-identifier">header</span>
+54:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="write-header-method" class="method-detail ">
+				<a name="method-i-write_header"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">write_header</span><span
+						class="method-args">(socket, header)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+write a connection header to socket
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="write-header-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/message.rb, line 59</span>
+59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_header</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">header</span>)
+60:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">serialize</span>(<span class="ruby-identifier">socket</span>)
+61:       <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">flush</span>
+62:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="write-msg-method" class="method-detail ">
+				<a name="method-i-write_msg"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">write_msg</span><span
+						class="method-args">(socket, msg)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+write message to socket @return wrote bytes
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="write-msg-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ros/tcpros/message.rb, line 24</span>
+24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_msg</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">msg</span>)
+25:       <span class="ruby-identifier">sio</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">''</span>, <span class="ruby-value str">'r+'</span>)
+26:       <span class="ruby-identifier">len</span> = <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">serialize</span>(<span class="ruby-identifier">sio</span>)
+27:       <span class="ruby-identifier">sio</span>.<span class="ruby-identifier">rewind</span>
+28:       <span class="ruby-identifier">data</span> = <span class="ruby-identifier">sio</span>.<span class="ruby-identifier">read</span>
+29:       <span class="ruby-identifier">len</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>
+30:       <span class="ruby-identifier">data</span> = [<span class="ruby-identifier">len</span>, <span class="ruby-identifier">data</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-node">&quot;Va#{len}&quot;</span>)
+31:       <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>)
+32:       <span class="ruby-identifier">data</span>
+33:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
