@@ -33,6 +33,11 @@ class TestRegister < Test::Unit::TestCase
     num = proxy.unregister_publisher('/rosout')
     assert_equal(1, num)
   end
+
+  def test_param_subscriber
+    proxy = ROS::MasterProxy.new('/test_node4', ENV['ROS_MASTER_URI'], 'http://dummy:11111')
+    assert(proxy.subscribe_param('/rosversion'))
+  end
 end
 
 

@@ -13,6 +13,7 @@ require 'ros/name'
 require 'ros/graph_manager'
 require 'ros/publisher'
 require 'ros/subscriber'
+require 'ros/parameter_subscriber'
 require 'ros/service_server'
 require 'ros/service_client'
 require 'ros/log'
@@ -145,7 +146,7 @@ module ROS
 
     ##
     # check if the parameter server has the param for 'key'
-    #
+    # [+return+] true if exits
     def has_param(key)
       @parameter.has_param(key)
     end
@@ -154,16 +155,16 @@ module ROS
     # delete the parameter for 'key'
     #
     # [+key+] key for delete
-    # [return] true if success, false if it is not exist
+    # [+return+] true if success, false if it is not exist
     def delete_param(key)
       @parameter.delete_param(key)
     end
 
     ##
     # set parameter for 'key'
-    # [key] key of parameter
-    # [value] value of parameter
-    # [return] true if succeed
+    # [+key+] key of parameter
+    # [+value+] value of parameter
+    # [+return+] true if succeed
     def set_param(key, value)
       @parameter.set_param(expand_local_name(@node_name, key), value)
     end
@@ -175,6 +176,7 @@ module ROS
     # [+topic_type+] topic class
     # [+latched+] is this latched topic?
     # [+resolve+] if true, use resolve_name for this topic_name
+    # [+return+] Publisher instance
     def advertise(topic_name, topic_type, latched=false, resolve=true)
       if resolve
         name = resolve_name(topic_name)
@@ -197,6 +199,7 @@ module ROS
     # [+service_name+] name of this service (string)
     # [+service_type+] service class
     # [+callback+] service definition
+    # [+return+] ServiceServer instance
     def advertise_service(service_name, service_type, &callback)
       server = ::ROS::ServiceServer.new(@node_name,
                                         resolve_name(service_name),
@@ -211,7 +214,7 @@ module ROS
     # wait until start the service
     # [+service_name+] name of service for waiting
     # [+timeout_sec+] time out seconds. default infinity.
-    #
+    # [+return+] true if success, false if timeouted
     def wait_for_service(service_name, timeout_sec=nil)
       @manager.wait_for_service(service_name, timeout_sec)
     end
@@ -220,6 +223,7 @@ module ROS
     # create service client
     # [+service_name+] name of this service (string)
     # [+service_type+] service class
+    # [+return+] ServiceClient instance
     def service(service_name, service_type)
       ROS::ServiceClient.new(@master_uri,
                              @node_name,
@@ -231,7 +235,8 @@ module ROS
     # start to subscribe
     #
     # [+topic_name+] name of topic (string)
-    # [+topic_type+] topic class
+    # [+topic_type+] Topic instance
+    # [+return+] Subscriber instance
     def subscribe(topic_name, topic_type, &callback)
       sub = Subscriber.new(@node_name,
                            resolve_name(topic_name),
@@ -239,6 +244,18 @@ module ROS
                            callback)
       @manager.add_subscriber(sub)
       trap_signals
+      sub
+    end
+
+    ##
+    # subscribe to the parameter
+    #
+    # [+param+] name of parameter to subscribe
+    # [+callback+] callback when parameter updated
+    # [+return+] ParameterSubscriber instance
+    def subscribe_parameter(param, &callback)
+      sub = ParameterSubscriber.new(param, callback)
+      @manager.add_parameter_subscriber(sub)
       sub
     end
 
@@ -281,6 +298,7 @@ module ROS
     def loginfo(message)
       file, line, function = caller[0].split(':')
       @logger.log('INFO', message, file, function, line.to_i)
+      self
     end
 
     ##
@@ -289,6 +307,7 @@ module ROS
     def logdebug(message)
       file, line, function = caller[0].split(':')
       @logger.log('DEBUG', message, file, function, line.to_i)
+      self
     end
 
     ##
@@ -297,6 +316,7 @@ module ROS
     def logwarn(message)
       file, line, function = caller[0].split(':')
       @logger.log('WARN', message, file, function, line.to_i)
+      self
     end
 
     ##
@@ -305,6 +325,7 @@ module ROS
     def logerror(message)
       file, line, function = caller[0].split(':')
       @logger.log('ERROR', message, file, function, line.to_i)
+      self
     end
 
     alias_method :logerr, :logerror
@@ -315,6 +336,7 @@ module ROS
     def logfatal(message)
       file, line, function = caller[0].split(':')
       @logger.log('FATAL', message, file, function, line.to_i)
+      self
     end
 
     ##

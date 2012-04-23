@@ -103,6 +103,7 @@ class TestNode < Test::Unit::TestCase
     node.set_param('~param2', 10)
     assert_equal(10, node.get_param('/hoge/param2'))
     assert(node.delete_param('~param2'))
+    node.shutdown
   end
 
   def test_fail
@@ -120,4 +121,15 @@ class TestNode < Test::Unit::TestCase
     node.shutdown
   end
 
+  def test_param_subscribe
+    node = ROS::Node.new('/test_param_sub')
+    called = false
+    node.subscribe_parameter('/test_param1') do |param|
+      called = param
+    end
+    node.set_param('/test_param1', 1)
+    sleep(0.1)
+    assert_equal(1, called)
+    node.shutdown
+  end
 end

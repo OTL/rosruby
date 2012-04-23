@@ -24,7 +24,7 @@
 
 require 'ros/topic'
 require 'ros/tcpros/client'
-require 'xmlrpc/client'
+require 'ros/slave_proxy'
 
 module ROS
 
@@ -58,12 +58,9 @@ module ROS
     # request topic to master and start connection with publisher.
     # this creates ROS::TCPROS::Client.
     def add_connection(uri)
-      publisher = XMLRPC::Client.new2(uri)
-      code, message, val =
-        publisher.call("requestTopic",
-                       @caller_id, @topic_name, [["TCPROS"]])
-      if code == 1
-        protocol, host, port = val
+      publisher = SlaveProxy.new(@caller_id, uri)
+      begin
+        protocol, host, port = publisher.request_topic(@topic_name, [["TCPROS"]])
         if protocol == "TCPROS"
           connection = TCPROS::Client.new(host, port, @caller_id, @topic_name, @topic_type, uri, @tcp_no_delay)
           connection.start
@@ -75,8 +72,9 @@ module ROS
         @connection_id_number += 1
         @connections.push(connection)
         return connection
-      else
-        raise "requestTopic fail"
+      rescue
+        puts "request fail"
+        return false
       end
     end
 

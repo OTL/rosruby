@@ -45,6 +45,7 @@ module ROS
       @publishers = []
       @subscribers = []
       @service_servers = []
+      @parameter_subscribers = []
       @server.set_default_handler do |method, *args|
         p 'call!! unhandled'
         p method
@@ -70,15 +71,27 @@ module ROS
       end
 
       @server.add_handler('getSubscriptions') do |caller_id|
-        @subscribers.map do |sub|
+        topic_list = @subscribers.map do |sub|
           [sub.topic_name, sub.topic_type.type]
         end
+        [1, "ok", topic_list]
       end
 
       @server.add_handler('getPublications') do |caller_id|
-        @publishers.map do |pub|
+        topic_list = @publishers.map do |pub|
           [pub.topic_name, pub.topic_type.type]
         end
+        [1, "ok", topic_list]
+      end
+
+      @server.add_handler('paramUpdate') do |caller_id, parameter_key, parameter_value|
+        @parameter_subscribers.each do |param|
+          # parameter_key has / in the end
+          if param.key == @node.canonicalize_name(parameter_key)
+            param.call(parameter_value)
+          end
+        end
+        [1, "ok", 0]
       end
 
       @server.add_handler('requestTopic') do |caller_id, topic, protocols|
@@ -201,6 +214,14 @@ module ROS
       end
       @subscribers.push(subscriber)
       subscriber
+    end
+
+    ##
+    # register callback for paramUpdate
+    #
+    def add_parameter_subscriber(subscriber)
+      @parameter_subscribers.push(subscriber)
+      @master.subscribe_param(subscriber.key)
     end
 
     ##
