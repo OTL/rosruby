@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (ROS::ServiceClient)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 50</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>, <span class="ruby-identifier">persistent</span>=<span class="ruby-keyword kw">false</span>)
+      <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>)
+      <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
+      <span class="ruby-ivar">@persistent</span> = <span class="ruby-identifier">persistent</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

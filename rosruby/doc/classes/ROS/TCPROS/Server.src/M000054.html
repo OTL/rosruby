@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>serve (ROS::TCPROS::Server)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/ros/tcpros/server.rb, line 55</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">serve</span>(<span class="ruby-identifier">socket</span>)
+      <span class="ruby-identifier">header</span> = <span class="ruby-identifier">read_header</span>(<span class="ruby-identifier">socket</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">check_header</span>(<span class="ruby-identifier">header</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">header</span>[<span class="ruby-value str">'tcp_nodelay'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'1'</span>
+          <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">setsockopt</span>(<span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">IPPROTO_TCP</span>, <span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">TCP_NODELAY</span>, <span class="ruby-value">1</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">write_header</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">build_header</span>)
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">latching?</span>
+            <span class="ruby-identifier">publish_msg</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-ivar">@last_published_msg</span>)
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">publish_msg</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-ivar">@msg_queue</span>.<span class="ruby-identifier">pop</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">rescue</span>
+          <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">shutdown</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">shutdown</span>
+        <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;header check error: #{header}&quot;</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">'header check error'</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

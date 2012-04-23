@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>start (ROS::TCPROS::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/ros/tcpros/client.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>
+      <span class="ruby-identifier">write_header</span>(<span class="ruby-ivar">@socket</span>, <span class="ruby-identifier">build_header</span>)
+      <span class="ruby-identifier">read_header</span>(<span class="ruby-ivar">@socket</span>)
+      <span class="ruby-ivar">@thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">start</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@is_running</span>
+          <span class="ruby-identifier">data</span> = <span class="ruby-identifier">read_all</span>(<span class="ruby-ivar">@socket</span>)
+          <span class="ruby-identifier">msg</span> = <span class="ruby-ivar">@topic_type</span>.<span class="ruby-identifier">new</span>
+          <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">deserialize</span>(<span class="ruby-identifier">data</span>)
+          <span class="ruby-ivar">@byte_received</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>
+          <span class="ruby-ivar">@msg_queue</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">msg</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

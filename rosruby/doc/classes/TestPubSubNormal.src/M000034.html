@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_shutdown_by_publisher_or_subscriber_directly (TestPubSubNormal)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_pubsub.rb, line 111</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_shutdown_by_publisher_or_subscriber_directly</span>
+    <span class="ruby-identifier">node</span> = <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'/test4'</span>)
+    <span class="ruby-identifier">pub</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">advertise</span>(<span class="ruby-value str">'/hoge'</span>, <span class="ruby-constant">Std_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
+    <span class="ruby-identifier">proxy</span> = <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">MasterProxy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'/test_node'</span>, <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_MASTER_URI'</span>], <span class="ruby-value str">'http://dummy:11111'</span>)
+    <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">proxy</span>.<span class="ruby-identifier">get_published_topics</span>.<span class="ruby-identifier">include?</span>([<span class="ruby-value str">&quot;/hoge&quot;</span>, <span class="ruby-value str">&quot;std_msgs/String&quot;</span>]))
+    <span class="ruby-identifier">pub</span>.<span class="ruby-identifier">shutdown</span>
+    <span class="ruby-identifier">assert</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">proxy</span>.<span class="ruby-identifier">get_published_topics</span>.<span class="ruby-identifier">include?</span>([<span class="ruby-value str">&quot;/hoge&quot;</span>, <span class="ruby-value str">&quot;std_msgs/String&quot;</span>]))
+
+    <span class="ruby-identifier">sub1</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value str">'/hoge'</span>, <span class="ruby-constant">Std_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
+    <span class="ruby-identifier">pub</span>, <span class="ruby-identifier">sub</span>, <span class="ruby-identifier">ser</span> = <span class="ruby-identifier">proxy</span>.<span class="ruby-identifier">get_system_state</span>
+    <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">sub</span>.<span class="ruby-identifier">include?</span>([<span class="ruby-value str">&quot;/hoge&quot;</span>, [<span class="ruby-value str">&quot;/test4&quot;</span>]]))
+    <span class="ruby-identifier">sub1</span>.<span class="ruby-identifier">shutdown</span>
+    <span class="ruby-identifier">pub</span>, <span class="ruby-identifier">sub</span>, <span class="ruby-identifier">ser</span> = <span class="ruby-identifier">proxy</span>.<span class="ruby-identifier">get_system_state</span>
+    <span class="ruby-identifier">assert</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">sub</span>.<span class="ruby-identifier">include?</span>([<span class="ruby-value str">&quot;/hoge&quot;</span>, [<span class="ruby-value str">&quot;/test4&quot;</span>]]))
+
+    <span class="ruby-identifier">node</span>.<span class="ruby-identifier">shutdown</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

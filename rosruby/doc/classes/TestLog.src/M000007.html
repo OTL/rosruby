@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_output (TestLog)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_log.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_output</span>
+    <span class="ruby-identifier">node1</span> = <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'/test_log'</span>)
+    <span class="ruby-identifier">check_msg</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">sub</span> = <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value str">'/rosout'</span>, <span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">check_msg</span> = <span class="ruby-identifier">msg</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">loginfo</span>(<span class="ruby-value str">'msg1'</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.5</span>)
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">spin_once</span>
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">'msg1'</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">msg</span>)
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">INFO</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">level</span>)
+
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">logerror</span>(<span class="ruby-value str">'msg2'</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.1</span>)
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">spin_once</span>
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">'msg2'</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">msg</span>)
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">level</span>)
+
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">logfatal</span>(<span class="ruby-value str">'msg3'</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.1</span>)
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">spin_once</span>
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">'msg3'</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">msg</span>)
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">FATAL</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">level</span>)
+
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">logfatal</span>(<span class="ruby-value str">'msg4'</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.1</span>)
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">spin_once</span>
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">'msg4'</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">msg</span>)
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">FATAL</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">level</span>)
+
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">logwarn</span>(<span class="ruby-value str">'msg5'</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.1</span>)
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">spin_once</span>
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">'msg5'</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">msg</span>)
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">WARN</span>, <span class="ruby-identifier">check_msg</span>.<span class="ruby-identifier">level</span>)
+
+    <span class="ruby-identifier">node1</span>.<span class="ruby-identifier">shutdown</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

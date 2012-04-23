@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>read_and_callback (ROS::TCPROS::ServiceServer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_and_callback</span>(<span class="ruby-identifier">socket</span>)
+      <span class="ruby-identifier">request</span> = <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">request_class</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">response_class</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-identifier">data</span> = <span class="ruby-identifier">read_all</span>(<span class="ruby-identifier">socket</span>)
+      <span class="ruby-ivar">@byte_received</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>
+      <span class="ruby-identifier">request</span>.<span class="ruby-identifier">deserialize</span>(<span class="ruby-identifier">data</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@callback</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">request</span>, <span class="ruby-identifier">response</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>
+        <span class="ruby-identifier">send_ok_byte</span>(<span class="ruby-identifier">socket</span>)
+        <span class="ruby-identifier">data</span> = <span class="ruby-identifier">write_msg</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">response</span>)
+        <span class="ruby-ivar">@byte_sent</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">send_ng_byte</span>(<span class="ruby-identifier">socket</span>)
+        <span class="ruby-identifier">write_header</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">build_header</span>)
+        <span class="ruby-comment cmt"># write some message</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">result</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>main (samples/sample_log.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File samples/sample_log.rb, line 5</span>
+<span class="ruby-keyword kw">def</span> <span class="ruby-identifier">main</span>
+  <span class="ruby-identifier">node</span> = <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'/hoge'</span>)
+  <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">loginfo</span>(<span class="ruby-value str">'some information'</span>)
+  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">logdebug</span>(<span class="ruby-value str">'some debug information'</span>)
+  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">logerr</span>(<span class="ruby-value str">'some error information'</span>)
+  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">logerror</span>(<span class="ruby-value str">'some error information'</span>)
+  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">logfatal</span>(<span class="ruby-value str">'some fatal information'</span>)
+  <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+<span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

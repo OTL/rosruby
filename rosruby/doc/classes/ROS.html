@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ROS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ROS</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/ros/ros_rb.html">
+                lib/ros/ros.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/duration_rb.html">
+                lib/ros/duration.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/parameter_subscriber_rb.html">
+                lib/ros/parameter_subscriber.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/subscriber_rb.html">
+                lib/ros/subscriber.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/service_rb.html">
+                lib/ros/service.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/parameter_manager_rb.html">
+                lib/ros/parameter_manager.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/rate_rb.html">
+                lib/ros/rate.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/master_proxy_rb.html">
+                lib/ros/master_proxy.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/log_rb.html">
+                lib/ros/log.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/slave_proxy_rb.html">
+                lib/ros/slave_proxy.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/publisher_rb.html">
+                lib/ros/publisher.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/graph_manager_rb.html">
+                lib/ros/graph_manager.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/topic_rb.html">
+                lib/ros/topic.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/package_rb.html">
+                lib/ros/package.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/service_server_rb.html">
+                lib/ros/service_server.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/node_rb.html">
+                lib/ros/node.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/name_rb.html">
+                lib/ros/name.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/message_rb.html">
+                lib/ros/message.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/time_rb.html">
+                lib/ros/time.rb
+                </a>
+        <br />
+                <a href="../files/lib/ros/service_client_rb.html">
+                lib/ros/service_client.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+ros/time.rb
+</p>
+<p>
+License: BSD
+</p>
+<p>
+Copyright (C) 2012 Takashi Ogura &lt;t.ogura@gmail.com&gt;
+</p>
+<p>
+<a href="ROS/Time.html">Time</a> object for <a href="ROS.html">ROS</a>.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000035">load_manifest</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="ROS/Name.html" class="link">ROS::Name</a><br />
+Module <a href="ROS/TCPROS.html" class="link">ROS::TCPROS</a><br />
+Class <a href="ROS/Duration.html" class="link">ROS::Duration</a><br />
+Class <a href="ROS/GraphManager.html" class="link">ROS::GraphManager</a><br />
+Class <a href="ROS/Log.html" class="link">ROS::Log</a><br />
+Class <a href="ROS/MasterProxy.html" class="link">ROS::MasterProxy</a><br />
+Class <a href="ROS/Message.html" class="link">ROS::Message</a><br />
+Class <a href="ROS/Node.html" class="link">ROS::Node</a><br />
+Class <a href="ROS/Package.html" class="link">ROS::Package</a><br />
+Class <a href="ROS/ParameterManager.html" class="link">ROS::ParameterManager</a><br />
+Class <a href="ROS/ParameterSubscriber.html" class="link">ROS::ParameterSubscriber</a><br />
+Class <a href="ROS/Publisher.html" class="link">ROS::Publisher</a><br />
+Class <a href="ROS/Rate.html" class="link">ROS::Rate</a><br />
+Class <a href="ROS/Service.html" class="link">ROS::Service</a><br />
+Class <a href="ROS/ServiceClient.html" class="link">ROS::ServiceClient</a><br />
+Class <a href="ROS/ServiceServer.html" class="link">ROS::ServiceServer</a><br />
+Class <a href="ROS/SlaveProxy.html" class="link">ROS::SlaveProxy</a><br />
+Class <a href="ROS/Struct.html" class="link">ROS::Struct</a><br />
+Class <a href="ROS/Subscriber.html" class="link">ROS::Subscriber</a><br />
+Class <a href="ROS/TVal.html" class="link">ROS::TVal</a><br />
+Class <a href="ROS/Time.html" class="link">ROS::Time</a><br />
+Class <a href="ROS/Topic.html" class="link">ROS::Topic</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="ROS.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('ROS.src/M000035.html');return false;">
+          <span class="method-name">load_manifest</span><span class="method-args">(package)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+load manifest and add all dependencies
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ROS::GraphManager</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ROS::GraphManager</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/ros/graph_manager_rb.html">
+                lib/ros/graph_manager.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Manager of <a href="../ROS.html">ROS</a> graph</h1>
+<pre>
+ this contains all subscribers, publishers, service_servers of a node.
+ Master API document is http://ros.org/wiki/ROS/Master_API
+ Slave API is http://ros.org/wiki/ROS/Slave_API
+
+ connect with master and manage pub/sub and services
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000176">add_parameter_subscriber</a>&nbsp;&nbsp;
+      <a href="#M000177">add_publisher</a>&nbsp;&nbsp;
+      <a href="#M000174">add_service_server</a>&nbsp;&nbsp;
+      <a href="#M000175">add_subscriber</a>&nbsp;&nbsp;
+      <a href="#M000171">get_available_port</a>&nbsp;&nbsp;
+      <a href="#M000172">get_uri</a>&nbsp;&nbsp;
+      <a href="#M000170">new</a>&nbsp;&nbsp;
+      <a href="#M000182">shutdown</a>&nbsp;&nbsp;
+      <a href="#M000179">shutdown_publisher</a>&nbsp;&nbsp;
+      <a href="#M000181">shutdown_service_server</a>&nbsp;&nbsp;
+      <a href="#M000180">shutdown_subscriber</a>&nbsp;&nbsp;
+      <a href="#M000178">spin_once</a>&nbsp;&nbsp;
+      <a href="#M000173">wait_for_service</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">MAX_CONNECTION</td>
+          <td>=</td>
+          <td class="context-item-value">100</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+max number of connection with other slave nodes
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">host</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">port</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">publishers</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">service_servers</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">subscribers</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000170" class="method-detail">
+        <a name="M000170"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000170.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000170.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(caller_id, node)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+add xmlrpc handlers for slave connections. Then start serve thread.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000176" class="method-detail">
+        <a name="M000176"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000176.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000176.html');return false;">
+          <span class="method-name">add_parameter_subscriber</span><span class="method-args">(subscriber)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+register callback for paramUpdate
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000177" class="method-detail">
+        <a name="M000177"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000177.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000177.html');return false;">
+          <span class="method-name">add_publisher</span><span class="method-args">(publisher)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+register a publisher. raise if fail.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000174" class="method-detail">
+        <a name="M000174"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000174.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000174.html');return false;">
+          <span class="method-name">add_service_server</span><span class="method-args">(service_server)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+register a service to master, and add it in the controlling server list.
+raise if fail.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000175" class="method-detail">
+        <a name="M000175"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000175.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000175.html');return false;">
+          <span class="method-name">add_subscriber</span><span class="method-args">(subscriber)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+register a subscriber to master. raise if fail.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000171" class="method-detail">
+        <a name="M000171"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000171.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000171.html');return false;">
+          <span class="method-name">get_available_port</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+get available port number by opening port 0. @return port_num
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000172" class="method-detail">
+        <a name="M000172"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000172.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000172.html');return false;">
+          <span class="method-name">get_uri</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+get this slave node&#8216;s URI @return uri
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000182" class="method-detail">
+        <a name="M000182"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000182.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000182.html');return false;">
+          <span class="method-name">shutdown</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="GraphManager.html#M000182">shutdown</a> this slave node. <a
+href="GraphManager.html#M000182">shutdown</a> the xmlrpc server and all
+pub/sub connections. and delelte all pub/sub instance from connection list
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000179" class="method-detail">
+        <a name="M000179"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000179.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000179.html');return false;">
+          <span class="method-name">shutdown_publisher</span><span class="method-args">(publisher)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000181" class="method-detail">
+        <a name="M000181"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000181.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000181.html');return false;">
+          <span class="method-name">shutdown_service_server</span><span class="method-args">(service)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000180" class="method-detail">
+        <a name="M000180"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000180.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000180.html');return false;">
+          <span class="method-name">shutdown_subscriber</span><span class="method-args">(subscriber)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000178" class="method-detail">
+        <a name="M000178"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000178.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000178.html');return false;">
+          <span class="method-name">spin_once</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+process all messages of subscribers
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000173" class="method-detail">
+        <a name="M000173"></a>
+
+        <div class="method-heading">
+          <a href="GraphManager.src/M000173.html" target="Code" class="method-signature"
+            onclick="popupCode('GraphManager.src/M000173.html');return false;">
+          <span class="method-name">wait_for_service</span><span class="method-args">(service_name, timeout_sec)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+wait until service is available @param [in] service_name @param [in]
+timeout_sec @return true: available, false: time out
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

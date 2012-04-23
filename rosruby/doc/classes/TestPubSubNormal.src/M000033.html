@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_single_pubsub (TestPubSubNormal)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_pubsub.rb, line 67</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_single_pubsub</span>
+    <span class="ruby-identifier">node</span> = <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'/test3'</span>)
+    <span class="ruby-identifier">pub1</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">advertise</span>(<span class="ruby-value str">'/chatter'</span>, <span class="ruby-constant">Std_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
+
+    <span class="ruby-identifier">pub_msg1</span> = <span class="ruby-constant">Std_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">pub_msg1</span>.<span class="ruby-identifier">data</span> = <span class="ruby-constant">TEST_STRING1</span>
+
+    <span class="ruby-identifier">message_has_come1</span> = <span class="ruby-keyword kw">nil</span>
+
+    <span class="ruby-identifier">sub1</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value str">'/chatter'</span>, <span class="ruby-constant">Std_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">data</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TEST_STRING1</span>
+        <span class="ruby-identifier">message_has_come1</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-comment cmt"># wait for registration and update</span>
+
+    <span class="ruby-identifier">pub1</span>.<span class="ruby-identifier">publish</span>(<span class="ruby-identifier">pub_msg1</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+    <span class="ruby-identifier">node</span>.<span class="ruby-identifier">spin_once</span>
+    <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">message_has_come1</span>)
+
+    <span class="ruby-identifier">assert_equal</span>([[<span class="ruby-value str">&quot;/chatter_out_0&quot;</span>, <span class="ruby-value">13</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>]], <span class="ruby-identifier">pub1</span>.<span class="ruby-identifier">get_connection_data</span>)
+    <span class="ruby-identifier">assert_equal</span>([[<span class="ruby-value str">&quot;/chatter_in_0&quot;</span>, <span class="ruby-value">9</span>, <span class="ruby-value">1</span>]], <span class="ruby-identifier">sub1</span>.<span class="ruby-identifier">get_connection_data</span>)
+
+    <span class="ruby-identifier">pub_info</span> = <span class="ruby-identifier">pub1</span>.<span class="ruby-identifier">get_connection_info</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;/chatter_out_0&quot;</span>, <span class="ruby-identifier">pub_info</span>[<span class="ruby-value">0</span>])
+    <span class="ruby-comment cmt"># incomplete</span>
+<span class="ruby-comment cmt">#    assert(/^http:.*:[0-9]+/=~, pub_info[1])</span>
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;o&quot;</span>, <span class="ruby-identifier">pub_info</span>[<span class="ruby-value">2</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;TCPROS&quot;</span>, <span class="ruby-identifier">pub_info</span>[<span class="ruby-value">3</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;/chatter&quot;</span>, <span class="ruby-identifier">pub_info</span>[<span class="ruby-value">4</span>])
+
+    <span class="ruby-identifier">sub_info</span> = <span class="ruby-identifier">sub1</span>.<span class="ruby-identifier">get_connection_info</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;/chatter_in_0&quot;</span>, <span class="ruby-identifier">sub_info</span>[<span class="ruby-value">0</span>])
+    <span class="ruby-identifier">assert</span>(<span class="ruby-regexp re">/^http:.*[0-9]+/</span><span class="ruby-operator">=~</span> <span class="ruby-identifier">sub_info</span>[<span class="ruby-value">1</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;i&quot;</span>, <span class="ruby-identifier">sub_info</span>[<span class="ruby-value">2</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;TCPROS&quot;</span>, <span class="ruby-identifier">sub_info</span>[<span class="ruby-value">3</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">&quot;/chatter&quot;</span>, <span class="ruby-identifier">sub_info</span>[<span class="ruby-value">4</span>])
+
+    <span class="ruby-identifier">node</span>.<span class="ruby-identifier">shutdown</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>add_connection (ROS::Subscriber)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/ros/subscriber.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_connection</span>(<span class="ruby-identifier">uri</span>)
+      <span class="ruby-identifier">publisher</span> = <span class="ruby-constant">SlaveProxy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">uri</span>)
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">protocol</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span> = <span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">request_topic</span>(<span class="ruby-ivar">@topic_name</span>, [[<span class="ruby-value str">&quot;TCPROS&quot;</span>]])
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">protocol</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;TCPROS&quot;</span>
+          <span class="ruby-identifier">connection</span> = <span class="ruby-constant">TCPROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@topic_name</span>, <span class="ruby-ivar">@topic_type</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-ivar">@tcp_no_delay</span>)
+          <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">start</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;not support protocol: #{protocol}&quot;</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;not support protocol: #{protocol}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">id</span> = <span class="ruby-node">&quot;#{@topic_name}_in_#{@connection_id_number}&quot;</span>
+        <span class="ruby-ivar">@connection_id_number</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">connection</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">connection</span>
+      <span class="ruby-keyword kw">rescue</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;request fail&quot;</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

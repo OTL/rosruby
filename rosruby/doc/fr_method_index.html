@@ -1,0 +1,225 @@
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+
+    Methods
+
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Methods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="rdoc-style.css" type="text/css" />
+  <base target="docwin" />
+</head>
+<body>
+<div id="index">
+  <h1 class="section-bar">Methods</h1>
+  <div id="index-entries">
+    <a href="classes/ROS/Time.html#M000134">+ (ROS::Time)</a><br />
+    <a href="classes/ROS/Duration.html#M000097">+ (ROS::Duration)</a><br />
+    <a href="classes/ROS/Duration.html#M000098">- (ROS::Duration)</a><br />
+    <a href="classes/ROS/Time.html#M000135">- (ROS::Time)</a><br />
+    <a href="classes/ROS/TVal.html#M000093"><=> (ROS::TVal)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000061">[] (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000060">[]= (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/Subscriber.html#M000086">add_connection (ROS::Subscriber)</a><br />
+    <a href="classes/ROS/Publisher.html#M000105">add_connection (ROS::Publisher)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000176">add_parameter_subscriber (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/Package.html#M000141">add_path_of_package (ROS::Package)</a><br />
+    <a href="classes/ROS/Package.html#M000142">add_path_with_depend_packages (ROS::Package)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000177">add_publisher (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000174">add_service_server (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000175">add_subscriber (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/Node.html#M000154">advertise (ROS::Node)</a><br />
+    <a href="classes/ROS/Node.html#M000155">advertise_service (ROS::Node)</a><br />
+    <a href="classes/ROS/Name.html#M000038">anonymous_name (ROS::Name)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceClient.html#M000066">build_header (ROS::TCPROS::ServiceClient)</a><br />
+    <a href="classes/ROS/TCPROS/Client.html#M000072">build_header (ROS::TCPROS::Client)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceServer.html#M000050">build_header (ROS::TCPROS::ServiceServer)</a><br />
+    <a href="classes/ROS/TCPROS/Server.html#M000056">build_header (ROS::TCPROS::Server)</a><br />
+    <a href="classes/ROS/ParameterSubscriber.html#M000199">call (ROS::ParameterSubscriber)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceClient.html#M000067">call (ROS::TCPROS::ServiceClient)</a><br />
+    <a href="classes/ROS/ServiceServer.html#M000078">call (ROS::ServiceServer)</a><br />
+    <a href="classes/ROS/ServiceClient.html#M000130">call (ROS::ServiceClient)</a><br />
+    <a href="classes/ROS/TVal.html#M000090">canonicalize (ROS::TVal)</a><br />
+    <a href="classes/ROS/Name.html#M000036">canonicalize_name (ROS::Name)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceServer.html#M000049">check_header (ROS::TCPROS::ServiceServer)</a><br />
+    <a href="classes/ROS/TCPROS/Server.html#M000055">check_header (ROS::TCPROS::Server)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceClient.html#M000069">check_header (ROS::TCPROS::ServiceClient)</a><br />
+    <a href="classes/ROS/ServiceServer.html#M000080">close (ROS::ServiceServer)</a><br />
+    <a href="classes/ROS/Topic.html#M000101">close (ROS::Topic)</a><br />
+    <a href="classes/ROS/Node.html#M000152">delete_param (ROS::Node)</a><br />
+    <a href="classes/ROS/ParameterManager.html#M000123">delete_param (ROS::ParameterManager)</a><br />
+    <a href="classes/ROS/Package.html#M000138">depends (ROS::Package)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000062">deserialize (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/Name.html#M000037">expand_local_name (ROS::Name)</a><br />
+    <a href="classes/ROS/Package.html#M000137">find_all_packages (ROS::Package)</a><br />
+    <a href="classes/ROS/Package.html#M000139">find_this_package (ROS::Package)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000171">get_available_port (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000111">get_bus_info (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000110">get_bus_stats (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/Publisher.html#M000106">get_connection_data (ROS::Publisher)</a><br />
+    <a href="classes/ROS/Subscriber.html#M000087">get_connection_data (ROS::Subscriber)</a><br />
+    <a href="classes/ROS/ServiceServer.html#M000083">get_connection_data (ROS::ServiceServer)</a><br />
+    <a href="classes/ROS/Subscriber.html#M000088">get_connection_info (ROS::Subscriber)</a><br />
+    <a href="classes/ROS/Publisher.html#M000107">get_connection_info (ROS::Publisher)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000059">get_data (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/ServiceClient.html#M000129">get_host_port_from_uri (ROS::ServiceClient)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000112">get_master_uri (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/ParameterManager.html#M000121">get_param (ROS::ParameterManager)</a><br />
+    <a href="classes/ROS/Node.html#M000149">get_param (ROS::Node)</a><br />
+    <a href="classes/ROS/ParameterManager.html#M000126">get_param_names (ROS::ParameterManager)</a><br />
+    <a href="classes/ROS/Node.html#M000150">get_param_names (ROS::Node)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000114">get_pid (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000116">get_publications (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000192">get_published_topics (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/Node.html#M000169">get_published_topics (ROS::Node)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000115">get_subscriptions (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000193">get_system_state (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000172">get_uri (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000194">get_uri (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/Node.html#M000151">has_param (ROS::Node)</a><br />
+    <a href="classes/ROS/ParameterManager.html#M000125">has_param (ROS::ParameterManager)</a><br />
+    <a href="classes/ROS/TCPROS/Server.html#M000052">latching? (ROS::TCPROS::Server)</a><br />
+    <a href="classes/ROS.html#M000035">load_manifest (ROS)</a><br />
+    <a href="classes/ROS/Log.html#M000076">log (ROS::Log)</a><br />
+    <a href="classes/ROS/Node.html#M000164">logdebug (ROS::Node)</a><br />
+    <a href="classes/ROS/Node.html#M000167">logerr (ROS::Node)</a><br />
+    <a href="classes/ROS/Node.html#M000166">logerror (ROS::Node)</a><br />
+    <a href="classes/ROS/Node.html#M000168">logfatal (ROS::Node)</a><br />
+    <a href="classes/ROS/Node.html#M000163">loginfo (ROS::Node)</a><br />
+    <a href="classes/ROS/Node.html#M000165">logwarn (ROS::Node)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000191">lookup_node (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000195">lookup_service (ROS::MasterProxy)</a><br />
+    <a href="files/samples/add_two_ints_client_rb.html#M000004">main (samples/add_two_ints_client.rb)</a><br />
+    <a href="files/samples/add_two_ints_server_rb.html#M000006">main (samples/add_two_ints_server.rb)</a><br />
+    <a href="files/samples/sample_subscriber_rb.html#M000003">main (samples/sample_subscriber.rb)</a><br />
+    <a href="files/samples/sample_log_rb.html#M000002">main (samples/sample_log.rb)</a><br />
+    <a href="files/samples/sample_param_rb.html#M000005">main (samples/sample_param.rb)</a><br />
+    <a href="files/samples/sample_publisher_rb.html#M000001">main (samples/sample_publisher.rb)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000196">master_uri (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000197">master_uri= (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000170">new (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/ServiceServer.html#M000077">new (ROS::ServiceServer)</a><br />
+    <a href="classes/ROS/Log.html#M000075">new (ROS::Log)</a><br />
+    <a href="classes/ROS/TCPROS/Client.html#M000071">new (ROS::TCPROS::Client)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000183">new (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000057">new (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/Node.html#M000146">new (ROS::Node)</a><br />
+    <a href="classes/ROS/Struct.html#M000143">new (ROS::Struct)</a><br />
+    <a href="classes/ROS/Package.html#M000140">new (ROS::Package)</a><br />
+    <a href="classes/ROS/Rate.html#M000094">new (ROS::Rate)</a><br />
+    <a href="classes/ROS/Subscriber.html#M000084">new (ROS::Subscriber)</a><br />
+    <a href="classes/ROS/Duration.html#M000096">new (ROS::Duration)</a><br />
+    <a href="classes/ROS/ServiceClient.html#M000128">new (ROS::ServiceClient)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000109">new (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceServer.html#M000044">new (ROS::TCPROS::ServiceServer)</a><br />
+    <a href="classes/ROS/Topic.html#M000100">new (ROS::Topic)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceClient.html#M000065">new (ROS::TCPROS::ServiceClient)</a><br />
+    <a href="classes/ROS/ParameterManager.html#M000120">new (ROS::ParameterManager)</a><br />
+    <a href="classes/ROS/Publisher.html#M000103">new (ROS::Publisher)</a><br />
+    <a href="classes/ROS/ParameterSubscriber.html#M000198">new (ROS::ParameterSubscriber)</a><br />
+    <a href="classes/ROS/TCPROS/Server.html#M000051">new (ROS::TCPROS::Server)</a><br />
+    <a href="classes/ROS/Time.html#M000133">new (ROS::Time)</a><br />
+    <a href="classes/ROS/Service.html#M000127">new (ROS::Service)</a><br />
+    <a href="classes/ROS/Time.html#M000132">now (ROS::Time)</a><br />
+    <a href="classes/ROS/Node.html#M000147">ok? (ROS::Node)</a><br />
+    <a href="classes/ROS/Struct.html#M000144">pack (ROS::Struct)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000117">param_update (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/Subscriber.html#M000085">process_queue (ROS::Subscriber)</a><br />
+    <a href="classes/ROS/Publisher.html#M000104">publish (ROS::Publisher)</a><br />
+    <a href="classes/ROS/TCPROS/Server.html#M000053">publish_msg (ROS::TCPROS::Server)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000118">publisher_update (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000058">push_data (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/TCPROS/Message.html#M000041">read_all (ROS::TCPROS::Message)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceServer.html#M000047">read_and_callback (ROS::TCPROS::ServiceServer)</a><br />
+    <a href="classes/ROS/Package.html#M000136">read_cache_or_find_all (ROS::Package)</a><br />
+    <a href="classes/ROS/TCPROS/Message.html#M000042">read_header (ROS::TCPROS::Message)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceClient.html#M000068">read_ok_byte (ROS::TCPROS::ServiceClient)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000188">register_publisher (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000184">register_service (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000186">register_subscriber (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000119">request_topic (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/Node.html#M000148">resolve_name (ROS::Node)</a><br />
+    <a href="classes/ROS/Name.html#M000039">resolve_name_with_call_id (ROS::Name)</a><br />
+    <a href="classes/ROS/ParameterManager.html#M000124">search_param (ROS::ParameterManager)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceServer.html#M000046">send_ng_byte (ROS::TCPROS::ServiceServer)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceServer.html#M000045">send_ok_byte (ROS::TCPROS::ServiceServer)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000064">serialize (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceServer.html#M000048">serve (ROS::TCPROS::ServiceServer)</a><br />
+    <a href="classes/ROS/TCPROS/Server.html#M000054">serve (ROS::TCPROS::Server)</a><br />
+    <a href="classes/ROS/Node.html#M000157">service (ROS::Node)</a><br />
+    <a href="classes/ROS/ServiceServer.html#M000079">service_uri (ROS::ServiceServer)</a><br />
+    <a href="classes/ROS/Topic.html#M000102">set_manager (ROS::Topic)</a><br />
+    <a href="classes/ROS/ServiceServer.html#M000082">set_manager (ROS::ServiceServer)</a><br />
+    <a href="classes/ROS/Node.html#M000153">set_param (ROS::Node)</a><br />
+    <a href="classes/ROS/ParameterManager.html#M000122">set_param (ROS::ParameterManager)</a><br />
+    <a href="classes/ROS/Node.html#M000162">shutdown (ROS::Node)</a><br />
+    <a href="classes/ROS/TCPROS/ServiceClient.html#M000070">shutdown (ROS::TCPROS::ServiceClient)</a><br />
+    <a href="classes/ROS/ServiceServer.html#M000081">shutdown (ROS::ServiceServer)</a><br />
+    <a href="classes/ROS/ServiceClient.html#M000131">shutdown (ROS::ServiceClient)</a><br />
+    <a href="classes/ROS/SlaveProxy.html#M000113">shutdown (ROS::SlaveProxy)</a><br />
+    <a href="classes/ROS/TCPROS/Client.html#M000074">shutdown (ROS::TCPROS::Client)</a><br />
+    <a href="classes/ROS/Subscriber.html#M000089">shutdown (ROS::Subscriber)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000182">shutdown (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/Publisher.html#M000108">shutdown (ROS::Publisher)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000179">shutdown_publisher (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000181">shutdown_service_server (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000180">shutdown_subscriber (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/Duration.html#M000099">sleep (ROS::Duration)</a><br />
+    <a href="classes/ROS/Rate.html#M000095">sleep (ROS::Rate)</a><br />
+    <a href="classes/ROS/Node.html#M000161">spin (ROS::Node)</a><br />
+    <a href="classes/ROS/Node.html#M000160">spin_once (ROS::Node)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000178">spin_once (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/TCPROS/Client.html#M000073">start (ROS::TCPROS::Client)</a><br />
+    <a href="classes/ROS/Node.html#M000158">subscribe (ROS::Node)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000190">subscribe_param (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/Node.html#M000159">subscribe_parameter (ROS::Node)</a><br />
+    <a href="classes/TestSystem.html#M000010">test_accessor (TestSystem)</a><br />
+    <a href="classes/TestNode.html#M000013">test_anonymous (TestNode)</a><br />
+    <a href="classes/TestParam_Normal.html#M000026">test_check_string (TestParam_Normal)</a><br />
+    <a href="classes/TestPubSubNormal.html#M000032">test_double_pubsub (TestPubSubNormal)</a><br />
+    <a href="classes/TestNode.html#M000019">test_fail (TestNode)</a><br />
+    <a href="classes/TestSystem.html#M000009">test_lookup (TestSystem)</a><br />
+    <a href="classes/TestNode.html#M000016">test_master_uri (TestNode)</a><br />
+    <a href="classes/TestNode.html#M000012">test_multi_up_down (TestNode)</a><br />
+    <a href="classes/TestNode.html#M000014">test_not_anonymous (TestNode)</a><br />
+    <a href="classes/TestLog.html#M000007">test_output (TestLog)</a><br />
+    <a href="classes/TestParam_Normal.html#M000024">test_param_manager (TestParam_Normal)</a><br />
+    <a href="classes/TestNode.html#M000018">test_param_private (TestNode)</a><br />
+    <a href="classes/TestNode.html#M000017">test_param_set_get (TestNode)</a><br />
+    <a href="classes/TestNode.html#M000021">test_param_subscribe (TestNode)</a><br />
+    <a href="classes/TestRegister.html#M000031">test_param_subscriber (TestRegister)</a><br />
+    <a href="classes/TestRegister.html#M000030">test_publisher (TestRegister)</a><br />
+    <a href="classes/TestNode.html#M000020">test_resolve_name (TestNode)</a><br />
+    <a href="classes/TestParam_Normal.html#M000025">test_serialize (TestParam_Normal)</a><br />
+    <a href="classes/TestService.html#M000022">test_service (TestService)</a><br />
+    <a href="classes/TestRegister.html#M000028">test_service (TestRegister)</a><br />
+    <a href="classes/TestPubSubNormal.html#M000034">test_shutdown_by_publisher_or_subscriber_directly (TestPubSubNormal)</a><br />
+    <a href="classes/TestNode.html#M000015">test_signal (TestNode)</a><br />
+    <a href="classes/TestPubSubNormal.html#M000033">test_single_pubsub (TestPubSubNormal)</a><br />
+    <a href="classes/TestSlaveProxy.html#M000023">test_slave1 (TestSlaveProxy)</a><br />
+    <a href="classes/TestRate_rate.html#M000027">test_sleep (TestRate_rate)</a><br />
+    <a href="classes/TestRegister.html#M000029">test_subscriber (TestRegister)</a><br />
+    <a href="classes/TestTime.html#M000008">test_time (TestTime)</a><br />
+    <a href="classes/TestNode.html#M000011">test_up_down (TestNode)</a><br />
+    <a href="classes/ROS/TVal.html#M000092">to_nsec (ROS::TVal)</a><br />
+    <a href="classes/ROS/TVal.html#M000091">to_sec (ROS::TVal)</a><br />
+    <a href="classes/ROS/Struct.html#M000145">unpack (ROS::Struct)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000189">unregister_publisher (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000185">unregister_service (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/MasterProxy.html#M000187">unregister_subscriber (ROS::MasterProxy)</a><br />
+    <a href="classes/ROS/TCPROS/Header.html#M000063">valid? (ROS::TCPROS::Header)</a><br />
+    <a href="classes/ROS/Node.html#M000156">wait_for_service (ROS::Node)</a><br />
+    <a href="classes/ROS/GraphManager.html#M000173">wait_for_service (ROS::GraphManager)</a><br />
+    <a href="classes/ROS/TCPROS/Message.html#M000043">write_header (ROS::TCPROS::Message)</a><br />
+    <a href="classes/ROS/TCPROS/Message.html#M000040">write_msg (ROS::TCPROS::Message)</a><br />
+  </div>
+</div>
+</body>
+</html>
