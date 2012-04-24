@@ -22,40 +22,35 @@ require 'ros/duration'
 
 module ROS
 
-=begin rdoc
-
-= ROS Node
-
-main interface of rosruby.
-This class has many inner informations.
-It may be better to use pimpl pattern.
-
-== Sample for Publisher
-
-  node = ROS::Node.new('/rosruby/sample_publisher')
-  publisher = node.advertise('/chatter', Std_msgs::String)
-  sleep(1)
-  msg = Std_msgs::String.new
-  i = 0
-  while node.ok?
-    msg.data = "Hello, rosruby!: #{i}"
-    publisher.publish(msg)
-
-== Sample for Subscriber
-
-  node = ROS::Node.new('/rosruby/sample_subscriber')
-  node.subscribe('/chatter', Std_msgs::String) do |msg|
-    puts "message come! = \'#{msg.data}\'"
-  end
-
-  while node.ok?
-    node.spin_once
-    sleep(1)
-  end
-
-=end
-
-
+# == ROS Node
+#
+# main interface of rosruby.
+# This class has many inner informations.
+# It may be better to use pimpl pattern.
+#
+# === Sample for Publisher
+#
+#   node = ROS::Node.new('/rosruby/sample_publisher')
+#   publisher = node.advertise('/chatter', Std_msgs::String)
+#   sleep(1)
+#   msg = Std_msgs::String.new
+#   i = 0
+#   while node.ok?
+#     msg.data = "Hello, rosruby!: #{i}"
+#     publisher.publish(msg)
+#
+# === Sample for Subscriber
+#
+#   node = ROS::Node.new('/rosruby/sample_subscriber')
+#   node.subscribe('/chatter', Std_msgs::String) do |msg|
+#     puts "message come! = \'#{msg.data}\'"
+#   end
+#
+#   while node.ok?
+#     node.spin_once
+#     sleep(1)
+#   end
+#
   class Node
 
     # Naming functions of ROS
@@ -84,7 +79,7 @@ It may be better to use pimpl pattern.
         raise 'ROS_MASTER_URI is nos set. please check environment variables'
       end
 
-      @manager = GraphManager.new(@node_name, self)
+      @manager = GraphManager.new(@node_name, @master_uri, @host, self)
       @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
       @is_ok = true
       # because xmlrpc server use signal trap, after serve, it have to trap signal
@@ -357,7 +352,7 @@ It may be better to use pimpl pattern.
     ##
     # parse all environment variables
     #
-    def get_env
+    def get_env  #:nodoc:
       @master_uri = ENV['ROS_MASTER_URI']
       @ns = ENV['ROS_NAMESPACE']
       if ENV['ROS_IP']
@@ -367,7 +362,14 @@ It may be better to use pimpl pattern.
       end
     end
 
-    def convert_if_needed(value)
+    ##
+    # converts strings if it is float and int numbers
+    # convert_if_needed('10') # => 10
+    # convert_if_needed('0.1') # => 0.1
+    # convert_if_needed('string') # => 'string'
+    # [+value+] string
+    # [+return+] converted value (float, int or string)
+    def convert_if_needed(value)  #:nodoc:
       if value =~ /^[+-]?\d+\.?\d*$/ # float
         value = value.to_f
       elsif value =~ /^[+-]?\d+$/ # int
@@ -379,7 +381,7 @@ It may be better to use pimpl pattern.
 
     ##
     # parse all args
-    def parse_args(args)
+    def parse_args(args) #:nodoc:
       remapping = {}
       for arg in args
         splited = arg.split(':=')
@@ -408,8 +410,8 @@ It may be better to use pimpl pattern.
       remapping
     end
 
-    def trap_signals
-#      [:INT, :TERM, :HUP].each do |signal|
+    # trap signals for safe shutdown
+    def trap_signals  #:nodoc:
       ["INT", "TERM", "HUP"].each do |signal|
         Signal.trap(signal) do
           @@all_nodes.each do |node|

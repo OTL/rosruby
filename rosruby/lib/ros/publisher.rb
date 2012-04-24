@@ -61,6 +61,11 @@ TCPROS protocol is in ROS::TCPROS::Server class
 =end
   class Publisher < Topic
 
+    # [+caller_id+] caller_id of this node
+    # [+topic_name+] name of topic to publish (String)
+    # [+topic_type+] class of topic
+    # [+is_latched+] latched topic?
+    # [+host+] host name of this node
     def initialize(caller_id, topic_name, topic_type, is_latched, host)
       super(caller_id, topic_name, topic_type)
       @host = host
@@ -70,7 +75,7 @@ TCPROS protocol is in ROS::TCPROS::Server class
 
     ##
     # publish msg object
-    #
+    # [+message+] instance of topic_type class
     def publish(message)
       @seq += 1
       if message.has_header?
@@ -83,8 +88,8 @@ TCPROS protocol is in ROS::TCPROS::Server class
 
     ##
     # add tcpros connection as server
-    #
-    def add_connection(caller_id)
+    # [+caller_id+] caller_id of subscriber
+    def add_connection(caller_id) #:nodoc:
       connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type,
                                       @is_latched,
                                       0, @host)
@@ -95,18 +100,18 @@ TCPROS protocol is in ROS::TCPROS::Server class
       return connection
     end
 
-    # return connection data for slave api
+    # [+return+] connection data for slave api
     def get_connection_data
       @connections.map do |connection|
         [connection.id, connection.byte_sent, connection.num_sent, 1]
       end
     end
 
-    # return connection info for slave api
+    # [+return+] connection info for slave api
     def get_connection_info
       info = []
       @connections.each do |connection|
-        info.push([connection.id, connection.caller_id, 'o', 'TCPROS', @topic_name])
+        info.push([connection.id, connection.caller_id, 'o', connection.protocol, @topic_name])
       end
       info
     end

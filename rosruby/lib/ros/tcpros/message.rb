@@ -11,7 +11,7 @@ require 'stringio'
 require 'ros/tcpros/header'
 
 
-# == TCP connection between nodes.
+# TCP connection between nodes.
 # protocol document is http://ros.org/wiki/ROS/TCPROS
 module ROS::TCPROS
 
@@ -20,7 +20,9 @@ module ROS::TCPROS
 
     ##
     # write message to socket
-    # @return wrote bytes
+    # [+socket+] socket for writing
+    # [+msg+] msg class instance
+    # [+return+] wrote bytes
     def write_msg(socket, msg)
       sio = StringIO.new('', 'r+')
       len = msg.serialize(sio)
@@ -34,7 +36,8 @@ module ROS::TCPROS
 
     ##
     # read the size of data and read it from socket
-    # @return received data (string)
+    # [+socket+] socket for reading
+    # [+return+] received data (String)
     def read_all(socket)
       total_bytes = socket.recv(4).unpack("V")[0]
       if total_bytes and total_bytes > 0
@@ -46,7 +49,8 @@ module ROS::TCPROS
 
     ##
     # read a connection header from socket
-    # @return header (ROS::TCPROS::Header)
+    # [+socket+] socket for reading
+    # [+return+] header (ROS::TCPROS::Header)
     def read_header(socket)
       header = ::ROS::TCPROS::Header.new
       header.deserialize(read_all(socket))
@@ -55,10 +59,16 @@ module ROS::TCPROS
 
     ##
     # write a connection header to socket
-    #
+    # [+socket+] socket for reading
+    # [+header+] header (ROS::TCPROS::Header)
     def write_header(socket, header)
       header.serialize(socket)
       socket.flush
+    end
+
+    # return prototol string 'TCPROS'
+    def protocol
+      'TCPROS'
     end
   end
 end

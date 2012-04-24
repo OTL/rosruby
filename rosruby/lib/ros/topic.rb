@@ -13,6 +13,9 @@ module ROS
   class Topic
 
     # initialize member variables
+    # [+caller_id+] caller id of this node
+    # [+topic_name+] name of this topic (String)
+    # [+topic_type+] class of msg
     def initialize(caller_id, topic_name, topic_type)
       @caller_id = caller_id
       @topic_name = topic_name
@@ -21,14 +24,23 @@ module ROS
       @connection_id_number = 0
     end
 
-    attr_reader :caller_id, :topic_name, :topic_type
+    # caller id
+    attr_reader :caller_id
+
+    # name of this topic (String)
+    attr_reader :topic_name
+
+    # class of msg
+    attr_reader :topic_type
 
     # shutdown all connections
-    def close
+    def close #:nodoc:
       @connections.each {|connection| connection.shutdown}
     end
 
-    def set_manager(manager)
+    # set manager for shutdown
+    # [+manager+] GraphManager
+    def set_manager(manager) #:nodoc:
       @manager = manager
     end
   end

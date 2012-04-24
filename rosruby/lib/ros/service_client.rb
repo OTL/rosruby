@@ -7,7 +7,7 @@
 =begin rdoc
 =ROS Service Clinet
 
- This is an interface of ROS server.
+This is an interface of ROS server.
 
 == Usage
 
@@ -19,7 +19,6 @@
     req.a = 1
     req.b = 2
     if service.call(req, res)
-
 =end
 
 require 'ros/service'
@@ -29,13 +28,12 @@ require 'uri'
 module ROS
 
 =begin rdoc
-=ROS Service Clinet
 
- This is an interface of ROS Service.
+This is an interface of ROS Service.
 
 == Usage
 
- node.service returns ROS::ServiceClient instance.
+node.service returns ROS::ServiceClient instance.
 
   node = ROS::Node.new('/rosruby/sample_service_client')
   if node.wait_for_service('/add_two_ints', 1)
@@ -47,6 +45,12 @@ module ROS
     if service.call(req, res)
 =end
   class ServiceClient < Service
+
+    # [+master_uri+] URI of ROS Master
+    # [+caller_id+] caller id of this node
+    # [+service_name+] name of service (String)
+    # [+service_type+] class of srv
+    # [+persistent+] use persistent connection with server or not.
     def initialize(master_uri, caller_id, service_name, service_type, persistent=false)
       super(caller_id, service_name, service_type)
       @master_uri = master_uri
@@ -55,12 +59,16 @@ module ROS
 
     ##
     # get hostname and port from uri
-    #
-    def get_host_port_from_uri(uri)
+    # [+uri+] uri
+    def get_host_port_from_uri(uri) #:nodoc:
       uri_data = URI.split(uri)
       [uri_data[2], uri_data[3]]
     end
 
+    # call service
+    # [+srv_request+] srv Request instance
+    # [+srv_response+] srv Response instance
+    # [+return+] result of call (Bool)
     def call(srv_request, srv_response)
       if @persistent and @connection
         # not connect
@@ -83,6 +91,7 @@ module ROS
       end
     end
 
+    # shutdown this service client
     def shutdown
       @connection.close
     end

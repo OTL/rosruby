@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# = ROS Package manager
+# == ROS Package manager
 #
 # This is used for adding RUBYLIB path.
 # This file will provide rospack functions, in the future
@@ -14,8 +14,6 @@ require 'rexml/document'
 
 module ROS
 
-  # = Package
-  #
   # This is used for adding RUBYLIB path.
   #
   class Package
@@ -28,7 +26,7 @@ module ROS
     ##
     # at first check the rospack's cache, if found use it.
     # if not found, check all package path.
-    #
+    # [+return+] fullpath list of all packages
     def self.read_cache_or_find_all
       if File.exists?(@@cache_path)
         f = File.open(@@cache_path)
@@ -51,7 +49,9 @@ module ROS
 
     ##
     # search all packages that has manifest.xml
-    #
+    # [+packages+] current found packages
+    # [+roots+] root directories for searching
+    # [+return+] fullpath list of all packages
     def self.find_all_packages(packages={}, roots=ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT']))
       roots.each do |root|
         if File.exists?("#{root}/manifest.xml")
@@ -78,7 +78,8 @@ module ROS
 
     ##
     # get the depend packages of the arg
-    #
+    # [+package+] find depends packages of this package
+    # [+packages+] current found depends
     def self.depends(package, packages=[])
       file = File.open("#{@@all_packages[package]}/manifest.xml")
       doc = REXML::Document.new(file)
@@ -95,7 +96,7 @@ module ROS
 
     ##
     # get the current program's package
-    #
+    # [+return+] name of running programs's package
     def self.find_this_package
       path = File::dirname(File.expand_path($PROGRAM_NAME))
       while path != '/'
@@ -107,19 +108,11 @@ module ROS
       nil
     end
 
-
-    ##
-    # make instance of package_name
-    #
-    def initialize(package_name)
-      @package_name = package_name
-    end
-
     ##
     # add package's [lib/, msg_gen/ruby, srv_gen/ruby] to '$:'.
     # this enables load ruby files easily
     #
-    def add_path_of_package(package)
+    def self.add_path_of_package(package)
       path = @@all_packages[package]
       ["#{path}/msg_gen/ruby", "#{path}/srv_gen/ruby", "#{path}/lib"].each do |path|
         if File.exists?(path)
@@ -134,9 +127,9 @@ module ROS
     # add [lib/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages
     # to RUBYLIB, if the directory exists
     #
-    def add_path_with_depend_packages
-      add_path_of_package(@package_name)
-      Package::depends(@package_name).each do |pack|
+    def self.add_path_with_depend_packages(package)
+      add_path_of_package(package)
+      Package::depends(package).each do |pack|
         add_path_of_package(pack.chop)
       end
     end
@@ -147,6 +140,6 @@ module ROS
   # load manifest and add all dependencies
   #
   def self.load_manifest(package)
-    ROS::Package.new(package).add_path_with_depend_packages
+    ROS::Package.add_path_with_depend_packages(package)
   end
 end

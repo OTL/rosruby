@@ -4,7 +4,6 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# =ROS Service Server
 # server of ROS Service.
 # This uses ROS::TCPROS::ServiceServer for data transfer.
 #
@@ -17,6 +16,10 @@ module ROS
   # This uses ROS::TCPROS::ServiceServer for data transfer.
   class ServiceServer < Service
 
+    # [+caller_id+] caller id of this node
+    # [+service_name+] name of this service (String)
+    # [+service_type+] class of srv
+    # [+callback+] callback object of this service.
     def initialize(caller_id, service_name, service_type, callback)
       super(caller_id, service_name, service_type)
       @callback = callback
@@ -30,15 +33,16 @@ module ROS
 
     ##
     # execute the service callback
-    # @return callback result (bool)
+    # [+request+] srv Request instance
+    # [+response+] srv Response instance
+    # [+return+] callback result (bool)
     def call(request, response)
       @num_request += 1
       @callback.call(request, response)
     end
 
-    ##
-    # @return rosrpc service uri
-    #
+    # URI of this service (rosrpc://**)
+    # [+return+] rosrpc service uri
     def service_uri
       'rosrpc://' + @server.host + ':' + @server.port.to_s
     end
@@ -46,7 +50,7 @@ module ROS
     ##
     # user should not call this method. use shutdown method
     #
-    def close
+    def close #:nodoc:
       @server.shutdown
     end
 
@@ -54,13 +58,16 @@ module ROS
     # shutdown the service connection
     #
     def shutdown
-      @master.shutdow_service_server(self)
+      @manager.shutdow_service_server(self)
     end
 
-    def set_manager(manager)
+    # set GraphManager for shutdown
+    # [+manager+] GraphManager
+    def set_manager(manager) #:nodoc:
       @manager = manager
     end
 
+    # [+return+] connection data
     def get_connection_data
       [@num_request, @server.byte_received, @server.byte_sent]
     end

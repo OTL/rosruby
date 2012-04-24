@@ -15,6 +15,10 @@ module ROS
   #
   class Service
 
+    #
+    # [+caller_id+] caller_id of this node
+    # [+service_name+] name of service (String)
+    # [+service_type+] class of Service
     def initialize(caller_id, service_name, service_type)
       @caller_id = caller_id
       @service_name = service_name
@@ -22,6 +26,7 @@ module ROS
       @host = "localhost"
     end
 
+    # caller id of this node
     attr_reader :caller_id
 
     # service name (like '/add_two_ints')

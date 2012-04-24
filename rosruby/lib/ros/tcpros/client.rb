@@ -18,6 +18,14 @@ module ROS::TCPROS
 
     include ::ROS::TCPROS::Message
 
+    ##
+    # [+host+] host name (String)
+    # [+port+] port number
+    # [+caller_id+] caller id of this node
+    # [+topic_name+] name of this topic (String)
+    # [+topic_type+] type of topic (class)
+    # [+target_uri+] URI of connection target
+    # [+tcp_no_delay+] use tcp no delay option or not (Bool)
     def initialize(host, port,
                    caller_id, topic_name, topic_type, target_uri,
                    tcp_no_delay)
@@ -39,7 +47,7 @@ module ROS::TCPROS
 
     ##
     # build header data for subscription
-    # @return ROS::TCPROS::Header
+    # [+return+] built header ROS::TCPROS::Header
     def build_header
       header = Header.new
       header.push_data("callerid", @caller_id)

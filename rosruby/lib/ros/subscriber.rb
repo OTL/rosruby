@@ -32,18 +32,27 @@ module ROS
   # this use ROS::TCPROS::Client for message transfer.
   class Subscriber < Topic
 
+    # [+caller_id+] caller id of this node
+    # [+topic_name+] name of this topic (String)
+    # [+topic_type+] class of msg
+    # [+callback+] callback for this topic
+    # [+tcp_no_delay+] use tcp no delay option or not
     def initialize(caller_id, topic_name, topic_type, callback=nil, tcp_no_delay=nil)
       super(caller_id, topic_name, topic_type)
       @callback = callback
       @tcp_no_delay = tcp_no_delay
     end
 
-    attr_reader :tcp_no_delay, :callback
+    # use tcp no delay option or not (Bool)
+    attr_reader :tcp_no_delay
+
+    # callback of this subscription
+    attr_reader :callback
 
     ##
     # this is called by node.spin_once.
     # execute callback for all queued messages.
-    def process_queue
+    def process_queue #:nodoc:
       @connections.each do |connection|
         while not connection.msg_queue.empty?
           msg = connection.msg_queue.pop
@@ -57,7 +66,8 @@ module ROS
     ##
     # request topic to master and start connection with publisher.
     # this creates ROS::TCPROS::Client.
-    def add_connection(uri)
+    # [+uri+] uri to connect
+    def add_connection(uri) #:nodoc:
       publisher = SlaveProxy.new(@caller_id, uri)
       begin
         protocol, host, port = publisher.request_topic(@topic_name, [["TCPROS"]])
@@ -93,7 +103,7 @@ module ROS
     def get_connection_info
       info = []
       @connections.each do |connection|
-        info.push([connection.id, connection.target_uri, 'i', 'TCPROS', @topic_name])
+        info.push([connection.id, connection.target_uri, 'i', connection.protocol, @topic_name])
       end
       info
     end

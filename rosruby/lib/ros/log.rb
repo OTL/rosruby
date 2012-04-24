@@ -1,13 +1,10 @@
-#  log.rb
+# ros/log.rb
 #
-# $Revision: $
-# $Id:$
-# $Date:$
 # License: BSD
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# = Logger for ROS
+# == Logger for ROS
 #
 # creates /rosout publisher and combine Ruby Logger
 #
@@ -18,7 +15,7 @@ require 'logger'
 
 module ROS
 
-  # = Logging class for ROS
+  # == Logging class for ROS
   # This class enable double logging: ROS Logging system and ruby log.
   #
   class Log
@@ -29,7 +26,8 @@ module ROS
     ##
     # start publishing /rosout and
     # make a ruby logger instance for local output
-    #
+    # [+node+] Node instance
+    # [+output+] local output. $stdout is default 
     def initialize(node, output=$stdout)
       @node = node
       @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil, nil)
@@ -49,11 +47,11 @@ module ROS
     ##
     # outputs log messages with level and informations which
     # rosout needs.
-    # [severity]  log level: one of 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'
-    # [message]  your message
-    # [file] file name in which called this method
-    # [function] function name in which called this method
-    # [line] line number (int) in which called this method
+    # [+severity+]  log level: one of 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'
+    # [+message+]  your message
+    # [+file+] file name in which called this method
+    # [+function+] function name in which called this method
+    # [+line+] line number (int) in which called this method
     def log(severity, message, file='', function='', line=0)
       @local_logger.log(@ruby_dict[severity], message, @node.node_name)
       msg = Rosgraph_msgs::Log.new

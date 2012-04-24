@@ -19,6 +19,11 @@ module ROS::TCPROS
     # max number of connections with ROS::TCPROS::Client (ROS::Subscriber)
     MAX_CONNECTION = 100
 
+    ##
+    # [+caller_id+] caller id of this node
+    # [+topic_name+] name of this topic (String)
+    # [+topic_type+] type of topic (class)
+    # [+is_latched+] latched topic or not (Bool)
     def initialize(caller_id, topic_name, topic_type, is_latched,
                    port=0, host=GServer::DEFAULT_HOST)
       super(port, host, MAX_CONNECTION)
@@ -34,13 +39,15 @@ module ROS::TCPROS
 
     ##
     # Is this latching publisher?
+    # [+return+] is latched or not (Bool)
     def latching?
       @is_latched
     end
 
     ##
     # send a message to reciever
-    #
+    # [+socket+] socket for writing
+    # [+msg+] msg class instance
     def publish_msg(socket, msg)
       data = write_msg(socket, msg)
       @last_published_msg = msg
@@ -52,7 +59,8 @@ module ROS::TCPROS
     ##
     # this is called if a socket accept a connection.
     # This is GServer's function
-    def serve(socket)
+    # [+socket+] given socket
+    def serve(socket) #:nodoc:
       header = read_header(socket)
       if check_header(header)
         if header['tcp_nodelay'] == '1'
@@ -83,7 +91,8 @@ module ROS::TCPROS
 
     ##
     # validate header for this publisher
-    #
+    # [+header+]
+    # [+return+]
     def check_header(header)
       header.valid?('type', @topic_type.type) and
         header.valid?('md5sum', @topic_type.md5sum)

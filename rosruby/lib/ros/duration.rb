@@ -1,4 +1,4 @@
-# ros/time.rb
+# ros/duration.rb
 #
 # License: BSD
 #
@@ -12,10 +12,15 @@ require 'ros/time'
 module ROS
 
   ##
-  # ROS Duration object. This is used as msg object for duration
-  #
+  # == ROS Duration object
+  # This is used as msg object for duration
   class Duration < TVal
 
+    # if nsecs is nil, secs is used as float
+    #   d1 = ROS::Duration.new(0.1) # => @nsecs=100000000, @secs=0
+    #   d2 = ROS::Duration.new(1, 100) # => @nsecs=100, @secs=1
+    # [+secs+] seconds
+    # [+nsecs+] nano seconds
     def initialize(secs=0, nsecs=nil)
       @secs = secs.to_i
       if nsecs
@@ -26,6 +31,8 @@ module ROS
       canonicalize
     end
 
+    # create a new duration
+    # [+duration+] Duration for adding
     def +(duration)
       tm = ::ROS::Duration.new
       tm.secs = @secs + duration.secs
@@ -33,6 +40,8 @@ module ROS
       tm.canonicalize
     end
 
+    # create a new duration
+    # [+duration+] Duration for substituting
     def -(other)
       d = ::ROS::Duration.new
       d.secs = @secs - other.secs
@@ -40,6 +49,7 @@ module ROS
       d.canonicalize
     end
 
+    # sleep while this duration
     def sleep
       Kernel.sleep(to_sec)
     end

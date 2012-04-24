@@ -14,12 +14,12 @@ require 'xmlrpc/client'
 
 module ROS
 
-  # = ROS Slave Proxy
   # you can access to ROS Slave nodes.
   # reference: http://ros.org/wiki/ROS/Slave_API
-  #
   class SlaveProxy
 
+    # [+caller_id+] caller id of this node
+    # [+slave_uri+] URI to connect
     def initialize(caller_id, slave_uri)
       @caller_id = caller_id
       @slave_uri = slave_uri

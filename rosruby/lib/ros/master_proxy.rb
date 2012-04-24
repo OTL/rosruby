@@ -5,7 +5,7 @@
 # Copyright (C) 2012 Takashi Ogura <t.ogura@gmail.com>
 #
 #
-# = ROS Master Proxy
+# == ROS Master Proxy
 # you can access to ROS Master easily.
 #
 #
@@ -14,13 +14,17 @@ require 'xmlrpc/client'
 
 module ROS
 
-  # = ROS Master Proxy
+  # == ROS Master Proxy
   # you can access to ROS Master easily.
   #
-  # reference: http://ros.org/wiki/ROS/Master_API
+  # Please refer to the wiki documents http://ros.org/wiki/ROS/Master_API
   #
   class MasterProxy
 
+    #
+    # [+caller_id+] caller_id of this node
+    # [+master_uri+] URI of ROS Master
+    # [+slave_uri+] slave URI of this node
     def initialize(caller_id, master_uri, slave_uri)
       @caller_id = caller_id
       @master_uri = master_uri
@@ -109,6 +113,9 @@ module ROS
       end
     end
 
+    ##
+    # this method is not described in the wiki.
+    # subscribe to the parameter key.
     def subscribe_param(key)
       code, message, uri = @proxy.subscribeParam(@caller_id, @slave_uri, key)
       if code == 1
@@ -118,6 +125,9 @@ module ROS
       end
     end
 
+    ##
+    # this method is not described in the wiki.
+    # unsubscribe to the parameter key.
     def unsubscribe_param(key)
       code, message, uri = @proxy.unsubscribeParam(@caller_id, @slave_uri, key)
       if code == 1

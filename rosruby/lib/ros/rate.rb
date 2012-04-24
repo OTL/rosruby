@@ -17,12 +17,7 @@
 module ROS
 
   ##
-  # = Rate
-  #
-  #   sleep in a Hz timing.
-  #
-  # = Usage
-  #
+  # sleep in a Hz timing.
   #   r = ROS::Rate.new(10)
   #   r.sleep
   #

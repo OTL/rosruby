@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# =Control Parameter Server Interface
+# == Control Parameter Server Interface
 #
 # ROS parameter sever inteface.
 # API document is here http://ros.org/wiki/ROS/Parameter%20Server%20API
@@ -13,12 +13,13 @@ require "xmlrpc/client"
 
 module ROS
 
-  # =Control Parameter Server Interface
-  #
   # ROS parameter sever inteface.
   # API document is here http://ros.org/wiki/ROS/Parameter%20Server%20API
   class ParameterManager
 
+    # [+master_uri+] URI of ROS Master (parameter server)
+    # [+caller_id+] caller_id of this node
+    # [+remappings+] remapps to use for local remappings
     def initialize(master_uri, caller_id, remappings)
       @caller_id = caller_id
       @master_uri = master_uri
@@ -28,9 +29,8 @@ module ROS
 
     ##
     # get parameter named 'key'
-    # [key] name of parameter
-    # [return] parameter value
-    #
+    # [+key+] name of parameter
+    # [+return+] parameter value
     def get_param(key)
       if @remappings[key]
         return @remappings[key]
@@ -46,9 +46,9 @@ module ROS
 
     ##
     # set parameter for 'key'
-    # [key] key of parameter
-    # [value] value of parameter
-    # [return] true if succeed
+    # [+key+] key of parameter
+    # [+value+] value of parameter
+    # [+return+] true if succeed
     def set_param(key, value)
       code, message, value = @server.call("setParam", @caller_id, key, value)
       case code
@@ -63,8 +63,8 @@ module ROS
 
     ##
     # delete parameter 'key'
-    # [key] key for remove
-    # [return] true if success, false if it is not exist
+    # [+key+] key for remove
+    # [+return+] true if success, false if it is not exist
     #
     def delete_param(key)
       code, message, value = @server.call("deleteParam", @caller_id, key)
@@ -78,8 +78,8 @@ module ROS
 
     ##
     # search the all namespace for key
-    # [key] key for search
-    # [return] value
+    # [+key+] key for search
+    # [+return+] value
     def search_param(key)
       code, message, value = @server.call("searchParam", @caller_id, key)
       case code
@@ -94,8 +94,8 @@ module ROS
 
     ##
     # check if the master has the key
-    # [key] key for check
-    # [return] value of key
+    # [+key+] key for check
+    # [+return+] value of key
     def has_param(key)
       code, message, value = @server.call("hasParam", @caller_id, key)
       case code
@@ -110,7 +110,7 @@ module ROS
 
     ##
     # get the all keys of parameters
-    # [return] all keys
+    # [+return+] all keys
     #
     def get_param_names
       code, message, value = @server.call("getParamNames", @caller_id)

@@ -55,6 +55,7 @@ module ROS
   #
   class Time < TVal
 
+    # initialize with current time
     def self.now
       self.new(::Time::now)
     end
