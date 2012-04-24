@@ -130,7 +130,7 @@ module ROS
     def self.add_path_with_depend_packages(package)
       add_path_of_package(package)
       Package::depends(package).each do |pack|
-        add_path_of_package(pack.chop)
+        add_path_of_package(pack)
       end
     end
 

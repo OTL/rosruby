@@ -20,3 +20,6 @@ ROS::load_manifest('rosruby')
   end
 end
 require 'ros/node'
+
+# ensure shutdown all nodes
+END {ROS::Node.shutdown_all_nodes}

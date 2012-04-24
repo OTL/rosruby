@@ -414,12 +414,16 @@ module ROS
     def trap_signals  #:nodoc:
       ["INT", "TERM", "HUP"].each do |signal|
         Signal.trap(signal) do
-          @@all_nodes.each do |node|
-            if node.ok?
-              puts 'shutdown by signal'
-              node.shutdown
-            end
-          end
+          ROS::Node.shutdown_all_nodes
+        end
+      end
+    end
+
+    # shutdown all nodes
+    def self.shutdown_all_nodes
+      @@all_nodes.each do |node|
+        if node.ok?
+          node.shutdown
         end
       end
     end
