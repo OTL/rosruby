@@ -12,8 +12,8 @@ CLEAN << message_dir
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.rdoc_files = FileList["lib/**/*.rb"]
-  rdoc.main = "ROS::Node"
+  rdoc.rdoc_files = FileList["lib/**/*.rb", 'README.rdoc']
+  rdoc.main = 'README.rdoc'
   rdoc.title = 'rosruby API'
 end
 

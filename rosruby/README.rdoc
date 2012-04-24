@@ -1,0 +1,21 @@
+= ROS Ruby Client: rosruby
+
+ROS is Robot Operating System developed by Willow Garage and open source communities. See http://ros.org/.
+
+rosruby is ROS client for ruby. You can program robots by ruby, very easily.
+
+== Requirements
+- ruby (1.8.x/1.9.x)
+- ROS (electric/fuerte)
+  - ROS requires python2.7 or more libraries
+
+== License
+BSD License
+
+== Documents
+
+=== project page
+- http://github.com/OTL/rosruby
+
+=== ROS wiki
+- http://ros.org/wiki/rosruby

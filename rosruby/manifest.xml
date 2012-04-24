@@ -1,8 +1,6 @@
 <package>
-  <description brief="rosruby">
-
-    This is ruby learning project.
-
+  <description brief="A Ruby client library for ROS">
+    This package is a Ruby client library for ROS, the Robot Operating System.
   </description>
   <author>Takashi Ogura</author>
   <license>BSD</license>
@@ -19,5 +17,3 @@
   <rosdep name="rake"/>
 
 </package>
-
-
