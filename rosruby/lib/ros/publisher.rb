@@ -4,61 +4,26 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-=begin rdoc
-
-=ROS Topic Publisher
-
-This is impl class of publisher. rosruby should hide the interfaces
-by impl pattern or so on.
-
-=Usage
-
-  node = ROS::Node.new('/rosruby/sample_publisher')
-  publisher = node.advertise('/chatter', Std_msgs::String)
-  sleep(1)
-  msg = Std_msgs::String.new
-  i = 0
-  while node.ok?
-    msg.data = "Hello, rosruby!: #{i}"
-    publisher.publish(msg)
-
-=System
-
-a publisher contains multi connection with subscribers.
-TCPROS protocol is in ROS::TCPROS::Server class
-
-=end
 
 require 'ros/topic'
 require 'ros/tcpros/server'
 
 module ROS
-
-
-=begin rdoc
-
-=ROS Topic Publisher
-
-This is impl class of publisher. rosruby should hide the interfaces
-by impl pattern or so on.
-
-=Usage
-
-  node = ROS::Node.new('/rosruby/sample_publisher')
-  publisher = node.advertise('/chatter', Std_msgs::String)
-  sleep(1)
-  msg = Std_msgs::String.new
-  i = 0
-  while node.ok?
-    msg.data = "Hello, rosruby!: #{i}"
-    publisher.publish(msg)
-
-=System
-
-a publisher contains multi connection with subscribers.
-TCPROS protocol is in ROS::TCPROS::Server class
-
-=end
+# Publisher interface of ROS.
+# A publisher contains multi connection with subscribers.
+# TCPROS protocol implementation is in ROS::TCPROS::Server.
+# Here is sample code. You can shutdown publisher by using this
+# instance (ROS::Publisher#shutdown)
+#   node = ROS::Node.new('/rosruby/sample_publisher')
+#   publisher = node.advertise('/chatter', Std_msgs::String)
+#   sleep(1)
+#   msg = Std_msgs::String.new
+#   i = 0
+#   while node.ok?
+#     msg.data = "Hello, rosruby!: #{i}"
+#     publisher.publish(msg)
+#     i += 1
+#   end
   class Publisher < Topic
 
     # [+caller_id+] caller_id of this node

@@ -4,32 +4,24 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-=begin rdoc
-
-=ROS Subscriber
- subscriber of ROS topic. Please use proc block for callback method.
- See below usage.
-
-=Usage
-  node = ROS::Node.new('/rosruby/sample_subscriber')
-  node.subscribe('/chatter', Std_msgs::String) do |msg|
-    puts "message come! = \'#{msg.data}\'"
-  end
-
-  while node.ok?
-    node.spin_once
-    sleep(1)
-  end
-=end
-
 require 'ros/topic'
 require 'ros/tcpros/client'
 require 'ros/slave_proxy'
 
 module ROS
 
-  # subscriber of ROS topic. Please use proc block for callback method.
-  # this use ROS::TCPROS::Client for message transfer.
+  # subscriber of ROS topic. This is created by ROS::Node#subscribe.
+  # Please use proc block for callback method.
+  # It uses ROS::TCPROS::Client for message transfer.
+  # Subscription can be shutdown by this ROS::Subscriber#shutdown
+  #   node = ROS::Node.new('/rosruby/sample_subscriber')
+  #   sub = node.subscribe('/chatter', Std_msgs::String) do |msg|
+  #     puts "message come! = \'#{msg.data}\'"
+  #   end
+  #   while node.ok?
+  #     node.spin_once
+  #     sleep(1)
+  #   end
   class Subscriber < Topic
 
     # [+caller_id+] caller id of this node

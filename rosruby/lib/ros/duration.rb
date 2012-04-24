@@ -14,7 +14,7 @@ module ROS
   ##
   # == ROS Duration object
   # This is used as msg object for duration
-  class Duration < TVal
+  class Duration < TimeValue
 
     # if nsecs is nil, secs is used as float
     #   d1 = ROS::Duration.new(0.1) # => @nsecs=100000000, @secs=0

@@ -16,14 +16,12 @@ require 'timeout'
 
 module ROS
 
-  #==Manager of ROS graph
+  #Manager of ROS graph
   #
-  # This contains all subscribers, publishers, service_servers of a node.
-  # Master API document is http://ros.org/wiki/ROS/Master_API
-  # Slave API is http://ros.org/wiki/ROS/Slave_API
-  #
-  # connect with master and manage pub/sub and services
-  #
+  #This contains all subscribers, publishers, service_servers of a node.
+  #It connects with master and manage pub/sub and services.
+  #- Master API document is http://ros.org/wiki/ROS/Master_API
+  #- Slave API is http://ros.org/wiki/ROS/Slave_API
   class GraphManager
 
     # for canonicalize_name(parameter_key)
@@ -32,16 +30,16 @@ module ROS
     # max number of connection with other slave nodes
     MAX_CONNECTION = 100
 
-    # all Publisher s
+    # all Publisher of this node
     attr_reader :publishers
-    # all Subscriber s
+    # all Subscriber of this node
     attr_reader :subscribers
-    # all ServiceServer s
+    # all ServiceServer of this node
     attr_reader :service_servers
-    #all ParameterSubscriber s
+    #all ParameterSubscriber of this node
     attr_reader :parameter_subscribers
 
-    # hostname of this node (string)
+    # hostname of this node (String)
     attr_reader :host
     # port number of this node (Fixnum)
     attr_reader :port

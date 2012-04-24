@@ -4,24 +4,19 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# = Rate
-#
-#   sleep in a Hz timing.
-#
-# = Usage
-#
-#   r = ROS::Rate.new(10)
-#   r.sleep
 #
 
 module ROS
 
   ##
   # sleep in a Hz timing.
+  # Here is a sample.
   #   r = ROS::Rate.new(10)
   #   r.sleep
   #
   class Rate
+
+    # [+hz+] Hz (Float)
     def initialize(hz)
       @sleep_duration = 1.0 / hz
       @last_time = ::Time.now
@@ -39,7 +34,7 @@ module ROS
       # detect time jumping forwards, as well as loops that are
       # inherently too slow
       if current_time - @last_time > @sleep_duration * 2
-	  @last_time = current_time
+          @last_time = current_time
       end
     end
   end

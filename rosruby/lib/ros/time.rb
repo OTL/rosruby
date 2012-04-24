@@ -8,14 +8,20 @@
 #
 module ROS
 
-  class TVal
+  ##
+  # super class of times
+  class TimeValue
 
     include Comparable
 
-    attr_accessor :secs, :nsecs
+    # seconds
+    attr_accessor :secs
 
-    ##
-    # super class of times
+    # nano seconds
+    attr_accessor :nsecs
+
+    # canonicalize secs and nsecs
+    # [+return+] self
     def canonicalize
       while @nsecs >= 1e9.to_i
         @secs += 1
@@ -28,15 +34,19 @@ module ROS
       self
     end
 
+    # convert to seconds
+    # [+return+] seconds (Float)
     def to_sec
       @secs + (@nsecs / 1e9)
     end
 
+    # convert to nano seconds
+    # [+return+] nano seconds (Float)
     def to_nsec
       @nsecs + (@secs * 1e9)
     end
 
-
+    # compare time value
     def <=>(other)
       diff = self.to_nsec - other.to_nsec
       if diff > 0
@@ -53,7 +63,7 @@ module ROS
   ##
   # ROS Time object. This is used as msg object for time
   #
-  class Time < TVal
+  class Time < TimeValue
 
     # initialize with current time
     def self.now
@@ -71,7 +81,7 @@ module ROS
       canonicalize
     end
 
-
+    # add time value
     def +(duration)
       tm = ::ROS::Time.new
       tm.secs = @secs + duration.secs
@@ -79,6 +89,7 @@ module ROS
       tm.canonicalize
     end
 
+    # subtract time value
     def -(other)
       d = ::ROS::Duration.new
       d.secs = @secs - other.secs

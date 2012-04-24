@@ -13,7 +13,21 @@ require 'ros/tcpros/service_server'
 module ROS
 
   # server of ROS Service.
-  # This uses ROS::TCPROS::ServiceServer for data transfer.
+  # ROS::Node#advertise_service return a instance of this class.
+  # Service can be shutdown by ROS::ServiceServer#shutdown.
+  # This class uses ROS::TCPROS::ServiceServer for data transfer.
+  # Here is a sample code.
+  #
+  #   node = ROS::Node.new('/rosruby/sample_service_server')
+  #   server = node.advertise_service('/add_two_ints', Roscpp_tutorials::TwoInts) do |req, res|
+  #     res.sum = req.a + req.b
+  #     node.loginfo("a=#{req.a}, b=#{req.b}")
+  #     node.loginfo("  sum = #{res.sum}")
+  #     true
+  #   end
+  #   while node.ok?
+  #     sleep (1.0)
+  #   end
   class ServiceServer < Service
 
     # [+caller_id+] caller id of this node
