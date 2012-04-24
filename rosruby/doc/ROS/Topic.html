@@ -71,10 +71,6 @@
 					
 					<li><a href="#method-c-new">::new</a></li>
 					
-					<li><a href="#method-i-close">#close</a></li>
-					
-					<li><a href="#method-i-set_manager">#set_manager</a></li>
-					
 				</ul>
 			</div>
 			
@@ -85,6 +81,15 @@
 
 		<div id="project-metadata">
 			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
 			
 
 			<div id="classindex-section" class="section project-section">
@@ -198,7 +203,9 @@ href="Subscriber.html">ROS::Subscriber</a>
 
 				<div class="method-description">
 				
-				
+				<p>
+caller id
+</p>
 				
 				</div>
 			</div>
@@ -213,7 +220,9 @@ href="Subscriber.html">ROS::Subscriber</a>
 
 				<div class="method-description">
 				
-				
+				<p>
+name of this topic (String)
+</p>
 				
 				</div>
 			</div>
@@ -228,7 +237,9 @@ href="Subscriber.html">ROS::Subscriber</a>
 
 				<div class="method-description">
 				
-				
+				<p>
+class of msg
+</p>
 				
 				</div>
 			</div>
@@ -258,96 +269,34 @@ href="Subscriber.html">ROS::Subscriber</a>
 					<p>
 initialize member variables
 </p>
+<dl>
+<dt><tt><a href="Topic.html#caller_id">caller_id</a></tt></dt><dd><p>
+caller id of this node
+</p>
+</dd>
+<dt><tt><a href="Topic.html#topic_name">topic_name</a></tt></dt><dd><p>
+name of this topic (String)
+</p>
+</dd>
+<dt><tt><a href="Topic.html#topic_type">topic_type</a></tt></dt><dd><p>
+class of msg
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/topic.rb, line 16</span>
-16:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>)
-17:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
-18:       <span class="ruby-ivar">@topic_name</span> = <span class="ruby-identifier">topic_name</span>
-19:       <span class="ruby-ivar">@topic_type</span> = <span class="ruby-identifier">topic_type</span>
-20:       <span class="ruby-ivar">@connections</span> = []
-21:       <span class="ruby-ivar">@connection_id_number</span> = <span class="ruby-value">0</span>
-22:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
-
-		
-			<div id="close-method" class="method-detail ">
-				<a name="method-i-close"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">close</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-shutdown all connections
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="close-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/topic.rb, line 27</span>
-27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
-28:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">connection</span><span class="ruby-operator">|</span> <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">shutdown</span>}
-29:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="set-manager-method" class="method-detail ">
-				<a name="method-i-set_manager"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">set_manager</span><span
-						class="method-args">(manager)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="set-manager-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/topic.rb, line 31</span>
-31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_manager</span>(<span class="ruby-identifier">manager</span>)
-32:       <span class="ruby-ivar">@manager</span> = <span class="ruby-identifier">manager</span>
-33:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/topic.rb, line 19</span>
+19:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>)
+20:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
+21:       <span class="ruby-ivar">@topic_name</span> = <span class="ruby-identifier">topic_name</span>
+22:       <span class="ruby-ivar">@topic_type</span> = <span class="ruby-identifier">topic_type</span>
+23:       <span class="ruby-ivar">@connections</span> = []
+24:       <span class="ruby-ivar">@connection_id_number</span> = <span class="ruby-value">0</span>
+25:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

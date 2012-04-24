@@ -82,6 +82,15 @@
 		<div id="project-metadata">
 			
 			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
 
 			<div id="classindex-section" class="section project-section">
 				<h3 class="section-header">Class Index
@@ -194,7 +203,9 @@ href="ServiceClient.html">ServiceClient</a>
 
 				<div class="method-description">
 				
-				
+				<p>
+caller id of this node
+</p>
 				
 				</div>
 			</div>
@@ -255,20 +266,33 @@ class instance of srv converted class (like Std_msgs/String)
 
 				<div class="method-description">
 					
-					
+					<dl>
+<dt><tt><a href="Service.html#caller_id">caller_id</a></tt></dt><dd><p>
+<a href="Service.html#caller_id">caller_id</a> of this node
+</p>
+</dd>
+<dt><tt><a href="Service.html#service_name">service_name</a></tt></dt><dd><p>
+name of service (String)
+</p>
+</dd>
+<dt><tt><a href="Service.html#service_type">service_type</a></tt></dt><dd><p>
+class of <a href="Service.html">Service</a>
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/service.rb, line 18</span>
-18:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>)
-19:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
-20:       <span class="ruby-ivar">@service_name</span> = <span class="ruby-identifier">service_name</span>
-21:       <span class="ruby-ivar">@service_type</span> = <span class="ruby-identifier">service_type</span>
-22:       <span class="ruby-ivar">@host</span> = <span class="ruby-value str">&quot;localhost&quot;</span>
-23:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/service.rb, line 22</span>
+22:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>)
+23:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
+24:       <span class="ruby-ivar">@service_name</span> = <span class="ruby-identifier">service_name</span>
+25:       <span class="ruby-ivar">@service_type</span> = <span class="ruby-identifier">service_type</span>
+26:       <span class="ruby-ivar">@host</span> = <span class="ruby-value str">&quot;localhost&quot;</span>
+27:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

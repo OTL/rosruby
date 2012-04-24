@@ -84,6 +84,15 @@
 		<div id="project-metadata">
 			
 			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
 
 			<div id="classindex-section" class="section project-section">
 				<h3 class="section-header">Class Index
@@ -170,11 +179,9 @@
 		<h1 class="class">ROS::Rate</h1>
 
 		<div id="description">
-			<h1><a href="Rate.html">Rate</a></h1>
-<pre>
-  sleep in a Hz timing.
-</pre>
-<h1>Usage</h1>
+			<p>
+sleep in a Hz timing.
+</p>
 <pre>
   r = ROS::Rate.new(10)
   r.sleep</pre>
@@ -213,11 +220,11 @@
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/rate.rb, line 30</span>
-30:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">hz</span>)
-31:       <span class="ruby-ivar">@sleep_duration</span> = <span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">hz</span>
-32:       <span class="ruby-ivar">@last_time</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
-33:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/rate.rb, line 25</span>
+25:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">hz</span>)
+26:       <span class="ruby-ivar">@sleep_duration</span> = <span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">hz</span>
+27:       <span class="ruby-ivar">@last_time</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+28:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -256,19 +263,19 @@ sleep for preset rate [Hz]
 					<div class="method-source-code"
 						id="sleep-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/rate.rb, line 38</span>
-38:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sleep</span>
-39:       <span class="ruby-identifier">current_time</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
-40:       <span class="ruby-identifier">elapsed</span> = <span class="ruby-identifier">current_time</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@last_time</span>
-41:       <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">sleep</span>(<span class="ruby-ivar">@sleep_duration</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">elapsed</span>)
-42:       <span class="ruby-ivar">@last_time</span> = <span class="ruby-ivar">@last_time</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@sleep_duration</span>
-43: 
-44:       <span class="ruby-comment cmt"># detect time jumping forwards, as well as loops that are</span>
-45:       <span class="ruby-comment cmt"># inherently too slow</span>
-46:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_time</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@last_time</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@sleep_duration</span> * <span class="ruby-value">2</span>
-47:           <span class="ruby-ivar">@last_time</span> = <span class="ruby-identifier">current_time</span>
-48:       <span class="ruby-keyword kw">end</span>
-49:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/rate.rb, line 33</span>
+33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sleep</span>
+34:       <span class="ruby-identifier">current_time</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+35:       <span class="ruby-identifier">elapsed</span> = <span class="ruby-identifier">current_time</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@last_time</span>
+36:       <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">sleep</span>(<span class="ruby-ivar">@sleep_duration</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">elapsed</span>)
+37:       <span class="ruby-ivar">@last_time</span> = <span class="ruby-ivar">@last_time</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@sleep_duration</span>
+38: 
+39:       <span class="ruby-comment cmt"># detect time jumping forwards, as well as loops that are</span>
+40:       <span class="ruby-comment cmt"># inherently too slow</span>
+41:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_time</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@last_time</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@sleep_duration</span> * <span class="ruby-value">2</span>
+42:           <span class="ruby-ivar">@last_time</span> = <span class="ruby-identifier">current_time</span>
+43:       <span class="ruby-keyword kw">end</span>
+44:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

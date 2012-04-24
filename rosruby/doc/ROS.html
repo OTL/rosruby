@@ -183,6 +183,15 @@
 		<div id="project-metadata">
 			
 			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
 
 			<div id="classindex-section" class="section project-section">
 				<h3 class="section-header">Class Index
@@ -290,7 +299,7 @@ License: BSD
 <p>
 Copyright (C) 2012 Takashi Ogura <t.ogura@gmail.com>
 </p>
-<h1>Parameter <a href="ROS/Subscriber.html">Subscriber</a></h1>
+<h2>Parameter <a href="ROS/Subscriber.html">Subscriber</a></h2>
 <p>
 callback object for paramUpdate
 </p>
@@ -397,10 +406,10 @@ load manifest and add all dependencies
 					<div class="method-source-code"
 						id="load-manifest-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/package.rb, line 149</span>
-149:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load_manifest</span>(<span class="ruby-identifier">package</span>)
-150:     <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Package</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">package</span>).<span class="ruby-identifier">add_path_with_depend_packages</span>
-151:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/package.rb, line 142</span>
+142:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load_manifest</span>(<span class="ruby-identifier">package</span>)
+143:     <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Package</span>.<span class="ruby-identifier">add_path_with_depend_packages</span>(<span class="ruby-identifier">package</span>)
+144:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

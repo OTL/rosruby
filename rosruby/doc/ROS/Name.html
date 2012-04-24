@@ -81,6 +81,15 @@
 		<div id="project-metadata">
 			
 			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
 
 			<div id="classindex-section" class="section project-section">
 				<h3 class="section-header">Class Index
@@ -215,17 +224,24 @@ name sparation char
 					<p>
 generate anonymous name using input id (arange from roslib)
 </p>
+<dl>
+<dt><tt>id</tt></dt><dd><p>
+base id (String)
+</p>
+</dd>
+<dt><tt>return</tt></dt><dd><p>
+generated id
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="anonymous-name-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/name.rb, line 54</span>
-54:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">anonymous_name</span>(<span class="ruby-identifier">id</span>)
-55:       <span class="ruby-comment cmt"># Generate a ROS-legal 'anonymous' name</span>
-56:       <span class="ruby-comment cmt"># @param id: prefix for anonymous name</span>
-57:       <span class="ruby-comment cmt"># @type  id: str</span>
+    <span class="ruby-comment cmt"># File lib/ros/name.rb, line 57</span>
+57:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">anonymous_name</span>(<span class="ruby-identifier">id</span>)
 58:       <span class="ruby-identifier">name</span> = <span class="ruby-node">&quot;#{id}_#{Socket.gethostname}_#{Process.pid}_#{rand(1000000)}&quot;</span>
 59:       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'.'</span>, <span class="ruby-value str">'_'</span>)
 60:       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'-'</span>, <span class="ruby-value str">'_'</span>)
@@ -262,7 +278,7 @@ start with &#8217;/&#8217; and use single &#8217;/&#8217; for names
 input name
 </p>
 </dd>
-<dt>return</dt><dd><p>
+<dt><tt>return</tt></dt><dd><p>
 canonicalized name
 </p>
 </dd>
@@ -309,20 +325,34 @@ canonicalized name
 					<p>
 expand ~local_param like names
 </p>
+<dl>
+<dt><tt>caller_id</tt></dt><dd><p>
+caller id for replacing ~
+</p>
+</dd>
+<dt><tt>name</tt></dt><dd><p>
+param name like &#8217;~param&#8217;
+</p>
+</dd>
+<dt><tt>return</tt></dt><dd><p>
+expanded name
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="expand-local-name-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/name.rb, line 42</span>
-42:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expand_local_name</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">name</span>)
-43:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'~'</span>[<span class="ruby-value">0</span>]
-44:         <span class="ruby-identifier">caller_id</span> <span class="ruby-operator">+</span> <span class="ruby-constant">SEP</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
-45:       <span class="ruby-keyword kw">else</span>
-46:         <span class="ruby-identifier">name</span>
-47:       <span class="ruby-keyword kw">end</span>
-48:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/name.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expand_local_name</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">name</span>)
+45:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'~'</span>[<span class="ruby-value">0</span>]
+46:         <span class="ruby-identifier">caller_id</span> <span class="ruby-operator">+</span> <span class="ruby-constant">SEP</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
+47:       <span class="ruby-keyword kw">else</span>
+48:         <span class="ruby-identifier">name</span>
+49:       <span class="ruby-keyword kw">end</span>
+50:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -349,27 +379,45 @@ expand ~local_param like names
 					<p>
 expand local, canonicalize, remappings
 </p>
+<dl>
+<dt><tt>caller_id</tt></dt><dd><p>
+caller_id
+</p>
+</dd>
+<dt><tt>ns</tt></dt><dd><p>
+namespace
+</p>
+</dd>
+<dt><tt>name</tt></dt><dd><p>
+target name
+</p>
+</dd>
+<dt><tt>remappings</tt></dt><dd><p>
+name remappings
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="resolve-name-with-call-id-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/name.rb, line 68</span>
-68:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_name_with_call_id</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">ns</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">remappings</span>)
-69:       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">canonicalize_name</span>(<span class="ruby-identifier">expand_local_name</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">name</span>))
-70:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">remappings</span>
-71:         <span class="ruby-identifier">remappings</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-72:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">canonicalize_name</span>(<span class="ruby-identifier">key</span>)
-73:             <span class="ruby-identifier">name</span> = <span class="ruby-identifier">value</span>
-74:           <span class="ruby-keyword kw">end</span>
-75:         <span class="ruby-keyword kw">end</span>
-76:       <span class="ruby-keyword kw">end</span>
-77:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ns</span>
-78:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">ns</span> <span class="ruby-operator">+</span> <span class="ruby-constant">SEP</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>
+    <span class="ruby-comment cmt"># File lib/ros/name.rb, line 71</span>
+71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_name_with_call_id</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">ns</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">remappings</span>)
+72:       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">canonicalize_name</span>(<span class="ruby-identifier">expand_local_name</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">name</span>))
+73:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">remappings</span>
+74:         <span class="ruby-identifier">remappings</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+75:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">canonicalize_name</span>(<span class="ruby-identifier">key</span>)
+76:             <span class="ruby-identifier">name</span> = <span class="ruby-identifier">value</span>
+77:           <span class="ruby-keyword kw">end</span>
+78:         <span class="ruby-keyword kw">end</span>
 79:       <span class="ruby-keyword kw">end</span>
-80:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">canonicalize_name</span>(<span class="ruby-identifier">name</span>)
-81:     <span class="ruby-keyword kw">end</span></pre>
+80:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ns</span>
+81:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">ns</span> <span class="ruby-operator">+</span> <span class="ruby-constant">SEP</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>
+82:       <span class="ruby-keyword kw">end</span>
+83:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">canonicalize_name</span>(<span class="ruby-identifier">name</span>)
+84:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

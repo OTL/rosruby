@@ -22,10 +22,65 @@
 	<h1>rosruby API</h1>
 
 	
-	<p>This is the API documentation for 'rosruby API'.</p>
+	<div id="main">
+		
+<p>
+<a href="ROS.html">ROS</a> is Robot Operating System developed by Willow
+Garage and open source communities. See <a
+href="http://ros.org/.">ros.org/.</a>
+</p>
+<p>
+rosruby is <a href="ROS.html">ROS</a> client for ruby. You can program
+robots by ruby, very easily.
+</p>
+<h2>Requirements</h2>
+<ul>
+<li><p>
+ruby (1.8.x/1.9.x)
+</p>
+</li>
+<li><p>
+<a href="ROS.html">ROS</a> (electric/fuerte)
+</p>
+<ul>
+<li><p>
+<a href="ROS.html">ROS</a> requires python2.7 or more libraries
+</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>License</h2>
+<p>
+BSD License
+</p>
+<h2>Documents</h2>
+<h3>project page</h3>
+<ul>
+<li><p>
+<a href="http://github.com/OTL/rosruby">github.com/OTL/rosruby</a>
+</p>
+</li>
+</ul>
+<h3><a href="ROS.html">ROS</a> wiki</h3>
+<ul>
+<li><p>
+<a href="http://ros.org/wiki/rosruby">ros.org/wiki/rosruby</a>
+</p>
+</li>
+</ul>
+
+	</div>
 	
 
 	
+	
+	<h2>Files</h2>
+	<ul>
+		
+			<li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
+		
+	</ul>
 	
 
 	<h2 id="classes">Classes/Modules</h2>
@@ -94,6 +149,10 @@
 	<h2 id="methods">Methods</h2>
 	<ul>
 		
+			<li><a href="ROS/Package.html#method-c-add_path_of_package">::add_path_of_package &mdash; ROS::Package</a></li>
+		
+			<li><a href="ROS/Package.html#method-c-add_path_with_depend_packages">::add_path_with_depend_packages &mdash; ROS::Package</a></li>
+		
 			<li><a href="ROS/Package.html#method-c-depends">::depends &mdash; ROS::Package</a></li>
 		
 			<li><a href="ROS/Package.html#method-c-find_all_packages">::find_all_packages &mdash; ROS::Package</a></li>
@@ -104,57 +163,55 @@
 		
 			<li><a href="ROS/ParameterManager.html#method-c-new">::new &mdash; ROS::ParameterManager</a></li>
 		
-			<li><a href="ROS/Duration.html#method-c-new">::new &mdash; ROS::Duration</a></li>
+			<li><a href="ROS/TCPROS/ServiceServer.html#method-c-new">::new &mdash; ROS::TCPROS::ServiceServer</a></li>
 		
 			<li><a href="ROS/Subscriber.html#method-c-new">::new &mdash; ROS::Subscriber</a></li>
 		
 			<li><a href="ROS/ServiceServer.html#method-c-new">::new &mdash; ROS::ServiceServer</a></li>
 		
-			<li><a href="ROS/Topic.html#method-c-new">::new &mdash; ROS::Topic</a></li>
-		
-			<li><a href="ROS/Node.html#method-c-new">::new &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-c-new">::new &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/Publisher.html#method-c-new">::new &mdash; ROS::Publisher</a></li>
-		
-			<li><a href="ROS/Service.html#method-c-new">::new &mdash; ROS::Service</a></li>
-		
-			<li><a href="ROS/ParameterSubscriber.html#method-c-new">::new &mdash; ROS::ParameterSubscriber</a></li>
-		
-			<li><a href="ROS/Package.html#method-c-new">::new &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS/Struct.html#method-c-new">::new &mdash; ROS::Struct</a></li>
-		
-			<li><a href="ROS/Time.html#method-c-new">::new &mdash; ROS::Time</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-c-new">::new &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/ServiceClient.html#method-c-new">::new &mdash; ROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-c-new">::new &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/Rate.html#method-c-new">::new &mdash; ROS::Rate</a></li>
-		
-			<li><a href="ROS/Log.html#method-c-new">::new &mdash; ROS::Log</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-c-new">::new &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/TCPROS/Client.html#method-c-new">::new &mdash; ROS::TCPROS::Client</a></li>
-		
-			<li><a href="ROS/TCPROS/Server.html#method-c-new">::new &mdash; ROS::TCPROS::Server</a></li>
+			<li><a href="ROS/Duration.html#method-c-new">::new &mdash; ROS::Duration</a></li>
 		
 			<li><a href="ROS/TCPROS/Header.html#method-c-new">::new &mdash; ROS::TCPROS::Header</a></li>
 		
+			<li><a href="ROS/Service.html#method-c-new">::new &mdash; ROS::Service</a></li>
+		
+			<li><a href="ROS/Node.html#method-c-new">::new &mdash; ROS::Node</a></li>
+		
+			<li><a href="ROS/ParameterSubscriber.html#method-c-new">::new &mdash; ROS::ParameterSubscriber</a></li>
+		
+			<li><a href="ROS/Struct.html#method-c-new">::new &mdash; ROS::Struct</a></li>
+		
+			<li><a href="ROS/Publisher.html#method-c-new">::new &mdash; ROS::Publisher</a></li>
+		
+			<li><a href="ROS/Log.html#method-c-new">::new &mdash; ROS::Log</a></li>
+		
+			<li><a href="ROS/TCPROS/Server.html#method-c-new">::new &mdash; ROS::TCPROS::Server</a></li>
+		
+			<li><a href="ROS/Topic.html#method-c-new">::new &mdash; ROS::Topic</a></li>
+		
+			<li><a href="ROS/Rate.html#method-c-new">::new &mdash; ROS::Rate</a></li>
+		
+			<li><a href="ROS/Time.html#method-c-new">::new &mdash; ROS::Time</a></li>
+		
+			<li><a href="ROS/MasterProxy.html#method-c-new">::new &mdash; ROS::MasterProxy</a></li>
+		
 			<li><a href="ROS/TCPROS/ServiceClient.html#method-c-new">::new &mdash; ROS::TCPROS::ServiceClient</a></li>
+		
+			<li><a href="ROS/GraphManager.html#method-c-new">::new &mdash; ROS::GraphManager</a></li>
+		
+			<li><a href="ROS/TCPROS/Client.html#method-c-new">::new &mdash; ROS::TCPROS::Client</a></li>
+		
+			<li><a href="ROS/ServiceClient.html#method-c-new">::new &mdash; ROS::ServiceClient</a></li>
+		
+			<li><a href="ROS/SlaveProxy.html#method-c-new">::new &mdash; ROS::SlaveProxy</a></li>
 		
 			<li><a href="ROS/Time.html#method-c-now">::now &mdash; ROS::Time</a></li>
 		
 			<li><a href="ROS/Package.html#method-c-read_cache_or_find_all">::read_cache_or_find_all &mdash; ROS::Package</a></li>
 		
-			<li><a href="ROS/Duration.html#method-i-%2B">#+ &mdash; ROS::Duration</a></li>
-		
 			<li><a href="ROS/Time.html#method-i-%2B">#+ &mdash; ROS::Time</a></li>
+		
+			<li><a href="ROS/Duration.html#method-i-%2B">#+ &mdash; ROS::Duration</a></li>
 		
 			<li><a href="ROS/Duration.html#method-i--">#- &mdash; ROS::Duration</a></li>
 		
@@ -166,15 +223,9 @@
 		
 			<li><a href="ROS/TCPROS/Header.html#method-i-%5B%5D%3D">#[]= &mdash; ROS::TCPROS::Header</a></li>
 		
-			<li><a href="ROS/Subscriber.html#method-i-add_connection">#add_connection &mdash; ROS::Subscriber</a></li>
-		
-			<li><a href="ROS/Publisher.html#method-i-add_connection">#add_connection &mdash; ROS::Publisher</a></li>
+			<li><a href="ROS/GraphManager.html#method-i-add_handlers">#add_handlers &mdash; ROS::GraphManager</a></li>
 		
 			<li><a href="ROS/GraphManager.html#method-i-add_parameter_subscriber">#add_parameter_subscriber &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/Package.html#method-i-add_path_of_package">#add_path_of_package &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS/Package.html#method-i-add_path_with_depend_packages">#add_path_with_depend_packages &mdash; ROS::Package</a></li>
 		
 			<li><a href="ROS/GraphManager.html#method-i-add_publisher">#add_publisher &mdash; ROS::GraphManager</a></li>
 		
@@ -188,37 +239,31 @@
 		
 			<li><a href="ROS/Name.html#method-i-anonymous_name">#anonymous_name &mdash; ROS::Name</a></li>
 		
+			<li><a href="ROS/TCPROS/Client.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::Client</a></li>
+		
+			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::ServiceClient</a></li>
+		
 			<li><a href="ROS/TCPROS/Server.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::Server</a></li>
 		
 			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::ServiceServer</a></li>
 		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/TCPROS/Client.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::Client</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-call">#call &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
 			<li><a href="ROS/ParameterSubscriber.html#method-i-call">#call &mdash; ROS::ParameterSubscriber</a></li>
+		
+			<li><a href="ROS/ServiceClient.html#method-i-call">#call &mdash; ROS::ServiceClient</a></li>
 		
 			<li><a href="ROS/ServiceServer.html#method-i-call">#call &mdash; ROS::ServiceServer</a></li>
 		
-			<li><a href="ROS/ServiceClient.html#method-i-call">#call &mdash; ROS::ServiceClient</a></li>
+			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-call">#call &mdash; ROS::TCPROS::ServiceClient</a></li>
 		
 			<li><a href="ROS/TVal.html#method-i-canonicalize">#canonicalize &mdash; ROS::TVal</a></li>
 		
 			<li><a href="ROS/Name.html#method-i-canonicalize_name">#canonicalize_name &mdash; ROS::Name</a></li>
 		
-			<li><a href="ROS/TCPROS/Server.html#method-i-check_header">#check_header &mdash; ROS::TCPROS::Server</a></li>
-		
 			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-check_header">#check_header &mdash; ROS::TCPROS::ServiceClient</a></li>
 		
+			<li><a href="ROS/TCPROS/Server.html#method-i-check_header">#check_header &mdash; ROS::TCPROS::Server</a></li>
+		
 			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-check_header">#check_header &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/ServiceServer.html#method-i-close">#close &mdash; ROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/Topic.html#method-i-close">#close &mdash; ROS::Topic</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-convert_if_needed">#convert_if_needed &mdash; ROS::Node</a></li>
 		
 			<li><a href="ROS/ParameterManager.html#method-i-delete_param">#delete_param &mdash; ROS::ParameterManager</a></li>
 		
@@ -234,9 +279,9 @@
 		
 			<li><a href="ROS/SlaveProxy.html#method-i-get_bus_stats">#get_bus_stats &mdash; ROS::SlaveProxy</a></li>
 		
-			<li><a href="ROS/ServiceServer.html#method-i-get_connection_data">#get_connection_data &mdash; ROS::ServiceServer</a></li>
-		
 			<li><a href="ROS/Subscriber.html#method-i-get_connection_data">#get_connection_data &mdash; ROS::Subscriber</a></li>
+		
+			<li><a href="ROS/ServiceServer.html#method-i-get_connection_data">#get_connection_data &mdash; ROS::ServiceServer</a></li>
 		
 			<li><a href="ROS/Publisher.html#method-i-get_connection_data">#get_connection_data &mdash; ROS::Publisher</a></li>
 		
@@ -246,19 +291,15 @@
 		
 			<li><a href="ROS/TCPROS/Header.html#method-i-get_data">#get_data &mdash; ROS::TCPROS::Header</a></li>
 		
-			<li><a href="ROS/Node.html#method-i-get_env">#get_env &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/ServiceClient.html#method-i-get_host_port_from_uri">#get_host_port_from_uri &mdash; ROS::ServiceClient</a></li>
-		
 			<li><a href="ROS/SlaveProxy.html#method-i-get_master_uri">#get_master_uri &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-i-get_param">#get_param &mdash; ROS::ParameterManager</a></li>
 		
 			<li><a href="ROS/Node.html#method-i-get_param">#get_param &mdash; ROS::Node</a></li>
 		
-			<li><a href="ROS/ParameterManager.html#method-i-get_param_names">#get_param_names &mdash; ROS::ParameterManager</a></li>
+			<li><a href="ROS/ParameterManager.html#method-i-get_param">#get_param &mdash; ROS::ParameterManager</a></li>
 		
 			<li><a href="ROS/Node.html#method-i-get_param_names">#get_param_names &mdash; ROS::Node</a></li>
+		
+			<li><a href="ROS/ParameterManager.html#method-i-get_param_names">#get_param_names &mdash; ROS::ParameterManager</a></li>
 		
 			<li><a href="ROS/SlaveProxy.html#method-i-get_pid">#get_pid &mdash; ROS::SlaveProxy</a></li>
 		
@@ -272,9 +313,9 @@
 		
 			<li><a href="ROS/MasterProxy.html#method-i-get_system_state">#get_system_state &mdash; ROS::MasterProxy</a></li>
 		
-			<li><a href="ROS/MasterProxy.html#method-i-get_uri">#get_uri &mdash; ROS::MasterProxy</a></li>
-		
 			<li><a href="ROS/GraphManager.html#method-i-get_uri">#get_uri &mdash; ROS::GraphManager</a></li>
+		
+			<li><a href="ROS/MasterProxy.html#method-i-get_uri">#get_uri &mdash; ROS::MasterProxy</a></li>
 		
 			<li><a href="ROS/Node.html#method-i-has_param">#has_param &mdash; ROS::Node</a></li>
 		
@@ -310,9 +351,7 @@
 		
 			<li><a href="ROS/SlaveProxy.html#method-i-param_update">#param_update &mdash; ROS::SlaveProxy</a></li>
 		
-			<li><a href="ROS/Node.html#method-i-parse_args">#parse_args &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Subscriber.html#method-i-process_queue">#process_queue &mdash; ROS::Subscriber</a></li>
+			<li><a href="ROS/TCPROS/Message.html#method-i-protocol">#protocol &mdash; ROS::TCPROS::Message</a></li>
 		
 			<li><a href="ROS/Publisher.html#method-i-publish">#publish &mdash; ROS::Publisher</a></li>
 		
@@ -352,37 +391,37 @@
 		
 			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-serve">#serve &mdash; ROS::TCPROS::ServiceServer</a></li>
 		
-			<li><a href="ROS/TCPROS/Server.html#method-i-serve">#serve &mdash; ROS::TCPROS::Server</a></li>
-		
 			<li><a href="ROS/Node.html#method-i-service">#service &mdash; ROS::Node</a></li>
 		
 			<li><a href="ROS/ServiceServer.html#method-i-service_uri">#service_uri &mdash; ROS::ServiceServer</a></li>
 		
-			<li><a href="ROS/Topic.html#method-i-set_manager">#set_manager &mdash; ROS::Topic</a></li>
-		
-			<li><a href="ROS/ServiceServer.html#method-i-set_manager">#set_manager &mdash; ROS::ServiceServer</a></li>
+			<li><a href="ROS/ParameterSubscriber.html#method-i-set_manager">#set_manager &mdash; ROS::ParameterSubscriber</a></li>
 		
 			<li><a href="ROS/ParameterManager.html#method-i-set_param">#set_param &mdash; ROS::ParameterManager</a></li>
 		
 			<li><a href="ROS/Node.html#method-i-set_param">#set_param &mdash; ROS::Node</a></li>
 		
-			<li><a href="ROS/Publisher.html#method-i-shutdown">#shutdown &mdash; ROS::Publisher</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-shutdown">#shutdown &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/ServiceClient.html#method-i-shutdown">#shutdown &mdash; ROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-shutdown">#shutdown &mdash; ROS::Node</a></li>
-		
 			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-shutdown">#shutdown &mdash; ROS::TCPROS::ServiceClient</a></li>
 		
-			<li><a href="ROS/ServiceServer.html#method-i-shutdown">#shutdown &mdash; ROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/TCPROS/Client.html#method-i-shutdown">#shutdown &mdash; ROS::TCPROS::Client</a></li>
+			<li><a href="ROS/Publisher.html#method-i-shutdown">#shutdown &mdash; ROS::Publisher</a></li>
 		
 			<li><a href="ROS/Subscriber.html#method-i-shutdown">#shutdown &mdash; ROS::Subscriber</a></li>
 		
+			<li><a href="ROS/ParameterSubscriber.html#method-i-shutdown">#shutdown &mdash; ROS::ParameterSubscriber</a></li>
+		
 			<li><a href="ROS/SlaveProxy.html#method-i-shutdown">#shutdown &mdash; ROS::SlaveProxy</a></li>
+		
+			<li><a href="ROS/TCPROS/Client.html#method-i-shutdown">#shutdown &mdash; ROS::TCPROS::Client</a></li>
+		
+			<li><a href="ROS/ServiceServer.html#method-i-shutdown">#shutdown &mdash; ROS::ServiceServer</a></li>
+		
+			<li><a href="ROS/ServiceClient.html#method-i-shutdown">#shutdown &mdash; ROS::ServiceClient</a></li>
+		
+			<li><a href="ROS/GraphManager.html#method-i-shutdown">#shutdown &mdash; ROS::GraphManager</a></li>
+		
+			<li><a href="ROS/Node.html#method-i-shutdown">#shutdown &mdash; ROS::Node</a></li>
+		
+			<li><a href="ROS/GraphManager.html#method-i-shutdown_parameter_subscriber">#shutdown_parameter_subscriber &mdash; ROS::GraphManager</a></li>
 		
 			<li><a href="ROS/GraphManager.html#method-i-shutdown_publisher">#shutdown_publisher &mdash; ROS::GraphManager</a></li>
 		
@@ -412,8 +451,6 @@
 		
 			<li><a href="ROS/TVal.html#method-i-to_sec">#to_sec &mdash; ROS::TVal</a></li>
 		
-			<li><a href="ROS/Node.html#method-i-trap_signals">#trap_signals &mdash; ROS::Node</a></li>
-		
 			<li><a href="ROS/Struct.html#method-i-unpack">#unpack &mdash; ROS::Struct</a></li>
 		
 			<li><a href="ROS/MasterProxy.html#method-i-unregister_publisher">#unregister_publisher &mdash; ROS::MasterProxy</a></li>
@@ -421,6 +458,8 @@
 			<li><a href="ROS/MasterProxy.html#method-i-unregister_service">#unregister_service &mdash; ROS::MasterProxy</a></li>
 		
 			<li><a href="ROS/MasterProxy.html#method-i-unregister_subscriber">#unregister_subscriber &mdash; ROS::MasterProxy</a></li>
+		
+			<li><a href="ROS/MasterProxy.html#method-i-unsubscribe_param">#unsubscribe_param &mdash; ROS::MasterProxy</a></li>
 		
 			<li><a href="ROS/TCPROS/Header.html#method-i-valid%3F">#valid? &mdash; ROS::TCPROS::Header</a></li>
 		

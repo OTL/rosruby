@@ -88,6 +88,15 @@
 		<div id="project-metadata">
 			
 			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
 
 			<div id="classindex-section" class="section project-section">
 				<h3 class="section-header">Class Index
@@ -213,17 +222,17 @@ used as msg object for time
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 62</span>
-62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">time</span>=<span class="ruby-keyword kw">nil</span>)
-63:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">time</span>
-64:         <span class="ruby-ivar">@secs</span> = <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_i</span>
-65:         <span class="ruby-ivar">@nsecs</span> = ((<span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@secs</span>) * <span class="ruby-value">1e9</span>.<span class="ruby-identifier">to_i</span>).<span class="ruby-identifier">to_i</span>
-66:       <span class="ruby-keyword kw">else</span>
-67:         <span class="ruby-ivar">@secs</span> = <span class="ruby-value">0</span>
-68:         <span class="ruby-ivar">@nsecs</span> = <span class="ruby-value">0</span>
-69:       <span class="ruby-keyword kw">end</span>
-70:       <span class="ruby-identifier">canonicalize</span>
-71:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 63</span>
+63:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">time</span>=<span class="ruby-keyword kw">nil</span>)
+64:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">time</span>
+65:         <span class="ruby-ivar">@secs</span> = <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_i</span>
+66:         <span class="ruby-ivar">@nsecs</span> = ((<span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@secs</span>) * <span class="ruby-value">1e9</span>.<span class="ruby-identifier">to_i</span>).<span class="ruby-identifier">to_i</span>
+67:       <span class="ruby-keyword kw">else</span>
+68:         <span class="ruby-ivar">@secs</span> = <span class="ruby-value">0</span>
+69:         <span class="ruby-ivar">@nsecs</span> = <span class="ruby-value">0</span>
+70:       <span class="ruby-keyword kw">end</span>
+71:       <span class="ruby-identifier">canonicalize</span>
+72:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -247,17 +256,19 @@ used as msg object for time
 
 				<div class="method-description">
 					
-					
+					<p>
+initialize with current time
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="now-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 58</span>
-58:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">now</span>
-59:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Time</span><span class="ruby-operator">::</span><span class="ruby-identifier">now</span>)
-60:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 59</span>
+59:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">now</span>
+60:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Time</span><span class="ruby-operator">::</span><span class="ruby-identifier">now</span>)
+61:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -294,13 +305,13 @@ used as msg object for time
 					<div class="method-source-code"
 						id="--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 74</span>
-74:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">duration</span>)
-75:       <span class="ruby-identifier">tm</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">new</span>
-76:       <span class="ruby-identifier">tm</span>.<span class="ruby-identifier">secs</span> = <span class="ruby-ivar">@secs</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">secs</span>
-77:       <span class="ruby-identifier">tm</span>.<span class="ruby-identifier">nsecs</span> = <span class="ruby-ivar">@nsecs</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">nsecs</span>
-78:       <span class="ruby-identifier">tm</span>.<span class="ruby-identifier">canonicalize</span>
-79:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 75</span>
+75:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">duration</span>)
+76:       <span class="ruby-identifier">tm</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">new</span>
+77:       <span class="ruby-identifier">tm</span>.<span class="ruby-identifier">secs</span> = <span class="ruby-ivar">@secs</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">secs</span>
+78:       <span class="ruby-identifier">tm</span>.<span class="ruby-identifier">nsecs</span> = <span class="ruby-ivar">@nsecs</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">nsecs</span>
+79:       <span class="ruby-identifier">tm</span>.<span class="ruby-identifier">canonicalize</span>
+80:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -331,13 +342,13 @@ used as msg object for time
 					<div class="method-source-code"
 						id="--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 81</span>
-81:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">other</span>)
-82:       <span class="ruby-identifier">d</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Duration</span>.<span class="ruby-identifier">new</span>
-83:       <span class="ruby-identifier">d</span>.<span class="ruby-identifier">secs</span> = <span class="ruby-ivar">@secs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">secs</span>
-84:       <span class="ruby-identifier">d</span>.<span class="ruby-identifier">nsecs</span> = <span class="ruby-ivar">@nsecs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">nsecs</span>
-85:       <span class="ruby-identifier">d</span>.<span class="ruby-identifier">canonicalize</span>
-86:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/time.rb, line 82</span>
+82:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">other</span>)
+83:       <span class="ruby-identifier">d</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Duration</span>.<span class="ruby-identifier">new</span>
+84:       <span class="ruby-identifier">d</span>.<span class="ruby-identifier">secs</span> = <span class="ruby-ivar">@secs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">secs</span>
+85:       <span class="ruby-identifier">d</span>.<span class="ruby-identifier">nsecs</span> = <span class="ruby-ivar">@nsecs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">nsecs</span>
+86:       <span class="ruby-identifier">d</span>.<span class="ruby-identifier">canonicalize</span>
+87:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

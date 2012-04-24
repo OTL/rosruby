@@ -71,8 +71,6 @@
 					
 					<li><a href="#method-c-new">::new</a></li>
 					
-					<li><a href="#method-i-add_connection">#add_connection</a></li>
-					
 					<li><a href="#method-i-get_connection_data">#get_connection_data</a></li>
 					
 					<li><a href="#method-i-get_connection_info">#get_connection_info</a></li>
@@ -91,6 +89,15 @@
 
 		<div id="project-metadata">
 			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
 			
 
 			<div id="classindex-section" class="section project-section">
@@ -206,20 +213,41 @@
 
 				<div class="method-description">
 					
-					
+					<dl>
+<dt><tt>caller_id</tt></dt><dd><p>
+caller_id of this node
+</p>
+</dd>
+<dt><tt>topic_name</tt></dt><dd><p>
+name of topic to publish (String)
+</p>
+</dd>
+<dt><tt>topic_type</tt></dt><dd><p>
+class of topic
+</p>
+</dd>
+<dt><tt>is_latched</tt></dt><dd><p>
+latched topic?
+</p>
+</dd>
+<dt><tt>host</tt></dt><dd><p>
+host name of this node
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 64</span>
-64:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>, <span class="ruby-identifier">is_latched</span>, <span class="ruby-identifier">host</span>)
-65:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>)
-66:       <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">host</span>
-67:       <span class="ruby-ivar">@is_latched</span> = <span class="ruby-identifier">is_latched</span>
-68:       <span class="ruby-ivar">@seq</span> = <span class="ruby-value">0</span>
-69:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 69</span>
+69:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>, <span class="ruby-identifier">is_latched</span>, <span class="ruby-identifier">host</span>)
+70:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>)
+71:       <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">host</span>
+72:       <span class="ruby-ivar">@is_latched</span> = <span class="ruby-identifier">is_latched</span>
+73:       <span class="ruby-ivar">@seq</span> = <span class="ruby-value">0</span>
+74:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -236,49 +264,6 @@
 			<h3 class="section-header">Public Instance Methods</h3>
 
 		
-			<div id="add-connection-method" class="method-detail ">
-				<a name="method-i-add_connection"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">add_connection</span><span
-						class="method-args">(caller_id)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-add tcpros connection as server
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="add-connection-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 87</span>
-87:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_connection</span>(<span class="ruby-identifier">caller_id</span>)
-88:       <span class="ruby-identifier">connection</span> = <span class="ruby-constant">TCPROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Server</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@topic_name</span>, <span class="ruby-ivar">@topic_type</span>,
-89:                                       <span class="ruby-ivar">@is_latched</span>,
-90:                                       <span class="ruby-value">0</span>, <span class="ruby-ivar">@host</span>)
-91:       <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">start</span>
-92:       <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">id</span> = <span class="ruby-node">&quot;#{@topic_name}_out_#{@connection_id_number}&quot;</span>
-93:       <span class="ruby-ivar">@connection_id_number</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-94:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">connection</span>)
-95:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">connection</span>
-96:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
 			<div id="get-connection-data-method" class="method-detail ">
 				<a name="method-i-get_connection_data"></a>
 
@@ -292,21 +277,24 @@ add tcpros connection as server
 
 				<div class="method-description">
 					
-					<p>
-return connection data for slave api
+					<dl>
+<dt><tt>return</tt></dt><dd><p>
+connection data for slave api
 </p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="get-connection-data-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 99</span>
- 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_connection_data</span>
-100:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">connection</span><span class="ruby-operator">|</span>
-101:         [<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">byte_sent</span>, <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">num_sent</span>, <span class="ruby-value">1</span>]
-102:       <span class="ruby-keyword kw">end</span>
-103:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 104</span>
+104:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_connection_data</span>
+105:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">connection</span><span class="ruby-operator">|</span>
+106:         [<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">byte_sent</span>, <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">num_sent</span>, <span class="ruby-value">1</span>]
+107:       <span class="ruby-keyword kw">end</span>
+108:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -330,23 +318,26 @@ return connection data for slave api
 
 				<div class="method-description">
 					
-					<p>
-return connection info for slave api
+					<dl>
+<dt><tt>return</tt></dt><dd><p>
+connection info for slave api
 </p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="get-connection-info-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 106</span>
-106:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_connection_info</span>
-107:       <span class="ruby-identifier">info</span> = []
-108:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">connection</span><span class="ruby-operator">|</span>
-109:         <span class="ruby-identifier">info</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">caller_id</span>, <span class="ruby-value str">'o'</span>, <span class="ruby-value str">'TCPROS'</span>, <span class="ruby-ivar">@topic_name</span>])
-110:       <span class="ruby-keyword kw">end</span>
-111:       <span class="ruby-identifier">info</span>
-112:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 111</span>
+111:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_connection_info</span>
+112:       <span class="ruby-identifier">info</span> = []
+113:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">connection</span><span class="ruby-operator">|</span>
+114:         <span class="ruby-identifier">info</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">caller_id</span>, <span class="ruby-value str">'o'</span>, <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">protocol</span>, <span class="ruby-ivar">@topic_name</span>])
+115:       <span class="ruby-keyword kw">end</span>
+116:       <span class="ruby-identifier">info</span>
+117:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -373,22 +364,28 @@ return connection info for slave api
 					<p>
 publish msg object
 </p>
+<dl>
+<dt><tt>message</tt></dt><dd><p>
+instance of topic_type class
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="publish-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 74</span>
-74:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">message</span>)
-75:       <span class="ruby-ivar">@seq</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-76:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">has_header?</span>
-77:         <span class="ruby-identifier">message</span>.<span class="ruby-identifier">header</span>.<span class="ruby-identifier">seq</span> = <span class="ruby-ivar">@seq</span>
-78:       <span class="ruby-keyword kw">end</span>
-79:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">connection</span><span class="ruby-operator">|</span>
-80:         <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">msg_queue</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">message</span>)
-81:       <span class="ruby-keyword kw">end</span>
-82:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 79</span>
+79:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">message</span>)
+80:       <span class="ruby-ivar">@seq</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+81:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">has_header?</span>
+82:         <span class="ruby-identifier">message</span>.<span class="ruby-identifier">header</span>.<span class="ruby-identifier">seq</span> = <span class="ruby-ivar">@seq</span>
+83:       <span class="ruby-keyword kw">end</span>
+84:       <span class="ruby-ivar">@connections</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">connection</span><span class="ruby-operator">|</span>
+85:         <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">msg_queue</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">message</span>)
+86:       <span class="ruby-keyword kw">end</span>
+87:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -421,10 +418,10 @@ user interface of shutdown this publisher
 					<div class="method-source-code"
 						id="shutdown-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 117</span>
-117:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
-118:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">shutdown_publisher</span>(<span class="ruby-keyword kw">self</span>)
-119:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/publisher.rb, line 122</span>
+122:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
+123:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">shutdown_publisher</span>(<span class="ruby-keyword kw">self</span>)
+124:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

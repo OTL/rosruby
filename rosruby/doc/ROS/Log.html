@@ -84,6 +84,15 @@
 		<div id="project-metadata">
 			
 			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
 
 			<div id="classindex-section" class="section project-section">
 				<h3 class="section-header">Class Index
@@ -170,7 +179,7 @@
 		<h1 class="class">ROS::Log</h1>
 
 		<div id="description">
-			<h1>Logging class for <a href="../ROS.html">ROS</a></h1>
+			<h2>Logging class for <a href="../ROS.html">ROS</a></h2>
 <p>
 This class enable double logging: <a href="../ROS.html">ROS</a> Logging
 system and ruby log.
@@ -220,28 +229,38 @@ topic name of rosout
 					<p>
 start publishing /rosout and make a ruby logger instance for local output
 </p>
+<dl>
+<dt><tt>node</tt></dt><dd><p>
+<a href="Node.html">Node</a> instance
+</p>
+</dd>
+<dt><tt>output</tt></dt><dd><p>
+local output. $stdout is default 
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/log.rb, line 33</span>
-33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span>=<span class="ruby-identifier">$stdout</span>)
-34:       <span class="ruby-ivar">@node</span> = <span class="ruby-identifier">node</span>
-35:       <span class="ruby-ivar">@rosout</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">advertise</span>(<span class="ruby-constant">ROSOUT_TOPIC</span>, <span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>)
-36:       <span class="ruby-ivar">@ruby_dict</span> = {<span class="ruby-value str">'FATAL'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">FATAL</span>,
-37:         <span class="ruby-value str">'ERROR'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR</span>,
-38:         <span class="ruby-value str">'WARN'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">WARN</span>,
-39:         <span class="ruby-value str">'INFO'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">INFO</span>,
-40:         <span class="ruby-value str">'DEBUG'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>}
-41:       <span class="ruby-ivar">@msg_dict</span> = {<span class="ruby-value str">'FATAL'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">FATAL</span>,
-42:         <span class="ruby-value str">'ERROR'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR</span>,
-43:         <span class="ruby-value str">'WARN'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">WARN</span>,
-44:         <span class="ruby-value str">'INFO'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">INFO</span>,
-45:         <span class="ruby-value str">'DEBUG'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>}
-46:       <span class="ruby-ivar">@local_logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">output</span>)
-47:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/log.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span>=<span class="ruby-identifier">$stdout</span>)
+32:       <span class="ruby-ivar">@node</span> = <span class="ruby-identifier">node</span>
+33:       <span class="ruby-ivar">@rosout</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">advertise</span>(<span class="ruby-constant">ROSOUT_TOPIC</span>, <span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>)
+34:       <span class="ruby-ivar">@ruby_dict</span> = {<span class="ruby-value str">'FATAL'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">FATAL</span>,
+35:         <span class="ruby-value str">'ERROR'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR</span>,
+36:         <span class="ruby-value str">'WARN'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">WARN</span>,
+37:         <span class="ruby-value str">'INFO'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">INFO</span>,
+38:         <span class="ruby-value str">'DEBUG'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>}
+39:       <span class="ruby-ivar">@msg_dict</span> = {<span class="ruby-value str">'FATAL'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">FATAL</span>,
+40:         <span class="ruby-value str">'ERROR'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR</span>,
+41:         <span class="ruby-value str">'WARN'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">WARN</span>,
+42:         <span class="ruby-value str">'INFO'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">INFO</span>,
+43:         <span class="ruby-value str">'DEBUG'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-operator">::</span><span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>}
+44:       <span class="ruby-ivar">@local_logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">output</span>)
+45:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -275,24 +294,24 @@ start publishing /rosout and make a ruby logger instance for local output
 outputs log messages with level and informations which rosout needs.
 </p>
 <dl>
-<dt>severity</dt><dd><p>
+<dt><tt>severity</tt></dt><dd><p>
 log level: one of &#8216;DEBUG&#8217;, &#8216;INFO&#8217;,
 &#8216;WARN&#8217;, &#8216;ERROR&#8217;, &#8216;FATAL&#8217;
 </p>
 </dd>
-<dt>message</dt><dd><p>
+<dt><tt>message</tt></dt><dd><p>
 your message
 </p>
 </dd>
-<dt>file</dt><dd><p>
+<dt><tt>file</tt></dt><dd><p>
 file name in which called this method
 </p>
 </dd>
-<dt>function</dt><dd><p>
+<dt><tt>function</tt></dt><dd><p>
 function name in which called this method
 </p>
 </dd>
-<dt>line</dt><dd><p>
+<dt><tt>line</tt></dt><dd><p>
 line number (int) in which called this method
 </p>
 </dd>
@@ -303,21 +322,21 @@ line number (int) in which called this method
 					<div class="method-source-code"
 						id="log-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/log.rb, line 57</span>
-57:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log</span>(<span class="ruby-identifier">severity</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>=<span class="ruby-value str">''</span>, <span class="ruby-identifier">function</span>=<span class="ruby-value str">''</span>, <span class="ruby-identifier">line</span>=<span class="ruby-value">0</span>)
-58:       <span class="ruby-ivar">@local_logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-ivar">@ruby_dict</span>[<span class="ruby-identifier">severity</span>], <span class="ruby-identifier">message</span>, <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">node_name</span>)
-59:       <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">new</span>
-60:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">msg</span> = <span class="ruby-identifier">message</span>
-61:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">header</span>.<span class="ruby-identifier">stamp</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
-62:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">header</span>.<span class="ruby-identifier">frame_id</span> = <span class="ruby-value str">'rosout'</span>
-63:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">level</span> = <span class="ruby-ivar">@msg_dict</span>[<span class="ruby-identifier">severity</span>]
-64:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">name</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">node_name</span>
-65:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">file</span> = <span class="ruby-identifier">file</span>
-66:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">function</span> = <span class="ruby-identifier">function</span>
-67:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">line</span> = <span class="ruby-identifier">line</span>
-68:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">topics</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">get_published_topics</span>
-69:       <span class="ruby-ivar">@rosout</span>.<span class="ruby-identifier">publish</span>(<span class="ruby-identifier">msg</span>)
-70:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/log.rb, line 55</span>
+55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log</span>(<span class="ruby-identifier">severity</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>=<span class="ruby-value str">''</span>, <span class="ruby-identifier">function</span>=<span class="ruby-value str">''</span>, <span class="ruby-identifier">line</span>=<span class="ruby-value">0</span>)
+56:       <span class="ruby-ivar">@local_logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-ivar">@ruby_dict</span>[<span class="ruby-identifier">severity</span>], <span class="ruby-identifier">message</span>, <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">node_name</span>)
+57:       <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Rosgraph_msgs</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">new</span>
+58:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">msg</span> = <span class="ruby-identifier">message</span>
+59:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">header</span>.<span class="ruby-identifier">stamp</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+60:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">header</span>.<span class="ruby-identifier">frame_id</span> = <span class="ruby-value str">'rosout'</span>
+61:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">level</span> = <span class="ruby-ivar">@msg_dict</span>[<span class="ruby-identifier">severity</span>]
+62:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">name</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">node_name</span>
+63:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">file</span> = <span class="ruby-identifier">file</span>
+64:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">function</span> = <span class="ruby-identifier">function</span>
+65:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">line</span> = <span class="ruby-identifier">line</span>
+66:       <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">topics</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">get_published_topics</span>
+67:       <span class="ruby-ivar">@rosout</span>.<span class="ruby-identifier">publish</span>(<span class="ruby-identifier">msg</span>)
+68:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

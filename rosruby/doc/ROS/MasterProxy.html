@@ -99,6 +99,8 @@
 					
 					<li><a href="#method-i-unregister_subscriber">#unregister_subscriber</a></li>
 					
+					<li><a href="#method-i-unsubscribe_param">#unsubscribe_param</a></li>
+					
 				</ul>
 			</div>
 			
@@ -109,6 +111,15 @@
 
 		<div id="project-metadata">
 			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
 			
 
 			<div id="classindex-section" class="section project-section">
@@ -196,12 +207,12 @@
 		<h1 class="class">ROS::MasterProxy</h1>
 
 		<div id="description">
-			<h1><a href="../ROS.html">ROS</a> Master Proxy</h1>
+			<h2><a href="../ROS.html">ROS</a> Master Proxy</h2>
 <p>
 you can access to <a href="../ROS.html">ROS</a> Master easily.
 </p>
 <p>
-reference: <a
+Please refer to the wiki documents <a
 href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 </p>
 
@@ -272,20 +283,33 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 
 				<div class="method-description">
 					
-					
+					<dl>
+<dt><tt><a href="MasterProxy.html#caller_id">caller_id</a></tt></dt><dd><p>
+<a href="MasterProxy.html#caller_id">caller_id</a> of this node
+</p>
+</dd>
+<dt><tt><a href="MasterProxy.html#method-i-master_uri">master_uri</a></tt></dt><dd><p>
+URI of <a href="../ROS.html">ROS</a> Master
+</p>
+</dd>
+<dt><tt><a href="MasterProxy.html#slave_uri">slave_uri</a></tt></dt><dd><p>
+slave URI of this node
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 24</span>
-24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">slave_uri</span>)
-25:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
-26:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
-27:       <span class="ruby-ivar">@slave_uri</span> = <span class="ruby-identifier">slave_uri</span>
-28:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
-29:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">slave_uri</span>)
+29:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
+30:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
+31:       <span class="ruby-ivar">@slave_uri</span> = <span class="ruby-identifier">slave_uri</span>
+32:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
+33:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -322,15 +346,15 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="get-published-topics-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 130</span>
-130:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_published_topics</span>(<span class="ruby-identifier">subgraph</span>=<span class="ruby-value str">''</span>)
-131:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">topics</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getPublishedTopics</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">subgraph</span>)
-132:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-133:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">topics</span>
-134:       <span class="ruby-keyword kw">elsif</span>
-135:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-136:       <span class="ruby-keyword kw">end</span>
-137:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 149</span>
+149:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_published_topics</span>(<span class="ruby-identifier">subgraph</span>=<span class="ruby-value str">''</span>)
+150:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">topics</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getPublishedTopics</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">subgraph</span>)
+151:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+152:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">topics</span>
+153:       <span class="ruby-keyword kw">elsif</span>
+154:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+155:       <span class="ruby-keyword kw">end</span>
+156:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -361,15 +385,15 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="get-system-state-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 139</span>
-139:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_system_state</span>
-140:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">state</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getSystemState</span>(<span class="ruby-ivar">@caller_id</span>)
-141:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-142:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">state</span>
-143:       <span class="ruby-keyword kw">else</span>
-144:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-145:       <span class="ruby-keyword kw">end</span>
-146:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 158</span>
+158:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_system_state</span>
+159:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">state</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getSystemState</span>(<span class="ruby-ivar">@caller_id</span>)
+160:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+161:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">state</span>
+162:       <span class="ruby-keyword kw">else</span>
+163:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+164:       <span class="ruby-keyword kw">end</span>
+165:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -400,15 +424,15 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="get-uri-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 148</span>
-148:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_uri</span>
-149:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getUri</span>(<span class="ruby-ivar">@caller_id</span>)
-150:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-151:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">uri</span>
-152:       <span class="ruby-keyword kw">else</span>
-153:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-154:       <span class="ruby-keyword kw">end</span>
-155:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 167</span>
+167:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_uri</span>
+168:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getUri</span>(<span class="ruby-ivar">@caller_id</span>)
+169:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+170:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">uri</span>
+171:       <span class="ruby-keyword kw">else</span>
+172:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+173:       <span class="ruby-keyword kw">end</span>
+174:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -439,15 +463,15 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="lookup-node-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 121</span>
-121:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_node</span>(<span class="ruby-identifier">node_name</span>)
-122:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupNode</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">node_name</span>)
-123:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-124:         <span class="ruby-identifier">uri</span>
-125:       <span class="ruby-keyword kw">else</span>
-126:         <span class="ruby-keyword kw">nil</span>
-127:       <span class="ruby-keyword kw">end</span>
-128:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 140</span>
+140:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_node</span>(<span class="ruby-identifier">node_name</span>)
+141:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupNode</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">node_name</span>)
+142:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+143:         <span class="ruby-identifier">uri</span>
+144:       <span class="ruby-keyword kw">else</span>
+145:         <span class="ruby-keyword kw">nil</span>
+146:       <span class="ruby-keyword kw">end</span>
+147:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -478,15 +502,15 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="lookup-service-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 157</span>
-157:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_service</span>(<span class="ruby-identifier">service</span>)
-158:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupService</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">service</span>)
-159:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-160:         <span class="ruby-identifier">uri</span>
-161:       <span class="ruby-keyword kw">else</span>
-162:         <span class="ruby-keyword kw">false</span>
-163:       <span class="ruby-keyword kw">end</span>
-164:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 176</span>
+176:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_service</span>(<span class="ruby-identifier">service</span>)
+177:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupService</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">service</span>)
+178:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+179:         <span class="ruby-identifier">uri</span>
+180:       <span class="ruby-keyword kw">else</span>
+181:         <span class="ruby-keyword kw">false</span>
+182:       <span class="ruby-keyword kw">end</span>
+183:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -517,10 +541,10 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="master-uri-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 166</span>
-166:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri</span>
-167:       <span class="ruby-ivar">@master_uri</span>
-168:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 185</span>
+185:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri</span>
+186:       <span class="ruby-ivar">@master_uri</span>
+187:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -551,11 +575,11 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="master-uri--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 170</span>
-170:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri=</span>(<span class="ruby-identifier">uri</span>)
-171:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">uri</span>
-172:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
-173:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 189</span>
+189:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri=</span>(<span class="ruby-identifier">uri</span>)
+190:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">uri</span>
+191:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
+192:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -586,18 +610,18 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="register-publisher-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 86</span>
-86:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_publisher</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
-87:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uris</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
-88:                                                      <span class="ruby-identifier">topic</span>,
-89:                                                      <span class="ruby-identifier">topic_type</span>,
-90:                                                      <span class="ruby-ivar">@slave_uri</span>)
-91:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-92:         <span class="ruby-identifier">uris</span>
-93:       <span class="ruby-keyword kw">else</span>
-94:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-95:       <span class="ruby-keyword kw">end</span>
-96:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 90</span>
+ 90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_publisher</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
+ 91:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uris</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
+ 92:                                                      <span class="ruby-identifier">topic</span>,
+ 93:                                                      <span class="ruby-identifier">topic_type</span>,
+ 94:                                                      <span class="ruby-ivar">@slave_uri</span>)
+ 95:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+ 96:         <span class="ruby-identifier">uris</span>
+ 97:       <span class="ruby-keyword kw">else</span>
+ 98:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+ 99:       <span class="ruby-keyword kw">end</span>
+100:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -628,18 +652,18 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="register-service-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 31</span>
-31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
-32:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerService</span>(<span class="ruby-ivar">@caller_id</span>,
-33:                                                   <span class="ruby-identifier">service</span>,
-34:                                                   <span class="ruby-identifier">service_api</span>,
-35:                                                   <span class="ruby-ivar">@slave_uri</span>)
-36:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-37:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-38:       <span class="ruby-keyword kw">else</span>
-39:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-40:       <span class="ruby-keyword kw">end</span>
-41:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
+36:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerService</span>(<span class="ruby-ivar">@caller_id</span>,
+37:                                                   <span class="ruby-identifier">service</span>,
+38:                                                   <span class="ruby-identifier">service_api</span>,
+39:                                                   <span class="ruby-ivar">@slave_uri</span>)
+40:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+41:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+42:       <span class="ruby-keyword kw">else</span>
+43:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+44:       <span class="ruby-keyword kw">end</span>
+45:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -670,21 +694,21 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="register-subscriber-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 57</span>
-57:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_subscriber</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
-58:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
-59:                                                     <span class="ruby-identifier">topic</span>,
-60:                                                     <span class="ruby-identifier">topic_type</span>,
-61:                                                     <span class="ruby-ivar">@slave_uri</span>)
-62:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-63:         <span class="ruby-identifier">val</span>
-64:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-65:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-66:         <span class="ruby-identifier">val</span>
-67:       <span class="ruby-keyword kw">else</span>
-68:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-69:       <span class="ruby-keyword kw">end</span>
-70:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 61</span>
+61:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_subscriber</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
+62:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
+63:                                                     <span class="ruby-identifier">topic</span>,
+64:                                                     <span class="ruby-identifier">topic_type</span>,
+65:                                                     <span class="ruby-ivar">@slave_uri</span>)
+66:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+67:         <span class="ruby-identifier">val</span>
+68:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+69:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+70:         <span class="ruby-identifier">val</span>
+71:       <span class="ruby-keyword kw">else</span>
+72:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+73:       <span class="ruby-keyword kw">end</span>
+74:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -708,22 +732,24 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 
 				<div class="method-description">
 					
-					
+					<p>
+this method is not described in the wiki. subscribe to the parameter key.
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="subscribe-param-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 112</span>
-112:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe_param</span>(<span class="ruby-identifier">key</span>)
-113:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">subscribeParam</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@slave_uri</span>, <span class="ruby-identifier">key</span>)
-114:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-115:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-116:       <span class="ruby-keyword kw">else</span>
-117:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-118:       <span class="ruby-keyword kw">end</span>
-119:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 119</span>
+119:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe_param</span>(<span class="ruby-identifier">key</span>)
+120:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">subscribeParam</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@slave_uri</span>, <span class="ruby-identifier">key</span>)
+121:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+122:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+123:       <span class="ruby-keyword kw">else</span>
+124:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+125:       <span class="ruby-keyword kw">end</span>
+126:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -754,20 +780,20 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="unregister-publisher-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 98</span>
- 98:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_publisher</span>(<span class="ruby-identifier">topic</span>)
- 99:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
-100:                                                       <span class="ruby-identifier">topic</span>,
-101:                                                       <span class="ruby-ivar">@slave_uri</span>)
-102:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-103:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">val</span>
-104:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-105:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-106:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-107:       <span class="ruby-keyword kw">else</span>
-108:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-109:       <span class="ruby-keyword kw">end</span>
-110:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 102</span>
+102:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_publisher</span>(<span class="ruby-identifier">topic</span>)
+103:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
+104:                                                       <span class="ruby-identifier">topic</span>,
+105:                                                       <span class="ruby-ivar">@slave_uri</span>)
+106:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+107:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">val</span>
+108:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+109:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+110:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+111:       <span class="ruby-keyword kw">else</span>
+112:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+113:       <span class="ruby-keyword kw">end</span>
+114:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -798,20 +824,20 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="unregister-service-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 43</span>
-43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
-44:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterService</span>(<span class="ruby-ivar">@caller_id</span>,
-45:                                                     <span class="ruby-identifier">service</span>,
-46:                                                     <span class="ruby-identifier">service_api</span>)
-47:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-48:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-49:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-50:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-51:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-52:       <span class="ruby-keyword kw">else</span>
-53:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-54:       <span class="ruby-keyword kw">end</span>
-55:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
+48:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterService</span>(<span class="ruby-ivar">@caller_id</span>,
+49:                                                     <span class="ruby-identifier">service</span>,
+50:                                                     <span class="ruby-identifier">service_api</span>)
+51:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+52:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+53:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+54:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+55:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+56:       <span class="ruby-keyword kw">else</span>
+57:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+58:       <span class="ruby-keyword kw">end</span>
+59:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -842,20 +868,61 @@ href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
 					<div class="method-source-code"
 						id="unregister-subscriber-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 72</span>
-72:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_subscriber</span>(<span class="ruby-identifier">topic</span>)
-73:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
-74:                                                       <span class="ruby-identifier">topic</span>,
-75:                                                       <span class="ruby-ivar">@slave_uri</span>)
-76:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-77:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-78:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-79:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-80:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-81:       <span class="ruby-keyword kw">else</span>
-82:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-83:       <span class="ruby-keyword kw">end</span>
-84:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 76</span>
+76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_subscriber</span>(<span class="ruby-identifier">topic</span>)
+77:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
+78:                                                       <span class="ruby-identifier">topic</span>,
+79:                                                       <span class="ruby-ivar">@slave_uri</span>)
+80:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+81:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+82:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+83:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+84:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+85:       <span class="ruby-keyword kw">else</span>
+86:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+87:       <span class="ruby-keyword kw">end</span>
+88:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="unsubscribe-param-method" class="method-detail ">
+				<a name="method-i-unsubscribe_param"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">unsubscribe_param</span><span
+						class="method-args">(key)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+this method is not described in the wiki. unsubscribe to the parameter key.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="unsubscribe-param-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 131</span>
+131:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unsubscribe_param</span>(<span class="ruby-identifier">key</span>)
+132:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unsubscribeParam</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@slave_uri</span>, <span class="ruby-identifier">key</span>)
+133:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+134:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+135:       <span class="ruby-keyword kw">else</span>
+136:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
+137:       <span class="ruby-keyword kw">end</span>
+138:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

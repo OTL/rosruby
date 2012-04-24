@@ -73,8 +73,6 @@
 					
 					<li><a href="#method-i-call">#call</a></li>
 					
-					<li><a href="#method-i-get_host_port_from_uri">#get_host_port_from_uri</a></li>
-					
 					<li><a href="#method-i-shutdown">#shutdown</a></li>
 					
 				</ul>
@@ -87,6 +85,15 @@
 
 		<div id="project-metadata">
 			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
 			
 
 			<div id="classindex-section" class="section project-section">
@@ -202,19 +209,40 @@
 
 				<div class="method-description">
 					
-					
+					<dl>
+<dt><tt>master_uri</tt></dt><dd><p>
+URI of <a href="../ROS.html">ROS</a> Master
+</p>
+</dd>
+<dt><tt>caller_id</tt></dt><dd><p>
+caller id of this node
+</p>
+</dd>
+<dt><tt>service_name</tt></dt><dd><p>
+name of service (String)
+</p>
+</dd>
+<dt><tt>service_type</tt></dt><dd><p>
+class of srv
+</p>
+</dd>
+<dt><tt>persistent</tt></dt><dd><p>
+use persistent connection with server or not.
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 50</span>
-50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>, <span class="ruby-identifier">persistent</span>=<span class="ruby-keyword kw">false</span>)
-51:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>)
-52:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
-53:       <span class="ruby-ivar">@persistent</span> = <span class="ruby-identifier">persistent</span>
-54:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 54</span>
+54:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>, <span class="ruby-identifier">persistent</span>=<span class="ruby-keyword kw">false</span>)
+55:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>)
+56:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
+57:       <span class="ruby-ivar">@persistent</span> = <span class="ruby-identifier">persistent</span>
+58:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -244,72 +272,51 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+call service
+</p>
+<dl>
+<dt><tt>srv_request</tt></dt><dd><p>
+srv Request instance
+</p>
+</dd>
+<dt><tt>srv_response</tt></dt><dd><p>
+srv Response instance
+</p>
+</dd>
+<dt><tt>return</tt></dt><dd><p>
+result of call (Bool)
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="call-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 64</span>
-64:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">srv_request</span>, <span class="ruby-identifier">srv_response</span>)
-65:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@persistent</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@connection</span>
-66:         <span class="ruby-comment cmt"># not connect</span>
-67:       <span class="ruby-keyword kw">else</span>
-68:         <span class="ruby-identifier">master</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>)
-69:         <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">master</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">'lookupService'</span>,
-70:                                          <span class="ruby-ivar">@caller_id</span>,
-71:                                          <span class="ruby-ivar">@service_name</span>)
-72:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
-73:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-74:           <span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span> = <span class="ruby-identifier">get_host_port_from_uri</span>(<span class="ruby-identifier">uri</span>)
-75:           <span class="ruby-ivar">@connection</span> = <span class="ruby-constant">TCPROS</span><span class="ruby-operator">::</span><span class="ruby-constant">ServiceClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@service_name</span>, <span class="ruby-ivar">@service_type</span>, <span class="ruby-ivar">@persistent</span>)
-76:           <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">srv_request</span>, <span class="ruby-identifier">srv_response</span>)
-77:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-78:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;master error ${message}&quot;</span>
-79:         <span class="ruby-keyword kw">else</span>
-80:           <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;fail to lookup&quot;</span>
-81:           <span class="ruby-keyword kw">nil</span>
-82:         <span class="ruby-keyword kw">end</span>
-83:       <span class="ruby-keyword kw">end</span>
-84:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="get-host-port-from-uri-method" class="method-detail ">
-				<a name="method-i-get_host_port_from_uri"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">get_host_port_from_uri</span><span
-						class="method-args">(uri)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-get hostname and port from uri
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="get-host-port-from-uri-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 59</span>
-59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_host_port_from_uri</span>(<span class="ruby-identifier">uri</span>)
-60:       <span class="ruby-identifier">uri_data</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">uri</span>)
-61:       [<span class="ruby-identifier">uri_data</span>[<span class="ruby-value">2</span>], <span class="ruby-identifier">uri_data</span>[<span class="ruby-value">3</span>]]
-62:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 72</span>
+72:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">srv_request</span>, <span class="ruby-identifier">srv_response</span>)
+73:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@persistent</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@connection</span>
+74:         <span class="ruby-comment cmt"># not connect</span>
+75:       <span class="ruby-keyword kw">else</span>
+76:         <span class="ruby-identifier">master</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>)
+77:         <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">master</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">'lookupService'</span>,
+78:                                          <span class="ruby-ivar">@caller_id</span>,
+79:                                          <span class="ruby-ivar">@service_name</span>)
+80:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
+81:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
+82:           <span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span> = <span class="ruby-identifier">get_host_port_from_uri</span>(<span class="ruby-identifier">uri</span>)
+83:           <span class="ruby-ivar">@connection</span> = <span class="ruby-constant">TCPROS</span><span class="ruby-operator">::</span><span class="ruby-constant">ServiceClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@service_name</span>, <span class="ruby-ivar">@service_type</span>, <span class="ruby-ivar">@persistent</span>)
+84:           <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">srv_request</span>, <span class="ruby-identifier">srv_response</span>)
+85:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
+86:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;master error ${message}&quot;</span>
+87:         <span class="ruby-keyword kw">else</span>
+88:           <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;fail to lookup&quot;</span>
+89:           <span class="ruby-keyword kw">nil</span>
+90:         <span class="ruby-keyword kw">end</span>
+91:       <span class="ruby-keyword kw">end</span>
+92:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -333,17 +340,19 @@ get hostname and port from uri
 
 				<div class="method-description">
 					
-					
+					<p>
+shutdown this service client
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="shutdown-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 86</span>
-86:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
-87:       <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">close</span>
-88:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/service_client.rb, line 95</span>
+95:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
+96:       <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">close</span>
+97:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

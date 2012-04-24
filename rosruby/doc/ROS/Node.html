@@ -75,11 +75,7 @@
 					
 					<li><a href="#method-i-advertise_service">#advertise_service</a></li>
 					
-					<li><a href="#method-i-convert_if_needed">#convert_if_needed</a></li>
-					
 					<li><a href="#method-i-delete_param">#delete_param</a></li>
-					
-					<li><a href="#method-i-get_env">#get_env</a></li>
 					
 					<li><a href="#method-i-get_param">#get_param</a></li>
 					
@@ -103,8 +99,6 @@
 					
 					<li><a href="#method-i-ok%3F">#ok?</a></li>
 					
-					<li><a href="#method-i-parse_args">#parse_args</a></li>
-					
 					<li><a href="#method-i-resolve_name">#resolve_name</a></li>
 					
 					<li><a href="#method-i-service">#service</a></li>
@@ -120,8 +114,6 @@
 					<li><a href="#method-i-subscribe">#subscribe</a></li>
 					
 					<li><a href="#method-i-subscribe_parameter">#subscribe_parameter</a></li>
-					
-					<li><a href="#method-i-trap_signals">#trap_signals</a></li>
 					
 					<li><a href="#method-i-wait_for_service">#wait_for_service</a></li>
 					
@@ -146,6 +138,15 @@
 
 		<div id="project-metadata">
 			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
 			
 
 			<div id="classindex-section" class="section project-section">
@@ -233,7 +234,34 @@
 		<h1 class="class">ROS::Node</h1>
 
 		<div id="description">
-			
+			<h2><a href="../ROS.html">ROS</a> <a href="Node.html">Node</a></h2>
+<p>
+main interface of rosruby. This class has many inner informations. It may
+be better to use pimpl pattern.
+</p>
+<h3>Sample for <a href="Publisher.html">Publisher</a></h3>
+<pre>
+  node = ROS::Node.new('/rosruby/sample_publisher')
+  publisher = node.advertise('/chatter', Std_msgs::String)
+  sleep(1)
+  msg = Std_msgs::String.new
+  i = 0
+  while node.ok?
+    msg.data = &quot;Hello, rosruby!: #{i}&quot;
+    publisher.publish(msg)
+</pre>
+<h3>Sample for <a href="Subscriber.html">Subscriber</a></h3>
+<pre>
+  node = ROS::Node.new('/rosruby/sample_subscriber')
+  node.subscribe('/chatter', Std_msgs::String) do |msg|
+    puts &quot;message come! = \'#{msg.data}\'&quot;
+  end
+
+  while node.ok?
+    node.spin_once
+    sleep(1)
+  end</pre>
+
 		</div>
 
 		<!-- Constants -->
@@ -338,28 +366,28 @@ anonymous node generates a unique name
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ros/node.rb, line 75</span>
-75:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">node_name</span>, <span class="ruby-identifier">anonymous</span>=<span class="ruby-keyword kw">nil</span>)
-76:       <span class="ruby-ivar">@remappings</span> = {}
-77:       <span class="ruby-identifier">get_env</span>
-78:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">anonymous</span>
-79:         <span class="ruby-identifier">node_name</span> = <span class="ruby-identifier">anonymous_name</span>(<span class="ruby-identifier">node_name</span>)
+    <span class="ruby-comment cmt"># File lib/ros/node.rb, line 70</span>
+70:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">node_name</span>, <span class="ruby-identifier">anonymous</span>=<span class="ruby-keyword kw">nil</span>)
+71:       <span class="ruby-ivar">@remappings</span> = {}
+72:       <span class="ruby-identifier">get_env</span>
+73:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">anonymous</span>
+74:         <span class="ruby-identifier">node_name</span> = <span class="ruby-identifier">anonymous_name</span>(<span class="ruby-identifier">node_name</span>)
+75:       <span class="ruby-keyword kw">end</span>
+76:       <span class="ruby-ivar">@node_name</span> = <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">node_name</span>)
+77:       <span class="ruby-ivar">@remappings</span> = <span class="ruby-identifier">parse_args</span>(<span class="ruby-constant">ARGV</span>)
+78:       <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@master_uri</span>
+79:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">'ROS_MASTER_URI is nos set. please check environment variables'</span>
 80:       <span class="ruby-keyword kw">end</span>
-81:       <span class="ruby-ivar">@node_name</span> = <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">node_name</span>)
-82:       <span class="ruby-ivar">@remappings</span> = <span class="ruby-identifier">parse_args</span>(<span class="ruby-constant">ARGV</span>)
-83:       <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@master_uri</span>
-84:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">'ROS_MASTER_URI is nos set. please check environment variables'</span>
-85:       <span class="ruby-keyword kw">end</span>
-86: 
-87:       <span class="ruby-ivar">@manager</span> = <span class="ruby-constant">GraphManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-keyword kw">self</span>)
-88:       <span class="ruby-ivar">@parameter</span> = <span class="ruby-constant">ParameterManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@master_uri</span>, <span class="ruby-ivar">@node_name</span>, <span class="ruby-ivar">@remappings</span>)
-89:       <span class="ruby-ivar">@is_ok</span> = <span class="ruby-keyword kw">true</span>
-90:       <span class="ruby-comment cmt"># because xmlrpc server use signal trap, after serve, it have to trap signal</span>
-91:       <span class="ruby-identifier">@@all_nodes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-keyword kw">self</span>)
-92:       <span class="ruby-ivar">@logger</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
-93:       <span class="ruby-identifier">trap_signals</span>
-94:       <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">define_finalizer</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">proc</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">shutdown</span>})
-95:     <span class="ruby-keyword kw">end</span></pre>
+81: 
+82:       <span class="ruby-ivar">@manager</span> = <span class="ruby-constant">GraphManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-ivar">@master_uri</span>, <span class="ruby-ivar">@host</span>, <span class="ruby-keyword kw">self</span>)
+83:       <span class="ruby-ivar">@parameter</span> = <span class="ruby-constant">ParameterManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@master_uri</span>, <span class="ruby-ivar">@node_name</span>, <span class="ruby-ivar">@remappings</span>)
+84:       <span class="ruby-ivar">@is_ok</span> = <span class="ruby-keyword kw">true</span>
+85:       <span class="ruby-comment cmt"># because xmlrpc server use signal trap, after serve, it have to trap signal</span>
+86:       <span class="ruby-identifier">@@all_nodes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-keyword kw">self</span>)
+87:       <span class="ruby-ivar">@logger</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+88:       <span class="ruby-identifier">trap_signals</span>
+89:       <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">define_finalizer</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">proc</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">shutdown</span>})
+90:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -421,22 +449,22 @@ this topic_name
 					<div class="method-source-code"
 						id="advertise-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 182</span>
-182:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advertise</span>(<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>, <span class="ruby-identifier">latched</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">resolve</span>=<span class="ruby-keyword kw">true</span>)
-183:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resolve</span>
-184:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">topic_name</span>)
-185:       <span class="ruby-keyword kw">else</span>
-186:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">topic_name</span>
-187:       <span class="ruby-keyword kw">end</span>
-188:       <span class="ruby-identifier">publisher</span> = <span class="ruby-constant">Publisher</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>,
-189:                                 <span class="ruby-identifier">name</span>,
-190:                                 <span class="ruby-identifier">topic_type</span>,
-191:                                 <span class="ruby-identifier">latched</span>,
-192:                                 <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">host</span>)
-193:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_publisher</span>(<span class="ruby-identifier">publisher</span>)
-194:       <span class="ruby-identifier">trap_signals</span>
-195:       <span class="ruby-identifier">publisher</span>
-196:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 177</span>
+177:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advertise</span>(<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>, <span class="ruby-identifier">latched</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">resolve</span>=<span class="ruby-keyword kw">true</span>)
+178:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resolve</span>
+179:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">topic_name</span>)
+180:       <span class="ruby-keyword kw">else</span>
+181:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">topic_name</span>
+182:       <span class="ruby-keyword kw">end</span>
+183:       <span class="ruby-identifier">publisher</span> = <span class="ruby-constant">Publisher</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>,
+184:                                 <span class="ruby-identifier">name</span>,
+185:                                 <span class="ruby-identifier">topic_type</span>,
+186:                                 <span class="ruby-identifier">latched</span>,
+187:                                 <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">host</span>)
+188:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_publisher</span>(<span class="ruby-identifier">publisher</span>)
+189:       <span class="ruby-identifier">trap_signals</span>
+190:       <span class="ruby-identifier">publisher</span>
+191:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -487,16 +515,16 @@ service definition
 					<div class="method-source-code"
 						id="advertise-service-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 205</span>
-205:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advertise_service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>, &amp;<span class="ruby-identifier">callback</span>)
-206:       <span class="ruby-identifier">server</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">ServiceServer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>,
-207:                                         <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">service_name</span>),
-208:                                         <span class="ruby-identifier">service_type</span>,
-209:                                         <span class="ruby-identifier">callback</span>)
-210:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_service_server</span>(<span class="ruby-identifier">server</span>)
-211:       <span class="ruby-identifier">trap_signals</span>
-212:       <span class="ruby-identifier">server</span>
-213:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 200</span>
+200:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advertise_service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>, &amp;<span class="ruby-identifier">callback</span>)
+201:       <span class="ruby-identifier">server</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">ServiceServer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>,
+202:                                         <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">service_name</span>),
+203:                                         <span class="ruby-identifier">service_type</span>,
+204:                                         <span class="ruby-identifier">callback</span>)
+205:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_service_server</span>(<span class="ruby-identifier">server</span>)
+206:       <span class="ruby-identifier">trap_signals</span>
+207:       <span class="ruby-identifier">server</span>
+208:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -539,10 +567,10 @@ true if success, false if it is not exist
 					<div class="method-source-code"
 						id="delete-param-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 161</span>
-161:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_param</span>(<span class="ruby-identifier">key</span>)
-162:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">delete_param</span>(<span class="ruby-identifier">key</span>)
-163:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 156</span>
+156:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_param</span>(<span class="ruby-identifier">key</span>)
+157:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">delete_param</span>(<span class="ruby-identifier">key</span>)
+158:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -585,16 +613,16 @@ parameter value for key
 					<div class="method-source-code"
 						id="get-param-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 130</span>
-130:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_param</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">default</span>=<span class="ruby-keyword kw">nil</span>)
-131:       <span class="ruby-identifier">key</span> = <span class="ruby-identifier">expand_local_name</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-identifier">key</span>)
-132:       <span class="ruby-identifier">param</span> = <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">get_param</span>(<span class="ruby-identifier">key</span>)
-133:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>
-134:         <span class="ruby-identifier">param</span>
-135:       <span class="ruby-keyword kw">else</span>
-136:         <span class="ruby-identifier">default</span>
-137:       <span class="ruby-keyword kw">end</span>
-138:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 125</span>
+125:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_param</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">default</span>=<span class="ruby-keyword kw">nil</span>)
+126:       <span class="ruby-identifier">key</span> = <span class="ruby-identifier">expand_local_name</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-identifier">key</span>)
+127:       <span class="ruby-identifier">param</span> = <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">get_param</span>(<span class="ruby-identifier">key</span>)
+128:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>
+129:         <span class="ruby-identifier">param</span>
+130:       <span class="ruby-keyword kw">else</span>
+131:         <span class="ruby-identifier">default</span>
+132:       <span class="ruby-keyword kw">end</span>
+133:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -633,10 +661,10 @@ all parameter list
 					<div class="method-source-code"
 						id="get-param-names-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 145</span>
-145:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_param_names</span>
-146:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">get_param_names</span>
-147:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 140</span>
+140:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_param_names</span>
+141:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">get_param_names</span>
+142:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -675,12 +703,12 @@ topic names
 					<div class="method-source-code"
 						id="get-published-topics-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 349</span>
-349:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_published_topics</span>
-350:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">publishers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span>
-351:         <span class="ruby-identifier">pub</span>.<span class="ruby-identifier">topic_name</span>
-352:       <span class="ruby-keyword kw">end</span>
-353:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 344</span>
+344:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_published_topics</span>
+345:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">publishers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pub</span><span class="ruby-operator">|</span>
+346:         <span class="ruby-identifier">pub</span>.<span class="ruby-identifier">topic_name</span>
+347:       <span class="ruby-keyword kw">end</span>
+348:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -719,10 +747,10 @@ true if exits
 					<div class="method-source-code"
 						id="has-param-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 152</span>
-152:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_param</span>(<span class="ruby-identifier">key</span>)
-153:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">has_param</span>(<span class="ruby-identifier">key</span>)
-154:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 147</span>
+147:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_param</span>(<span class="ruby-identifier">key</span>)
+148:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">has_param</span>(<span class="ruby-identifier">key</span>)
+149:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -755,12 +783,12 @@ outputs log message for DEBUG
 					<div class="method-source-code"
 						id="logdebug-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 310</span>
-310:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logdebug</span>(<span class="ruby-identifier">message</span>)
-311:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
-312:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'DEBUG'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
-313:       <span class="ruby-keyword kw">self</span>
-314:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 305</span>
+305:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logdebug</span>(<span class="ruby-identifier">message</span>)
+306:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
+307:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'DEBUG'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
+308:       <span class="ruby-keyword kw">self</span>
+309:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -822,12 +850,12 @@ outputs log message for ERROR
 					<div class="method-source-code"
 						id="logerror-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 328</span>
-328:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logerror</span>(<span class="ruby-identifier">message</span>)
-329:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
-330:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'ERROR'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
-331:       <span class="ruby-keyword kw">self</span>
-332:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 323</span>
+323:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logerror</span>(<span class="ruby-identifier">message</span>)
+324:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
+325:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'ERROR'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
+326:       <span class="ruby-keyword kw">self</span>
+327:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -864,12 +892,12 @@ outputs log message for FATAL
 					<div class="method-source-code"
 						id="logfatal-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 339</span>
-339:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logfatal</span>(<span class="ruby-identifier">message</span>)
-340:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
-341:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'FATAL'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
-342:       <span class="ruby-keyword kw">self</span>
-343:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 334</span>
+334:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logfatal</span>(<span class="ruby-identifier">message</span>)
+335:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
+336:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'FATAL'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
+337:       <span class="ruby-keyword kw">self</span>
+338:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -902,12 +930,12 @@ outputs log message for INFO (INFORMATION)
 					<div class="method-source-code"
 						id="loginfo-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 301</span>
-301:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">loginfo</span>(<span class="ruby-identifier">message</span>)
-302:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
-303:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'INFO'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
-304:       <span class="ruby-keyword kw">self</span>
-305:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 296</span>
+296:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">loginfo</span>(<span class="ruby-identifier">message</span>)
+297:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
+298:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'INFO'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
+299:       <span class="ruby-keyword kw">self</span>
+300:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -940,12 +968,12 @@ outputs log message for WARN (WARING)
 					<div class="method-source-code"
 						id="logwarn-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 319</span>
-319:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logwarn</span>(<span class="ruby-identifier">message</span>)
-320:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
-321:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'WARN'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
-322:       <span class="ruby-keyword kw">self</span>
-323:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 314</span>
+314:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logwarn</span>(<span class="ruby-identifier">message</span>)
+315:       <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">function</span> = <span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)
+316:       <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">log</span>(<span class="ruby-value str">'WARN'</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">function</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
+317:       <span class="ruby-keyword kw">self</span>
+318:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -984,10 +1012,10 @@ true if node is running.
 					<div class="method-source-code"
 						id="ok--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 102</span>
-102:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ok?</span>
-103:       <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@is_ok</span>
-104:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ros/node.rb, line 97</span>
+97:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ok?</span>
+98:       <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@is_ok</span>
+99:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1026,10 +1054,10 @@ resolved name
 					<div class="method-source-code"
 						id="resolve-name-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 120</span>
-120:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">name</span>)
-121:       <span class="ruby-identifier">resolve_name_with_call_id</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-ivar">@ns</span>, <span class="ruby-identifier">name</span>, <span class="ruby-ivar">@remappings</span>)
-122:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 115</span>
+115:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">name</span>)
+116:       <span class="ruby-identifier">resolve_name_with_call_id</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-ivar">@ns</span>, <span class="ruby-identifier">name</span>, <span class="ruby-ivar">@remappings</span>)
+117:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1076,13 +1104,13 @@ service class
 					<div class="method-source-code"
 						id="service-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 229</span>
-229:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>)
-230:       <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">ServiceClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@master_uri</span>,
-231:                              <span class="ruby-ivar">@node_name</span>,
-232:                              <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">service_name</span>),
-233:                              <span class="ruby-identifier">service_type</span>)
-234:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 224</span>
+224:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>)
+225:       <span class="ruby-constant">ROS</span><span class="ruby-operator">::</span><span class="ruby-constant">ServiceClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@master_uri</span>,
+226:                              <span class="ruby-ivar">@node_name</span>,
+227:                              <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">service_name</span>),
+228:                              <span class="ruby-identifier">service_type</span>)
+229:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1129,10 +1157,10 @@ true if succeed
 					<div class="method-source-code"
 						id="set-param-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 170</span>
-170:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_param</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
-171:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">set_param</span>(<span class="ruby-identifier">expand_local_name</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-identifier">key</span>), <span class="ruby-identifier">value</span>)
-172:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 165</span>
+165:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_param</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+166:       <span class="ruby-ivar">@parameter</span>.<span class="ruby-identifier">set_param</span>(<span class="ruby-identifier">expand_local_name</span>(<span class="ruby-ivar">@node_name</span>, <span class="ruby-identifier">key</span>), <span class="ruby-identifier">value</span>)
+167:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1165,20 +1193,20 @@ unregister to master and shutdown all connections
 					<div class="method-source-code"
 						id="shutdown-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 284</span>
-284:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
-285:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@is_ok</span>
-286:         <span class="ruby-ivar">@is_ok</span> = <span class="ruby-keyword kw">false</span>
-287:         <span class="ruby-keyword kw">begin</span>
-288:           <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">shutdown</span>
-289:         <span class="ruby-keyword kw">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">message</span>
-290:           <span class="ruby-identifier">p</span> <span class="ruby-identifier">message</span>
-291:           <span class="ruby-identifier">puts</span> <span class="ruby-value str">'ignoring errors while shutdown'</span>
-292:         <span class="ruby-keyword kw">end</span>
-293:         <span class="ruby-identifier">@@all_nodes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-keyword kw">self</span>)
-294:       <span class="ruby-keyword kw">end</span>
-295:       <span class="ruby-keyword kw">self</span>
-296:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 279</span>
+279:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>
+280:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@is_ok</span>
+281:         <span class="ruby-ivar">@is_ok</span> = <span class="ruby-keyword kw">false</span>
+282:         <span class="ruby-keyword kw">begin</span>
+283:           <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">shutdown</span>
+284:         <span class="ruby-keyword kw">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">message</span>
+285:           <span class="ruby-identifier">p</span> <span class="ruby-identifier">message</span>
+286:           <span class="ruby-identifier">puts</span> <span class="ruby-value str">'ignoring errors while shutdown'</span>
+287:         <span class="ruby-keyword kw">end</span>
+288:         <span class="ruby-identifier">@@all_nodes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-keyword kw">self</span>)
+289:       <span class="ruby-keyword kw">end</span>
+290:       <span class="ruby-keyword kw">self</span>
+291:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1211,13 +1239,13 @@ spin forever
 					<div class="method-source-code"
 						id="spin-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 274</span>
-274:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spin</span>
-275:       <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">ok?</span>
-276:         <span class="ruby-identifier">spin_once</span>
-277:         <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0.01</span>)
-278:       <span class="ruby-keyword kw">end</span>
-279:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 269</span>
+269:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spin</span>
+270:       <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">ok?</span>
+271:         <span class="ruby-identifier">spin_once</span>
+272:         <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0.01</span>)
+273:       <span class="ruby-keyword kw">end</span>
+274:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1250,10 +1278,10 @@ spin once. This invoke subscription/service_server callbacks
 					<div class="method-source-code"
 						id="spin-once-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 267</span>
-267:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spin_once</span>
-268:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">spin_once</span>
-269:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 262</span>
+262:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spin_once</span>
+263:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">spin_once</span>
+264:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1300,16 +1328,16 @@ name of topic (string)
 					<div class="method-source-code"
 						id="subscribe-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 242</span>
-242:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe</span>(<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>, &amp;<span class="ruby-identifier">callback</span>)
-243:       <span class="ruby-identifier">sub</span> = <span class="ruby-constant">Subscriber</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>,
-244:                            <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">topic_name</span>),
-245:                            <span class="ruby-identifier">topic_type</span>,
-246:                            <span class="ruby-identifier">callback</span>)
-247:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_subscriber</span>(<span class="ruby-identifier">sub</span>)
-248:       <span class="ruby-identifier">trap_signals</span>
-249:       <span class="ruby-identifier">sub</span>
-250:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 237</span>
+237:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe</span>(<span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>, &amp;<span class="ruby-identifier">callback</span>)
+238:       <span class="ruby-identifier">sub</span> = <span class="ruby-constant">Subscriber</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@node_name</span>,
+239:                            <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">topic_name</span>),
+240:                            <span class="ruby-identifier">topic_type</span>,
+241:                            <span class="ruby-identifier">callback</span>)
+242:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_subscriber</span>(<span class="ruby-identifier">sub</span>)
+243:       <span class="ruby-identifier">trap_signals</span>
+244:       <span class="ruby-identifier">sub</span>
+245:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1356,12 +1384,12 @@ callback when parameter updated
 					<div class="method-source-code"
 						id="subscribe-parameter-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 258</span>
-258:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe_parameter</span>(<span class="ruby-identifier">param</span>, &amp;<span class="ruby-identifier">callback</span>)
-259:       <span class="ruby-identifier">sub</span> = <span class="ruby-constant">ParameterSubscriber</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">param</span>, <span class="ruby-identifier">callback</span>)
-260:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_parameter_subscriber</span>(<span class="ruby-identifier">sub</span>)
-261:       <span class="ruby-identifier">sub</span>
-262:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 253</span>
+253:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe_parameter</span>(<span class="ruby-identifier">param</span>, &amp;<span class="ruby-identifier">callback</span>)
+254:       <span class="ruby-identifier">sub</span> = <span class="ruby-constant">ParameterSubscriber</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">param</span>, <span class="ruby-identifier">callback</span>)
+255:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">add_parameter_subscriber</span>(<span class="ruby-identifier">sub</span>)
+256:       <span class="ruby-identifier">sub</span>
+257:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1408,203 +1436,10 @@ true if success, false if timeouted
 					<div class="method-source-code"
 						id="wait-for-service-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 220</span>
-220:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait_for_service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">timeout_sec</span>=<span class="ruby-keyword kw">nil</span>)
-221:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">wait_for_service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">timeout_sec</span>)
-222:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="private-instance-method-details" class="method-section section">
-			<h3 class="section-header">Private Instance Methods</h3>
-
-		
-			<div id="convert-if-needed-method" class="method-detail ">
-				<a name="method-i-convert_if_needed"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">convert_if_needed</span><span
-						class="method-args">(value)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="convert-if-needed-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 370</span>
-370:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">convert_if_needed</span>(<span class="ruby-identifier">value</span>)
-371:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[+-]?\d+\.?\d*$/</span> <span class="ruby-comment cmt"># float</span>
-372:         <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_f</span>
-373:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[+-]?\d+$/</span> <span class="ruby-comment cmt"># int</span>
-374:         <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span>
-375:       <span class="ruby-keyword kw">else</span>
-376:         <span class="ruby-identifier">value</span>
-377:       <span class="ruby-keyword kw">end</span>
-378:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="get-env-method" class="method-detail ">
-				<a name="method-i-get_env"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">get_env</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-parse all environment variables
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="get-env-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 360</span>
-360:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_env</span>
-361:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_MASTER_URI'</span>]
-362:       <span class="ruby-ivar">@ns</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_NAMESPACE'</span>]
-363:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_IP'</span>]
-364:         <span class="ruby-ivar">@host</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_IP'</span>]
-365:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_HOSTNAME'</span>]
-366:         <span class="ruby-ivar">@host</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'ROS_HOSTNAME'</span>]
-367:       <span class="ruby-keyword kw">end</span>
-368:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="parse-args-method" class="method-detail ">
-				<a name="method-i-parse_args"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">parse_args</span><span
-						class="method-args">(args)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-parse all args
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="parse-args-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 382</span>
-382:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_args</span>(<span class="ruby-identifier">args</span>)
-383:       <span class="ruby-identifier">remapping</span> = {}
-384:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">arg</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">args</span>
-385:         <span class="ruby-identifier">splited</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">':='</span>)
-386:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">splited</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
-387:           <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">splited</span>
-388:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'__name'</span>
-389:             <span class="ruby-ivar">@node_name</span> = <span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">value</span>)
-390:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'__ip'</span>
-391:             <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">value</span>
-392:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'__hostname'</span>
-393:             <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">value</span>
-394:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'__master'</span>
-395:             <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">value</span>
-396:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'__ns'</span>
-397:             <span class="ruby-ivar">@ns</span> = <span class="ruby-identifier">value</span>
-398:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'_'</span>[<span class="ruby-value">0</span>]
-399:             <span class="ruby-comment cmt"># local name remaps</span>
-400:             <span class="ruby-identifier">key</span>[<span class="ruby-value">0</span>] = <span class="ruby-value str">'~'</span>
-401:             <span class="ruby-identifier">remapping</span>[<span class="ruby-identifier">resolve_name</span>(<span class="ruby-identifier">key</span>)] = <span class="ruby-identifier">convert_if_needed</span>(<span class="ruby-identifier">value</span>)
-402:           <span class="ruby-keyword kw">else</span>
-403:             <span class="ruby-comment cmt"># remaps</span>
-404:             <span class="ruby-identifier">remapping</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">convert_if_needed</span>(<span class="ruby-identifier">value</span>)
-405:           <span class="ruby-keyword kw">end</span>
-406:         <span class="ruby-keyword kw">end</span>
-407:       <span class="ruby-keyword kw">end</span>
-408:       <span class="ruby-identifier">remapping</span>
-409:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="trap-signals-method" class="method-detail ">
-				<a name="method-i-trap_signals"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">trap_signals</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="trap-signals-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 411</span>
-411:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trap_signals</span>
-412: <span class="ruby-comment cmt">#      [:INT, :TERM, :HUP].each do |signal|</span>
-413:       [<span class="ruby-value str">&quot;INT&quot;</span>, <span class="ruby-value str">&quot;TERM&quot;</span>, <span class="ruby-value str">&quot;HUP&quot;</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">signal</span><span class="ruby-operator">|</span>
-414:         <span class="ruby-constant">Signal</span>.<span class="ruby-identifier">trap</span>(<span class="ruby-identifier">signal</span>) <span class="ruby-keyword kw">do</span>
-415:           <span class="ruby-identifier">@@all_nodes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
-416:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">ok?</span>
-417:               <span class="ruby-identifier">puts</span> <span class="ruby-value str">'shutdown by signal'</span>
-418:               <span class="ruby-identifier">node</span>.<span class="ruby-identifier">shutdown</span>
-419:             <span class="ruby-keyword kw">end</span>
-420:           <span class="ruby-keyword kw">end</span>
-421:         <span class="ruby-keyword kw">end</span>
-422:       <span class="ruby-keyword kw">end</span>
-423:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ros/node.rb, line 215</span>
+215:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait_for_service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">timeout_sec</span>=<span class="ruby-keyword kw">nil</span>)
+216:       <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">wait_for_service</span>(<span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">timeout_sec</span>)
+217:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
