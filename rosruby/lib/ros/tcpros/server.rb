@@ -100,7 +100,7 @@ module ROS::TCPROS
 
     ##
     # build ROS::TCPROS::Header message for this publisher
-    # @return header (ROS::TCPROS::Header)
+    # [+return+] header (ROS::TCPROS::Header)
     def build_header
       header = Header.new
       header["callerid"] = @caller_id

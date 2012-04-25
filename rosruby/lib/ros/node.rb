@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# = ROS Node
+# == ROS Node
 #
 # user interface of ROS.
 #
@@ -65,8 +65,8 @@ module ROS
     # initialization of ROS node
     # get env, parse args, and start slave xmlrpc servers.
     #
-    # [+node_name+] name of this node
-    # [+anonymous+] anonymous node generates a unique name
+    # @param [String] node_name name of this node
+    # @param [Boolean] anonymous anonymous node generates a unique name
     def initialize(node_name, anonymous=nil)
       @remappings = {}
       get_env
@@ -92,7 +92,7 @@ module ROS
     ##
     #  Is this node running? Please use for 'while loop' and so on..
     #
-    # [+return+] true if node is running.
+    # @return [Boolean] true if node is running.
     #
     def ok?
       return @is_ok
@@ -109,8 +109,8 @@ module ROS
 
     ##
     # resolve the name by this node's remapping rule
-    #
-    # [+return+] resolved name
+    # @param [String] name name for resolved
+    # @return [String] resolved name
     #
     def resolve_name(name)
       resolve_name_with_call_id(@node_name, @ns, name, @remappings)
@@ -119,8 +119,9 @@ module ROS
     ##
     # get the param for key
     #
-    # [+key+] key for search the parameters
-    # [+return+] parameter value for key
+    # @param [String] key key for search the parameters
+    # @param [String, Fixnum, Float, Boolean] default default value
+    # @return [String, Fixnum, Float, Boolean] parameter value for key
     #
     def get_param(key, default=nil)
       key = expand_local_name(@node_name, key)
@@ -135,7 +136,7 @@ module ROS
     ##
     # get all parameters
     #
-    # [+return+] all parameter list
+    # @param [Array] all parameter list
     #
     def get_param_names
       @parameter.get_param_names
@@ -143,7 +144,8 @@ module ROS
 
     ##
     # check if the parameter server has the param for 'key'
-    # [+return+] true if exits
+    # @param [String] key key for check
+    # @return [Boolean] true if exits
     def has_param(key)
       @parameter.has_param(key)
     end
@@ -151,17 +153,17 @@ module ROS
     ##
     # delete the parameter for 'key'
     #
-    # [+key+] key for delete
-    # [+return+] true if success, false if it is not exist
+    # @param [String] key key for delete
+    # @return [Boolean]  true if success, false if it is not exist
     def delete_param(key)
       @parameter.delete_param(key)
     end
 
     ##
     # set parameter for 'key'
-    # [+key+] key of parameter
-    # [+value+] value of parameter
-    # [+return+] true if succeed
+    # @param [String] key key of parameter
+    # @param [String, Fixnum, Float, Boolean] value value of parameter
+    # @param [Boolean] return true if succeed
     def set_param(key, value)
       @parameter.set_param(expand_local_name(@node_name, key), value)
     end
@@ -169,11 +171,11 @@ module ROS
     ##
     # start publishing the topic
     #
-    # [+topic_name+] name of topic (string)
-    # [+topic_type+] topic class
-    # [+latched+] is this latched topic?
-    # [+resolve+] if true, use resolve_name for this topic_name
-    # [+return+] Publisher instance
+    # @param [String] topic_name name of topic (string)
+    # @param [Topic] topic_type topic class
+    # @param [Boolean] latched is this latched topic?
+    # @param [Boolean] resolve if true, use resolve_name for this topic_name
+    # @return [Publisher] Publisher instance
     def advertise(topic_name, topic_type, latched=false, resolve=true)
       if resolve
         name = resolve_name(topic_name)
@@ -193,10 +195,10 @@ module ROS
     ##
     # start service
     #
-    # [+service_name+] name of this service (string)
-    # [+service_type+] service class
-    # [+callback+] service definition
-    # [+return+] ServiceServer instance
+    # @param [String] service_name name of this service (string)
+    # @param [Service] service_type service class
+    # @param [Proc] callback service definition
+    # @return [ServiceServer] ServiceServer instance
     def advertise_service(service_name, service_type, &callback)
       server = ::ROS::ServiceServer.new(@node_name,
                                         resolve_name(service_name),
@@ -209,18 +211,18 @@ module ROS
 
     ##
     # wait until start the service
-    # [+service_name+] name of service for waiting
-    # [+timeout_sec+] time out seconds. default infinity.
-    # [+return+] true if success, false if timeouted
+    # @param [String] service_name name of service for waiting
+    # @param [Float] timeout_sec time out seconds. default infinity.
+    # @param [Boolean] return true if success, false if timeouted
     def wait_for_service(service_name, timeout_sec=nil)
       @manager.wait_for_service(service_name, timeout_sec)
     end
 
     ##
     # create service client
-    # [+service_name+] name of this service (string)
-    # [+service_type+] service class
-    # [+return+] ServiceClient instance
+    # @param [String] service_name name of this service (string)
+    # @param [Service] service_type service class
+    # @param [ServiceClient] return ServiceClient instance
     def service(service_name, service_type)
       ROS::ServiceClient.new(@master_uri,
                              @node_name,
@@ -231,9 +233,9 @@ module ROS
     ##
     # start to subscribe
     #
-    # [+topic_name+] name of topic (string)
-    # [+topic_type+] Topic instance
-    # [+return+] Subscriber instance
+    # @param [String] topic_name name of topic (string)
+    # @param [Topic] topic_type Topic instance
+    # @param [Subscriber] return Subscriber instance
     def subscribe(topic_name, topic_type, &callback)
       sub = Subscriber.new(@node_name,
                            resolve_name(topic_name),
@@ -247,9 +249,9 @@ module ROS
     ##
     # subscribe to the parameter
     #
-    # [+param+] name of parameter to subscribe
-    # [+callback+] callback when parameter updated
-    # [+return+] ParameterSubscriber instance
+    # @param [String] param name of parameter to subscribe
+    # @param [Proc] callback callback when parameter updated
+    # @param [ParameterSubscriber] return ParameterSubscriber instance
     def subscribe_parameter(param, &callback)
       sub = ParameterSubscriber.new(param, callback)
       @manager.add_parameter_subscriber(sub)
@@ -292,7 +294,8 @@ module ROS
 
     ##
     # outputs log message for INFO (INFORMATION)
-    #
+    # @param [String] message message for output
+    # @return [Node] self
     def loginfo(message)
       file, line, function = caller[0].split(':')
       @logger.log('INFO', message, file, function, line.to_i)
@@ -301,7 +304,8 @@ module ROS
 
     ##
     # outputs log message for DEBUG
-    #
+    # @param [String] message message for output
+    # @return [Node] self
     def logdebug(message)
       file, line, function = caller[0].split(':')
       @logger.log('DEBUG', message, file, function, line.to_i)
@@ -311,6 +315,8 @@ module ROS
     ##
     # outputs log message for WARN (WARING)
     #
+    # @param [String] message message for output
+    # @return [Node] self
     def logwarn(message)
       file, line, function = caller[0].split(':')
       @logger.log('WARN', message, file, function, line.to_i)
@@ -320,6 +326,8 @@ module ROS
     ##
     # outputs log message for ERROR
     #
+    # @param [String] message message for output
+    # @return [Node] self
     def logerror(message)
       file, line, function = caller[0].split(':')
       @logger.log('ERROR', message, file, function, line.to_i)
@@ -331,6 +339,8 @@ module ROS
     ##
     # outputs log message for FATAL
     #
+    # @param [String] message message for output
+    # @return [Node] self
     def logfatal(message)
       file, line, function = caller[0].split(':')
       @logger.log('FATAL', message, file, function, line.to_i)
@@ -340,7 +350,7 @@ module ROS
     ##
     # get all topics by this node
     #
-    # [+return+] topic names
+    # @return [Array] topic names
     def get_published_topics
       @manager.publishers.map do |pub|
         pub.topic_name
@@ -367,8 +377,8 @@ module ROS
     # convert_if_needed('10') # => 10
     # convert_if_needed('0.1') # => 0.1
     # convert_if_needed('string') # => 'string'
-    # [+value+] string
-    # [+return+] converted value (float, int or string)
+    # @param [String] value string
+    # @return [Float, Fixnum, String] return converted value.
     def convert_if_needed(value)  #:nodoc:
       if value =~ /^[+-]?\d+\.?\d*$/ # float
         value = value.to_f
@@ -381,6 +391,7 @@ module ROS
 
     ##
     # parse all args
+    # @param [Array] args arguments for parse
     def parse_args(args) #:nodoc:
       remapping = {}
       for arg in args

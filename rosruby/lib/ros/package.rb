@@ -19,17 +19,13 @@ module ROS
   class Package
 
     ##
-    # path of rospack cache
-    #
-    @@cache_path = "#{ENV['HOME']}/.ros/rospack_cache"
-
-    ##
     # at first check the rospack's cache, if found use it.
     # if not found, check all package path.
-    # [+return+] fullpath list of all packages
-    def self.read_cache_or_find_all
-      if File.exists?(@@cache_path)
-        f = File.open(@@cache_path)
+    # @param [String] cache_file cache file of rospack
+    # @return [Array] fullpath list of all packages
+    def self.read_cache_or_find_all(cache_file="#{ENV['HOME']}/.ros/rospack_cache")
+      if File.exists?(cache_file)
+        f = File.open(cache_file)
         root_line = f.gets.chop
         package_path_line = f.gets.chop
         if root_line == "#ROS_ROOT=#{ENV['ROS_ROOT']}" and
@@ -49,9 +45,9 @@ module ROS
 
     ##
     # search all packages that has manifest.xml
-    # [+packages+] current found packages
-    # [+roots+] root directories for searching
-    # [+return+] fullpath list of all packages
+    # @param [Hash] packages current found packages
+    # @param [Array] roots root directories for searching
+    # @param [Array] fullpath list of all packages
     def self.find_all_packages(packages={}, roots=ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT']))
       roots.each do |root|
         if File.exists?("#{root}/manifest.xml")
@@ -78,8 +74,9 @@ module ROS
 
     ##
     # get the depend packages of the arg
-    # [+package+] find depends packages of this package
-    # [+packages+] current found depends
+    # @param [String] package find depends packages of this package
+    # @param [Array] packages current found depends
+    # @return [Array] packages
     def self.depends(package, packages=[])
       file = File.open("#{@@all_packages[package]}/manifest.xml")
       doc = REXML::Document.new(file)
@@ -96,7 +93,7 @@ module ROS
 
     ##
     # get the current program's package
-    # [+return+] name of running programs's package
+    # @return [String] name of running programs's package
     def self.find_this_package
       path = File::dirname(File.expand_path($PROGRAM_NAME))
       while path != '/'
@@ -111,7 +108,7 @@ module ROS
     ##
     # add package's [lib/, msg_gen/ruby, srv_gen/ruby] to '$:'.
     # this enables load ruby files easily
-    #
+    # @param [String] package name of package
     def self.add_path_of_package(package)
       path = @@all_packages[package]
       ["#{path}/msg_gen/ruby", "#{path}/srv_gen/ruby", "#{path}/lib"].each do |path|
@@ -126,7 +123,7 @@ module ROS
     ##
     # add [lib/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages
     # to RUBYLIB, if the directory exists
-    #
+    # @param [String] package name of package
     def self.add_path_with_depend_packages(package)
       add_path_of_package(package)
       Package::depends(package).each do |pack|
@@ -138,7 +135,7 @@ module ROS
 
   ##
   # load manifest and add all dependencies
-  #
+  # @param [String] package name of package
   def self.load_manifest(package)
     ROS::Package.add_path_with_depend_packages(package)
   end

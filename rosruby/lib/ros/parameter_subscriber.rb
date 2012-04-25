@@ -16,21 +16,21 @@ module ROS
   #
   class ParameterSubscriber
     # do not make instance directory. Plese use Node#subscribe_parameter.
-    # [+key+] param key to subscribe
-    # [+callback+] callback when parameter updated
+    # @param [String] key param key to subscribe
+    # @param [Proc] callback callback when parameter updated
     def initialize(key, callback)
       @key = key
       @callback = callback
     end
 
     # callback with param value
-    # [+value+] value of updated parameter
+    # @param [String] value value of updated parameter
     def call(value)
       @callback.call(value)
     end
 
     # set GraphManager for management
-    # [+manager+] GraphManager
+    # @param [GraphManager] manager GraphManager
     def set_manager(manager) #:nodoc
       @manager = manager
     end
