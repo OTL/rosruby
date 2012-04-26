@@ -24,26 +24,27 @@ module ROS
   #   end
   class Subscriber < Topic
 
-    # [+caller_id+] caller id of this node
-    # [+topic_name+] name of this topic (String)
-    # [+topic_type+] class of msg
-    # [+callback+] callback for this topic
-    # [+tcp_no_delay+] use tcp no delay option or not
+    # @param [String] caller_id caller id of this node
+    # @param [String] topic_name name of this topic (String)
+    # @param [Class] topic_type class of msg
+    # @param [Proc] callback callback for this topic
+    # @param [Boolean] tcp_no_delay use tcp no delay option or not
     def initialize(caller_id, topic_name, topic_type, callback=nil, tcp_no_delay=nil)
       super(caller_id, topic_name, topic_type)
       @callback = callback
       @tcp_no_delay = tcp_no_delay
     end
 
-    # use tcp no delay option or not (Bool)
+    # @return [Boolean] use tcp no delay option or not
     attr_reader :tcp_no_delay
 
-    # callback of this subscription
+    # @return [Proc] callback of this subscription
     attr_reader :callback
 
     ##
-    # this is called by node.spin_once.
     # execute callback for all queued messages.
+    # This is called by {Node#spin_once}.
+    # It checks all queues of connections and callback for all messages.
     def process_queue #:nodoc:
       @connections.each do |connection|
         while not connection.msg_queue.empty?
@@ -57,8 +58,8 @@ module ROS
 
     ##
     # request topic to master and start connection with publisher.
-    # this creates ROS::TCPROS::Client.
-    # [+uri+] uri to connect
+    # @param [String] uri uri to connect
+    # @return [TCPROS::Client] new connection
     def add_connection(uri) #:nodoc:
       publisher = SlaveProxy.new(@caller_id, uri)
       begin
@@ -82,7 +83,7 @@ module ROS
 
     ##
     # data of connection. for slave API
-    #
+    # @return [Array] connection data
     def get_connection_data
       @connections.map do |connection|
         [connection.id, connection.byte_received, 1]
@@ -91,7 +92,7 @@ module ROS
 
     ##
     # connection information fro slave API
-    #
+    # @return [Array] connection info
     def get_connection_info
       info = []
       @connections.each do |connection|

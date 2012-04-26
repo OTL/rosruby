@@ -19,13 +19,13 @@ module ROS::TCPROS
     include ::ROS::TCPROS::Message
 
     ##
-    # [+host+] host name (String)
-    # [+port+] port number
-    # [+caller_id+] caller id of this node
-    # [+topic_name+] name of this topic (String)
-    # [+topic_type+] type of topic (class)
-    # [+target_uri+] URI of connection target
-    # [+tcp_no_delay+] use tcp no delay option or not (Bool)
+    # @param [String] host host name
+    # @param [Fixnum] port port number
+    # @param [String] caller_id caller id of this node
+    # @param [String] topic_name name of this topic
+    # @param [Class] topic_type type of topic
+    # @param [String] target_uri URI of connection target
+    # @param [Boolean] tcp_no_delay use tcp no delay option or not
     def initialize(host, port,
                    caller_id, topic_name, topic_type, target_uri,
                    tcp_no_delay)
@@ -46,8 +46,8 @@ module ROS::TCPROS
     end
 
     ##
-    # build header data for subscription
-    # [+return+] built header ROS::TCPROS::Header
+    # build header data for subscription.
+    # @return [TCPROS::Header] built header
     def build_header
       header = Header.new
       header.push_data("callerid", @caller_id)
@@ -92,9 +92,17 @@ module ROS::TCPROS
       end
     end
 
-    attr_reader :port, :host, :msg_queue, :byte_received, :target_uri
-
-    # id for slave API
+    # @return [Fixnum] port number of this client
+    attr_reader :port
+    # @return [String] host name
+    attr_reader :host
+    # @return [Queue] message queue
+    attr_reader :msg_queue
+    # @return [Fixnum] received byte
+    attr_reader :byte_received
+    # @return [String] URI of connection target
+    attr_reader :target_uri
+    # @return [String] id for slave API
     attr_accessor :id
   end
 end

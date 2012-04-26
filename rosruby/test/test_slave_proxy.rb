@@ -42,7 +42,7 @@ class TestSlaveProxy < Test::Unit::TestCase
     assert(slave.param_update('/hoge', 1))
     assert(slave.publisher_update('/hoge', ['http://aaa:111']))
     assert_equal(3, slave.request_topic('/chatter', [["TCPROS"]]).size)
-    
+
     assert(slave.shutdown('test kill'))
     node.shutdown
   end

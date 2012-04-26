@@ -30,27 +30,27 @@ module ROS
     # max number of connection with other slave nodes
     MAX_CONNECTION = 100
 
-    # all Publisher of this node
+    # @return [Array] all Publisher of this node
     attr_reader :publishers
-    # all Subscriber of this node
+    # @return [Array] all Subscriber of this node
     attr_reader :subscribers
-    # all ServiceServer of this node
+    # @return [Array] all ServiceServer of this node
     attr_reader :service_servers
-    #all ParameterSubscriber of this node
+    # @return [Array] all ParameterSubscriber of this node
     attr_reader :parameter_subscribers
 
-    # hostname of this node (String)
+    # @return [String] value hostname of this node
     attr_reader :host
-    # port number of this node (Fixnum)
+    # @return [Fixnum] value port number of this node
     attr_reader :port
 
     ##
     # add xmlrpc handlers for slave connections.
     # Then start serve thread.
-    # [+caller_id+] caller_id of this node
-    # [+master_uri+] URI of ROS Master
-    # [+host+] hostname of this node
-    # [+node+] node instance: Node#shutdown and Node#ok? is used.
+    # @param [String] caller_id caller_id of this node
+    # @param [String] master_uri URI of ROS Master
+    # @param [String] host hostname of this node
+    # @param [Node] node node instance: {Node#shutdown} and {Node#ok?} is used.
     def initialize(caller_id, master_uri, host, node)
       @caller_id = caller_id
       @node = node
@@ -74,7 +74,7 @@ module ROS
 
     ##
     # get available port number by opening port 0.
-    # [+return+] port_num
+    # @return [Fixnum] port_num
     #
     def get_available_port
       server = TCPServer.open(0)
@@ -86,7 +86,7 @@ module ROS
 
     ##
     # get this slave node's URI
-    # [+return+] uri
+    # @return [String] uri ('http://host:port')
     #
     def get_uri
       "http://" + @host + ":" + @port.to_s + "/"
@@ -94,10 +94,9 @@ module ROS
 
     ##
     # wait until service is available
-    # [+service_name+] name of service for waiting
-    # [+timeout_sec+] wait for this seconds, then time out
-    # [+return+] true: available, false: time out
-    #
+    # @param [String] service_name name of service for waiting
+    # @param [Float] timeout_sec wait for this seconds, then time out
+    # @return [Boolean] true: available, false: time out
     def wait_for_service(service_name, timeout_sec)
       begin
         timeout(timeout_sec) do
@@ -120,8 +119,8 @@ module ROS
     # register a service to master,
     # and add it in the controlling server list.
     # raise if fail.
-    # [+service_server+] ServiceServer to be added
-    # [+return+] service_server
+    # @param [ServiceServer] service_server ServiceServer to be added
+    # @return [ServiceServer] service_server
     def add_service_server(service_server)
       @master.register_service(service_server.service_name,
                                service_server.service_uri)
@@ -133,8 +132,8 @@ module ROS
 
     ##
     # register a subscriber to master. raise if fail.
-    # [+subscriber+] Subscriber to be added
-    # [+return+] subscriber
+    # @param [Subscriber] subscriber Subscriber to be added
+    # @return [Subscriber] subscriber
     def add_subscriber(subscriber)
       uris = @master.register_subscriber(subscriber.topic_name,
                                          subscriber.topic_type.type)
@@ -148,8 +147,8 @@ module ROS
 
     ##
     # register callback for paramUpdate
-    # [+subscriber+] ParameterSubscriber instance to be added
-    # [+return+] subscriber
+    # @param [ParameterSubscriber] subscriber ParameterSubscriber instance to be added
+    # @return [ParameterSubscriber] subscriber
     def add_parameter_subscriber(subscriber)
       subscriber.set_manager(self)
       @parameter_subscribers.push(subscriber)
@@ -159,8 +158,8 @@ module ROS
 
     ##
     # register a publisher. raise if fail.
-    # [+publisher+] Publisher instance to be added
-    # [+return+] Publisher instance
+    # @param [Publisher] publisher Publisher instance to be added
+    # @return [Publisher] publisher
     def add_publisher(publisher)
       @master.register_publisher(publisher.topic_name,
                                  publisher.topic_type.type)
@@ -178,7 +177,7 @@ module ROS
 
     ##
     # shutdown a publisher
-    # [+publisher+] Publisher to be shutdown
+    # @param [Publisher] publisher Publisher to be shutdown
     def shutdown_publisher(publisher)
       @master.unregister_publisher(publisher.topic_name)
       @publishers.delete(publisher) do |pub|
@@ -189,7 +188,7 @@ module ROS
 
     ##
     # shutdown a subscriber
-    # [+subscriber+] Subscriber to be shutdown
+    # @param [Subscriber] subscriber Subscriber to be shutdown
     def shutdown_subscriber(subscriber)
       @master.unregister_subscriber(subscriber.topic_name)
       @subscribers.delete(subscriber) do |pub|
@@ -200,7 +199,7 @@ module ROS
 
     ##
     # shutdown a service server
-    # [+service+] ServiceServer to be shutdown
+    # @param [ServiceServer] service ServiceServer to be shutdown
     def shutdown_service_server(service)
       @master.unregister_service(service.service_name,
                                  service.service_uri)
@@ -212,7 +211,7 @@ module ROS
 
     ##
     # shutdown a parameter subscriber
-    # [+subscriber+] ParameterSubscriber to be shutdown
+    # @param [Subscriber] subscriber ParameterSubscriber to be shutdown
     def shutdown_parameter_subscriber(subscriber)
       @master.unsubscribe_param(subscriber.key)
       @parameter_subscribers.delete(subscriber) do |sub|
@@ -264,7 +263,7 @@ module ROS
 
     ##
     # add all handers
-    def add_handlers
+    def add_handlers #:nodoc:
       @server.set_default_handler do |method, *args|
         puts "unhandled call with #{method}, #{args}"
         [0, "I DON'T KNOW", 0]

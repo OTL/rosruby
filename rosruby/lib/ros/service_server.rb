@@ -13,11 +13,10 @@ require 'ros/tcpros/service_server'
 module ROS
 
   # server of ROS Service.
-  # ROS::Node#advertise_service return a instance of this class.
-  # Service can be shutdown by ROS::ServiceServer#shutdown.
-  # This class uses ROS::TCPROS::ServiceServer for data transfer.
-  # Here is a sample code.
-  #
+  # {Node#advertise_service} return a instance of this class.
+  # Service can be shutdown by {ServiceServer#shutdown}.
+  # This class uses {TCPROS::ServiceServer} for data transfer.
+  # @example
   #   node = ROS::Node.new('/rosruby/sample_service_server')
   #   server = node.advertise_service('/add_two_ints', Roscpp_tutorials::TwoInts) do |req, res|
   #     res.sum = req.a + req.b
@@ -30,10 +29,10 @@ module ROS
   #   end
   class ServiceServer < Service
 
-    # [+caller_id+] caller id of this node
-    # [+service_name+] name of this service (String)
-    # [+service_type+] class of srv
-    # [+callback+] callback object of this service.
+    # @param [String] caller_id caller id of this node
+    # @param [String] service_name name of this service (String)
+    # @param [Class] service_type class of srv
+    # @param [Proc] callback callback object of this service.
     def initialize(caller_id, service_name, service_type, callback)
       super(caller_id, service_name, service_type)
       @callback = callback
@@ -46,24 +45,25 @@ module ROS
     end
 
     ##
-    # execute the service callback
-    # [+request+] srv Request instance
-    # [+response+] srv Response instance
-    # [+return+] callback result (bool)
+    # execute the service callback.
+    # User should not call this directly.
+    # @param [Message] request srv Request instance
+    # @param [Message] response srv Response instance
+    # @return [Boolean] callback result
     def call(request, response)
       @num_request += 1
       @callback.call(request, response)
     end
 
     # URI of this service (rosrpc://**)
-    # [+return+] rosrpc service uri
+    # @return [String] rosrpc service uri
     def service_uri
       'rosrpc://' + @server.host + ':' + @server.port.to_s
     end
 
     ##
-    # user should not call this method. use shutdown method
-    #
+    # user should not call this method.
+    # Please use shutdown method.
     def close #:nodoc:
       @server.shutdown
     end
@@ -76,17 +76,17 @@ module ROS
     end
 
     # set GraphManager for shutdown
-    # [+manager+] GraphManager
+    # @param [GraphManager] manager set as manager
     def set_manager(manager) #:nodoc:
       @manager = manager
     end
 
-    # [+return+] connection data
+    # @return [Array] connection data
     def get_connection_data
       [@num_request, @server.byte_received, @server.byte_sent]
     end
 
-    # how many times this service called
+    # @return [Fixnum] how many times this service called
     attr_reader :num_request
   end
 end

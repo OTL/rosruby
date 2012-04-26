@@ -16,11 +16,14 @@ module ROS
   # This is used as msg object for duration
   class Duration < TimeValue
 
-    # if nsecs is nil, secs is used as float
+    # @example
     #   d1 = ROS::Duration.new(0.1) # => @nsecs=100000000, @secs=0
     #   d2 = ROS::Duration.new(1, 100) # => @nsecs=100, @secs=1
-    # [+secs+] seconds
-    # [+nsecs+] nano seconds
+    # @overload initialize(secs)
+    #  @param [Float] secs initialize from seconds
+    # @overload initialize(secs, nsecs)
+    #  @param [Fixnum] secs seconds
+    #  @param [Fixnum] nsecs nano seconds
     def initialize(secs=0, nsecs=nil)
       @secs = secs.to_i
       if nsecs
@@ -32,7 +35,8 @@ module ROS
     end
 
     # create a new duration
-    # [+duration+] Duration for adding
+    # @param [Duration] duration Duration for adding
+    # @return [Duration] added duration
     def +(duration)
       tm = ::ROS::Duration.new
       tm.secs = @secs + duration.secs
@@ -41,7 +45,8 @@ module ROS
     end
 
     # create a new duration
-    # [+duration+] Duration for substituting
+    # @param [Duration] duration Duration for substituting
+    # @return [Duration] substituted duration
     def -(other)
       d = ::ROS::Duration.new
       d.secs = @secs - other.secs

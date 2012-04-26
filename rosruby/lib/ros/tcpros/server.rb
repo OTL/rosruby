@@ -10,20 +10,20 @@ require 'gserver'
 module ROS::TCPROS
 
   ##
-  # This is TCPROS connection for ROS::Publihser
+  # This is TCPROS connection for {ROS::Publihser}
   #
   class Server < ::GServer
 
     include ::ROS::TCPROS::Message
 
-    # max number of connections with ROS::TCPROS::Client (ROS::Subscriber)
+    # max number of connections with {TCPROS::Client}
     MAX_CONNECTION = 100
 
     ##
-    # [+caller_id+] caller id of this node
-    # [+topic_name+] name of this topic (String)
-    # [+topic_type+] type of topic (class)
-    # [+is_latched+] latched topic or not (Bool)
+    # @param [String] caller_id caller id of this node
+    # @param [String] topic_name name of this topic
+    # @param [Class] topic_type type of topic
+    # @param [Boolean] is_latched latched topic or not
     def initialize(caller_id, topic_name, topic_type, is_latched,
                    port=0, host=GServer::DEFAULT_HOST)
       super(port, host, MAX_CONNECTION)
@@ -39,15 +39,15 @@ module ROS::TCPROS
 
     ##
     # Is this latching publisher?
-    # [+return+] is latched or not (Bool)
+    # @return [Boolean] is latched or not
     def latching?
       @is_latched
     end
 
     ##
     # send a message to reciever
-    # [+socket+] socket for writing
-    # [+msg+] msg class instance
+    # @param [IO] socket socket for writing
+    # @param [Class] msg msg class instance
     def publish_msg(socket, msg)
       data = write_msg(socket, msg)
       @last_published_msg = msg
@@ -59,7 +59,7 @@ module ROS::TCPROS
     ##
     # this is called if a socket accept a connection.
     # This is GServer's function
-    # [+socket+] given socket
+    # @param [IO] socket given socket
     def serve(socket) #:nodoc:
       header = read_header(socket)
       if check_header(header)
@@ -87,20 +87,22 @@ module ROS::TCPROS
     attr_reader :caller_id, :msg_queue, :byte_sent, :num_sent
 
     # id for slave API
+    # @return [String]
     attr_accessor :id
 
     ##
     # validate header for this publisher
-    # [+header+]
-    # [+return+]
+    # @param [Header] header for checking
+    # @return [Boolean] ok(true) or not
     def check_header(header)
       header.valid?('type', @topic_type.type) and
         header.valid?('md5sum', @topic_type.md5sum)
     end
 
     ##
-    # build ROS::TCPROS::Header message for this publisher
-    # @return header (ROS::TCPROS::Header)
+    # build {TCPROS::Header} message for this publisher.
+    # It contains callerid, topic, md5sum, type, latching.
+    # @return [Header] built header
     def build_header
       header = Header.new
       header["callerid"] = @caller_id

@@ -17,12 +17,16 @@ module ROS::TCPROS
     # rosrpc uses this wild card for cancel md5sum check or any.
     WILD_CARD = '*'
 
-    def initialize
-      @data = {}
+    # initialize with hash
+    # @param [Hash] data
+    def initialize(data={})
+      @data = data
     end
 
     # add key-value data to this header.
-    # key and value must be string
+    # @param [String] key key for header
+    # @param [String] value value for key
+    # @return [Header] self
     def push_data(key, value)
       if (not key.kind_of?(String)) or (not value.kind_of?(String))
         raise ArgumentError::new('header key and value must be string')
@@ -31,6 +35,8 @@ module ROS::TCPROS
       self
     end
 
+    # @param [String] key
+    # @return [String] value of key
     def get_data(key)
       @data[key]
     end
@@ -40,6 +46,8 @@ module ROS::TCPROS
 
     # deserialize the data to header.
     # this does not contain total byte number.
+    # @param [String] data
+    # @return [Header] self
     def deserialize(data)
       while data.length > 0
         len, data = data.unpack('Va*')
@@ -56,12 +64,17 @@ module ROS::TCPROS
     ##
     # validate the key with the value.
     # if it is WILD_CARD, it is ok!
+    # @param [String] key
+    # @param [String] value
+    # @return [Boolean] check result
     def valid?(key, value)
       (@data[key] == value) or value == WILD_CARD
     end
 
-    # serialize the data into header
-    # this contains total byte number because of convenient.
+    # serialize the data into header.
+    # return the byte of the serialized data.
+    # @param [IO] where to write data
+    # @return [Fixnum] byte of serialized data
     def serialize(buff)
       serialized_data = ''
       @data.each_pair do |key, value|

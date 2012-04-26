@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
 #
-# = Message file for msg/srv (de)serialization
+# == Message file for msg/srv (de)serialization
 #
 #
 
@@ -21,14 +21,21 @@ module ROS
   # this is used by msg/srv converted *.rb files
   # it can be removed, if there are more effective genmsg_ruby.
   class Struct
+
+    # @param [String] format
     def initialize(format)
       @format = format
     end
 
+    # pack the data
+    # @param [Array] args
     def pack(*args)
       args.pack(@format)
     end
 
+    # unpack from string
+    # @param [String] data
+    # @return [Array] unpacked data
     def unpack(arg)
       arg.unpack(@format)
     end
