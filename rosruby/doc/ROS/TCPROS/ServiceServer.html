@@ -1,592 +1,1162 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ROS::TCPROS::ServiceServer
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
 
-	<title>Class: ROS::TCPROS::ServiceServer</title>
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-	<link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-	<script src="../../js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../../js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../../js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../../js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
 
-</head>
-<body class="class">
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../../index.html">Home</a>
-          <a href="../../index.html#classes">Classes</a>
-          <a href="../../index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
 
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="../../lib/ros/tcpros/service_server_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/ros/tcpros/service_server.rb">lib/ros/tcpros/service_server.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
 
-			
-		</div>
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../ROS.html" title="ROS (module)">ROS</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TCPROS.html" title="ROS::TCPROS (module)">TCPROS</a></span></span>
+     &raquo; 
+    <span class="title">ServiceServer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
 
-		<div id="class-metadata">
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: ROS::TCPROS::ServiceServer
+  
+  
+  
+</h1>
 
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link">::GServer</p>
-				
-			</div>
-			
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">GServer</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">GServer</li>
+          
+            <li class="next">ROS::TCPROS::ServiceServer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Message.html" title="ROS::TCPROS::Message (module)">Message</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ros/tcpros/service_server.rb</dd>
+  
+</dl>
+<div class="clear"></div>
 
-			<!-- Namespace Contents -->
-			
-
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-c-new">::new</a></li>
-					
-					<li><a href="#method-i-build_header">#build_header</a></li>
-					
-					<li><a href="#method-i-check_header">#check_header</a></li>
-					
-					<li><a href="#method-i-read_and_callback">#read_and_callback</a></li>
-					
-					<li><a href="#method-i-send_ng_byte">#send_ng_byte</a></li>
-					
-					<li><a href="#method-i-send_ok_byte">#send_ok_byte</a></li>
-					
-					<li><a href="#method-i-serve">#serve</a></li>
-					
-				</ul>
-			</div>
-			
-
-			<!-- Included Modules -->
-			
-			<div id="includes-section" class="section">
-				<h3 class="section-header">Included Modules</h3>
-				<ul class="link-list">
-				
-				
-					<li><span class="include">::ROS::TCPROS::Message</span></li>
-				
-				
-				</ul>
-			</div>
-			
-		</div>
-
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="../../README_rdoc.html">README.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
-
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="../../images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
-
-				<ul class="link-list">
-				
-					<li><a href="../../ROS.html">ROS</a></li>
-				
-					<li><a href="../../ROS/Duration.html">ROS::Duration</a></li>
-				
-					<li><a href="../../ROS/GraphManager.html">ROS::GraphManager</a></li>
-				
-					<li><a href="../../ROS/Log.html">ROS::Log</a></li>
-				
-					<li><a href="../../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
-				
-					<li><a href="../../ROS/Message.html">ROS::Message</a></li>
-				
-					<li><a href="../../ROS/Name.html">ROS::Name</a></li>
-				
-					<li><a href="../../ROS/Node.html">ROS::Node</a></li>
-				
-					<li><a href="../../ROS/Package.html">ROS::Package</a></li>
-				
-					<li><a href="../../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
-				
-					<li><a href="../../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
-				
-					<li><a href="../../ROS/Publisher.html">ROS::Publisher</a></li>
-				
-					<li><a href="../../ROS/Rate.html">ROS::Rate</a></li>
-				
-					<li><a href="../../ROS/Service.html">ROS::Service</a></li>
-				
-					<li><a href="../../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
-				
-					<li><a href="../../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
-				
-					<li><a href="../../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
-				
-					<li><a href="../../ROS/Struct.html">ROS::Struct</a></li>
-				
-					<li><a href="../../ROS/Subscriber.html">ROS::Subscriber</a></li>
-				
-					<li><a href="../../ROS/TCPROS.html">ROS::TCPROS</a></li>
-				
-					<li><a href="../../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
-				
-					<li><a href="../../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
-				
-					<li><a href="../../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
-				
-					<li><a href="../../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
-				
-					<li><a href="../../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
-				
-					<li><a href="../../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
-				
-					<li><a href="../../ROS/TVal.html">ROS::TVal</a></li>
-				
-					<li><a href="../../ROS/Time.html">ROS::Time</a></li>
-				
-					<li><a href="../../ROS/Topic.html">ROS::Topic</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
-
-			
-		</div>
-	</div>
-
-	<div id="documentation">
-		<h1 class="class">ROS::TCPROS::ServiceServer</h1>
-
-		<div id="description">
-			<p>
-<a href="../TCPROS.html">TCPROS</a> protocol <a
-href="../Service.html">Service</a> <a href="Server.html">Server</a>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+TCPROS protocol Service Server
 </p>
 
-		</div>
 
-		<!-- Constants -->
-		
-		<div id="constants-list" class="section">
-			<h3 class="section-header">Constants</h3>
-			<dl>
-			
-				<dt><a name="MAX_CONNECTION">MAX_CONNECTION</a></dt>
-				
-				<dd class="description"><p>
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="MAX_CONNECTION-constant" class="">MAX_CONNECTION =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
 max number of connection with clients
-</p></dd>
-				
-			
-			</dl>
-		</div>
-		
+</p>
 
-		<!-- Attributes -->
-		
-		<div id="attribute-method-details" class="method-section section">
-			<h3 class="section-header">Attributes</h3>
 
-			
-			<div id="byte-received-attribute-method" class="method-detail">
-				<a name="byte_received"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">byte_received</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
+  </div>
+</div>
+<div class="tags">
+  
 
-				<div class="method-description">
-				
-				<p>
+</div>
+        </dt>
+        <dd><pre class="code"><span class='int'>100</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#byte_received-instance_method" title="#byte_received (instance method)">- (Integer) <strong>byte_received</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+received data amout for slave api.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#byte_sent-instance_method" title="#byte_sent (instance method)">- (Integer) <strong>byte_sent</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+sent data amout for slave api.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_header-instance_method" title="#build_header (instance method)">- (Header) <strong>build_header</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+build header message for service server.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#check_header-instance_method" title="#check_header (instance method)">- (Boolean) <strong>check_header</strong>(header) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+check header.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ServiceServer) <strong>initialize</strong>(caller_id, service_name, service_type, callback, port = 0, host = ::GServer::DEFAULT_HOST) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of ServiceServer.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_and_callback-instance_method" title="#read_and_callback (instance method)">- (Boolean) <strong>read_and_callback</strong>(socket) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+main loop of this connection.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send_ng_byte-instance_method" title="#send_ng_byte (instance method)">- (Object) <strong>send_ng_byte</strong>(socket) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+message must send 1 byte for service call result (fail).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send_ok_byte-instance_method" title="#send_ok_byte (instance method)">- (Object) <strong>send_ok_byte</strong>(socket) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+message must send 1 byte for service call result (success).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#serve-instance_method" title="#serve (instance method)">- (Object) <strong>serve</strong>(socket) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+this is called by socket accept.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Message.html" title="ROS::TCPROS::Message (module)">Message</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Message.html#protocol-instance_method" title="ROS::TCPROS::Message#protocol (method)">#protocol</a></span>, <span class='object_link'><a href="Message.html#read_all-instance_method" title="ROS::TCPROS::Message#read_all (method)">#read_all</a></span>, <span class='object_link'><a href="Message.html#read_header-instance_method" title="ROS::TCPROS::Message#read_header (method)">#read_header</a></span>, <span class='object_link'><a href="Message.html#write_header-instance_method" title="ROS::TCPROS::Message#write_header (method)">#write_header</a></span>, <span class='object_link'><a href="Message.html#write_msg-instance_method" title="ROS::TCPROS::Message#write_msg (method)">#write_msg</a></span></p>
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>initialize</strong>(caller_id, service_name, service_type, callback, port = 0, host = ::GServer::DEFAULT_HOST) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of ServiceServer
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>caller_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+caller_id of this node
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of this service
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_type</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+class of this service message
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>callback</span>
+      
+      
+        <span class='type'>(<tt>Proc</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+of this service
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>0</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+port number
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>host</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>::GServer::DEFAULT_HOST</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+host name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='comma'>,</span> <span class='id identifier rubyid_callback'>callback</span><span class='comma'>,</span>
+               <span class='id identifier rubyid_port'>port</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_host'>host</span><span class='op'>=</span><span class='op'>::</span><span class='const'>GServer</span><span class='op'>::</span><span class='const'>DEFAULT_HOST</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='const'>MAX_CONNECTION</span><span class='rparen'>)</span>
+  <span class='ivar'>@caller_id</span> <span class='op'>=</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
+  <span class='ivar'>@service_name</span> <span class='op'>=</span> <span class='id identifier rubyid_service_name'>service_name</span>
+  <span class='ivar'>@service_type</span> <span class='op'>=</span> <span class='id identifier rubyid_service_type'>service_type</span>
+  <span class='ivar'>@callback</span> <span class='op'>=</span> <span class='id identifier rubyid_callback'>callback</span>
+  <span class='ivar'>@byte_received</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@byte_sent</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="byte_received-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="byte_received-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>byte_received</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 received data amout for slave api
 </p>
-				
-				</div>
-			</div>
-			
-			<div id="byte-sent-attribute-method" class="method-detail">
-				<a name="byte_sent"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">byte_sent</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
 
-				<div class="method-description">
-				
-				<p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+byte received
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 125</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_byte_received'>byte_received</span>
+  <span class='ivar'>@byte_received</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="byte_sent-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="byte_sent-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>byte_sent</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 sent data amout for slave api
 </p>
-				
-				</div>
-			</div>
-			
-		</div>
-		
 
-		<!-- Methods -->
-		
-		<div id="public-class-method-details" class="method-section section">
-			<h3 class="section-header">Public Class Methods</h3>
 
-		
-			<div id="new-method" class="method-detail ">
-				<a name="method-c-new"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">new</span><span
-						class="method-args">(caller_id, service_name, service_type, callback, port=0, host=::GServer::DEFAULT_HOST)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="new-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 24</span>
-24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">service_name</span>, <span class="ruby-identifier">service_type</span>, <span class="ruby-identifier">callback</span>,
-25:                    <span class="ruby-identifier">port</span>=<span class="ruby-value">0</span>, <span class="ruby-identifier">host</span>=<span class="ruby-operator">::</span><span class="ruby-constant">GServer</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_HOST</span>)
-26:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">port</span>, <span class="ruby-identifier">host</span>, <span class="ruby-constant">MAX_CONNECTION</span>)
-27:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
-28:       <span class="ruby-ivar">@service_name</span> = <span class="ruby-identifier">service_name</span>
-29:       <span class="ruby-ivar">@service_type</span> = <span class="ruby-identifier">service_type</span>
-30:       <span class="ruby-ivar">@callback</span> = <span class="ruby-identifier">callback</span>
-31:       <span class="ruby-ivar">@byte_received</span> = <span class="ruby-value">0</span>
-32:       <span class="ruby-ivar">@byte_sent</span> = <span class="ruby-value">0</span>
-33:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
-
-		
-			<div id="build-header-method" class="method-detail ">
-				<a name="method-i-build_header"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">build_header</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-build header message for service server @return <a
-href="Header.html">ROS::TCPROS::Header</a>
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+byte sent
 </p>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="build-header-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 99</span>
- 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_header</span>
-100:       <span class="ruby-identifier">header</span> = <span class="ruby-constant">Header</span>.<span class="ruby-identifier">new</span>
-101:       <span class="ruby-identifier">header</span>[<span class="ruby-value str">&quot;callerid&quot;</span>] = <span class="ruby-ivar">@caller_id</span>
-102:       <span class="ruby-identifier">header</span>[<span class="ruby-value str">'type'</span>] = <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">type</span>
-103:       <span class="ruby-identifier">header</span>[<span class="ruby-value str">'md5sum'</span>] = <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">md5sum</span>
-104:       <span class="ruby-identifier">header</span>
-105:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
 
-				
-			</div>
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 129</span>
 
-		
-			<div id="check-header-method" class="method-detail ">
-				<a name="method-i-check_header"></a>
+<span class='kw'>def</span> <span class='id identifier rubyid_byte_sent'>byte_sent</span>
+  <span class='ivar'>@byte_sent</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
-				<div class="method-heading">
-				
-					<span class="method-name">check_header</span><span
-						class="method-args">(header)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
 
-				<div class="method-description">
-					
-					<p>
-check header
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="build_header-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Header.html" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>build_header</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+build header message for service server. It contains callerid, type,
+md5sum.
 </p>
-					
 
-					
-					<div class="method-source-code"
-						id="check-header-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 92</span>
-92:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_header</span>(<span class="ruby-identifier">header</span>)
-93:       <span class="ruby-identifier">header</span>.<span class="ruby-identifier">valid?</span>(<span class="ruby-value str">'md5sum'</span>, <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">md5sum</span>)
-94:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
 
-				
-
-				
-			</div>
-
-		
-			<div id="read-and-callback-method" class="method-detail ">
-				<a name="method-i-read_and_callback"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">read_and_callback</span><span
-						class="method-args">(socket)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="read-and-callback-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 49</span>
-49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_and_callback</span>(<span class="ruby-identifier">socket</span>)
-50:       <span class="ruby-identifier">request</span> = <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">request_class</span>.<span class="ruby-identifier">new</span>
-51:       <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@service_type</span>.<span class="ruby-identifier">response_class</span>.<span class="ruby-identifier">new</span>
-52:       <span class="ruby-identifier">data</span> = <span class="ruby-identifier">read_all</span>(<span class="ruby-identifier">socket</span>)
-53:       <span class="ruby-ivar">@byte_received</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>
-54:       <span class="ruby-identifier">request</span>.<span class="ruby-identifier">deserialize</span>(<span class="ruby-identifier">data</span>)
-55:       <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@callback</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">request</span>, <span class="ruby-identifier">response</span>)
-56:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>
-57:         <span class="ruby-identifier">send_ok_byte</span>(<span class="ruby-identifier">socket</span>)
-58:         <span class="ruby-identifier">data</span> = <span class="ruby-identifier">write_msg</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">response</span>)
-59:         <span class="ruby-ivar">@byte_sent</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>
-60:       <span class="ruby-keyword kw">else</span>
-61:         <span class="ruby-identifier">send_ng_byte</span>(<span class="ruby-identifier">socket</span>)
-62:         <span class="ruby-identifier">write_header</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">build_header</span>)
-63:         <span class="ruby-comment cmt"># write some message</span>
-64:       <span class="ruby-keyword kw">end</span>
-65:       <span class="ruby-identifier">result</span>
-66:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="send-ng-byte-method" class="method-detail ">
-				<a name="method-i-send_ng_byte"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">send_ng_byte</span><span
-						class="method-args">(socket)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-message must send 1 byte for service call result (false)
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Header.html" title="ROS::TCPROS::Header (class)">Header</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+built header
 </p>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="send-ng-byte-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 45</span>
-45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_ng_byte</span>(<span class="ruby-identifier">socket</span>)
-46:       <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">write</span>([<span class="ruby-value">0</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'c'</span>))
-47:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
 
-				
-			</div>
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 115</span>
 
-		
-			<div id="send-ok-byte-method" class="method-detail ">
-				<a name="method-i-send_ok_byte"></a>
+<span class='kw'>def</span> <span class='id identifier rubyid_build_header'>build_header</span>
+  <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='const'>Header</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>callerid</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@caller_id</span>
+  <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>type</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
+  <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>md5sum</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_md5sum'>md5sum</span>
+  <span class='id identifier rubyid_header'>header</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="check_header-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>check_header</strong>(header) 
+  
 
-				<div class="method-heading">
-				
-					<span class="method-name">send_ok_byte</span><span
-						class="method-args">(socket)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-message must send 1 byte for service call result (true)
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+check header. check md5sum only.
 </p>
-					
 
-					
-					<div class="method-source-code"
-						id="send-ok-byte-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 38</span>
-38:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_ok_byte</span>(<span class="ruby-identifier">socket</span>)
-39:       <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">write</span>([<span class="ruby-value">1</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'c'</span>))
-40:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
 
-				
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>header</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Header.html" title="ROS::TCPROS::Header (class)">Header</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+header for checking
+</p>
+</div>
+      
+    </li>
+  
+</ul>
 
-				
-			</div>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+check result (true means ok)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
 
-		
-			<div id="serve-method" class="method-detail ">
-				<a name="method-i-serve"></a>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				<div class="method-heading">
-				
-					<span class="method-name">serve</span><span
-						class="method-args">(socket)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
 
-				<div class="method-description">
-					
-					<p>
+107
+108
+109</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_header'>check_header</span><span class='lparen'>(</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>md5sum</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_md5sum'>md5sum</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="read_and_callback-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>read_and_callback</strong>(socket) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+main loop of this connection. read data and do callback.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>IO</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+result of callback
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_and_callback'>read_and_callback</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_request_class'>request_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_response_class'>response_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_read_all'>read_all</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='ivar'>@byte_received</span> <span class='op'>+=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='ivar'>@callback</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span>
+    <span class='id identifier rubyid_send_ok_byte'>send_ok_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_write_msg'>write_msg</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
+    <span class='ivar'>@byte_sent</span> <span class='op'>+=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_send_ng_byte'>send_ng_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_write_header'>write_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_build_header'>build_header</span><span class='rparen'>)</span>
+    <span class='comment'># write some message
+</span>  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="send_ng_byte-instance_method">
+  
+    - (<tt>Object</tt>) <strong>send_ng_byte</strong>(socket) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+message must send 1 byte for service call result (fail)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>IO</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_send_ng_byte'>send_ng_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>c</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="send_ok_byte-instance_method">
+  
+    - (<tt>Object</tt>) <strong>send_ok_byte</strong>(socket) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+message must send 1 byte for service call result (success)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>IO</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_send_ok_byte'>send_ok_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>c</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="serve-instance_method">
+  
+    - (<tt>Object</tt>) <strong>serve</strong>(socket) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 this is called by socket accept
 </p>
-					
-
-					
-					<div class="method-source-code"
-						id="serve-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/tcpros/service_server.rb, line 71</span>
-71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">serve</span>(<span class="ruby-identifier">socket</span>)
-72:       <span class="ruby-identifier">header</span> = <span class="ruby-identifier">read_header</span>(<span class="ruby-identifier">socket</span>)
-73:       <span class="ruby-comment cmt"># not documented protocol?</span>
-74:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">header</span>[<span class="ruby-value str">'probe'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'1'</span>
-75:         <span class="ruby-identifier">write_header</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">build_header</span>)
-76:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">check_header</span>(<span class="ruby-identifier">header</span>)
-77:         <span class="ruby-identifier">write_header</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">build_header</span>)
-78:         <span class="ruby-identifier">read_and_callback</span>(<span class="ruby-identifier">socket</span>)
-79:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">header</span>[<span class="ruby-value str">'persistent'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'1'</span>
-80:           <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
-81:             <span class="ruby-identifier">read_and_callback</span>(<span class="ruby-identifier">socket</span>)
-82:           <span class="ruby-keyword kw">end</span>
-83:         <span class="ruby-keyword kw">end</span>
-84:       <span class="ruby-keyword kw">else</span>
-85:         <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">close</span>
-86:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">'header check error'</span>
-87:       <span class="ruby-keyword kw">end</span>
-88:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-
-	</div>
 
 
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>IO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+given socket
+</p>
+</div>
+      
+    </li>
+  
+</ul>
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
 
-</body>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_serve'>serve</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='id identifier rubyid_read_header'>read_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='comment'># not documented protocol?
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>probe</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_write_header'>write_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_build_header'>build_header</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_check_header'>check_header</span><span class='lparen'>(</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_write_header'>write_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_build_header'>build_header</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_read_and_callback'>read_and_callback</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>persistent</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1</span><span class='tstring_end'>'</span></span>
+      <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+        <span class='id identifier rubyid_read_and_callback'>read_and_callback</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>header check error</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Apr 26 22:13:16 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
 </html>
-

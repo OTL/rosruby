@@ -1,482 +1,226 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-	<title>rosruby API</title>
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
 
-	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
-</head>
-<body class="indexpage">
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
 
-	
-	<h1>rosruby API</h1>
 
-	
-	<div id="main">
-		
-<p>
-<a href="ROS.html">ROS</a> is Robot Operating System developed by Willow
-Garage and open source communities. See <a
-href="http://ros.org/.">ros.org/.</a>
-</p>
-<p>
-rosruby is <a href="ROS.html">ROS</a> client for ruby. You can program
-robots by ruby, very easily.
-</p>
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>ROS Ruby Client: rosruby</h1>
+
+<p><a href="http://ros.org">ROS</a> is Robot Operating System developed by <a href="http://www.willowgarage.com/">Willow Garage</a> and open source communities.</p>
+
+<p>This project supports ruby ROS client. You can program robots by ruby, very easily.</p>
+
+<p><strong>Homepage</strong>:     <a href="http://otl.github.com/rosruby">http://otl.github.com/rosruby</a><br>
+<strong>Git</strong>:          <a href="http://github.com/OTL/rosruby">http://github.com/OTL/rosruby</a><br>
+<strong>Author</strong>:       Takashi Ogura<br>
+<strong>Copyright</strong>:    2012<br>
+<strong>License</strong>:      new BSD License<br>
+<strong>Latest Version</strong>: 0.2.0   </p>
+
 <h2>Requirements</h2>
+
 <ul>
-<li><p>
-ruby (1.8.x/1.9.x)
-</p>
-</li>
-<li><p>
-<a href="ROS.html">ROS</a> (electric/fuerte)
-</p>
+<li>ruby (1.8.x/1.9.x)</li>
+<li>ROS (electric/fuerte)
+
 <ul>
-<li><p>
-<a href="ROS.html">ROS</a> requires python2.7 or more libraries
-</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2>License</h2>
-<p>
-BSD License
-</p>
-<h2>Documents</h2>
-<h3>project page</h3>
-<ul>
-<li><p>
-<a href="http://github.com/OTL/rosruby">github.com/OTL/rosruby</a>
-</p>
-</li>
-</ul>
-<h3><a href="ROS.html">ROS</a> wiki</h3>
-<ul>
-<li><p>
-<a href="http://ros.org/wiki/rosruby">ros.org/wiki/rosruby</a>
-</p>
-</li>
+<li>ROS requires python2.7 or more libraries</li>
+</ul></li>
 </ul>
 
-	</div>
-	
+<h2>Let&#39;s start</h2>
 
-	
-	
-	<h2>Files</h2>
-	<ul>
-		
-			<li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
-		
-	</ul>
-	
+<p>Install ROS and ruby first. ROS document is <a href="http://ros.org/wiki/ROS/Installation">http://ros.org/wiki/ROS/Installation</a> .</p>
 
-	<h2 id="classes">Classes/Modules</h2>
-	<ul>
-		
-		<li class="module"><a href="ROS.html">ROS</a></li>
-		
-		<li class="class"><a href="ROS/Duration.html">ROS::Duration</a></li>
-		
-		<li class="class"><a href="ROS/GraphManager.html">ROS::GraphManager</a></li>
-		
-		<li class="class"><a href="ROS/Log.html">ROS::Log</a></li>
-		
-		<li class="class"><a href="ROS/MasterProxy.html">ROS::MasterProxy</a></li>
-		
-		<li class="class"><a href="ROS/Message.html">ROS::Message</a></li>
-		
-		<li class="module"><a href="ROS/Name.html">ROS::Name</a></li>
-		
-		<li class="class"><a href="ROS/Node.html">ROS::Node</a></li>
-		
-		<li class="class"><a href="ROS/Package.html">ROS::Package</a></li>
-		
-		<li class="class"><a href="ROS/ParameterManager.html">ROS::ParameterManager</a></li>
-		
-		<li class="class"><a href="ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
-		
-		<li class="class"><a href="ROS/Publisher.html">ROS::Publisher</a></li>
-		
-		<li class="class"><a href="ROS/Rate.html">ROS::Rate</a></li>
-		
-		<li class="class"><a href="ROS/Service.html">ROS::Service</a></li>
-		
-		<li class="class"><a href="ROS/ServiceClient.html">ROS::ServiceClient</a></li>
-		
-		<li class="class"><a href="ROS/ServiceServer.html">ROS::ServiceServer</a></li>
-		
-		<li class="class"><a href="ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
-		
-		<li class="class"><a href="ROS/Struct.html">ROS::Struct</a></li>
-		
-		<li class="class"><a href="ROS/Subscriber.html">ROS::Subscriber</a></li>
-		
-		<li class="module"><a href="ROS/TCPROS.html">ROS::TCPROS</a></li>
-		
-		<li class="class"><a href="ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
-		
-		<li class="class"><a href="ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
-		
-		<li class="module"><a href="ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
-		
-		<li class="class"><a href="ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
-		
-		<li class="class"><a href="ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
-		
-		<li class="class"><a href="ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
-		
-		<li class="class"><a href="ROS/TVal.html">ROS::TVal</a></li>
-		
-		<li class="class"><a href="ROS/Time.html">ROS::Time</a></li>
-		
-		<li class="class"><a href="ROS/Topic.html">ROS::Topic</a></li>
-		
-	</ul>
+<p>You can install ruby by apt.</p>
 
-	<h2 id="methods">Methods</h2>
-	<ul>
-		
-			<li><a href="ROS/Package.html#method-c-add_path_of_package">::add_path_of_package &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS/Package.html#method-c-add_path_with_depend_packages">::add_path_with_depend_packages &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS/Package.html#method-c-depends">::depends &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS/Package.html#method-c-find_all_packages">::find_all_packages &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS/Package.html#method-c-find_this_package">::find_this_package &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS.html#method-c-load_manifest">::load_manifest &mdash; ROS</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-c-new">::new &mdash; ROS::ParameterManager</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-c-new">::new &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/Subscriber.html#method-c-new">::new &mdash; ROS::Subscriber</a></li>
-		
-			<li><a href="ROS/ServiceServer.html#method-c-new">::new &mdash; ROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/Duration.html#method-c-new">::new &mdash; ROS::Duration</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-c-new">::new &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/Service.html#method-c-new">::new &mdash; ROS::Service</a></li>
-		
-			<li><a href="ROS/Node.html#method-c-new">::new &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/ParameterSubscriber.html#method-c-new">::new &mdash; ROS::ParameterSubscriber</a></li>
-		
-			<li><a href="ROS/Struct.html#method-c-new">::new &mdash; ROS::Struct</a></li>
-		
-			<li><a href="ROS/Publisher.html#method-c-new">::new &mdash; ROS::Publisher</a></li>
-		
-			<li><a href="ROS/Log.html#method-c-new">::new &mdash; ROS::Log</a></li>
-		
-			<li><a href="ROS/TCPROS/Server.html#method-c-new">::new &mdash; ROS::TCPROS::Server</a></li>
-		
-			<li><a href="ROS/Topic.html#method-c-new">::new &mdash; ROS::Topic</a></li>
-		
-			<li><a href="ROS/Rate.html#method-c-new">::new &mdash; ROS::Rate</a></li>
-		
-			<li><a href="ROS/Time.html#method-c-new">::new &mdash; ROS::Time</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-c-new">::new &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-c-new">::new &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-c-new">::new &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/TCPROS/Client.html#method-c-new">::new &mdash; ROS::TCPROS::Client</a></li>
-		
-			<li><a href="ROS/ServiceClient.html#method-c-new">::new &mdash; ROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-c-new">::new &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/Time.html#method-c-now">::now &mdash; ROS::Time</a></li>
-		
-			<li><a href="ROS/Package.html#method-c-read_cache_or_find_all">::read_cache_or_find_all &mdash; ROS::Package</a></li>
-		
-			<li><a href="ROS/Time.html#method-i-%2B">#+ &mdash; ROS::Time</a></li>
-		
-			<li><a href="ROS/Duration.html#method-i-%2B">#+ &mdash; ROS::Duration</a></li>
-		
-			<li><a href="ROS/Duration.html#method-i--">#- &mdash; ROS::Duration</a></li>
-		
-			<li><a href="ROS/Time.html#method-i--">#- &mdash; ROS::Time</a></li>
-		
-			<li><a href="ROS/TVal.html#method-i-%3C%3D%3E">#<=> &mdash; ROS::TVal</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-i-%5B%5D">#[] &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-i-%5B%5D%3D">#[]= &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-add_handlers">#add_handlers &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-add_parameter_subscriber">#add_parameter_subscriber &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-add_publisher">#add_publisher &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-add_service_server">#add_service_server &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-add_subscriber">#add_subscriber &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-advertise">#advertise &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-advertise_service">#advertise_service &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Name.html#method-i-anonymous_name">#anonymous_name &mdash; ROS::Name</a></li>
-		
-			<li><a href="ROS/TCPROS/Client.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::Client</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/TCPROS/Server.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::Server</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-build_header">#build_header &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/ParameterSubscriber.html#method-i-call">#call &mdash; ROS::ParameterSubscriber</a></li>
-		
-			<li><a href="ROS/ServiceClient.html#method-i-call">#call &mdash; ROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/ServiceServer.html#method-i-call">#call &mdash; ROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-call">#call &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/TVal.html#method-i-canonicalize">#canonicalize &mdash; ROS::TVal</a></li>
-		
-			<li><a href="ROS/Name.html#method-i-canonicalize_name">#canonicalize_name &mdash; ROS::Name</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-check_header">#check_header &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/TCPROS/Server.html#method-i-check_header">#check_header &mdash; ROS::TCPROS::Server</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-check_header">#check_header &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-i-delete_param">#delete_param &mdash; ROS::ParameterManager</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-delete_param">#delete_param &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-i-deserialize">#deserialize &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/Name.html#method-i-expand_local_name">#expand_local_name &mdash; ROS::Name</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-get_available_port">#get_available_port &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-get_bus_info">#get_bus_info &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-get_bus_stats">#get_bus_stats &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/Subscriber.html#method-i-get_connection_data">#get_connection_data &mdash; ROS::Subscriber</a></li>
-		
-			<li><a href="ROS/ServiceServer.html#method-i-get_connection_data">#get_connection_data &mdash; ROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/Publisher.html#method-i-get_connection_data">#get_connection_data &mdash; ROS::Publisher</a></li>
-		
-			<li><a href="ROS/Subscriber.html#method-i-get_connection_info">#get_connection_info &mdash; ROS::Subscriber</a></li>
-		
-			<li><a href="ROS/Publisher.html#method-i-get_connection_info">#get_connection_info &mdash; ROS::Publisher</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-i-get_data">#get_data &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-get_master_uri">#get_master_uri &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-get_param">#get_param &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-i-get_param">#get_param &mdash; ROS::ParameterManager</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-get_param_names">#get_param_names &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-i-get_param_names">#get_param_names &mdash; ROS::ParameterManager</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-get_pid">#get_pid &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-get_publications">#get_publications &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-get_published_topics">#get_published_topics &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-get_published_topics">#get_published_topics &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-get_subscriptions">#get_subscriptions &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-get_system_state">#get_system_state &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-get_uri">#get_uri &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-get_uri">#get_uri &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-has_param">#has_param &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-i-has_param">#has_param &mdash; ROS::ParameterManager</a></li>
-		
-			<li><a href="ROS/TCPROS/Server.html#method-i-latching%3F">#latching? &mdash; ROS::TCPROS::Server</a></li>
-		
-			<li><a href="ROS/Log.html#method-i-log">#log &mdash; ROS::Log</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-logdebug">#logdebug &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-logerr">#logerr &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-logerror">#logerror &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-logfatal">#logfatal &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-loginfo">#loginfo &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-logwarn">#logwarn &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-lookup_node">#lookup_node &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-lookup_service">#lookup_service &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-master_uri">#master_uri &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-master_uri%3D">#master_uri= &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-ok%3F">#ok? &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Struct.html#method-i-pack">#pack &mdash; ROS::Struct</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-param_update">#param_update &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/TCPROS/Message.html#method-i-protocol">#protocol &mdash; ROS::TCPROS::Message</a></li>
-		
-			<li><a href="ROS/Publisher.html#method-i-publish">#publish &mdash; ROS::Publisher</a></li>
-		
-			<li><a href="ROS/TCPROS/Server.html#method-i-publish_msg">#publish_msg &mdash; ROS::TCPROS::Server</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-publisher_update">#publisher_update &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-i-push_data">#push_data &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/TCPROS/Message.html#method-i-read_all">#read_all &mdash; ROS::TCPROS::Message</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-read_and_callback">#read_and_callback &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/TCPROS/Message.html#method-i-read_header">#read_header &mdash; ROS::TCPROS::Message</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-read_ok_byte">#read_ok_byte &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-register_publisher">#register_publisher &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-register_service">#register_service &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-register_subscriber">#register_subscriber &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-request_topic">#request_topic &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-resolve_name">#resolve_name &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Name.html#method-i-resolve_name_with_call_id">#resolve_name_with_call_id &mdash; ROS::Name</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-i-search_param">#search_param &mdash; ROS::ParameterManager</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-send_ng_byte">#send_ng_byte &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-send_ok_byte">#send_ok_byte &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-i-serialize">#serialize &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceServer.html#method-i-serve">#serve &mdash; ROS::TCPROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-service">#service &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/ServiceServer.html#method-i-service_uri">#service_uri &mdash; ROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/ParameterSubscriber.html#method-i-set_manager">#set_manager &mdash; ROS::ParameterSubscriber</a></li>
-		
-			<li><a href="ROS/ParameterManager.html#method-i-set_param">#set_param &mdash; ROS::ParameterManager</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-set_param">#set_param &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/TCPROS/ServiceClient.html#method-i-shutdown">#shutdown &mdash; ROS::TCPROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/Publisher.html#method-i-shutdown">#shutdown &mdash; ROS::Publisher</a></li>
-		
-			<li><a href="ROS/Subscriber.html#method-i-shutdown">#shutdown &mdash; ROS::Subscriber</a></li>
-		
-			<li><a href="ROS/ParameterSubscriber.html#method-i-shutdown">#shutdown &mdash; ROS::ParameterSubscriber</a></li>
-		
-			<li><a href="ROS/SlaveProxy.html#method-i-shutdown">#shutdown &mdash; ROS::SlaveProxy</a></li>
-		
-			<li><a href="ROS/TCPROS/Client.html#method-i-shutdown">#shutdown &mdash; ROS::TCPROS::Client</a></li>
-		
-			<li><a href="ROS/ServiceServer.html#method-i-shutdown">#shutdown &mdash; ROS::ServiceServer</a></li>
-		
-			<li><a href="ROS/ServiceClient.html#method-i-shutdown">#shutdown &mdash; ROS::ServiceClient</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-shutdown">#shutdown &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-shutdown">#shutdown &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-shutdown_parameter_subscriber">#shutdown_parameter_subscriber &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-shutdown_publisher">#shutdown_publisher &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-shutdown_service_server">#shutdown_service_server &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-shutdown_subscriber">#shutdown_subscriber &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/Duration.html#method-i-sleep">#sleep &mdash; ROS::Duration</a></li>
-		
-			<li><a href="ROS/Rate.html#method-i-sleep">#sleep &mdash; ROS::Rate</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-spin">#spin &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-spin_once">#spin_once &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-spin_once">#spin_once &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/TCPROS/Client.html#method-i-start">#start &mdash; ROS::TCPROS::Client</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-subscribe">#subscribe &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-subscribe_param">#subscribe_param &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-subscribe_parameter">#subscribe_parameter &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/TVal.html#method-i-to_nsec">#to_nsec &mdash; ROS::TVal</a></li>
-		
-			<li><a href="ROS/TVal.html#method-i-to_sec">#to_sec &mdash; ROS::TVal</a></li>
-		
-			<li><a href="ROS/Struct.html#method-i-unpack">#unpack &mdash; ROS::Struct</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-unregister_publisher">#unregister_publisher &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-unregister_service">#unregister_service &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-unregister_subscriber">#unregister_subscriber &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/MasterProxy.html#method-i-unsubscribe_param">#unsubscribe_param &mdash; ROS::MasterProxy</a></li>
-		
-			<li><a href="ROS/TCPROS/Header.html#method-i-valid%3F">#valid? &mdash; ROS::TCPROS::Header</a></li>
-		
-			<li><a href="ROS/Node.html#method-i-wait_for_service">#wait_for_service &mdash; ROS::Node</a></li>
-		
-			<li><a href="ROS/GraphManager.html#method-i-wait_for_service">#wait_for_service &mdash; ROS::GraphManager</a></li>
-		
-			<li><a href="ROS/TCPROS/Message.html#method-i-write_header">#write_header &mdash; ROS::TCPROS::Message</a></li>
-		
-			<li><a href="ROS/TCPROS/Message.html#method-i-write_msg">#write_msg &mdash; ROS::TCPROS::Message</a></li>
-		
-	</ul>
+<pre class="code bash"><code>$ sudo apt-get install ruby rake
+</code></pre>
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
-</body>
+<p>Download rosruby into your ROS<em>PACKAGE</em>PATH.</p>
+
+<pre class="code bash"><code>$ git clone git://github.com/OTL/rosruby.git
+</code></pre>
+
+<p>please add RUBYLIB environment variable, like below (if you are using bash).</p>
+
+<pre class="code bash"><code>$ echo &quot;export RUBYLIB=`rospack find rosruby`/lib&quot; &gt;&gt; ~/.bashrc
+$ source ~/.bashrc
+</code></pre>
+
+<h2>To use with precompiled electric release</h2>
+
+<p>If you are using precompiled ROS distro, use the msg/srv generation script
+(gen<em>for</em>precompiled.py)
+If you are using ROS from source, it requires just recompile the msg/srv
+packages by rosmake rosruby.</p>
+
+<pre class="code bash"><code>$ rosrun rosruby gen_for_precompiled.py
+</code></pre>
+
+<p>This converts msg/srv to .rb which is needed by sample programs.
+If you want to make other packages, add package names for args.</p>
+
+<p>For example,</p>
+
+<pre class="code bash"><code>$ rosrun rosruby gen_for_precompiled.py geometry_msgs nav_msgs
+</code></pre>
+
+<h2>Sample Source</h2>
+
+<h2>Subscriber</h2>
+
+<pre class="code ruby"><code><span class='comment'>#!/usr/bin/env ruby
+</span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ros</span><span class='tstring_end'>'</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>std_msgs/String</span><span class='tstring_end'>'</span></span>
+
+<span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_subscriber</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_subscribe'>subscribe</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/chatter</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>message come! = \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_content'>\'</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='kw'>while</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span>
+  <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_spin_once'>spin_once</span>
+  <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+
+</code></pre>
+
+<h2>Publisher</h2>
+
+<pre class="code ruby"><code><span class='comment'>#!/usr/bin/env ruby
+</span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ros</span><span class='tstring_end'>'</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>std_msgs/String</span><span class='tstring_end'>'</span></span>
+
+<span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_publisher</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_publisher'>publisher</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_advertise'>advertise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/chatter</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
+<span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>while</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, rosruby!: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_publisher'>publisher</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h2>Note</h2>
+
+<p>Ruby requires &#39;Start with Capital letter&#39; for class or module names.
+So please use <strong>S</strong>td<em>msgs::String class instead of <strong>s</strong>td</em>msgs::String.</p>
+
+<h2>Try Publish and Subscribe</h2>
+
+<p>You needs three terminal as it is often for ROS users.
+Then you run roscore if is not running.</p>
+
+<pre class="code bash"><code>$ roscore
+</code></pre>
+
+<p>run publisher sample</p>
+
+<pre class="code bash"><code>$ rosrun rosruby sample_publisher.rb
+</code></pre>
+
+<p>run subscription sample</p>
+
+<pre class="code bash"><code>$ rosrun rosruby sample_subscriber.rb
+</code></pre>
+
+<p>you can check publication by using rostopic.</p>
+
+<pre class="code bash"><code>$ rostopic list
+$ rostopic echo /chatter
+</code></pre>
+
+<h2>Try Service?</h2>
+
+<pre class="code bash"><code>$ rosrun rosruby add_two_ints_server.rb
+</code></pre>
+
+<p>run client with args (&#39;a&#39; and &#39;b&#39; for roscpp_tutorials/TwoInts)</p>
+
+<pre class="code bash"><code>$ rosrun rosruby add_two_ints_client.rb 10 20
+</code></pre>
+
+<h2>do all tests</h2>
+
+<p>run roscore if is not running.</p>
+
+<pre class="code bash"><code>$ roscore
+</code></pre>
+
+<p>and run the unit tests.</p>
+
+<pre class="code bash"><code>$ rosrun rosruby run-test.rb
+</code></pre>
+
+<p>or</p>
+
+<pre class="code bash"><code>$ roscd rosruby
+$ rake test
+</code></pre>
+</div></div>
+    
+    <div id="footer">
+  Generated on Thu Apr 26 22:13:13 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
 </html>

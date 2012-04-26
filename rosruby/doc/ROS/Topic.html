@@ -1,330 +1,699 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ROS::Topic
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
 
-	<title>Class: ROS::Topic</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-	<script src="../js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
 
-</head>
-<body class="class">
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
 
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="../lib/ros/topic_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/ros/topic.rb">lib/ros/topic.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
 
-			
-		</div>
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (T)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
+     &raquo; 
+    <span class="title">Topic</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
 
-		<div id="class-metadata">
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: ROS::Topic
+  
+  
+  
+</h1>
 
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link">Object</p>
-				
-			</div>
-			
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ROS::Topic</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ros/topic.rb</dd>
+  
+</dl>
+<div class="clear"></div>
 
-			<!-- Namespace Contents -->
-			
-
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-c-new">::new</a></li>
-					
-				</ul>
-			</div>
-			
-
-			<!-- Included Modules -->
-			
-		</div>
-
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
-
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="../images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
-
-				<ul class="link-list">
-				
-					<li><a href="../ROS.html">ROS</a></li>
-				
-					<li><a href="../ROS/Duration.html">ROS::Duration</a></li>
-				
-					<li><a href="../ROS/GraphManager.html">ROS::GraphManager</a></li>
-				
-					<li><a href="../ROS/Log.html">ROS::Log</a></li>
-				
-					<li><a href="../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
-				
-					<li><a href="../ROS/Message.html">ROS::Message</a></li>
-				
-					<li><a href="../ROS/Name.html">ROS::Name</a></li>
-				
-					<li><a href="../ROS/Node.html">ROS::Node</a></li>
-				
-					<li><a href="../ROS/Package.html">ROS::Package</a></li>
-				
-					<li><a href="../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
-				
-					<li><a href="../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
-				
-					<li><a href="../ROS/Publisher.html">ROS::Publisher</a></li>
-				
-					<li><a href="../ROS/Rate.html">ROS::Rate</a></li>
-				
-					<li><a href="../ROS/Service.html">ROS::Service</a></li>
-				
-					<li><a href="../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
-				
-					<li><a href="../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
-				
-					<li><a href="../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
-				
-					<li><a href="../ROS/Struct.html">ROS::Struct</a></li>
-				
-					<li><a href="../ROS/Subscriber.html">ROS::Subscriber</a></li>
-				
-					<li><a href="../ROS/TCPROS.html">ROS::TCPROS</a></li>
-				
-					<li><a href="../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
-				
-					<li><a href="../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
-				
-					<li><a href="../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
-				
-					<li><a href="../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
-				
-					<li><a href="../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
-				
-					<li><a href="../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
-				
-					<li><a href="../ROS/TVal.html">ROS::TVal</a></li>
-				
-					<li><a href="../ROS/Time.html">ROS::Time</a></li>
-				
-					<li><a href="../ROS/Topic.html">ROS::Topic</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
-
-			
-		</div>
-	</div>
-
-	<div id="documentation">
-		<h1 class="class">ROS::Topic</h1>
-
-		<div id="description">
-			<p>
-Base class of <a href="Publisher.html">ROS::Publisher</a> and <a
-href="Subscriber.html">ROS::Subscriber</a>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Base class of <span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span> and <span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span>
 </p>
 
-		</div>
 
-		<!-- Constants -->
-		
+  </div>
+</div>
+<div class="tags">
+  
 
-		<!-- Attributes -->
-		
-		<div id="attribute-method-details" class="method-section section">
-			<h3 class="section-header">Attributes</h3>
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span>, <span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></p>
+</div>
 
-			
-			<div id="caller-id-attribute-method" class="method-detail">
-				<a name="caller_id"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">caller_id</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
 
-				<div class="method-description">
-				
-				<p>
-caller id
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#caller_id-instance_method" title="#caller_id (instance method)">- (String) <strong>caller_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Caller id.
 </p>
-				
-				</div>
-			</div>
-			
-			<div id="topic-name-attribute-method" class="method-detail">
-				<a name="topic_name"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">topic_name</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
+</div></span>
+  
+</li>
 
-				<div class="method-description">
-				
-				<p>
-name of this topic (String)
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#topic_name-instance_method" title="#topic_name (instance method)">- (String) <strong>topic_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Name of this topic.
 </p>
-				
-				</div>
-			</div>
-			
-			<div id="topic-type-attribute-method" class="method-detail">
-				<a name="topic_type"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">topic_type</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
+</div></span>
+  
+</li>
 
-				<div class="method-description">
-				
-				<p>
-class of msg
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#topic_type-instance_method" title="#topic_type (instance method)">- (Class) <strong>topic_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Class of msg.
 </p>
-				
-				</div>
-			</div>
-			
-		</div>
-		
+</div></span>
+  
+</li>
 
-		<!-- Methods -->
-		
-		<div id="public-class-method-details" class="method-section section">
-			<h3 class="section-header">Public Class Methods</h3>
+    
+  </ul>
 
-		
-			<div id="new-method" class="method-detail ">
-				<a name="method-c-new"></a>
 
-				<div class="method-heading">
-				
-					<span class="method-name">new</span><span
-						class="method-args">(caller_id, topic_name, topic_type)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
 
-				<div class="method-description">
-					
-					<p>
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">- (Object) <strong>close</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown all connections.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Topic) <strong>initialize</strong>(caller_id, topic_name, topic_type) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+initialize member variables.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_manager-instance_method" title="#set_manager (instance method)">- (Object) <strong>set_manager</strong>(manager) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+set manager for shutdown.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::Topic (class)">Topic</a></span></tt>) <strong>initialize</strong>(caller_id, topic_name, topic_type) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 initialize member variables
 </p>
-<dl>
-<dt><tt><a href="Topic.html#caller_id">caller_id</a></tt></dt><dd><p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>caller_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 caller id of this node
 </p>
-</dd>
-<dt><tt><a href="Topic.html#topic_name">topic_name</a></tt></dt><dd><p>
-name of this topic (String)
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>topic_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of this topic
 </p>
-</dd>
-<dt><tt><a href="Topic.html#topic_type">topic_type</a></tt></dt><dd><p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>topic_type</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 class of msg
 </p>
-</dd>
-</dl>
-					
-
-					
-					<div class="method-source-code"
-						id="new-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/topic.rb, line 19</span>
-19:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">topic_name</span>, <span class="ruby-identifier">topic_type</span>)
-20:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
-21:       <span class="ruby-ivar">@topic_name</span> = <span class="ruby-identifier">topic_name</span>
-22:       <span class="ruby-ivar">@topic_type</span> = <span class="ruby-identifier">topic_type</span>
-23:       <span class="ruby-ivar">@connections</span> = []
-24:       <span class="ruby-ivar">@connection_id_number</span> = <span class="ruby-value">0</span>
-25:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-
-	</div>
+</div>
+      
+    </li>
+  
+</ul>
 
 
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
 
-</body>
+19
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/topic.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_name'>topic_name</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_type'>topic_type</span><span class='rparen'>)</span>
+  <span class='ivar'>@caller_id</span> <span class='op'>=</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
+  <span class='ivar'>@topic_name</span> <span class='op'>=</span> <span class='id identifier rubyid_topic_name'>topic_name</span>
+  <span class='ivar'>@topic_type</span> <span class='op'>=</span> <span class='id identifier rubyid_topic_type'>topic_type</span>
+  <span class='ivar'>@connections</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@connection_id_number</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="caller_id-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="caller_id-instance_method">
+  
+    - (<tt>String</tt>) <strong>caller_id</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Caller id
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+caller id
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/topic.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
+  <span class='ivar'>@caller_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="topic_name-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="topic_name-instance_method">
+  
+    - (<tt>String</tt>) <strong>topic_name</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Name of this topic
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of this topic
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/topic.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_topic_name'>topic_name</span>
+  <span class='ivar'>@topic_name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="topic_type-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="topic_type-instance_method">
+  
+    - (<tt>Class</tt>) <strong>topic_type</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Class of msg
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+class of msg
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/topic.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_topic_type'>topic_type</span>
+  <span class='ivar'>@topic_type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="close-instance_method">
+  
+    - (<tt>Object</tt>) <strong>close</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown all connections
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/topic.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span> <span class='comment'>#:nodoc:
+</span>  <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_shutdown'>shutdown</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="set_manager-instance_method">
+  
+    - (<tt>Object</tt>) <strong>set_manager</strong>(manager) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+set manager for shutdown
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>manager</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="GraphManager.html" title="ROS::GraphManager (class)">GraphManager</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/topic.rb', line 43</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_manager'>set_manager</span><span class='lparen'>(</span><span class='id identifier rubyid_manager'>manager</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
+</span>  <span class='ivar'>@manager</span> <span class='op'>=</span> <span class='id identifier rubyid_manager'>manager</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Apr 26 22:13:14 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
 </html>
-

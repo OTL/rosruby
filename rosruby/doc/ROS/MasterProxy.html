@@ -1,956 +1,2252 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ROS::MasterProxy
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
 
-	<title>Class: ROS::MasterProxy</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-	<script src="../js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
 
-</head>
-<body class="class">
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
 
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="../lib/ros/master_proxy_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/ros/master_proxy.rb">lib/ros/master_proxy.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
 
-			
-		</div>
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (M)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
+     &raquo; 
+    <span class="title">MasterProxy</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
 
-		<div id="class-metadata">
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: ROS::MasterProxy
+  
+  
+  
+</h1>
 
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link">Object</p>
-				
-			</div>
-			
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ROS::MasterProxy</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ros/master_proxy.rb</dd>
+  
+</dl>
+<div class="clear"></div>
 
-			<!-- Namespace Contents -->
-			
-
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-c-new">::new</a></li>
-					
-					<li><a href="#method-i-get_published_topics">#get_published_topics</a></li>
-					
-					<li><a href="#method-i-get_system_state">#get_system_state</a></li>
-					
-					<li><a href="#method-i-get_uri">#get_uri</a></li>
-					
-					<li><a href="#method-i-lookup_node">#lookup_node</a></li>
-					
-					<li><a href="#method-i-lookup_service">#lookup_service</a></li>
-					
-					<li><a href="#method-i-master_uri">#master_uri</a></li>
-					
-					<li><a href="#method-i-master_uri%3D">#master_uri=</a></li>
-					
-					<li><a href="#method-i-register_publisher">#register_publisher</a></li>
-					
-					<li><a href="#method-i-register_service">#register_service</a></li>
-					
-					<li><a href="#method-i-register_subscriber">#register_subscriber</a></li>
-					
-					<li><a href="#method-i-subscribe_param">#subscribe_param</a></li>
-					
-					<li><a href="#method-i-unregister_publisher">#unregister_publisher</a></li>
-					
-					<li><a href="#method-i-unregister_service">#unregister_service</a></li>
-					
-					<li><a href="#method-i-unregister_subscriber">#unregister_subscriber</a></li>
-					
-					<li><a href="#method-i-unsubscribe_param">#unsubscribe_param</a></li>
-					
-				</ul>
-			</div>
-			
-
-			<!-- Included Modules -->
-			
-		</div>
-
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
-
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="../images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
-
-				<ul class="link-list">
-				
-					<li><a href="../ROS.html">ROS</a></li>
-				
-					<li><a href="../ROS/Duration.html">ROS::Duration</a></li>
-				
-					<li><a href="../ROS/GraphManager.html">ROS::GraphManager</a></li>
-				
-					<li><a href="../ROS/Log.html">ROS::Log</a></li>
-				
-					<li><a href="../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
-				
-					<li><a href="../ROS/Message.html">ROS::Message</a></li>
-				
-					<li><a href="../ROS/Name.html">ROS::Name</a></li>
-				
-					<li><a href="../ROS/Node.html">ROS::Node</a></li>
-				
-					<li><a href="../ROS/Package.html">ROS::Package</a></li>
-				
-					<li><a href="../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
-				
-					<li><a href="../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
-				
-					<li><a href="../ROS/Publisher.html">ROS::Publisher</a></li>
-				
-					<li><a href="../ROS/Rate.html">ROS::Rate</a></li>
-				
-					<li><a href="../ROS/Service.html">ROS::Service</a></li>
-				
-					<li><a href="../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
-				
-					<li><a href="../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
-				
-					<li><a href="../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
-				
-					<li><a href="../ROS/Struct.html">ROS::Struct</a></li>
-				
-					<li><a href="../ROS/Subscriber.html">ROS::Subscriber</a></li>
-				
-					<li><a href="../ROS/TCPROS.html">ROS::TCPROS</a></li>
-				
-					<li><a href="../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
-				
-					<li><a href="../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
-				
-					<li><a href="../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
-				
-					<li><a href="../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
-				
-					<li><a href="../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
-				
-					<li><a href="../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
-				
-					<li><a href="../ROS/TVal.html">ROS::TVal</a></li>
-				
-					<li><a href="../ROS/Time.html">ROS::Time</a></li>
-				
-					<li><a href="../ROS/Topic.html">ROS::Topic</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
-
-			
-		</div>
-	</div>
-
-	<div id="documentation">
-		<h1 class="class">ROS::MasterProxy</h1>
-
-		<div id="description">
-			<h2><a href="../ROS.html">ROS</a> Master Proxy</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h2>ROS Master Proxy</h2>
 <p>
-you can access to <a href="../ROS.html">ROS</a> Master easily.
-</p>
-<p>
-Please refer to the wiki documents <a
-href="http://ros.org/wiki/ROS/Master_API">ros.org/wiki/ROS/Master_API</a>
+access to ROS Master. But there are not documented API.
 </p>
 
-		</div>
 
-		<!-- Constants -->
-		
+  </div>
+</div>
+<div class="tags">
+  
 
-		<!-- Attributes -->
-		
-		<div id="attribute-method-details" class="method-section section">
-			<h3 class="section-header">Attributes</h3>
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://ros.org/wiki/ROS/Master_API" target="_parent" title="http://ros.org/wiki/ROS/Master_API">http://ros.org/wiki/ROS/Master_API</a></li>
+    
+  </ul>
 
-			
-			<div id="slave-uri-attribute-method" class="method-detail">
-				<a name="slave_uri"></a>
-				
-				<a name="slave_uri="></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">slave_uri</span><span
-						class="attribute-access-type">[RW]</span>
-				</div>
+</div>
 
-				<div class="method-description">
-				
-				
-				
-				</div>
-			</div>
-			
-			<div id="caller-id-attribute-method" class="method-detail">
-				<a name="caller_id"></a>
-				
-				<a name="caller_id="></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">caller_id</span><span
-						class="attribute-access-type">[RW]</span>
-				</div>
 
-				<div class="method-description">
-				
-				
-				
-				</div>
-			</div>
-			
-		</div>
-		
 
-		<!-- Methods -->
-		
-		<div id="public-class-method-details" class="method-section section">
-			<h3 class="section-header">Public Class Methods</h3>
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#caller_id-instance_method" title="#caller_id (instance method)">- (String) <strong>caller_id</strong> </a>
+    
 
-		
-			<div id="new-method" class="method-detail ">
-				<a name="method-c-new"></a>
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
 
-				<div class="method-heading">
-				
-					<span class="method-name">new</span><span
-						class="method-args">(caller_id, master_uri, slave_uri)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<dl>
-<dt><tt><a href="MasterProxy.html#caller_id">caller_id</a></tt></dt><dd><p>
-<a href="MasterProxy.html#caller_id">caller_id</a> of this node
+  
+    <span class="summary_desc"><div class='inline'><p>
+caller id of this node.
 </p>
-</dd>
-<dt><tt><a href="MasterProxy.html#method-i-master_uri">master_uri</a></tt></dt><dd><p>
-URI of <a href="../ROS.html">ROS</a> Master
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#master_uri-instance_method" title="#master_uri (instance method)">- (String) <strong>master_uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Master URI.
 </p>
-</dd>
-<dt><tt><a href="MasterProxy.html#slave_uri">slave_uri</a></tt></dt><dd><p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#slave_uri-instance_method" title="#slave_uri (instance method)">- (String) <strong>slave_uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Slave URI.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_published_topics-instance_method" title="#get_published_topics (instance method)">- (Array) <strong>get_published_topics</strong>(subgraph = '') </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get the all published topics.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_system_state-instance_method" title="#get_system_state (instance method)">- (Array) <strong>get_system_state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get system state.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_uri-instance_method" title="#get_uri (instance method)">- (String) <strong>get_uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get the master URI.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (MasterProxy) <strong>initialize</strong>(caller_id, master_uri, slave_uri) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of MasterProxy.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lookup_node-instance_method" title="#lookup_node (instance method)">- (String<sup>?</sup>) <strong>lookup_node</strong>(node_name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+lookup a node by name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lookup_service-instance_method" title="#lookup_service (instance method)">- (String<sup>?</sup>) <strong>lookup_service</strong>(service) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+look up a service by name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_publisher-instance_method" title="#register_publisher (instance method)">- (Array) <strong>register_publisher</strong>(topic, topic_type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+register a publisher.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_service-instance_method" title="#register_service (instance method)">- (Boolean) <strong>register_service</strong>(service, service_api) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+register a service.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_subscriber-instance_method" title="#register_subscriber (instance method)">- (Array) <strong>register_subscriber</strong>(topic, topic_type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+register a subscriber.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subscribe_param-instance_method" title="#subscribe_param (instance method)">- (Boolean) <strong>subscribe_param</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+this method is not described in the wiki.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unregister_publisher-instance_method" title="#unregister_publisher (instance method)">- (Integer) <strong>unregister_publisher</strong>(topic) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+unregister a publisher.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unregister_service-instance_method" title="#unregister_service (instance method)">- (Integer) <strong>unregister_service</strong>(service, service_api) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+unregister a service.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unregister_subscriber-instance_method" title="#unregister_subscriber (instance method)">- (Integer) <strong>unregister_subscriber</strong>(topic) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+unregister a subscriber.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unsubscribe_param-instance_method" title="#unsubscribe_param (instance method)">- (Boolean) <strong>unsubscribe_param</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+unsubscribe to the parameter key.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::MasterProxy (class)">MasterProxy</a></span></tt>) <strong>initialize</strong>(caller_id, master_uri, slave_uri) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of MasterProxy
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>caller_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+caller_id of this node
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>master_uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of ROS Master
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>slave_uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 slave URI of this node
 </p>
-</dd>
-</dl>
-					
-
-					
-					<div class="method-source-code"
-						id="new-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 28</span>
-28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">slave_uri</span>)
-29:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
-30:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
-31:       <span class="ruby-ivar">@slave_uri</span> = <span class="ruby-identifier">slave_uri</span>
-32:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
-33:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
-
-		
-			<div id="get-published-topics-method" class="method-detail ">
-				<a name="method-i-get_published_topics"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">get_published_topics</span><span
-						class="method-args">(subgraph='')</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="get-published-topics-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 149</span>
-149:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_published_topics</span>(<span class="ruby-identifier">subgraph</span>=<span class="ruby-value str">''</span>)
-150:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">topics</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getPublishedTopics</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">subgraph</span>)
-151:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-152:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">topics</span>
-153:       <span class="ruby-keyword kw">elsif</span>
-154:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-155:       <span class="ruby-keyword kw">end</span>
-156:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="get-system-state-method" class="method-detail ">
-				<a name="method-i-get_system_state"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">get_system_state</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="get-system-state-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 158</span>
-158:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_system_state</span>
-159:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">state</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getSystemState</span>(<span class="ruby-ivar">@caller_id</span>)
-160:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-161:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">state</span>
-162:       <span class="ruby-keyword kw">else</span>
-163:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-164:       <span class="ruby-keyword kw">end</span>
-165:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="get-uri-method" class="method-detail ">
-				<a name="method-i-get_uri"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">get_uri</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="get-uri-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 167</span>
-167:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_uri</span>
-168:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">getUri</span>(<span class="ruby-ivar">@caller_id</span>)
-169:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-170:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">uri</span>
-171:       <span class="ruby-keyword kw">else</span>
-172:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-173:       <span class="ruby-keyword kw">end</span>
-174:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="lookup-node-method" class="method-detail ">
-				<a name="method-i-lookup_node"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">lookup_node</span><span
-						class="method-args">(node_name)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="lookup-node-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 140</span>
-140:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_node</span>(<span class="ruby-identifier">node_name</span>)
-141:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupNode</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">node_name</span>)
-142:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-143:         <span class="ruby-identifier">uri</span>
-144:       <span class="ruby-keyword kw">else</span>
-145:         <span class="ruby-keyword kw">nil</span>
-146:       <span class="ruby-keyword kw">end</span>
-147:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="lookup-service-method" class="method-detail ">
-				<a name="method-i-lookup_service"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">lookup_service</span><span
-						class="method-args">(service)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="lookup-service-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 176</span>
-176:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_service</span>(<span class="ruby-identifier">service</span>)
-177:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">lookupService</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">service</span>)
-178:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-179:         <span class="ruby-identifier">uri</span>
-180:       <span class="ruby-keyword kw">else</span>
-181:         <span class="ruby-keyword kw">false</span>
-182:       <span class="ruby-keyword kw">end</span>
-183:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="master-uri-method" class="method-detail ">
-				<a name="method-i-master_uri"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">master_uri</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="master-uri-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 185</span>
-185:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri</span>
-186:       <span class="ruby-ivar">@master_uri</span>
-187:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="master-uri--method" class="method-detail ">
-				<a name="method-i-master_uri%3D"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">master_uri=</span><span
-						class="method-args">(uri)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="master-uri--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 189</span>
-189:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">master_uri=</span>(<span class="ruby-identifier">uri</span>)
-190:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">uri</span>
-191:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>).<span class="ruby-identifier">proxy</span>
-192:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="register-publisher-method" class="method-detail ">
-				<a name="method-i-register_publisher"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">register_publisher</span><span
-						class="method-args">(topic, topic_type)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="register-publisher-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 90</span>
- 90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_publisher</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
- 91:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uris</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
- 92:                                                      <span class="ruby-identifier">topic</span>,
- 93:                                                      <span class="ruby-identifier">topic_type</span>,
- 94:                                                      <span class="ruby-ivar">@slave_uri</span>)
- 95:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
- 96:         <span class="ruby-identifier">uris</span>
- 97:       <span class="ruby-keyword kw">else</span>
- 98:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
- 99:       <span class="ruby-keyword kw">end</span>
-100:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="register-service-method" class="method-detail ">
-				<a name="method-i-register_service"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">register_service</span><span
-						class="method-args">(service, service_api)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="register-service-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 35</span>
-35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
-36:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerService</span>(<span class="ruby-ivar">@caller_id</span>,
-37:                                                   <span class="ruby-identifier">service</span>,
-38:                                                   <span class="ruby-identifier">service_api</span>,
-39:                                                   <span class="ruby-ivar">@slave_uri</span>)
-40:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-41:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-42:       <span class="ruby-keyword kw">else</span>
-43:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-44:       <span class="ruby-keyword kw">end</span>
-45:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="register-subscriber-method" class="method-detail ">
-				<a name="method-i-register_subscriber"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">register_subscriber</span><span
-						class="method-args">(topic, topic_type)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="register-subscriber-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 61</span>
-61:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_subscriber</span>(<span class="ruby-identifier">topic</span>, <span class="ruby-identifier">topic_type</span>)
-62:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">registerSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
-63:                                                     <span class="ruby-identifier">topic</span>,
-64:                                                     <span class="ruby-identifier">topic_type</span>,
-65:                                                     <span class="ruby-ivar">@slave_uri</span>)
-66:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-67:         <span class="ruby-identifier">val</span>
-68:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-69:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-70:         <span class="ruby-identifier">val</span>
-71:       <span class="ruby-keyword kw">else</span>
-72:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-73:       <span class="ruby-keyword kw">end</span>
-74:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="subscribe-param-method" class="method-detail ">
-				<a name="method-i-subscribe_param"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">subscribe_param</span><span
-						class="method-args">(key)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_master_uri'>master_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_slave_uri'>slave_uri</span><span class='rparen'>)</span>
+  <span class='ivar'>@caller_id</span> <span class='op'>=</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
+  <span class='ivar'>@master_uri</span> <span class='op'>=</span> <span class='id identifier rubyid_master_uri'>master_uri</span>
+  <span class='ivar'>@slave_uri</span> <span class='op'>=</span> <span class='id identifier rubyid_slave_uri'>slave_uri</span>
+  <span class='ivar'>@proxy</span> <span class='op'>=</span> <span class='const'>XMLRPC</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new2'>new2</span><span class='lparen'>(</span><span class='ivar'>@master_uri</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="caller_id=-instance_method"></span>
+      <span id="caller_id-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="caller_id-instance_method">
+  
+    - (<tt>String</tt>) <strong>caller_id</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+caller id of this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+241
+242
+243</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 241</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
+  <span class='ivar'>@caller_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="master_uri=-instance_method"></span>
+      <span id="master_uri-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="master_uri-instance_method">
+  
+    - (<tt>String</tt>) <strong>master_uri</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Master URI
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_master_uri'>master_uri</span>
+  <span class='ivar'>@master_uri</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="slave_uri=-instance_method"></span>
+      <span id="slave_uri-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="slave_uri-instance_method">
+  
+    - (<tt>String</tt>) <strong>slave_uri</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Slave URI
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+237
+238
+239</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 237</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_slave_uri'>slave_uri</span>
+  <span class='ivar'>@slave_uri</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="get_published_topics-instance_method">
+  
+    - (<tt>Array</tt>) <strong>get_published_topics</strong>(subgraph = '') 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+get the all published topics
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>subgraph</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>''</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+namespace for check
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+topic names.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180
+181
+182
+183
+184
+185</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 178</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_published_topics'>get_published_topics</span><span class='lparen'>(</span><span class='id identifier rubyid_subgraph'>subgraph</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_topics'>topics</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_getPublishedTopics'>getPublishedTopics</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_subgraph'>subgraph</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_topics'>topics</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_system_state-instance_method">
+  
+    - (<tt>Array</tt>) <strong>get_system_state</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+get system state
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+state
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+189
+190
+191
+192
+193
+194
+195
+196</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 189</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_system_state'>get_system_state</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_getSystemState'>getSystemState</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_state'>state</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_uri-instance_method">
+  
+    - (<tt>String</tt>) <strong>get_uri</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+get the master URI
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+uri
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+201
+202
+203
+204
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 201</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_uri'>get_uri</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_getUri'>getUri</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_uri'>uri</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="lookup_node-instance_method">
+  
+    - (<tt>String</tt><sup>?</sup>) <strong>lookup_node</strong>(node_name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+lookup a node by name.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>node_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of the node if it is found. nil not found.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167
+168
+169
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 165</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lookup_node'>lookup_node</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_lookupNode'>lookupNode</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_node_name'>node_name</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_uri'>uri</span>
+  <span class='kw'>else</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="lookup_service-instance_method">
+  
+    - (<tt>String</tt><sup>?</sup>) <strong>lookup_service</strong>(service) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+look up a service by name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of service
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of service if found, nil not found.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+213
+214
+215
+216
+217
+218
+219
+220</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 213</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lookup_service'>lookup_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_lookupService'>lookupService</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service'>service</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_uri'>uri</span>
+  <span class='kw'>else</span>
+    <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="register_publisher-instance_method">
+  
+    - (<tt>Array</tt>) <strong>register_publisher</strong>(topic, topic_type) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+register a publisher
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>topic</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of topic
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+of topic
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of current subscribers
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>
+RuntimeError
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_publisher'>register_publisher</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_type'>topic_type</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_uris'>uris</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_registerPublisher'>registerPublisher</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span>
+                                                 <span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span>
+                                                 <span class='id identifier rubyid_topic_type'>topic_type</span><span class='comma'>,</span>
+                                                 <span class='ivar'>@slave_uri</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_uris'>uris</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="register_service-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>register_service</strong>(service, service_api) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+register a service
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of service
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_api</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+service api uri
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+true success
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>
+RuntimeError
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_service'>register_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='comma'>,</span> <span class='id identifier rubyid_service_api'>service_api</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_registerService'>registerService</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span>
+                                              <span class='id identifier rubyid_service'>service</span><span class='comma'>,</span>
+                                              <span class='id identifier rubyid_service_api'>service_api</span><span class='comma'>,</span>
+                                              <span class='ivar'>@slave_uri</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="register_subscriber-instance_method">
+  
+    - (<tt>Array</tt>) <strong>register_subscriber</strong>(topic, topic_type) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+register a subscriber
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>topic</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>topic</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+type
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of current publishers
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if error
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_subscriber'>register_subscriber</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_type'>topic_type</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span><span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_registerSubscriber'>registerSubscriber</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span>
+                                                <span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span>
+                                                <span class='id identifier rubyid_topic_type'>topic_type</span><span class='comma'>,</span>
+                                                <span class='ivar'>@slave_uri</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_val'>val</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="subscribe_param-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>subscribe_param</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 this method is not described in the wiki. subscribe to the parameter key.
 </p>
-					
 
-					
-					<div class="method-source-code"
-						id="subscribe-param-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 119</span>
-119:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subscribe_param</span>(<span class="ruby-identifier">key</span>)
-120:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">subscribeParam</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@slave_uri</span>, <span class="ruby-identifier">key</span>)
-121:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-122:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-123:       <span class="ruby-keyword kw">else</span>
-124:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-125:       <span class="ruby-keyword kw">end</span>
-126:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
 
-				
-
-				
-			</div>
-
-		
-			<div id="unregister-publisher-method" class="method-detail ">
-				<a name="method-i-unregister_publisher"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">unregister_publisher</span><span
-						class="method-args">(topic)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="unregister-publisher-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 102</span>
-102:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_publisher</span>(<span class="ruby-identifier">topic</span>)
-103:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterPublisher</span>(<span class="ruby-ivar">@caller_id</span>,
-104:                                                       <span class="ruby-identifier">topic</span>,
-105:                                                       <span class="ruby-ivar">@slave_uri</span>)
-106:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-107:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">val</span>
-108:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-109:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-110:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-111:       <span class="ruby-keyword kw">else</span>
-112:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-113:       <span class="ruby-keyword kw">end</span>
-114:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="unregister-service-method" class="method-detail ">
-				<a name="method-i-unregister_service"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">unregister_service</span><span
-						class="method-args">(service, service_api)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="unregister-service-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 47</span>
-47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_service</span>(<span class="ruby-identifier">service</span>, <span class="ruby-identifier">service_api</span>)
-48:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterService</span>(<span class="ruby-ivar">@caller_id</span>,
-49:                                                     <span class="ruby-identifier">service</span>,
-50:                                                     <span class="ruby-identifier">service_api</span>)
-51:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-52:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-53:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-54:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-55:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-56:       <span class="ruby-keyword kw">else</span>
-57:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-58:       <span class="ruby-keyword kw">end</span>
-59:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="unregister-subscriber-method" class="method-detail ">
-				<a name="method-i-unregister_subscriber"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">unregister_subscriber</span><span
-						class="method-args">(topic)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="unregister-subscriber-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 76</span>
-76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_subscriber</span>(<span class="ruby-identifier">topic</span>)
-77:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>,<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unregisterSubscriber</span>(<span class="ruby-ivar">@caller_id</span>,
-78:                                                       <span class="ruby-identifier">topic</span>,
-79:                                                       <span class="ruby-ivar">@slave_uri</span>)
-80:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-81:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-82:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-83:         <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
-84:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-85:       <span class="ruby-keyword kw">else</span>
-86:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-87:       <span class="ruby-keyword kw">end</span>
-88:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="unsubscribe-param-method" class="method-detail ">
-				<a name="method-i-unsubscribe_param"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">unsubscribe_param</span><span
-						class="method-args">(key)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-this method is not described in the wiki. unsubscribe to the parameter key.
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of parameter
 </p>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="unsubscribe-param-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/master_proxy.rb, line 131</span>
-131:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unsubscribe_param</span>(<span class="ruby-identifier">key</span>)
-132:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-ivar">@proxy</span>.<span class="ruby-identifier">unsubscribeParam</span>(<span class="ruby-ivar">@caller_id</span>, <span class="ruby-ivar">@slave_uri</span>, <span class="ruby-identifier">key</span>)
-133:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-134:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-135:       <span class="ruby-keyword kw">else</span>
-136:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-137:       <span class="ruby-keyword kw">end</span>
-138:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+true
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if fail
+</p>
+</div>
+      
+    </li>
+  
+</ul>
 
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-
-	</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
+138
+139
+140
+141
+142
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 138</span>
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
+<span class='kw'>def</span> <span class='id identifier rubyid_subscribe_param'>subscribe_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_subscribeParam'>subscribeParam</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='ivar'>@slave_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unregister_publisher-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>unregister_publisher</strong>(topic) 
+  
 
-</body>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+unregister a publisher
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>topic</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of topic
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+number of unregistered (normally 1)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>
+RuntimeError
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unregister_publisher'>unregister_publisher</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_unregisterPublisher'>unregisterPublisher</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span>
+                                                  <span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span>
+                                                  <span class='ivar'>@slave_uri</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_val'>val</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unregister_service-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>unregister_service</strong>(service, service_api) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+unregister a service
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of service
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_api</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+service api uri
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+number of unregistered (normally 1)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>
+RuntimeError
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unregister_service'>unregister_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='comma'>,</span> <span class='id identifier rubyid_service_api'>service_api</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_unregisterService'>unregisterService</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span>
+                                                <span class='id identifier rubyid_service'>service</span><span class='comma'>,</span>
+                                                <span class='id identifier rubyid_service_api'>service_api</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_val'>val</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unregister_subscriber-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>unregister_subscriber</strong>(topic) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+unregister a subscriber
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>topic</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of topic to unregister
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+number of unregistered (normally 1)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>
+RuntimeError
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unregister_subscriber'>unregister_subscriber</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span><span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_unregisterSubscriber'>unregisterSubscriber</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span>
+                                                  <span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span>
+                                                  <span class='ivar'>@slave_uri</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_val'>val</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unsubscribe_param-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>unsubscribe_param</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+unsubscribe to the parameter key. this method is not described in the wiki.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of parameter key
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+true
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if failt
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+153
+154
+155
+156
+157
+158
+159
+160</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/master_proxy.rb', line 153</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unsubscribe_param'>unsubscribe_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='ivar'>@proxy</span><span class='period'>.</span><span class='id identifier rubyid_unsubscribeParam'>unsubscribeParam</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='ivar'>@slave_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Apr 26 22:13:15 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
 </html>
-

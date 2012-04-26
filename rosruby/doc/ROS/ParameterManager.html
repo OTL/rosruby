@@ -1,611 +1,989 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ROS::ParameterManager
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
 
-	<title>Class: ROS::ParameterManager</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-	<script src="../js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
 
-</head>
-<body class="class">
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
 
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="../lib/ros/parameter_manager_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/ros/parameter_manager.rb">lib/ros/parameter_manager.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
 
-			
-		</div>
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
+     &raquo; 
+    <span class="title">ParameterManager</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
 
-		<div id="class-metadata">
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: ROS::ParameterManager
+  
+  
+  
+</h1>
 
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link">Object</p>
-				
-			</div>
-			
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ROS::ParameterManager</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ros/parameter_manager.rb</dd>
+  
+</dl>
+<div class="clear"></div>
 
-			<!-- Namespace Contents -->
-			
-
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-c-new">::new</a></li>
-					
-					<li><a href="#method-i-delete_param">#delete_param</a></li>
-					
-					<li><a href="#method-i-get_param">#get_param</a></li>
-					
-					<li><a href="#method-i-get_param_names">#get_param_names</a></li>
-					
-					<li><a href="#method-i-has_param">#has_param</a></li>
-					
-					<li><a href="#method-i-search_param">#search_param</a></li>
-					
-					<li><a href="#method-i-set_param">#set_param</a></li>
-					
-				</ul>
-			</div>
-			
-
-			<!-- Included Modules -->
-			
-		</div>
-
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
-
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="../images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
-
-				<ul class="link-list">
-				
-					<li><a href="../ROS.html">ROS</a></li>
-				
-					<li><a href="../ROS/Duration.html">ROS::Duration</a></li>
-				
-					<li><a href="../ROS/GraphManager.html">ROS::GraphManager</a></li>
-				
-					<li><a href="../ROS/Log.html">ROS::Log</a></li>
-				
-					<li><a href="../ROS/MasterProxy.html">ROS::MasterProxy</a></li>
-				
-					<li><a href="../ROS/Message.html">ROS::Message</a></li>
-				
-					<li><a href="../ROS/Name.html">ROS::Name</a></li>
-				
-					<li><a href="../ROS/Node.html">ROS::Node</a></li>
-				
-					<li><a href="../ROS/Package.html">ROS::Package</a></li>
-				
-					<li><a href="../ROS/ParameterManager.html">ROS::ParameterManager</a></li>
-				
-					<li><a href="../ROS/ParameterSubscriber.html">ROS::ParameterSubscriber</a></li>
-				
-					<li><a href="../ROS/Publisher.html">ROS::Publisher</a></li>
-				
-					<li><a href="../ROS/Rate.html">ROS::Rate</a></li>
-				
-					<li><a href="../ROS/Service.html">ROS::Service</a></li>
-				
-					<li><a href="../ROS/ServiceClient.html">ROS::ServiceClient</a></li>
-				
-					<li><a href="../ROS/ServiceServer.html">ROS::ServiceServer</a></li>
-				
-					<li><a href="../ROS/SlaveProxy.html">ROS::SlaveProxy</a></li>
-				
-					<li><a href="../ROS/Struct.html">ROS::Struct</a></li>
-				
-					<li><a href="../ROS/Subscriber.html">ROS::Subscriber</a></li>
-				
-					<li><a href="../ROS/TCPROS.html">ROS::TCPROS</a></li>
-				
-					<li><a href="../ROS/TCPROS/Client.html">ROS::TCPROS::Client</a></li>
-				
-					<li><a href="../ROS/TCPROS/Header.html">ROS::TCPROS::Header</a></li>
-				
-					<li><a href="../ROS/TCPROS/Message.html">ROS::TCPROS::Message</a></li>
-				
-					<li><a href="../ROS/TCPROS/Server.html">ROS::TCPROS::Server</a></li>
-				
-					<li><a href="../ROS/TCPROS/ServiceClient.html">ROS::TCPROS::ServiceClient</a></li>
-				
-					<li><a href="../ROS/TCPROS/ServiceServer.html">ROS::TCPROS::ServiceServer</a></li>
-				
-					<li><a href="../ROS/TVal.html">ROS::TVal</a></li>
-				
-					<li><a href="../ROS/Time.html">ROS::Time</a></li>
-				
-					<li><a href="../ROS/Topic.html">ROS::Topic</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
-
-			
-		</div>
-	</div>
-
-	<div id="documentation">
-		<h1 class="class">ROS::ParameterManager</h1>
-
-		<div id="description">
-			<p>
-<a href="../ROS.html">ROS</a> parameter sever inteface. API document is
-here <a
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+ROS parameter sever inteface. API document is here <a
 href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Parameter%20Server%20API</a>
 </p>
 
-		</div>
 
-		<!-- Constants -->
-		
+  </div>
+</div>
+<div class="tags">
+  
 
-		<!-- Attributes -->
-		
+</div>
 
-		<!-- Methods -->
-		
-		<div id="public-class-method-details" class="method-section section">
-			<h3 class="section-header">Public Class Methods</h3>
 
-		
-			<div id="new-method" class="method-detail ">
-				<a name="method-c-new"></a>
 
-				<div class="method-heading">
-				
-					<span class="method-name">new</span><span
-						class="method-args">(master_uri, caller_id, remappings)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
 
-				<div class="method-description">
-					
-					<dl>
-<dt><tt>master_uri</tt></dt><dd><p>
-URI of <a href="../ROS.html">ROS</a> Master (parameter server)
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_param-instance_method" title="#delete_param (instance method)">- (Object) <strong>delete_param</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+delete parameter &#8216;key&#8217;.
 </p>
-</dd>
-<dt><tt>caller_id</tt></dt><dd><p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_param-instance_method" title="#get_param (instance method)">- (String) <strong>get_param</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get parameter named &#8216;key&#8217;.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_param_names-instance_method" title="#get_param_names (instance method)">- (Array) <strong>get_param_names</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get the all keys of parameters.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_param-instance_method" title="#has_param (instance method)">- (Object) <strong>has_param</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+check if the master has the key.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ParameterManager) <strong>initialize</strong>(master_uri, caller_id, remappings) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of ParameterManager.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_param-instance_method" title="#search_param (instance method)">- (Object) <strong>search_param</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+search the all namespace for key.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_param-instance_method" title="#set_param (instance method)">- (Boolean) <strong>set_param</strong>(key, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+set parameter for &#8216;key&#8217;.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::ParameterManager (class)">ParameterManager</a></span></tt>) <strong>initialize</strong>(master_uri, caller_id, remappings) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of ParameterManager
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>master_uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of ROS Master (parameter server)
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>caller_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 caller_id of this node
 </p>
-</dd>
-<dt><tt>remappings</tt></dt><dd><p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>remappings</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 remapps to use for local remappings
 </p>
-</dd>
-</dl>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="new-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/parameter_manager.rb, line 23</span>
-23:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">master_uri</span>, <span class="ruby-identifier">caller_id</span>, <span class="ruby-identifier">remappings</span>)
-24:       <span class="ruby-ivar">@caller_id</span> = <span class="ruby-identifier">caller_id</span>
-25:       <span class="ruby-ivar">@master_uri</span> = <span class="ruby-identifier">master_uri</span>
-26:       <span class="ruby-ivar">@remappings</span> = <span class="ruby-identifier">remappings</span>
-27:       <span class="ruby-ivar">@server</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-ivar">@master_uri</span>)
-28:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
 
-				
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
-			</div>
 
-		
-		</div>
-	
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
+23
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 23</span>
 
-		
-			<div id="delete-param-method" class="method-detail ">
-				<a name="method-i-delete_param"></a>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_master_uri'>master_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_remappings'>remappings</span><span class='rparen'>)</span>
+  <span class='ivar'>@caller_id</span> <span class='op'>=</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
+  <span class='ivar'>@master_uri</span> <span class='op'>=</span> <span class='id identifier rubyid_master_uri'>master_uri</span>
+  <span class='ivar'>@remappings</span> <span class='op'>=</span> <span class='id identifier rubyid_remappings'>remappings</span>
+  <span class='ivar'>@server</span> <span class='op'>=</span> <span class='const'>XMLRPC</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new2'>new2</span><span class='lparen'>(</span><span class='ivar'>@master_uri</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
 
-				<div class="method-heading">
-				
-					<span class="method-name">delete_param</span><span
-						class="method-args">(key)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
 
-				<div class="method-description">
-					
-					<p>
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="delete_param-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_param</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 delete parameter &#8216;key&#8217;
 </p>
-<dl>
-<dt><tt>key</tt></dt><dd><p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 key for remove
 </p>
-</dd>
-<dt><tt>return</tt></dt><dd><p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>return</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 true if success, false if it is not exist
 </p>
-</dd>
-</dl>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="delete-param-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/parameter_manager.rb, line 69</span>
-69:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_param</span>(<span class="ruby-identifier">key</span>)
-70:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">value</span> = <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;deleteParam&quot;</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">key</span>)
-71:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
-72:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-73:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-74:       <span class="ruby-keyword kw">else</span>
-75:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
-76:       <span class="ruby-keyword kw">end</span>
-77:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
 
-				
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
-			</div>
 
-		
-			<div id="get-param-method" class="method-detail ">
-				<a name="method-i-get_param"></a>
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 70</span>
 
-				<div class="method-heading">
-				
-					<span class="method-name">get_param</span><span
-						class="method-args">(key)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_param'>delete_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>deleteParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='kw'>when</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_param-instance_method">
+  
+    - (<tt>String</tt>) <strong>get_param</strong>(key) 
+  
 
-				<div class="method-description">
-					
-					<p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 get parameter named &#8216;key&#8217;
 </p>
-<dl>
-<dt><tt>key</tt></dt><dd><p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 name of parameter
 </p>
-</dd>
-<dt><tt>return</tt></dt><dd><p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 parameter value
 </p>
-</dd>
-</dl>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="get-param-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/parameter_manager.rb, line 34</span>
-34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_param</span>(<span class="ruby-identifier">key</span>)
-35:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@remappings</span>[<span class="ruby-identifier">key</span>]
-36:         <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@remappings</span>[<span class="ruby-identifier">key</span>]
-37:       <span class="ruby-keyword kw">end</span>
-38:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">value</span> = <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;getParam&quot;</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">key</span>)
-39:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
-40:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-41:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">value</span>
-42:       <span class="ruby-keyword kw">else</span>
-43:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
-44:       <span class="ruby-keyword kw">end</span>
-45:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
 
-				
-			</div>
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 34</span>
 
-		
-			<div id="get-param-names-method" class="method-detail ">
-				<a name="method-i-get_param_names"></a>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_param'>get_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@remappings</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span>
+    <span class='kw'>return</span> <span class='ivar'>@remappings</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='kw'>when</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_param_names-instance_method">
+  
+    - (<tt>Array</tt>) <strong>get_param_names</strong> 
+  
 
-				<div class="method-heading">
-				
-					<span class="method-name">get_param_names</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 get the all keys of parameters
 </p>
-<dl>
-<dt><tt>return</tt></dt><dd><p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 all keys
 </p>
-</dd>
-</dl>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="get-param-names-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/parameter_manager.rb, line 115</span>
-115:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_param_names</span>
-116:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">value</span> = <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;getParamNames&quot;</span>, <span class="ruby-ivar">@caller_id</span>)
-117:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
-118:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-119:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">value</span>
-120:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-121:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-122:       <span class="ruby-keyword kw">else</span>
-123:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
-124:       <span class="ruby-keyword kw">end</span>
-125:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
 
-				
-			</div>
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 116</span>
 
-		
-			<div id="has-param-method" class="method-detail ">
-				<a name="method-i-has_param"></a>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_param_names'>get_param_names</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getParamNames</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='kw'>when</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="has_param-instance_method">
+  
+    - (<tt>Object</tt>) <strong>has_param</strong>(key) 
+  
 
-				<div class="method-heading">
-				
-					<span class="method-name">has_param</span><span
-						class="method-args">(key)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 check if the master has the key
 </p>
-<dl>
-<dt><tt>key</tt></dt><dd><p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 key for check
 </p>
-</dd>
-<dt><tt>return</tt></dt><dd><p>
-value of key
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>, <tt>Float</tt>, <tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+of key
 </p>
-</dd>
-</dl>
-					
+</div>
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="has-param-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/ros/parameter_manager.rb, line 99</span>
- 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_param</span>(<span class="ruby-identifier">key</span>)
-100:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">value</span> = <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;hasParam&quot;</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">key</span>)
-101:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
-102:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-103:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">value</span>
-104:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-105:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-106:       <span class="ruby-keyword kw">else</span>
-107:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
-108:       <span class="ruby-keyword kw">end</span>
-109:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
 
-				
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
-			</div>
 
-		
-			<div id="search-param-method" class="method-detail ">
-				<a name="method-i-search_param"></a>
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 100</span>
 
-				<div class="method-heading">
-				
-					<span class="method-name">search_param</span><span
-						class="method-args">(key)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+<span class='kw'>def</span> <span class='id identifier rubyid_has_param'>has_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hasParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='kw'>when</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_param-instance_method">
+  
+    - (<tt>Object</tt>) <strong>search_param</strong>(key) 
+  
 
-				<div class="method-description">
-					
-					<p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 search the all namespace for key
 </p>
-<dl>
-<dt><tt>key</tt></dt><dd><p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 key for search
 </p>
-</dd>
-<dt><tt>return</tt></dt><dd><p>
-value
-</p>
-</dd>
-</dl>
-					
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>values</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="search-param-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/parameter_manager.rb, line 83</span>
-83:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_param</span>(<span class="ruby-identifier">key</span>)
-84:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">value</span> = <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;searchParam&quot;</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">key</span>)
-85:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
-86:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-87:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">value</span>
-88:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-89:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-90:       <span class="ruby-keyword kw">else</span>
-91:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
-92:       <span class="ruby-keyword kw">end</span>
-93:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
 
-				
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-				
-			</div>
 
-		
-			<div id="set-param-method" class="method-detail ">
-				<a name="method-i-set_param"></a>
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 84</span>
 
-				<div class="method-heading">
-				
-					<span class="method-name">set_param</span><span
-						class="method-args">(key, value)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+<span class='kw'>def</span> <span class='id identifier rubyid_search_param'>search_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>searchParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='kw'>when</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="set_param-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>set_param</strong>(key, value) 
+  
 
-				<div class="method-description">
-					
-					<p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 set parameter for &#8216;key&#8217;
 </p>
-<dl>
-<dt><tt>key</tt></dt><dd><p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 key of parameter
 </p>
-</dd>
-<dt><tt>value</tt></dt><dd><p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>, <tt>Float</tt>, <tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 value of parameter
 </p>
-</dd>
-<dt><tt>return</tt></dt><dd><p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
 true if succeed
 </p>
-</dd>
-</dl>
-					
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
 
-					
-					<div class="method-source-code"
-						id="set-param-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/ros/parameter_manager.rb, line 52</span>
-52:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_param</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
-53:       <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">value</span> = <span class="ruby-ivar">@server</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;setParam&quot;</span>, <span class="ruby-ivar">@caller_id</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
-54:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">code</span>
-55:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-56:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-57:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>
-58:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span>
-59:       <span class="ruby-keyword kw">else</span>
-60:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
-61:       <span class="ruby-keyword kw">end</span>
-62:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-
-	</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 53</span>
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
+<span class='kw'>def</span> <span class='id identifier rubyid_set_param'>set_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>setParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='kw'>when</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
-</body>
+</div>
+    
+    <div id="footer">
+  Generated on Thu Apr 26 22:13:16 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
 </html>
-
