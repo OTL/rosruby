@@ -6,7 +6,7 @@
 #
 #
 # == ROS Master Proxy
-# you can access to ROS Master easily.
+# access to ROS Master
 #
 #
 
@@ -15,9 +15,9 @@ require 'xmlrpc/client'
 module ROS
 
   # == ROS Master Proxy
-  # you can access to ROS Master easily.
-  #
-  # Please refer to the wiki documents http://ros.org/wiki/ROS/Master_API
+  # access to ROS Master.
+  # @see http://ros.org/wiki/ROS/Master_API
+  # But there are not documented API.
   #
   class MasterProxy
 
@@ -208,7 +208,7 @@ module ROS
     end
 
     # get the master URI
-    # @param [String] uri
+    # @return [String] uri
     # @raise
     def get_uri
       code, message, uri = @proxy.getUri(@caller_id)
@@ -232,6 +232,7 @@ module ROS
     end
 
     # Master URI
+    # @return [String]
     attr_reader :master_uri
 
     # set the master uri
@@ -244,9 +245,11 @@ module ROS
     end
 
     # Slave URI
+    # @return [String]
     attr_accessor :slave_uri
 
     # caller id of this node
+    # @return [String]
     attr_accessor :caller_id
   end
 end

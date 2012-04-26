@@ -17,7 +17,6 @@ module ROS
 
   # == Logging class for ROS
   # This class enable double logging: ROS Logging system and ruby log.
-  #
   class Log
 
     # topic name of rosout
@@ -27,7 +26,7 @@ module ROS
     # start publishing /rosout and
     # make a ruby logger instance for local output
     # @param [Node] node {Node} instance
-    # @param [IO] output local output. $stdout is default 
+    # @param [IO] output local output. $stdout is default
     def initialize(node, output=$stdout)
       @node = node
       @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil, nil)

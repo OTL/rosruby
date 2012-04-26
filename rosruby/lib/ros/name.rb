@@ -54,7 +54,7 @@ module ROS
     # generate anonymous name using input id.
     # (arange from roslib)
     # @param [String] id base id (String)
-    # @param [String] return generated id
+    # @return [String] return generated id
     def anonymous_name(id)
       name = "#{id}_#{Socket.gethostname}_#{Process.pid}_#{rand(1000000)}"
       name = name.gsub('.', '_')

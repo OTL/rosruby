@@ -26,11 +26,11 @@ module ROS
 #   end
   class Publisher < Topic
 
-    # [+caller_id+] caller_id of this node
-    # [+topic_name+] name of topic to publish (String)
-    # [+topic_type+] class of topic
-    # [+is_latched+] latched topic?
-    # [+host+] host name of this node
+    # @param [String] caller_id caller_id of this node
+    # @param [String] topic_name name of topic to publish (String)
+    # @param [Class] topic_type class of topic
+    # @param [Boolean] is_latched latched topic?
+    # @param [String] host host name of this node
     def initialize(caller_id, topic_name, topic_type, is_latched, host)
       super(caller_id, topic_name, topic_type)
       @host = host
@@ -40,7 +40,8 @@ module ROS
 
     ##
     # publish msg object
-    # [+message+] instance of topic_type class
+    # @param [Class] message instance of topic_type class
+    # @return [Publisher] self
     def publish(message)
       @seq += 1
       if message.has_header?
@@ -49,11 +50,13 @@ module ROS
       @connections.each do |connection|
         connection.msg_queue.push(message)
       end
+      self
     end
 
     ##
     # add tcpros connection as server
-    # [+caller_id+] caller_id of subscriber
+    # @param [String] caller_id caller_id of subscriber
+    # @return [TCPROS::Server] connection object
     def add_connection(caller_id) #:nodoc:
       connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type,
                                       @is_latched,
@@ -65,14 +68,14 @@ module ROS
       return connection
     end
 
-    # [+return+] connection data for slave api
+    # @return [Array] connection data for slave api
     def get_connection_data
       @connections.map do |connection|
         [connection.id, connection.byte_sent, connection.num_sent, 1]
       end
     end
 
-    # [+return+] connection info for slave api
+    # @return [array] connection info for slave api
     def get_connection_info
       info = []
       @connections.each do |connection|
@@ -83,7 +86,7 @@ module ROS
 
     ##
     # user interface of shutdown this publisher
-    #
+    # @return [nil] nil
     def shutdown
       @manager.shutdown_publisher(self)
     end

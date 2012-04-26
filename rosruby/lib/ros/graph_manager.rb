@@ -263,7 +263,7 @@ module ROS
 
     ##
     # add all handers
-    def add_handlers
+    def add_handlers #:nodoc:
       @server.set_default_handler do |method, *args|
         puts "unhandled call with #{method}, #{args}"
         [0, "I DON'T KNOW", 0]

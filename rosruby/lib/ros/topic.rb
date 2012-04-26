@@ -9,13 +9,13 @@
 module ROS
 
   ##
-  # Base class of ROS::Publisher and ROS::Subscriber
+  # Base class of {Publisher} and {Subscriber}
   class Topic
 
     # initialize member variables
-    # [+caller_id+] caller id of this node
-    # [+topic_name+] name of this topic (String)
-    # [+topic_type+] class of msg
+    # @param [String] caller_id caller id of this node
+    # @param [String] topic_name name of this topic
+    # @param [Class] topic_type class of msg
     def initialize(caller_id, topic_name, topic_type)
       @caller_id = caller_id
       @topic_name = topic_name
@@ -24,13 +24,13 @@ module ROS
       @connection_id_number = 0
     end
 
-    # caller id
+    # @return [String] caller id
     attr_reader :caller_id
 
-    # name of this topic (String)
+    # @return [String] name of this topic
     attr_reader :topic_name
 
-    # class of msg
+    # @return [Class] class of msg
     attr_reader :topic_type
 
     # shutdown all connections
@@ -39,7 +39,7 @@ module ROS
     end
 
     # set manager for shutdown
-    # [+manager+] GraphManager
+    # @param [GraphManager] manager
     def set_manager(manager) #:nodoc:
       @manager = manager
     end

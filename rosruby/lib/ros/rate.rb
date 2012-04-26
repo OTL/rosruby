@@ -10,13 +10,13 @@ module ROS
 
   ##
   # sleep in a Hz timing.
-  # Here is a sample.
+  # @example
   #   r = ROS::Rate.new(10)
   #   r.sleep
   #
   class Rate
 
-    # [+hz+] Hz (Float)
+    # @param [Float] hz Hz
     def initialize(hz)
       @sleep_duration = 1.0 / hz
       @last_time = ::Time.now

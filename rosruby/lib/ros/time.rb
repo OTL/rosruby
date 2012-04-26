@@ -14,14 +14,14 @@ module ROS
 
     include Comparable
 
-    # seconds
+    # @return [Fixnum] seconds
     attr_accessor :secs
 
-    # nano seconds
+    # @return [Fixnum] nano seconds
     attr_accessor :nsecs
 
     # canonicalize secs and nsecs
-    # [+return+] self
+    # @return [TimeValue] self
     def canonicalize
       while @nsecs >= 1e9.to_i
         @secs += 1
@@ -35,18 +35,20 @@ module ROS
     end
 
     # convert to seconds
-    # [+return+] seconds (Float)
+    # @return [Float] seconds
     def to_sec
       @secs + (@nsecs / 1e9)
     end
 
     # convert to nano seconds
-    # [+return+] nano seconds (Float)
+    # @return [Float] nano seconds
     def to_nsec
       @nsecs + (@secs * 1e9)
     end
 
     # compare time value
+    # @param [TimeValue] other compare target
+    # @return [Fixnum] result
     def <=>(other)
       diff = self.to_nsec - other.to_nsec
       if diff > 0
@@ -70,6 +72,9 @@ module ROS
       self.new(::Time::now)
     end
 
+    # @overload initialize(time)
+    #   @param [::Time] initialize with this time
+    # @overload initialize
     def initialize(time=nil)
       if time
         @secs = time.to_i
@@ -82,6 +87,8 @@ module ROS
     end
 
     # add time value
+    # @param [Duration]
+    # @return [Time] new time
     def +(duration)
       tm = ::ROS::Time.new
       tm.secs = @secs + duration.secs
@@ -90,6 +97,8 @@ module ROS
     end
 
     # subtract time value
+    # @param [Time] other
+    # @return [Duration] duration
     def -(other)
       d = ::ROS::Duration.new
       d.secs = @secs - other.secs

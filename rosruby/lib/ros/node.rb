@@ -22,14 +22,9 @@ require 'ros/duration'
 
 module ROS
 
-# == ROS Node
-#
 # main interface of rosruby.
-# This class has many inner informations.
-# It may be better to use pimpl pattern.
 #
-# === Sample for Publisher
-#
+# @example Sample for Publisher
 #   node = ROS::Node.new('/rosruby/sample_publisher')
 #   publisher = node.advertise('/chatter', Std_msgs::String)
 #   sleep(1)
@@ -39,8 +34,7 @@ module ROS
 #     msg.data = "Hello, rosruby!: #{i}"
 #     publisher.publish(msg)
 #
-# === Sample for Subscriber
-#
+# @example Sample for Subscriber
 #   node = ROS::Node.new('/rosruby/sample_subscriber')
 #   node.subscribe('/chatter', Std_msgs::String) do |msg|
 #     puts "message come! = \'#{msg.data}\'"
@@ -99,12 +93,15 @@ module ROS
     end
 
     # URI of master
+    # @return [String] uri string of master
     attr_reader :master_uri
 
     # hostname of this node
+    # @return [String] host name
     attr_reader :host
 
     # name of this node (caller_id)
+    # @return [String] name of this node (=caller_id)
     attr_reader :node_name
 
     ##
@@ -136,7 +133,7 @@ module ROS
     ##
     # get all parameters
     #
-    # @param [Array] all parameter list
+    # @return [Array] all parameter list
     #
     def get_param_names
       @parameter.get_param_names
@@ -163,7 +160,7 @@ module ROS
     # set parameter for 'key'
     # @param [String] key key of parameter
     # @param [String, Fixnum, Float, Boolean] value value of parameter
-    # @param [Boolean] return true if succeed
+    # @return [Boolean] return true if succeed
     def set_param(key, value)
       @parameter.set_param(expand_local_name(@node_name, key), value)
     end
@@ -172,7 +169,7 @@ module ROS
     # start publishing the topic
     #
     # @param [String] topic_name name of topic (string)
-    # @param [Topic] topic_type topic class
+    # @param [Class] topic_type topic class
     # @param [Boolean] latched is this latched topic?
     # @param [Boolean] resolve if true, use resolve_name for this topic_name
     # @return [Publisher] Publisher instance
@@ -213,7 +210,7 @@ module ROS
     # wait until start the service
     # @param [String] service_name name of service for waiting
     # @param [Float] timeout_sec time out seconds. default infinity.
-    # @param [Boolean] return true if success, false if timeouted
+    # @return [Boolean] true if success, false if timeouted
     def wait_for_service(service_name, timeout_sec=nil)
       @manager.wait_for_service(service_name, timeout_sec)
     end
@@ -221,8 +218,8 @@ module ROS
     ##
     # create service client
     # @param [String] service_name name of this service (string)
-    # @param [Service] service_type service class
-    # @param [ServiceClient] return ServiceClient instance
+    # @param [Class] service_type service class
+    # @return [ServiceClient] created ServiceClient instance
     def service(service_name, service_type)
       ROS::ServiceClient.new(@master_uri,
                              @node_name,
@@ -234,8 +231,8 @@ module ROS
     # start to subscribe
     #
     # @param [String] topic_name name of topic (string)
-    # @param [Topic] topic_type Topic instance
-    # @param [Subscriber] return Subscriber instance
+    # @param [Class] topic_type Topic instance
+    # @return [Subscriber] created Subscriber instance
     def subscribe(topic_name, topic_type, &callback)
       sub = Subscriber.new(@node_name,
                            resolve_name(topic_name),
@@ -251,7 +248,7 @@ module ROS
     #
     # @param [String] param name of parameter to subscribe
     # @param [Proc] callback callback when parameter updated
-    # @param [ParameterSubscriber] return ParameterSubscriber instance
+    # @return [ParameterSubscriber] created ParameterSubscriber instance
     def subscribe_parameter(param, &callback)
       sub = ParameterSubscriber.new(param, callback)
       @manager.add_parameter_subscriber(sub)

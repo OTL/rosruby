@@ -13,8 +13,8 @@ module ROS
 
 
   # This is an interface of ROS Service.
-  # ROS::Node#service returns ROS::ServiceClient instance.
-  # Here is a sample code.
+  # {Node#service} returns {ServiceClient} instance.
+  # @example
   #   node = ROS::Node.new('/rosruby/sample_service_client')
   #   if node.wait_for_service('/add_two_ints', 1)
   #     service = node.service('/add_two_ints', Roscpp_tutorials::TwoInts)
@@ -28,11 +28,11 @@ module ROS
   #    end
   class ServiceClient < Service
 
-    # [+master_uri+] URI of ROS Master
-    # [+caller_id+] caller id of this node
-    # [+service_name+] name of service (String)
-    # [+service_type+] class of srv
-    # [+persistent+] use persistent connection with server or not.
+    # @param [String] master_uri URI of ROS Master
+    # @param [String] caller_id caller id of this node
+    # @param [String] service_name name of service
+    # @param [Class] service_type class of srv
+    # @param [Boolean] persistent use persistent connection with server or not.
     def initialize(master_uri, caller_id, service_name, service_type, persistent=false)
       super(caller_id, service_name, service_type)
       @master_uri = master_uri
@@ -41,16 +41,17 @@ module ROS
 
     ##
     # get hostname and port from uri
-    # [+uri+] uri
+    # @param [String] uri decompose uri string to host and port
+    # @return [Array<String, Fixnum>] [host, port]
     def get_host_port_from_uri(uri) #:nodoc:
       uri_data = URI.split(uri)
       [uri_data[2], uri_data[3]]
     end
 
     # call service
-    # [+srv_request+] srv Request instance
-    # [+srv_response+] srv Response instance
-    # [+return+] result of call (Bool)
+    # @param [Message] srv_request srv Request instance
+    # @param [Message] srv_response srv Response instance
+    # @return [Boolean] result of call
     def call(srv_request, srv_response)
       if @persistent and @connection
         # not connect

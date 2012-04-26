@@ -21,6 +21,13 @@ module ROS::TCPROS
 
     include ::ROS::TCPROS::Message
 
+    ##
+    # @param [String] caller_id caller_id of this node
+    # @param [String] service_name name of this service
+    # @param [Class] service_type class of this service message
+    # @param [Proc] callback of this service
+    # @param [Fixnum] port port number
+    # @param [host] host host name
     def initialize(caller_id, service_name, service_type, callback,
                    port=0, host=::GServer::DEFAULT_HOST)
       super(port, host, MAX_CONNECTION)
@@ -33,19 +40,24 @@ module ROS::TCPROS
     end
 
     ##
-    # message must send 1 byte for service call result (true)
-    #
+    # message must send 1 byte for service call result (success)
+    # @param [IO] socket
     def send_ok_byte(socket)
       socket.write([1].pack('c'))
     end
 
     ##
-    # message must send 1 byte for service call result (false)
-    #
+    # message must send 1 byte for service call result (fail)
+    # @param [IO] socket
     def send_ng_byte(socket)
       socket.write([0].pack('c'))
     end
 
+    ##
+    # main loop of this connection.
+    # read data and do callback.
+    # @param [IO] socket
+    # @return [Boolean] result of callback
     def read_and_callback(socket)
       request = @service_type.request_class.new
       response = @service_type.response_class.new
@@ -67,7 +79,7 @@ module ROS::TCPROS
 
     ##
     # this is called by socket accept
-    #
+    # @param [IO] socket given socket
     def serve(socket)
       header = read_header(socket)
       # not documented protocol?
@@ -88,14 +100,18 @@ module ROS::TCPROS
     end
 
     ##
-    # check header
+    # check header.
+    # check md5sum only.
+    # @param [Header] header header for checking
+    # @return [Boolean] check result (true means ok)
     def check_header(header)
       header.valid?('md5sum', @service_type.md5sum)
     end
 
     ##
-    # build header message for service server
-    # @return ROS::TCPROS::Header
+    # build header message for service server.
+    # It contains callerid, type, md5sum.
+    # @return [Header] built header
     def build_header
       header = Header.new
       header["callerid"] = @caller_id
@@ -105,9 +121,11 @@ module ROS::TCPROS
     end
 
     # received data amout for slave api
+    # @return [Fixnum] byte received
     attr_reader :byte_received
 
     # sent data amout for slave api
+    # @return [Fixnum] byte sent
     attr_reader :byte_sent
 
   end
