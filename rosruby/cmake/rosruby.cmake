@@ -76,7 +76,7 @@ macro(gensrv_ruby)
   endforeach(_srv)
 
   if(_autogen)
-    add_custom_target(ROSBUILD_gensrv_cpp DEPENDS ${_autogen})
+    add_custom_target(ROSBUILD_gensrv_ruby DEPENDS ${_autogen})
     # A target that depends on generation
     add_custom_target(ROSBUILD_gensrv_ruby DEPENDS ${_output_ruby})
     # Make our target depend on rosbuild_premsgsrvgen, to allow any
