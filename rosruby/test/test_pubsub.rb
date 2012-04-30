@@ -79,7 +79,6 @@ class TestPubSubNormal < Test::Unit::TestCase
       end
     end
 
-
     sleep(1) # wait for registration and update
 
     pub1.publish(pub_msg1)
@@ -126,4 +125,30 @@ class TestPubSubNormal < Test::Unit::TestCase
     node.shutdown
   end
 
+
+  def test_latched
+    node = ROS::Node.new('/test5')
+    pub1 = node.advertise('/chatter', Std_msgs::String, :latched=>true)
+
+    pub_msg1 = Std_msgs::String.new
+    pub_msg1.data = TEST_STRING1
+
+    sleep(1) # wait for registration and update
+
+    pub1.publish(pub_msg1)
+
+    sleep(1) # wait for registration and update
+    message_has_come1 = nil
+
+    sub1 = node.subscribe('/chatter', Std_msgs::String) do |msg|
+      if msg.data == TEST_STRING1
+        message_has_come1 = true
+      end
+    end
+
+    sleep(1)
+    node.spin_once
+    assert(message_has_come1)
+    node.shutdown
+  end
 end

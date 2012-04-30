@@ -53,11 +53,13 @@ module ROS
         if File.exists?("#{root}/manifest.xml")
           packages[File.basename(root)] = root
         else
-          Dir.foreach(root) do |path|
-            if path != "." and path != ".."
-              full_path = "#{root}/#{path}"
-              if File.directory?(full_path)
-                self.find_all_packages(packages, [full_path])
+          if File.exists?(root)
+            Dir.foreach(root) do |path|
+              if path != "." and path != ".."
+                full_path = "#{root}/#{path}"
+                if File.directory?(full_path)
+                  self.find_all_packages(packages, [full_path])
+                end
               end
             end
           end

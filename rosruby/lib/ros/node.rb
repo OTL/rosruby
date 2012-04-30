@@ -60,11 +60,11 @@ module ROS
     # get env, parse args, and start slave xmlrpc servers.
     #
     # @param [String] node_name name of this node
-    # @param [Boolean] anonymous anonymous node generates a unique name
-    def initialize(node_name, anonymous=nil)
+    # @param [Hash] options :anonymous => anonymous node generates a unique name
+    def initialize(node_name, options={})
       @remappings = {}
       get_env
-      if anonymous
+      if options[:anonymous]
         node_name = anonymous_name(node_name)
       end
       @node_name = resolve_name(node_name)
@@ -170,19 +170,18 @@ module ROS
     #
     # @param [String] topic_name name of topic (string)
     # @param [Class] topic_type topic class
-    # @param [Boolean] latched is this latched topic?
-    # @param [Boolean] resolve if true, use resolve_name for this topic_name
+    # @param [Hash] options :latched, :resolve
     # @return [Publisher] Publisher instance
-    def advertise(topic_name, topic_type, latched=false, resolve=true)
-      if resolve
-        name = resolve_name(topic_name)
-      else
+    def advertise(topic_name, topic_type, options={})
+      if options[:no_resolve]
         name = topic_name
+      else
+        name = resolve_name(topic_name)
       end
       publisher = Publisher.new(@node_name,
                                 name,
                                 topic_type,
-                                latched,
+                                options[:latched],
                                 @manager.host)
       @manager.add_publisher(publisher)
       trap_signals

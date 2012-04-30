@@ -23,18 +23,28 @@ module ROS::TCPROS
     # @param [String] caller_id caller id of this node
     # @param [String] topic_name name of this topic
     # @param [Class] topic_type type of topic
-    # @param [Boolean] is_latched latched topic or not
-    def initialize(caller_id, topic_name, topic_type, is_latched,
-                   port=0, host=GServer::DEFAULT_HOST)
+    # @param [Hash] options :latched, :port, host, :last_published_msg
+    def initialize(caller_id, topic_name, topic_type, options={})
+      if options[:port]
+        port = options[:port]
+      else
+        port = 0
+      end
+      if options[:host]
+        host = options[:host]
+      else
+        host = GServer::DEFAULT_HOST
+      end
+
       super(port, host, MAX_CONNECTION)
       @caller_id = caller_id
       @topic_name = topic_name
       @topic_type = topic_type
       @msg_queue = Queue.new
-      @is_latched = is_latched
+      @is_latched = options[:latched]
+      @last_published_msg = options[:last_published_msg]
       @byte_sent = 0
       @num_sent = 0
-      @last_published_msg = nil
     end
 
     ##
@@ -69,10 +79,13 @@ module ROS::TCPROS
         begin
           write_header(socket, build_header)
           if latching?
-            publish_msg(socket, @last_published_msg)
+            if @last_published_msg
+              publish_msg(socket, @last_published_msg)
+            end
           end
           loop do
-            publish_msg(socket, @msg_queue.pop)
+            @last_published_msg = @msg_queue.pop
+            publish_msg(socket, @last_published_msg)
           end
         rescue
           socket.shutdown
@@ -89,6 +102,7 @@ module ROS::TCPROS
     # id for slave API
     # @return [String]
     attr_accessor :id
+    attr_accessor :last_published_msg
 
     ##
     # validate header for this publisher

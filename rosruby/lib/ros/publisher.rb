@@ -44,6 +44,7 @@ module ROS
     # @return [Publisher] self
     def publish(message)
       @seq += 1
+      @last_published_msg = message
       if message.has_header?
         message.header.seq = @seq
       end
@@ -59,8 +60,9 @@ module ROS
     # @return [TCPROS::Server] connection object
     def add_connection(caller_id) #:nodoc:
       connection = TCPROS::Server.new(@caller_id, @topic_name, @topic_type,
-                                      @is_latched,
-                                      0, @host)
+                                      :host=>@host,
+                                      :latched=>@is_latched,
+                                      :last_published_msg=>@last_published_msg)
       connection.start
       connection.id = "#{@topic_name}_out_#{@connection_id_number}"
       @connection_id_number += 1

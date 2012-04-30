@@ -28,9 +28,9 @@ class TestNode < Test::Unit::TestCase
   end
 
   def test_anonymous
-    node1 = ROS::Node.new('/test_anonymous1', true)
+    node1 = ROS::Node.new('/test_anonymous1', :anonymous=>true)
     assert_not_equal('/test_anonymous1', node1.node_name)
-    node2 = ROS::Node.new('/test_anonymous1', true)
+    node2 = ROS::Node.new('/test_anonymous1', :anonymous=>true)
     assert_not_equal('/test_anonymous1', node2.node_name)
     sleep(0.5)
     assert(node1.ok?)

@@ -29,17 +29,18 @@ module ROS
     # @param [IO] output local output. $stdout is default
     def initialize(node, output=$stdout)
       @node = node
-      @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log, nil, nil)
+      @rosout = @node.advertise(ROSOUT_TOPIC, Rosgraph_msgs::Log,
+                                :no_resolve=>true)
       @ruby_dict = {'FATAL'=>Logger::FATAL,
-	'ERROR'=>Logger::ERROR,
-	'WARN'=>Logger::WARN,
-	'INFO'=>Logger::INFO,
-	'DEBUG'=>Logger::DEBUG}
+        'ERROR'=>Logger::ERROR,
+        'WARN'=>Logger::WARN,
+        'INFO'=>Logger::INFO,
+        'DEBUG'=>Logger::DEBUG}
       @msg_dict = {'FATAL'=>::Rosgraph_msgs::Log::FATAL,
-	'ERROR'=>::Rosgraph_msgs::Log::ERROR,
-	'WARN'=>::Rosgraph_msgs::Log::WARN,
-	'INFO'=>::Rosgraph_msgs::Log::INFO,
-	'DEBUG'=>::Rosgraph_msgs::Log::DEBUG}
+        'ERROR'=>::Rosgraph_msgs::Log::ERROR,
+        'WARN'=>::Rosgraph_msgs::Log::WARN,
+        'INFO'=>::Rosgraph_msgs::Log::INFO,
+        'DEBUG'=>::Rosgraph_msgs::Log::DEBUG}
       @local_logger = Logger.new(output)
     end
 
