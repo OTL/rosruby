@@ -51,11 +51,6 @@ module ROS
     include Name
 
     ##
-    # current running all nodes. This is for shutdown all nodes
-    #
-    @@all_nodes = []
-
-    ##
     # initialization of ROS node
     # get env, parse args, and start slave xmlrpc servers.
     #
@@ -73,13 +68,10 @@ module ROS
         raise 'ROS_MASTER_URI is nos set. please check environment variables'
       end
 
-      @manager = GraphManager.new(@node_name, @master_uri, @host, self)
+      @manager = GraphManager.new(@node_name, @master_uri, @host)
       @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
-      @is_ok = true
-      # because xmlrpc server use signal trap, after serve, it have to trap signal
-      @@all_nodes.push(self)
       @logger = ::ROS::Log.new(self)
-      trap_signals
+      # because xmlrpc server use signal trap, after serve, it have to trap sig      trap_signals
       ObjectSpace.define_finalizer(self, proc {|id| self.shutdown})
     end
 
@@ -89,23 +81,23 @@ module ROS
     # @return [Boolean] true if node is running.
     #
     def ok?
-      return @is_ok
+      @manager.is_ok?
     end
 
     # URI of master
     # @return [String] uri string of master
     attr_reader :master_uri
 
-    # hostname of this node
+    # hostname of this node.
     # @return [String] host name
     attr_reader :host
 
-    # name of this node (caller_id)
+    # name of this node (caller_id).
     # @return [String] name of this node (=caller_id)
     attr_reader :node_name
 
     ##
-    # resolve the name by this node's remapping rule
+    # resolve the name by this node's remapping rule.
     # @param [String] name name for resolved
     # @return [String] resolved name
     #
@@ -114,8 +106,8 @@ module ROS
     end
 
     ##
-    # get the param for key
-    #
+    # get the param for key.
+    # You can set default value. That is uesed when the key is not set yet.
     # @param [String] key key for search the parameters
     # @param [String, Fixnum, Float, Boolean] default default value
     # @return [String, Fixnum, Float, Boolean] parameter value for key
@@ -131,7 +123,7 @@ module ROS
     end
 
     ##
-    # get all parameters
+    # get all parameters.
     #
     # @return [Array] all parameter list
     #
@@ -140,7 +132,7 @@ module ROS
     end
 
     ##
-    # check if the parameter server has the param for 'key'
+    # check if the parameter server has the param for 'key'.
     # @param [String] key key for check
     # @return [Boolean] true if exits
     def has_param(key)
@@ -157,7 +149,7 @@ module ROS
     end
 
     ##
-    # set parameter for 'key'
+    # set parameter for 'key'.
     # @param [String] key key of parameter
     # @param [String, Fixnum, Float, Boolean] value value of parameter
     # @return [Boolean] return true if succeed
@@ -166,7 +158,7 @@ module ROS
     end
 
     ##
-    # start publishing the topic
+    # start publishing the topic.
     #
     # @param [String] topic_name name of topic (string)
     # @param [Class] topic_type topic class
@@ -189,7 +181,7 @@ module ROS
     end
 
     ##
-    # start service
+    # start service server.
     #
     # @param [String] service_name name of this service (string)
     # @param [Service] service_type service class
@@ -206,7 +198,7 @@ module ROS
     end
 
     ##
-    # wait until start the service
+    # wait until start the service.
     # @param [String] service_name name of service for waiting
     # @param [Float] timeout_sec time out seconds. default infinity.
     # @return [Boolean] true if success, false if timeouted
@@ -215,7 +207,7 @@ module ROS
     end
 
     ##
-    # create service client
+    # create service client.
     # @param [String] service_name name of this service (string)
     # @param [Class] service_type service class
     # @return [ServiceClient] created ServiceClient instance
@@ -227,7 +219,7 @@ module ROS
     end
 
     ##
-    # start to subscribe
+    # start to subscribe a topic.
     #
     # @param [String] topic_name name of topic (string)
     # @param [Class] topic_type Topic instance
@@ -243,7 +235,7 @@ module ROS
     end
 
     ##
-    # subscribe to the parameter
+    # subscribe to the parameter.
     #
     # @param [String] param name of parameter to subscribe
     # @param [Proc] callback callback when parameter updated
@@ -262,7 +254,7 @@ module ROS
     end
 
     ##
-    # spin forever
+    # spin forever.
     #
     def spin
       while ok?
@@ -272,24 +264,22 @@ module ROS
     end
 
     ##
-    # unregister to master and shutdown all connections
-    #
+    # unregister to master and shutdown all connections.
+    # @return [Node] self
     def shutdown
-      if @is_ok
-        @is_ok = false
+      if ok?
         begin
           @manager.shutdown
         rescue => message
           p message
           puts 'ignoring errors while shutdown'
         end
-        @@all_nodes.delete(self)
       end
       self
     end
 
     ##
-    # outputs log message for INFO (INFORMATION)
+    # outputs log message for INFO (INFORMATION).
     # @param [String] message message for output
     # @return [Node] self
     def loginfo(message)
@@ -309,7 +299,7 @@ module ROS
     end
 
     ##
-    # outputs log message for WARN (WARING)
+    # outputs log message for WARN (WARING).
     #
     # @param [String] message message for output
     # @return [Node] self
@@ -320,7 +310,7 @@ module ROS
     end
 
     ##
-    # outputs log message for ERROR
+    # outputs log message for ERROR.
     #
     # @param [String] message message for output
     # @return [Node] self
@@ -333,7 +323,7 @@ module ROS
     alias_method :logerr, :logerror
 
     ##
-    # outputs log message for FATAL
+    # outputs log message for FATAL.
     #
     # @param [String] message message for output
     # @return [Node] self
@@ -344,7 +334,7 @@ module ROS
     end
 
     ##
-    # get all topics by this node
+    # get all topics by this node.
     #
     # @return [Array] topic names
     def get_published_topics
@@ -356,7 +346,7 @@ module ROS
     private
 
     ##
-    # parse all environment variables
+    # parse all environment variables.
     #
     def get_env  #:nodoc:
       @master_uri = ENV['ROS_MASTER_URI']
@@ -369,10 +359,11 @@ module ROS
     end
 
     ##
-    # converts strings if it is float and int numbers
-    # convert_if_needed('10') # => 10
-    # convert_if_needed('0.1') # => 0.1
-    # convert_if_needed('string') # => 'string'
+    # converts strings if it is float and int numbers.
+    # @example
+    #   convert_if_needed('10') # => 10
+    #   convert_if_needed('0.1') # => 0.1
+    #   convert_if_needed('string') # => 'string'
     # @param [String] value string
     # @return [Float, Fixnum, String] return converted value.
     def convert_if_needed(value)  #:nodoc:
@@ -386,7 +377,7 @@ module ROS
     end
 
     ##
-    # parse all args
+    # parse all args.
     # @param [Array] args arguments for parse
     def parse_args(args) #:nodoc:
       remapping = {}
@@ -417,7 +408,7 @@ module ROS
       remapping
     end
 
-    # trap signals for safe shutdown
+    # trap signals for safe shutdown.
     def trap_signals  #:nodoc:
       ["INT", "TERM", "HUP"].each do |signal|
         Signal.trap(signal) do
@@ -426,13 +417,10 @@ module ROS
       end
     end
 
-    # shutdown all nodes
+    # shutdown all nodes.
     def self.shutdown_all_nodes
-      @@all_nodes.each do |node|
-        if node.ok?
-          node.shutdown
-        end
-      end
+      GraphManager.shutdown_all
     end
+
   end
 end

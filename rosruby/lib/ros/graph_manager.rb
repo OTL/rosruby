@@ -39,6 +39,11 @@ module ROS
     # @return [Array] all ParameterSubscriber of this node
     attr_reader :parameter_subscribers
 
+    ##
+    # current running all nodes.
+    # This is used for shutdown all nodes.
+    @@all_nodes = []
+
     # @return [String] value hostname of this node
     attr_reader :host
     # @return [Fixnum] value port number of this node
@@ -50,13 +55,12 @@ module ROS
     # @param [String] caller_id caller_id of this node
     # @param [String] master_uri URI of ROS Master
     # @param [String] host hostname of this node
-    # @param [Node] node node instance: {Node#shutdown} and {Node#ok?} is used.
-    def initialize(caller_id, master_uri, host, node)
+    def initialize(caller_id, master_uri, host)
       @caller_id = caller_id
-      @node = node
       @host = host
       @port = get_available_port
       @master_uri = master_uri
+      @is_ok = true
       @master = MasterProxy.new(@caller_id, @master_uri, get_uri)
       @server = XMLRPC::Server.new(@port, @host, MAX_CONNECTION, $stderr, false, false)
       @publishers = []
@@ -70,6 +74,23 @@ module ROS
         @server.serve
       end
 
+      @@all_nodes.push(self)
+    end
+
+    # shutdown all nodes
+    def self.shutdown_all
+      @@all_nodes.each do |node|
+        if node.is_ok?
+          node.shutdown
+        end
+      end
+    end
+
+    ##
+    # check if this node is running or not.
+    # @return [Boolean] true if node is running.
+    def is_ok?
+      @is_ok
     end
 
     ##
@@ -100,7 +121,7 @@ module ROS
     def wait_for_service(service_name, timeout_sec)
       begin
         timeout(timeout_sec) do
-          while @node.ok?
+          while @is_ok
             if @master.lookup_service(service_name)
               return true
             end
@@ -176,7 +197,7 @@ module ROS
     end
 
     ##
-    # shutdown a publisher
+    # shutdown a publisher.
     # @param [Publisher] publisher Publisher to be shutdown
     def shutdown_publisher(publisher)
       @master.unregister_publisher(publisher.topic_name)
@@ -187,7 +208,7 @@ module ROS
     end
 
     ##
-    # shutdown a subscriber
+    # shutdown a subscriber.
     # @param [Subscriber] subscriber Subscriber to be shutdown
     def shutdown_subscriber(subscriber)
       @master.unregister_subscriber(subscriber.topic_name)
@@ -198,7 +219,7 @@ module ROS
     end
 
     ##
-    # shutdown a service server
+    # shutdown a service server.
     # @param [ServiceServer] service ServiceServer to be shutdown
     def shutdown_service_server(service)
       @master.unregister_service(service.service_name,
@@ -210,7 +231,7 @@ module ROS
     end
 
     ##
-    # shutdown a parameter subscriber
+    # shutdown a parameter subscriber.
     # @param [Subscriber] subscriber ParameterSubscriber to be shutdown
     def shutdown_parameter_subscriber(subscriber)
       @master.unsubscribe_param(subscriber.key)
@@ -223,8 +244,10 @@ module ROS
     # shutdown this slave node.
     # shutdown the xmlrpc server and all pub/sub connections.
     # and delelte all pub/sub instance from connection list
+    # @return [GraphManager] self
     def shutdown
       begin
+        @is_ok = false
         @server.shutdown
         if not @thread.join(0.1)
           Thread::kill(@thread)
@@ -257,6 +280,10 @@ module ROS
         @master.unsubscribe_param(subscriber.key)
       end
       @parameter_subscribers = nil
+
+      @@all_nodes.delete(self)
+
+      self
     end
 
     private
@@ -325,7 +352,7 @@ module ROS
 
       @server.add_handler('shutdown') do |caller_id, msg|
         puts "shutting down by master request: #{msg}"
-        @node.shutdown
+        shutdown
         [1, 'shutdown ok', 0]
       end
 
