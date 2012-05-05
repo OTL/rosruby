@@ -6,7 +6,7 @@
 <title>
   Class: ROS::Package
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.1
   
 </title>
 
@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (P)</a> &raquo; 
+    <a href="../_index.html">Index (P)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Package</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::Package
   
   
@@ -124,7 +131,8 @@ all package path hash
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_read_cache_or_find_all'>read_cache_or_find_all</span></pre></dd>
+        <dd><pre class="code"><span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_read_cache_or_find_all identifier id'>read_cache_or_find_all</span>
+</pre></dd>
       
     </dl>
   
@@ -157,6 +165,7 @@ all package path hash
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -175,6 +184,7 @@ add package&#8217;s [lib/, msg_gen/ruby, srv_gen/ruby] to &#8217;$:&#8217;.
 
     
   </span>
+  
   
   
   
@@ -206,6 +216,7 @@ RUBYLIB, if the directory exists.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -219,11 +230,12 @@ get the depend packages of the arg.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#find_all_packages-class_method" title="find_all_packages (class method)">+ (Object) <strong>find_all_packages</strong>(packages = {}, roots = ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT'])) </a>
+      <a href="#find_all_packages-class_method" title="find_all_packages (class method)">+ (Array) <strong>find_all_packages</strong>(packages = {}, roots = ENV['ROS_PACKAGE_PATH'](':')(ENV['ROS_ROOT'])) </a>
     
 
     
   </span>
+  
   
   
   
@@ -254,6 +266,7 @@ search all packages that has manifest.xml.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -278,6 +291,7 @@ get the current program&#8217;s package.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -295,16 +309,18 @@ at first check the rospack&#8217;s cache, if found use it.
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="add_path_of_package-class_method">
+  <h3 class="signature first" id="add_path_of_package-class_method">
   
     + (<tt>Object</tt>) <strong>add_path_of_package</strong>(package) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 add package&#8217;s [lib/, msg_gen/ruby, srv_gen/ruby] to &#8217;$:&#8217;.
@@ -315,7 +331,7 @@ this enables load ruby files easily
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -344,8 +360,6 @@ name of package
       <pre class="lines">
 
 
-112
-113
 114
 115
 116
@@ -353,34 +367,39 @@ name of package
 118
 119
 120
-121</pre>
+121
+122
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 114</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_path_of_package'>add_path_of_package</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='cvar'>@@all_packages</span><span class='lbracket'>[</span><span class='id identifier rubyid_package'>package</span><span class='rbracket'>]</span>
-  <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'>/msg_gen/ruby</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'>/srv_gen/ruby</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'>/lib</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-      <span class='kw'>if</span> <span class='kw'>not</span> <span class='gvar'>$:</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-        <span class='gvar'>$:</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_add_path_of_package identifier id'>add_path_of_package</span><span class='lparen token'>(</span><span class='rubyid_package identifier id'>package</span><span class='rparen token'>)</span>
+  <span class='rubyid_path identifier id'>path</span> <span class='assign token'>=</span> <span class='rubyid_@@all_packages ivar id'>@@all_packages</span><span class='lbrack token'>[</span><span class='rubyid_package identifier id'>package</span><span class='rbrack token'>]</span>
+  <span class='lbrack token'>[</span><span class='dstring node'>&quot;#{path}/msg_gen/ruby&quot;</span><span class='comma token'>,</span> <span class='dstring node'>&quot;#{path}/srv_gen/ruby&quot;</span><span class='comma token'>,</span> <span class='dstring node'>&quot;#{path}/lib&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_path identifier id'>path</span><span class='bitor op'>|</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_path identifier id'>path</span><span class='rparen token'>)</span>
+      <span class='rubyid_if if kw'>if</span> <span class='rubyid_not not kw'>not</span> <span class='rubyid_$: gvar id'>$:</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_path identifier id'>path</span><span class='rparen token'>)</span>
+        <span class='rubyid_$: gvar id'>$:</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_path identifier id'>path</span><span class='rparen token'>)</span>
+      <span class='rubyid_end end kw'>end</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="add_path_with_depend_packages-class_method">
+  <h3 class="signature " id="add_path_with_depend_packages-class_method">
   
     + (<tt>Object</tt>) <strong>add_path_with_depend_packages</strong>(package) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 add [lib/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages to
@@ -391,7 +410,7 @@ RUBYLIB, if the directory exists
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -420,35 +439,38 @@ name of package
       <pre class="lines">
 
 
-127
-128
 129
 130
 131
-132</pre>
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 129</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_path_with_depend_packages'>add_path_with_depend_packages</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_add_path_of_package'>add_path_of_package</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='rparen'>)</span>
-  <span class='const'>Package</span><span class='op'>::</span><span class='id identifier rubyid_depends'>depends</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pack'>pack</span><span class='op'>|</span>
-    <span class='id identifier rubyid_add_path_of_package'>add_path_of_package</span><span class='lparen'>(</span><span class='id identifier rubyid_pack'>pack</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_add_path_with_depend_packages identifier id'>add_path_with_depend_packages</span><span class='lparen token'>(</span><span class='rubyid_package identifier id'>package</span><span class='rparen token'>)</span>
+  <span class='rubyid_add_path_of_package identifier id'>add_path_of_package</span><span class='lparen token'>(</span><span class='rubyid_package identifier id'>package</span><span class='rparen token'>)</span>
+  <span class='rubyid_Package constant id'>Package</span><span class='colon2 op'>::</span><span class='rubyid_depends identifier id'>depends</span><span class='lparen token'>(</span><span class='rubyid_package identifier id'>package</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_pack identifier id'>pack</span><span class='bitor op'>|</span>
+    <span class='rubyid_add_path_of_package identifier id'>add_path_of_package</span><span class='lparen token'>(</span><span class='rubyid_pack identifier id'>pack</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="depends-class_method">
+  <h3 class="signature " id="depends-class_method">
   
     + (<tt>Array</tt>) <strong>depends</strong>(package, packages = []) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 get the depend packages of the arg
@@ -458,7 +480,7 @@ get the depend packages of the arg
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -499,7 +521,7 @@ current found depends
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -525,8 +547,6 @@ packages
       <pre class="lines">
 
 
-80
-81
 82
 83
 84
@@ -536,36 +556,41 @@ packages
 88
 89
 90
-91</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 82</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_depends'>depends</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='comma'>,</span> <span class='id identifier rubyid_packages'>packages</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@all_packages</span><span class='lbracket'>[</span><span class='id identifier rubyid_package'>package</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='const'>REXML</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_elements'>elements</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/package/depend</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span>
-    <span class='id identifier rubyid_depend_package'>depend_package</span> <span class='op'>=</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>package</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
-    <span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_depends'>depends</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='comma'>,</span> <span class='id identifier rubyid_packages'>packages</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_packages'>packages</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_depends identifier id'>depends</span><span class='lparen token'>(</span><span class='rubyid_package identifier id'>package</span><span class='comma token'>,</span> <span class='rubyid_packages identifier id'>packages</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='rubyid_file identifier id'>file</span> <span class='assign token'>=</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{@@all_packages[package]}/manifest.xml&quot;</span><span class='rparen token'>)</span>
+  <span class='rubyid_doc identifier id'>doc</span> <span class='assign token'>=</span> <span class='rubyid_REXML constant id'>REXML</span><span class='colon2 op'>::</span><span class='rubyid_Document constant id'>Document</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_file identifier id'>file</span><span class='rparen token'>)</span>
+  <span class='rubyid_doc identifier id'>doc</span><span class='dot token'>.</span><span class='rubyid_elements identifier id'>elements</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span><span class='lparen token'>(</span><span class='string val'>'/package/depend'</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_element identifier id'>element</span><span class='bitor op'>|</span>
+    <span class='rubyid_depend_package identifier id'>depend_package</span> <span class='assign token'>=</span> <span class='rubyid_element identifier id'>element</span><span class='dot token'>.</span><span class='rubyid_attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='string val'>'package'</span><span class='rbrack token'>]</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_not not kw'>not</span> <span class='rubyid_packages identifier id'>packages</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_depend_package identifier id'>depend_package</span><span class='rparen token'>)</span>
+      <span class='rubyid_packages identifier id'>packages</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_depend_package identifier id'>depend_package</span><span class='rparen token'>)</span>
+      <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_depends identifier id'>depends</span><span class='lparen token'>(</span><span class='rubyid_depend_package identifier id'>depend_package</span><span class='comma token'>,</span> <span class='rubyid_packages identifier id'>packages</span><span class='rparen token'>)</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_packages identifier id'>packages</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="find_all_packages-class_method">
+  <h3 class="signature " id="find_all_packages-class_method">
   
-    + (<tt>Object</tt>) <strong>find_all_packages</strong>(packages = {}, roots = ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT'])) 
+    + (<tt>Array</tt>) <strong>find_all_packages</strong>(packages = {}, roots = ENV['ROS_PACKAGE_PATH'](':')(ENV['ROS_ROOT'])) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 search all packages that has manifest.xml
@@ -575,7 +600,7 @@ search all packages that has manifest.xml
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -605,7 +630,7 @@ current found packages
         <span class='type'>(<tt>Array</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT'])</tt>)</em>
+        <em class="default">(defaults to: <tt>ENV['ROS_PACKAGE_PATH'](':')(ENV['ROS_ROOT'])</tt>)</em>
       
       
         &mdash;
@@ -616,9 +641,12 @@ root directories for searching
       
     </li>
   
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
     <li>
-      
-        <span class='name'>fullpath</span>
       
       
         <span class='type'>(<tt>Array</tt>)</span>
@@ -627,14 +655,13 @@ root directories for searching
       
         &mdash;
         <div class='inline'><p>
-list of all packages
+fullpath list of all packages
 </p>
 </div>
       
     </li>
   
 </ul>
-
 
 </div><table class="source_code">
   <tr>
@@ -658,41 +685,48 @@ list of all packages
 64
 65
 66
-67</pre>
+67
+68
+69</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 51</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_all_packages'>find_all_packages</span><span class='lparen'>(</span><span class='id identifier rubyid_packages'>packages</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_roots'>roots</span><span class='op'>=</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ROS_PACKAGE_PATH</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ROS_ROOT</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_roots'>roots</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_root'>root</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root'>root</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_packages'>packages</span><span class='lbracket'>[</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_root'>root</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_root'>root</span>
-    <span class='kw'>else</span>
-      <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_foreach'>foreach</span><span class='lparen'>(</span><span class='id identifier rubyid_root'>root</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
-        <span class='kw'>if</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>and</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>..</span><span class='tstring_end'>&quot;</span></span>
-          <span class='id identifier rubyid_full_path'>full_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root'>root</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-          <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_full_path'>full_path</span><span class='rparen'>)</span>
-            <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_all_packages'>find_all_packages</span><span class='lparen'>(</span><span class='id identifier rubyid_packages'>packages</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_full_path'>full_path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-          <span class='kw'>end</span>
-        <span class='kw'>end</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_packages'>packages</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_find_all_packages identifier id'>find_all_packages</span><span class='lparen token'>(</span><span class='rubyid_packages identifier id'>packages</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='rubyid_roots identifier id'>roots</span><span class='assign token'>=</span><span class='rubyid_ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='string val'>'ROS_PACKAGE_PATH'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='string val'>'ROS_ROOT'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='rubyid_roots identifier id'>roots</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_root identifier id'>root</span><span class='bitor op'>|</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{root}/manifest.xml&quot;</span><span class='rparen token'>)</span>
+      <span class='rubyid_packages identifier id'>packages</span><span class='lbrack token'>[</span><span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_basename identifier id'>basename</span><span class='lparen token'>(</span><span class='rubyid_root identifier id'>root</span><span class='rparen token'>)</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_root identifier id'>root</span>
+    <span class='rubyid_else else kw'>else</span>
+      <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_root identifier id'>root</span><span class='rparen token'>)</span>
+        <span class='rubyid_Dir constant id'>Dir</span><span class='dot token'>.</span><span class='rubyid_foreach identifier id'>foreach</span><span class='lparen token'>(</span><span class='rubyid_root identifier id'>root</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_path identifier id'>path</span><span class='bitor op'>|</span>
+          <span class='rubyid_if if kw'>if</span> <span class='rubyid_path identifier id'>path</span> <span class='neq op'>!=</span> <span class='string val'>&quot;.&quot;</span> <span class='rubyid_and and kw'>and</span> <span class='rubyid_path identifier id'>path</span> <span class='neq op'>!=</span> <span class='string val'>&quot;..&quot;</span>
+            <span class='rubyid_full_path identifier id'>full_path</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{root}/#{path}&quot;</span>
+            <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_directory? fid id'>directory?</span><span class='lparen token'>(</span><span class='rubyid_full_path identifier id'>full_path</span><span class='rparen token'>)</span>
+              <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_find_all_packages identifier id'>find_all_packages</span><span class='lparen token'>(</span><span class='rubyid_packages identifier id'>packages</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='rubyid_full_path identifier id'>full_path</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+            <span class='rubyid_end end kw'>end</span>
+          <span class='rubyid_end end kw'>end</span>
+        <span class='rubyid_end end kw'>end</span>
+      <span class='rubyid_end end kw'>end</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_packages identifier id'>packages</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="find_this_package-class_method">
+  <h3 class="signature " id="find_this_package-class_method">
   
     + (<tt>String</tt>) <strong>find_this_package</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 get the current program&#8217;s package
@@ -703,7 +737,7 @@ get the current program&#8217;s package
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -729,8 +763,6 @@ name of running programs&#8217;s package
       <pre class="lines">
 
 
-97
-98
 99
 100
 101
@@ -738,34 +770,39 @@ name of running programs&#8217;s package
 103
 104
 105
-106</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 99</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_this_package'>find_this_package</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='gvar'>$PROGRAM_NAME</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='kw'>while</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span>
-    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='kw'>return</span> <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-    <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_find_this_package identifier id'>find_this_package</span>
+  <span class='rubyid_path identifier id'>path</span> <span class='assign token'>=</span> <span class='rubyid_File constant id'>File</span><span class='colon2 op'>::</span><span class='rubyid_dirname identifier id'>dirname</span><span class='lparen token'>(</span><span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_expand_path identifier id'>expand_path</span><span class='lparen token'>(</span><span class='rubyid_$PROGRAM_NAME gvar id'>$PROGRAM_NAME</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='rubyid_while while kw'>while</span> <span class='rubyid_path identifier id'>path</span> <span class='neq op'>!=</span> <span class='string val'>'/'</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{path}/manifest.xml&quot;</span><span class='rparen token'>)</span>
+      <span class='rubyid_return return kw'>return</span> <span class='rubyid_File constant id'>File</span><span class='colon2 op'>::</span><span class='rubyid_basename identifier id'>basename</span><span class='lparen token'>(</span><span class='rubyid_path identifier id'>path</span><span class='rparen token'>)</span>
+    <span class='rubyid_end end kw'>end</span>
+    <span class='rubyid_path identifier id'>path</span> <span class='assign token'>=</span> <span class='rubyid_File constant id'>File</span><span class='colon2 op'>::</span><span class='rubyid_dirname identifier id'>dirname</span><span class='lparen token'>(</span><span class='rubyid_path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_nil nil kw'>nil</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="read_cache_or_find_all-class_method">
+  <h3 class="signature " id="read_cache_or_find_all-class_method">
   
     + (<tt>Array</tt>) <strong>read_cache_or_find_all</strong>(cache_file = &quot;#{ENV['HOME']}/.ros/rospack_cache&quot;) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 at first check the rospack&#8217;s cache, if found use it. if not found,
@@ -776,7 +813,7 @@ check all package path.
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -800,7 +837,7 @@ cache file of rospack
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -849,25 +886,26 @@ fullpath list of all packages
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 26</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_read_cache_or_find_all'>read_cache_or_find_all</span><span class='lparen'>(</span><span class='id identifier rubyid_cache_file'>cache_file</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>HOME</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>/.ros/rospack_cache</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_cache_file'>cache_file</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_f'>f</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_cache_file'>cache_file</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_root_line'>root_line</span> <span class='op'>=</span> <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chop'>chop</span>
-    <span class='id identifier rubyid_package_path_line'>package_path_line</span> <span class='op'>=</span> <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chop'>chop</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_root_line'>root_line</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#ROS_ROOT=</span><span class='embexpr_beg'>#{</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ROS_ROOT</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>and</span>
-        <span class='id identifier rubyid_package_path_line'>package_path_line</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#ROS_PACKAGE_PATH=</span><span class='embexpr_beg'>#{</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ROS_PACKAGE_PATH</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_packages'>packages</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-      <span class='kw'>while</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span>
-        <span class='id identifier rubyid_packages'>packages</span><span class='lbracket'>[</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_chop'>chop</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_chop'>chop</span>
-      <span class='kw'>end</span>
-      <span class='id identifier rubyid_packages'>packages</span>
-    <span class='kw'>else</span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_all_packages'>find_all_packages</span>
-    <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_all_packages'>find_all_packages</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_read_cache_or_find_all identifier id'>read_cache_or_find_all</span><span class='lparen token'>(</span><span class='rubyid_cache_file identifier id'>cache_file</span><span class='assign token'>=</span><span class='dstring node'>&quot;#{ENV['HOME']}/.ros/rospack_cache&quot;</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_cache_file identifier id'>cache_file</span><span class='rparen token'>)</span>
+    <span class='rubyid_f identifier id'>f</span> <span class='assign token'>=</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_cache_file identifier id'>cache_file</span><span class='rparen token'>)</span>
+    <span class='rubyid_root_line identifier id'>root_line</span> <span class='assign token'>=</span> <span class='rubyid_f identifier id'>f</span><span class='dot token'>.</span><span class='rubyid_gets identifier id'>gets</span><span class='dot token'>.</span><span class='rubyid_chop identifier id'>chop</span>
+    <span class='rubyid_package_path_line identifier id'>package_path_line</span> <span class='assign token'>=</span> <span class='rubyid_f identifier id'>f</span><span class='dot token'>.</span><span class='rubyid_gets identifier id'>gets</span><span class='dot token'>.</span><span class='rubyid_chop identifier id'>chop</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_root_line identifier id'>root_line</span> <span class='eq op'>==</span> <span class='dstring node'>&quot;#ROS_ROOT=#{ENV['ROS_ROOT']}&quot;</span> <span class='rubyid_and and kw'>and</span>
+        <span class='rubyid_package_path_line identifier id'>package_path_line</span> <span class='eq op'>==</span> <span class='dstring node'>&quot;#ROS_PACKAGE_PATH=#{ENV['ROS_PACKAGE_PATH']}&quot;</span>
+      <span class='rubyid_packages identifier id'>packages</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+      <span class='rubyid_while while kw'>while</span> <span class='rubyid_line identifier id'>line</span> <span class='assign token'>=</span> <span class='rubyid_f identifier id'>f</span><span class='dot token'>.</span><span class='rubyid_gets identifier id'>gets</span>
+        <span class='rubyid_packages identifier id'>packages</span><span class='lbrack token'>[</span><span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_basename identifier id'>basename</span><span class='lparen token'>(</span><span class='rubyid_line identifier id'>line</span><span class='dot token'>.</span><span class='rubyid_chop identifier id'>chop</span><span class='rparen token'>)</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_line identifier id'>line</span><span class='dot token'>.</span><span class='rubyid_chop identifier id'>chop</span>
+      <span class='rubyid_end end kw'>end</span>
+      <span class='rubyid_packages identifier id'>packages</span>
+    <span class='rubyid_else else kw'>else</span>
+      <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_find_all_packages identifier id'>find_all_packages</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_find_all_packages identifier id'>find_all_packages</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -876,11 +914,11 @@ fullpath list of all packages
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Thu Apr 26 22:27:23 2012 by 
+  Generated on Sat May  5 11:29:30 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.2).
+  0.8.1 (ruby-1.8.7).
 </div>
 
   </body>

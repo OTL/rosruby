@@ -6,7 +6,7 @@
 <title>
   Class: ROS::TCPROS::Header
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.1
   
 </title>
 
@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (H)</a> &raquo; 
+    <a href="../../_index.html">Index (H)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../ROS.html" title="ROS (module)">ROS</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TCPROS.html" title="ROS::TCPROS (module)">TCPROS</a></span></span>
      &raquo; 
     <span class="title">Header</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::TCPROS::Header
   
   
@@ -124,7 +131,8 @@ rosrpc uses this wild card for cancel md5sum check or any.
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='string val'>'*'</span>
+</pre></dd>
       
     </dl>
   
@@ -157,6 +165,7 @@ rosrpc uses this wild card for cancel md5sum check or any.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -183,6 +192,7 @@ deserialize the data to header.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -201,6 +211,7 @@ Value of key.
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -235,6 +246,7 @@ initialize with hash.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -248,11 +260,12 @@ add key-value data to this header.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#serialize-instance_method" title="#serialize (instance method)">- (Fixnum) <strong>serialize</strong>(buff) </a>
+      <a href="#serialize-instance_method" title="#serialize (instance method)">- (Integer) <strong>serialize</strong>(buff) </a>
     
 
     
   </span>
+  
   
   
   
@@ -283,6 +296,7 @@ serialize the data into header.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -300,13 +314,15 @@ validate the key with the value.
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>initialize</strong>(data = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 initialize with hash
@@ -316,7 +332,7 @@ initialize with hash
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -348,9 +364,10 @@ initialize with hash
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/header.rb', line 22</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='ivar'>@data</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_data identifier id'>data</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='rubyid_@data ivar id'>@data</span> <span class='assign token'>=</span> <span class='rubyid_data identifier id'>data</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -361,16 +378,18 @@ initialize with hash
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="deserialize-instance_method">
+  <h3 class="signature first" id="deserialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>deserialize</strong>(data) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 deserialize the data to header. this does not contain total byte number.
@@ -380,7 +399,7 @@ deserialize the data to header. this does not contain total byte number.
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -396,7 +415,7 @@ deserialize the data to header. this does not contain total byte number.
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -438,25 +457,26 @@ self
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/header.rb', line 51</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
-  <span class='kw'>while</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-    <span class='id identifier rubyid_len'>len</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Va*</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='lparen'>(</span><span class='id identifier rubyid_len'>len</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_equal_position'>equal_position</span> <span class='op'>=</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>=</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_msg'>msg</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='lparen'>(</span><span class='id identifier rubyid_equal_position'>equal_position</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_msg'>msg</span><span class='lbracket'>[</span><span class='lparen'>(</span><span class='id identifier rubyid_equal_position'>equal_position</span><span class='op'>+</span><span class='int'>1</span><span class='rparen'>)</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
-    <span class='ivar'>@data</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
-    <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span><span class='lbracket'>[</span><span class='lparen'>(</span><span class='id identifier rubyid_len'>len</span><span class='rparen'>)</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
-  <span class='kw'>self</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_deserialize identifier id'>deserialize</span><span class='lparen token'>(</span><span class='rubyid_data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='rubyid_while while kw'>while</span> <span class='rubyid_data identifier id'>data</span><span class='dot token'>.</span><span class='rubyid_length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
+    <span class='rubyid_len identifier id'>len</span><span class='comma token'>,</span> <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='rubyid_data identifier id'>data</span><span class='dot token'>.</span><span class='rubyid_unpack identifier id'>unpack</span><span class='lparen token'>(</span><span class='string val'>'Va*'</span><span class='rparen token'>)</span>
+    <span class='rubyid_msg identifier id'>msg</span> <span class='assign token'>=</span> <span class='rubyid_data identifier id'>data</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='dot2 op'>..</span><span class='lparen token'>(</span><span class='rubyid_len identifier id'>len</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='rparen token'>)</span><span class='rbrack token'>]</span>
+    <span class='rubyid_equal_position identifier id'>equal_position</span> <span class='assign token'>=</span> <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_index identifier id'>index</span><span class='lparen token'>(</span><span class='string val'>'='</span><span class='rparen token'>)</span>
+    <span class='rubyid_key identifier id'>key</span> <span class='assign token'>=</span> <span class='rubyid_msg identifier id'>msg</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='dot2 op'>..</span><span class='lparen token'>(</span><span class='rubyid_equal_position identifier id'>equal_position</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='rparen token'>)</span><span class='rbrack token'>]</span>
+    <span class='rubyid_value identifier id'>value</span> <span class='assign token'>=</span> <span class='rubyid_msg identifier id'>msg</span><span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='rubyid_equal_position identifier id'>equal_position</span><span class='plus op'>+</span><span class='integer val'>1</span><span class='rparen token'>)</span><span class='dot2 op'>..</span><span class='integer val'>-1</span><span class='rbrack token'>]</span>
+    <span class='rubyid_@data ivar id'>@data</span><span class='lbrack token'>[</span><span class='rubyid_key identifier id'>key</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_value identifier id'>value</span>
+    <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='rubyid_data identifier id'>data</span><span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='rubyid_len identifier id'>len</span><span class='rparen token'>)</span><span class='dot2 op'>..</span><span class='integer val'>-1</span><span class='rbrack token'>]</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_self self kw'>self</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_data-instance_method">
+  <h3 class="signature " id="get_data-instance_method">
   
     - (<tt>String</tt>) <strong>get_data</strong>(key) 
   
@@ -466,7 +486,9 @@ self
     <span class="names"><span id='[]-instance_method'>[]</span></span>
     </span>
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 Value of key
@@ -476,7 +498,7 @@ Value of key
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -492,7 +514,7 @@ Value of key
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -525,16 +547,17 @@ value of key
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/header.rb', line 40</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_data'>get_data</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='ivar'>@data</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_data identifier id'>get_data</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_@data ivar id'>@data</span><span class='lbrack token'>[</span><span class='rubyid_key identifier id'>key</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="push_data-instance_method">
+  <h3 class="signature " id="push_data-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>push_data</strong>(key, value) 
   
@@ -544,7 +567,9 @@ value of key
     <span class="names"><span id='[]=-instance_method'>[]=</span></span>
     </span>
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 add key-value data to this header.
@@ -554,7 +579,7 @@ add key-value data to this header.
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -593,7 +618,7 @@ value for key
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -630,26 +655,29 @@ self
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/header.rb', line 30</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='kw'>not</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='lparen'>(</span><span class='kw'>not</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>header key and value must be string</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='ivar'>@data</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
-  <span class='kw'>self</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_push_data identifier id'>push_data</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='lparen token'>(</span><span class='rubyid_not not kw'>not</span> <span class='rubyid_key identifier id'>key</span><span class='dot token'>.</span><span class='rubyid_kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='rubyid_String constant id'>String</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rubyid_or or kw'>or</span> <span class='lparen token'>(</span><span class='rubyid_not not kw'>not</span> <span class='rubyid_value identifier id'>value</span><span class='dot token'>.</span><span class='rubyid_kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='rubyid_String constant id'>String</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_ArgumentError constant id'>ArgumentError</span><span class='colon2 op'>::</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'header key and value must be string'</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@data ivar id'>@data</span><span class='lbrack token'>[</span><span class='rubyid_key identifier id'>key</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_value identifier id'>value</span>
+  <span class='rubyid_self self kw'>self</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="serialize-instance_method">
+  <h3 class="signature " id="serialize-instance_method">
   
-    - (<tt>Fixnum</tt>) <strong>serialize</strong>(buff) 
+    - (<tt>Integer</tt>) <strong>serialize</strong>(buff) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 serialize the data into header. return the byte of the serialized data.
@@ -659,12 +687,12 @@ serialize the data into header. return the byte of the serialized data.
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
       
-        <span class='name'>where</span>
+        <span class='name'>buff</span>
       
       
         <span class='type'>(<tt>IO</tt>)</span>
@@ -673,7 +701,7 @@ serialize the data into header. return the byte of the serialized data.
       
         &mdash;
         <div class='inline'><p>
-to write data
+where to write data
 </p>
 </div>
       
@@ -681,13 +709,13 @@ to write data
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
       
       
-        <span class='type'>(<tt>Fixnum</tt>)</span>
+        <span class='type'>(<tt>Integer</tt>)</span>
       
       
       
@@ -720,28 +748,31 @@ byte of serialized data
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/header.rb', line 78</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buff'>buff</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_serialized_data'>serialized_data</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
-  <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
-    <span class='id identifier rubyid_data_str'>data_str</span> <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>=</span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='id identifier rubyid_value'>value</span>
-    <span class='id identifier rubyid_serialized_data'>serialized_data</span> <span class='op'>=</span> <span class='id identifier rubyid_serialized_data'>serialized_data</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='id identifier rubyid_data_str'>data_str</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span> <span class='id identifier rubyid_data_str'>data_str</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Va*</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_total_byte'>total_byte</span> <span class='op'>=</span> <span class='id identifier rubyid_serialized_data'>serialized_data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_buff'>buff</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_total_byte'>total_byte</span><span class='comma'>,</span> <span class='id identifier rubyid_serialized_data'>serialized_data</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Va*</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_serialize identifier id'>serialize</span><span class='lparen token'>(</span><span class='rubyid_buff identifier id'>buff</span><span class='rparen token'>)</span>
+  <span class='rubyid_serialized_data identifier id'>serialized_data</span> <span class='assign token'>=</span> <span class='string val'>''</span>
+  <span class='rubyid_@data ivar id'>@data</span><span class='dot token'>.</span><span class='rubyid_each_pair identifier id'>each_pair</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='bitor op'>|</span>
+    <span class='rubyid_data_str identifier id'>data_str</span> <span class='assign token'>=</span> <span class='rubyid_key identifier id'>key</span> <span class='plus op'>+</span> <span class='string val'>'='</span> <span class='plus op'>+</span> <span class='rubyid_value identifier id'>value</span>
+    <span class='rubyid_serialized_data identifier id'>serialized_data</span> <span class='assign token'>=</span> <span class='rubyid_serialized_data identifier id'>serialized_data</span> <span class='plus op'>+</span> <span class='lbrack token'>[</span><span class='rubyid_data_str identifier id'>data_str</span><span class='dot token'>.</span><span class='rubyid_length identifier id'>length</span><span class='comma token'>,</span> <span class='rubyid_data_str identifier id'>data_str</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_pack identifier id'>pack</span><span class='lparen token'>(</span><span class='string val'>'Va*'</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_total_byte identifier id'>total_byte</span> <span class='assign token'>=</span> <span class='rubyid_serialized_data identifier id'>serialized_data</span><span class='dot token'>.</span><span class='rubyid_length identifier id'>length</span>
+  <span class='rubyid_return return kw'>return</span> <span class='rubyid_buff identifier id'>buff</span><span class='dot token'>.</span><span class='rubyid_write identifier id'>write</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='rubyid_total_byte identifier id'>total_byte</span><span class='comma token'>,</span> <span class='rubyid_serialized_data identifier id'>serialized_data</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_pack identifier id'>pack</span><span class='lparen token'>(</span><span class='string val'>'Va*'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="valid?-instance_method">
+  <h3 class="signature " id="valid?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>valid?</strong>(key, value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 validate the key with the value. if it is WILD_CARD, it is ok!
@@ -751,7 +782,7 @@ validate the key with the value. if it is WILD_CARD, it is ok!
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -778,7 +809,7 @@ validate the key with the value. if it is WILD_CARD, it is ok!
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -811,9 +842,10 @@ check result
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/header.rb', line 70</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='lparen'>(</span><span class='ivar'>@data</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>==</span> <span class='const'>WILD_CARD</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_valid? fid id'>valid?</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='lparen token'>(</span><span class='rubyid_@data ivar id'>@data</span><span class='lbrack token'>[</span><span class='rubyid_key identifier id'>key</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_value identifier id'>value</span> <span class='eq op'>==</span> <span class='rubyid_WILD_CARD constant id'>WILD_CARD</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -822,11 +854,11 @@ check result
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Thu Apr 26 22:27:24 2012 by 
+  Generated on Sat May  5 11:29:33 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.2).
+  0.8.1 (ruby-1.8.7).
 </div>
 
   </body>

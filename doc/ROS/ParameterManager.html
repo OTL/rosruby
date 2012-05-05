@@ -6,7 +6,7 @@
 <title>
   Class: ROS::ParameterManager
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.1
   
 </title>
 
@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (P)</a> &raquo; 
+    <a href="../_index.html">Index (P)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">ParameterManager</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::ParameterManager
   
   
@@ -95,8 +102,8 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>
-ROS parameter sever inteface. API document is here <a
-href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Parameter%20Server%20API</a>
+ROS parameter sever inteface. API document is here
+http://ros.org/wiki/ROS/Parameter%20Server%20API
 </p>
 
 
@@ -123,11 +130,12 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_param-instance_method" title="#delete_param (instance method)">- (Object) <strong>delete_param</strong>(key) </a>
+      <a href="#delete_param-instance_method" title="#delete_param (instance method)">- (Boolean) <strong>delete_param</strong>(key) </a>
     
 
     
   </span>
+  
   
   
   
@@ -158,6 +166,7 @@ delete parameter &#8216;key&#8217;.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -182,6 +191,7 @@ get parameter named &#8216;key&#8217;.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -195,11 +205,12 @@ get the all keys of parameters.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#has_param-instance_method" title="#has_param (instance method)">- (Object) <strong>has_param</strong>(key) </a>
+      <a href="#has_param-instance_method" title="#has_param (instance method)">- (String, ...) <strong>has_param</strong>(key) </a>
     
 
     
   </span>
+  
   
   
   
@@ -225,6 +236,7 @@ check if the master has the key.
     
   </span>
   
+  
     <span class="note title constructor">constructor</span>
   
   
@@ -245,11 +257,12 @@ A new instance of ParameterManager.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#search_param-instance_method" title="#search_param (instance method)">- (Object) <strong>search_param</strong>(key) </a>
+      <a href="#search_param-instance_method" title="#search_param (instance method)">- (Array) <strong>search_param</strong>(key) </a>
     
 
     
   </span>
+  
   
   
   
@@ -280,6 +293,7 @@ search the all namespace for key.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -297,13 +311,15 @@ set parameter for &#8216;key&#8217;.
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::ParameterManager (class)">ParameterManager</a></span></tt>) <strong>initialize</strong>(master_uri, caller_id, remappings) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 A new instance of ParameterManager
@@ -313,7 +329,7 @@ A new instance of ParameterManager
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -386,12 +402,13 @@ remapps to use for local remappings
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 23</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_master_uri'>master_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_remappings'>remappings</span><span class='rparen'>)</span>
-  <span class='ivar'>@caller_id</span> <span class='op'>=</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
-  <span class='ivar'>@master_uri</span> <span class='op'>=</span> <span class='id identifier rubyid_master_uri'>master_uri</span>
-  <span class='ivar'>@remappings</span> <span class='op'>=</span> <span class='id identifier rubyid_remappings'>remappings</span>
-  <span class='ivar'>@server</span> <span class='op'>=</span> <span class='const'>XMLRPC</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new2'>new2</span><span class='lparen'>(</span><span class='ivar'>@master_uri</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_master_uri identifier id'>master_uri</span><span class='comma token'>,</span> <span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_remappings identifier id'>remappings</span><span class='rparen token'>)</span>
+  <span class='rubyid_@caller_id ivar id'>@caller_id</span> <span class='assign token'>=</span> <span class='rubyid_caller_id identifier id'>caller_id</span>
+  <span class='rubyid_@master_uri ivar id'>@master_uri</span> <span class='assign token'>=</span> <span class='rubyid_master_uri identifier id'>master_uri</span>
+  <span class='rubyid_@remappings ivar id'>@remappings</span> <span class='assign token'>=</span> <span class='rubyid_remappings identifier id'>remappings</span>
+  <span class='rubyid_@server ivar id'>@server</span> <span class='assign token'>=</span> <span class='rubyid_XMLRPC constant id'>XMLRPC</span><span class='colon2 op'>::</span><span class='rubyid_Client constant id'>Client</span><span class='dot token'>.</span><span class='rubyid_new2 identifier id'>new2</span><span class='lparen token'>(</span><span class='rubyid_@master_uri ivar id'>@master_uri</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -402,16 +419,18 @@ remapps to use for local remappings
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="delete_param-instance_method">
+  <h3 class="signature first" id="delete_param-instance_method">
   
-    - (<tt>Object</tt>) <strong>delete_param</strong>(key) 
+    - (<tt>Boolean</tt>) <strong>delete_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 delete parameter &#8216;key&#8217;
@@ -421,7 +440,7 @@ delete parameter &#8216;key&#8217;
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -441,9 +460,12 @@ key for remove
       
     </li>
   
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
     <li>
-      
-        <span class='name'>return</span>
       
       
         <span class='type'>(<tt>Boolean</tt>)</span>
@@ -452,7 +474,7 @@ key for remove
       
         &mdash;
         <div class='inline'><p>
-true if success, false if it is not exist
+return true if success, false if it is not exist
 </p>
 </div>
       
@@ -460,13 +482,13 @@ true if success, false if it is not exist
   
 </ul>
 
-
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+69
 70
 71
 72
@@ -474,34 +496,36 @@ true if success, false if it is not exist
 74
 75
 76
-77
-78</pre>
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 69</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_delete_param'>delete_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>deleteParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='kw'>when</span> <span class='int'>1</span>
-    <span class='kw'>return</span> <span class='kw'>true</span>
-  <span class='kw'>else</span>
-    <span class='kw'>return</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_delete_param identifier id'>delete_param</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_code identifier id'>code</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span> <span class='assign token'>=</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='string val'>&quot;deleteParam&quot;</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_case case kw'>case</span> <span class='rubyid_code identifier id'>code</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>1</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_true true kw'>true</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_false false kw'>false</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_param-instance_method">
+  <h3 class="signature " id="get_param-instance_method">
   
     - (<tt>String</tt>) <strong>get_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 get parameter named &#8216;key&#8217;
@@ -511,7 +535,7 @@ get parameter named &#8216;key&#8217;
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -533,7 +557,7 @@ name of parameter
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -575,31 +599,34 @@ parameter value
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 34</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_param'>get_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='ivar'>@remappings</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span>
-    <span class='kw'>return</span> <span class='ivar'>@remappings</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='kw'>when</span> <span class='int'>1</span>
-    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
-  <span class='kw'>else</span>
-    <span class='kw'>return</span> <span class='kw'>nil</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_param identifier id'>get_param</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_@remappings ivar id'>@remappings</span><span class='lbrack token'>[</span><span class='rubyid_key identifier id'>key</span><span class='rbrack token'>]</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_@remappings ivar id'>@remappings</span><span class='lbrack token'>[</span><span class='rubyid_key identifier id'>key</span><span class='rbrack token'>]</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_code identifier id'>code</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span> <span class='assign token'>=</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='string val'>&quot;getParam&quot;</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_case case kw'>case</span> <span class='rubyid_code identifier id'>code</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>1</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_value identifier id'>value</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_nil nil kw'>nil</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_param_names-instance_method">
+  <h3 class="signature " id="get_param_names-instance_method">
   
     - (<tt>Array</tt>) <strong>get_param_names</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 get the all keys of parameters
@@ -610,7 +637,7 @@ get the all keys of parameters
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -636,6 +663,7 @@ all keys
       <pre class="lines">
 
 
+115
 116
 117
 118
@@ -645,36 +673,38 @@ all keys
 122
 123
 124
-125
-126</pre>
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 115</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_param_names'>get_param_names</span>
-  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getParamNames</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='kw'>when</span> <span class='int'>1</span>
-    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
-  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
-  <span class='kw'>else</span>
-    <span class='kw'>return</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_param_names identifier id'>get_param_names</span>
+  <span class='rubyid_code identifier id'>code</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span> <span class='assign token'>=</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='string val'>&quot;getParamNames&quot;</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='rparen token'>)</span>
+  <span class='rubyid_case case kw'>case</span> <span class='rubyid_code identifier id'>code</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>1</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_value identifier id'>value</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>-1</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_message identifier id'>message</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_false false kw'>false</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="has_param-instance_method">
+  <h3 class="signature " id="has_param-instance_method">
   
-    - (<tt>Object</tt>) <strong>has_param</strong>(key) 
+    - (<tt>String</tt>, ...) <strong>has_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 check if the master has the key
@@ -684,7 +714,7 @@ check if the master has the key
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -704,18 +734,21 @@ key for check
       
     </li>
   
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
     <li>
       
-        <span class='name'>value</span>
       
-      
-        <span class='type'>(<tt>String</tt>, <tt>Fixnum</tt>, <tt>Float</tt>, <tt>Boolean</tt>)</span>
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>, <tt>Float</tt>, <tt>Boolean</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'><p>
-of key
+value of key
 </p>
 </div>
       
@@ -723,13 +756,13 @@ of key
   
 </ul>
 
-
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+99
 100
 101
 102
@@ -739,36 +772,38 @@ of key
 106
 107
 108
-109
-110</pre>
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 99</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_has_param'>has_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hasParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='kw'>when</span> <span class='int'>1</span>
-    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
-  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
-  <span class='kw'>else</span>
-    <span class='kw'>return</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_has_param identifier id'>has_param</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_code identifier id'>code</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span> <span class='assign token'>=</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='string val'>&quot;hasParam&quot;</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_case case kw'>case</span> <span class='rubyid_code identifier id'>code</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>1</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_value identifier id'>value</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>-1</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_message identifier id'>message</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_false false kw'>false</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="search_param-instance_method">
+  <h3 class="signature " id="search_param-instance_method">
   
-    - (<tt>Object</tt>) <strong>search_param</strong>(key) 
+    - (<tt>Array</tt>) <strong>search_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 search the all namespace for key
@@ -778,7 +813,7 @@ search the all namespace for key
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -798,19 +833,27 @@ key for search
       
     </li>
   
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
     <li>
-      
-        <span class='name'>values</span>
       
       
         <span class='type'>(<tt>Array</tt>)</span>
       
       
       
+        &mdash;
+        <div class='inline'><p>
+values
+</p>
+</div>
+      
     </li>
   
 </ul>
-
 
 </div><table class="source_code">
   <tr>
@@ -818,6 +861,7 @@ key for search
       <pre class="lines">
 
 
+83
 84
 85
 86
@@ -827,36 +871,38 @@ key for search
 90
 91
 92
-93
-94</pre>
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 83</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_search_param'>search_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>searchParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='kw'>when</span> <span class='int'>1</span>
-    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
-  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
-  <span class='kw'>else</span>
-    <span class='kw'>return</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_search_param identifier id'>search_param</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_code identifier id'>code</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span> <span class='assign token'>=</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='string val'>&quot;searchParam&quot;</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_case case kw'>case</span> <span class='rubyid_code identifier id'>code</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>1</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_value identifier id'>value</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>-1</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_message identifier id'>message</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_false false kw'>false</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="set_param-instance_method">
+  <h3 class="signature " id="set_param-instance_method">
   
     - (<tt>Boolean</tt>) <strong>set_param</strong>(key, value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 set parameter for &#8216;key&#8217;
@@ -866,7 +912,7 @@ set parameter for &#8216;key&#8217;
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -891,7 +937,7 @@ key of parameter
         <span class='name'>value</span>
       
       
-        <span class='type'>(<tt>String</tt>, <tt>Fixnum</tt>, <tt>Float</tt>, <tt>Boolean</tt>)</span>
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>, <tt>Float</tt>, <tt>Boolean</tt>)</span>
       
       
       
@@ -905,7 +951,7 @@ value of parameter
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -924,7 +970,7 @@ true if succeed
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -959,17 +1005,18 @@ true if succeed
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_manager.rb', line 53</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_set_param'>set_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>setParam</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='kw'>when</span> <span class='int'>1</span>
-    <span class='kw'>return</span> <span class='kw'>true</span>
-  <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span>
-  <span class='kw'>else</span>
-    <span class='kw'>return</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_set_param identifier id'>set_param</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='rubyid_code identifier id'>code</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span> <span class='assign token'>=</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='string val'>&quot;setParam&quot;</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='rubyid_case case kw'>case</span> <span class='rubyid_code identifier id'>code</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>1</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_true true kw'>true</span>
+  <span class='rubyid_when when kw'>when</span> <span class='integer val'>-1</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_message identifier id'>message</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_false false kw'>false</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -978,11 +1025,11 @@ true if succeed
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Thu Apr 26 22:27:25 2012 by 
+  Generated on Sat May  5 11:29:35 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.2).
+  0.8.1 (ruby-1.8.7).
 </div>
 
   </body>

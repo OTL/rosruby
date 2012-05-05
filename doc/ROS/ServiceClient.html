@@ -6,7 +6,7 @@
 <title>
   Class: ROS::ServiceClient
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.1
   
 </title>
 
@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (S)</a> &raquo; 
+    <a href="../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">ServiceClient</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::ServiceClient
   
   
@@ -107,20 +114,21 @@ instance.
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'></div></h4>
-      <pre class="example code"><span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_service_client</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-<span class='kw'>if</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_wait_for_service'>wait_for_service</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/add_two_ints</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_service'>service</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_service'>service</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/add_two_ints</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Roscpp_tutorials</span><span class='op'>::</span><span class='const'>TwoInts</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_req'>req</span> <span class='op'>=</span> <span class='const'>Roscpp_tutorials</span><span class='op'>::</span><span class='const'>TwoInts</span><span class='period'>.</span><span class='id identifier rubyid_request_class'>request_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-  <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='const'>Roscpp_tutorials</span><span class='op'>::</span><span class='const'>TwoInts</span><span class='period'>.</span><span class='id identifier rubyid_response_class'>response_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-  <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='int'>1</span>
-  <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='int'>2</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
-     <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span>
-   <span class='kw'>end</span>
- <span class='kw'>end</span></pre>
+      
+      <pre class="example code"><span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Node constant id'>Node</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'/rosruby/sample_service_client'</span><span class='rparen token'>)</span>
+<span class='rubyid_if if kw'>if</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_wait_for_service identifier id'>wait_for_service</span><span class='lparen token'>(</span><span class='string val'>'/add_two_ints'</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='rparen token'>)</span>
+  <span class='rubyid_service identifier id'>service</span> <span class='assign token'>=</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_service identifier id'>service</span><span class='lparen token'>(</span><span class='string val'>'/add_two_ints'</span><span class='comma token'>,</span> <span class='rubyid_Roscpp_tutorials constant id'>Roscpp_tutorials</span><span class='colon2 op'>::</span><span class='rubyid_TwoInts constant id'>TwoInts</span><span class='rparen token'>)</span>
+  <span class='rubyid_req identifier id'>req</span> <span class='assign token'>=</span> <span class='rubyid_Roscpp_tutorials constant id'>Roscpp_tutorials</span><span class='colon2 op'>::</span><span class='rubyid_TwoInts constant id'>TwoInts</span><span class='dot token'>.</span><span class='rubyid_request_class identifier id'>request_class</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
+  <span class='rubyid_res identifier id'>res</span> <span class='assign token'>=</span> <span class='rubyid_Roscpp_tutorials constant id'>Roscpp_tutorials</span><span class='colon2 op'>::</span><span class='rubyid_TwoInts constant id'>TwoInts</span><span class='dot token'>.</span><span class='rubyid_response_class identifier id'>response_class</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
+  <span class='rubyid_req identifier id'>req</span><span class='dot token'>.</span><span class='rubyid_a identifier id'>a</span> <span class='assign token'>=</span> <span class='integer val'>1</span>
+  <span class='rubyid_req identifier id'>req</span><span class='dot token'>.</span><span class='rubyid_b identifier id'>b</span> <span class='assign token'>=</span> <span class='integer val'>2</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_service identifier id'>service</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_req identifier id'>req</span><span class='comma token'>,</span> <span class='rubyid_res identifier id'>res</span><span class='rparen token'>)</span>
+     <span class='rubyid_p identifier id'>p</span> <span class='rubyid_res identifier id'>res</span><span class='dot token'>.</span><span class='rubyid_sum identifier id'>sum</span>
+   <span class='rubyid_end end kw'>end</span>
+ <span class='rubyid_end end kw'>end</span>
+</pre>
     
   </div>
 
@@ -159,6 +167,7 @@ instance.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -172,11 +181,12 @@ call service.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_host_port_from_uri-instance_method" title="#get_host_port_from_uri (instance method)">- (Array&lt;String, Fixnum&gt;) <strong>get_host_port_from_uri</strong>(uri) </a>
+      <a href="#get_host_port_from_uri-instance_method" title="#get_host_port_from_uri (instance method)">- (Array&lt;String, Integer&gt;) <strong>get_host_port_from_uri</strong>(uri) </a>
     
 
     
   </span>
+  
   
   
   
@@ -201,6 +211,7 @@ get hostname and port from uri.
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -233,6 +244,7 @@ A new instance of ServiceClient.
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -251,17 +263,20 @@ shutdown this service client.
   
   
   
+  
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::ServiceClient (class)">ServiceClient</a></span></tt>) <strong>initialize</strong>(master_uri, caller_id, service_name, service_type, persistent = false) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 A new instance of ServiceClient
@@ -271,7 +286,7 @@ A new instance of ServiceClient
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -379,11 +394,12 @@ use persistent connection with server or not.
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/service_client.rb', line 36</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_master_uri'>master_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='comma'>,</span> <span class='id identifier rubyid_persistent'>persistent</span><span class='op'>=</span><span class='kw'>false</span><span class='rparen'>)</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='rparen'>)</span>
-  <span class='ivar'>@master_uri</span> <span class='op'>=</span> <span class='id identifier rubyid_master_uri'>master_uri</span>
-  <span class='ivar'>@persistent</span> <span class='op'>=</span> <span class='id identifier rubyid_persistent'>persistent</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_master_uri identifier id'>master_uri</span><span class='comma token'>,</span> <span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span> <span class='rubyid_service_type identifier id'>service_type</span><span class='comma token'>,</span> <span class='rubyid_persistent identifier id'>persistent</span><span class='assign token'>=</span><span class='rubyid_false false kw'>false</span><span class='rparen token'>)</span>
+  <span class='rubyid_super super kw'>super</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span> <span class='rubyid_service_type identifier id'>service_type</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master_uri ivar id'>@master_uri</span> <span class='assign token'>=</span> <span class='rubyid_master_uri identifier id'>master_uri</span>
+  <span class='rubyid_@persistent ivar id'>@persistent</span> <span class='assign token'>=</span> <span class='rubyid_persistent identifier id'>persistent</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -394,16 +410,18 @@ use persistent connection with server or not.
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="call-instance_method">
+  <h3 class="signature first" id="call-instance_method">
   
     - (<tt>Boolean</tt>) <strong>call</strong>(srv_request, srv_response) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 call service
@@ -413,7 +431,7 @@ call service
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -452,7 +470,7 @@ srv Response instance
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -503,40 +521,43 @@ result of call
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/service_client.rb', line 55</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_srv_request'>srv_request</span><span class='comma'>,</span> <span class='id identifier rubyid_srv_response'>srv_response</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='ivar'>@persistent</span> <span class='kw'>and</span> <span class='ivar'>@connection</span>
-    <span class='comment'># not connect
-</span>  <span class='kw'>else</span>
-    <span class='id identifier rubyid_master'>master</span> <span class='op'>=</span> <span class='const'>XMLRPC</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new2'>new2</span><span class='lparen'>(</span><span class='ivar'>@master_uri</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_master'>master</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>lookupService</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
-                                     <span class='ivar'>@caller_id</span><span class='comma'>,</span>
-                                     <span class='ivar'>@service_name</span><span class='rparen'>)</span>
-    <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
-    <span class='kw'>when</span> <span class='int'>1</span>
-      <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span> <span class='op'>=</span> <span class='id identifier rubyid_get_host_port_from_uri'>get_host_port_from_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
-      <span class='ivar'>@connection</span> <span class='op'>=</span> <span class='const'>TCPROS</span><span class='op'>::</span><span class='const'>ServiceClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='ivar'>@service_name</span><span class='comma'>,</span> <span class='ivar'>@service_type</span><span class='comma'>,</span> <span class='ivar'>@persistent</span><span class='rparen'>)</span>
-      <span class='kw'>return</span> <span class='ivar'>@connection</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_srv_request'>srv_request</span><span class='comma'>,</span> <span class='id identifier rubyid_srv_response'>srv_response</span><span class='rparen'>)</span>
-    <span class='kw'>when</span> <span class='op'>-</span><span class='int'>1</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>master error ${message}</span><span class='tstring_end'>&quot;</span></span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fail to lookup</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>nil</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_srv_request identifier id'>srv_request</span><span class='comma token'>,</span> <span class='rubyid_srv_response identifier id'>srv_response</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_@persistent ivar id'>@persistent</span> <span class='rubyid_and and kw'>and</span> <span class='rubyid_@connection ivar id'>@connection</span>
+    <span class='comment val'># not connect</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_master identifier id'>master</span> <span class='assign token'>=</span> <span class='rubyid_XMLRPC constant id'>XMLRPC</span><span class='colon2 op'>::</span><span class='rubyid_Client constant id'>Client</span><span class='dot token'>.</span><span class='rubyid_new2 identifier id'>new2</span><span class='lparen token'>(</span><span class='rubyid_@master_uri ivar id'>@master_uri</span><span class='rparen token'>)</span>
+    <span class='rubyid_code identifier id'>code</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_uri identifier id'>uri</span> <span class='assign token'>=</span> <span class='rubyid_master identifier id'>master</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='string val'>'lookupService'</span><span class='comma token'>,</span>
+                                     <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span>
+                                     <span class='rubyid_@service_name ivar id'>@service_name</span><span class='rparen token'>)</span>
+    <span class='rubyid_case case kw'>case</span> <span class='rubyid_code identifier id'>code</span>
+    <span class='rubyid_when when kw'>when</span> <span class='integer val'>1</span>
+      <span class='rubyid_host identifier id'>host</span><span class='comma token'>,</span> <span class='rubyid_port identifier id'>port</span> <span class='assign token'>=</span> <span class='rubyid_get_host_port_from_uri identifier id'>get_host_port_from_uri</span><span class='lparen token'>(</span><span class='rubyid_uri identifier id'>uri</span><span class='rparen token'>)</span>
+      <span class='rubyid_@connection ivar id'>@connection</span> <span class='assign token'>=</span> <span class='rubyid_TCPROS constant id'>TCPROS</span><span class='colon2 op'>::</span><span class='rubyid_ServiceClient constant id'>ServiceClient</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_host identifier id'>host</span><span class='comma token'>,</span> <span class='rubyid_port identifier id'>port</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_@service_name ivar id'>@service_name</span><span class='comma token'>,</span> <span class='rubyid_@service_type ivar id'>@service_type</span><span class='comma token'>,</span> <span class='rubyid_@persistent ivar id'>@persistent</span><span class='rparen token'>)</span>
+      <span class='rubyid_return return kw'>return</span> <span class='rubyid_@connection ivar id'>@connection</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_srv_request identifier id'>srv_request</span><span class='comma token'>,</span> <span class='rubyid_srv_response identifier id'>srv_response</span><span class='rparen token'>)</span>
+    <span class='rubyid_when when kw'>when</span> <span class='integer val'>-1</span>
+      <span class='rubyid_raise identifier id'>raise</span> <span class='string val'>&quot;master error ${message}&quot;</span>
+    <span class='rubyid_else else kw'>else</span>
+      <span class='rubyid_puts identifier id'>puts</span> <span class='string val'>&quot;fail to lookup&quot;</span>
+      <span class='rubyid_nil nil kw'>nil</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_host_port_from_uri-instance_method">
+  <h3 class="signature " id="get_host_port_from_uri-instance_method">
   
-    - (<tt>Array&lt;String, Fixnum&gt;</tt>) <strong>get_host_port_from_uri</strong>(uri) 
+    - (<tt>Array&lt;String, Integer&gt;</tt>) <strong>get_host_port_from_uri</strong>(uri) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 get hostname and port from uri
@@ -546,7 +567,7 @@ get hostname and port from uri
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -568,18 +589,21 @@ decompose uri string to host and port
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;String, Fixnum&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;String, Integer&gt;</tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'></div>
+        <div class='inline'><p>
+[host, port]
+</p>
+</div>
       
     </li>
   
@@ -599,23 +623,26 @@ decompose uri string to host and port
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/service_client.rb', line 46</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_host_port_from_uri'>get_host_port_from_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
-</span>  <span class='id identifier rubyid_uri_data'>uri_data</span> <span class='op'>=</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
-  <span class='lbracket'>[</span><span class='id identifier rubyid_uri_data'>uri_data</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_uri_data'>uri_data</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_host_port_from_uri identifier id'>get_host_port_from_uri</span><span class='lparen token'>(</span><span class='rubyid_uri identifier id'>uri</span><span class='rparen token'>)</span> <span class='comment val'>#:nodoc:</span>
+  <span class='rubyid_uri_data identifier id'>uri_data</span> <span class='assign token'>=</span> <span class='rubyid_URI constant id'>URI</span><span class='dot token'>.</span><span class='rubyid_split identifier id'>split</span><span class='lparen token'>(</span><span class='rubyid_uri identifier id'>uri</span><span class='rparen token'>)</span>
+  <span class='lbrack token'>[</span><span class='rubyid_uri_data identifier id'>uri_data</span><span class='lbrack token'>[</span><span class='integer val'>2</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='rubyid_uri_data identifier id'>uri_data</span><span class='lbrack token'>[</span><span class='integer val'>3</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown-instance_method">
+  <h3 class="signature " id="shutdown-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>
 shutdown this service client
@@ -640,9 +667,10 @@ shutdown this service client
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/service_client.rb', line 78</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
-  <span class='ivar'>@connection</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
-<span class='kw'>end</span></pre>
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown identifier id'>shutdown</span>
+  <span class='rubyid_@connection ivar id'>@connection</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -651,11 +679,11 @@ shutdown this service client
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Thu Apr 26 22:27:24 2012 by 
+  Generated on Sat May  5 11:29:35 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.2).
+  0.8.1 (ruby-1.8.7).
 </div>
 
   </body>

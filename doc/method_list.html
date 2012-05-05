@@ -8,13 +8,13 @@
     
       <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
     
-    
+
     
       <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
     
       <script type="text/javascript" charset="utf-8" src="js/full_list.js"></script>
     
-    
+
     <base id="base_target" target="_parent" />
   </head>
   <body>
@@ -28,16 +28,22 @@
       <h1 id="full_list_header">Method List</h1>
       <div id="nav">
         
-          <a target="_self" href="class_list.html">Classes</a>
+          <span><a target="_self" href="class_list.html">
+            Classes
+          </a></span>
         
-          <a target="_self" href="method_list.html">Methods</a>
+          <span><a target="_self" href="method_list.html">
+            Methods
+          </a></span>
         
-          <a target="_self" href="file_list.html">Files</a>
+          <span><a target="_self" href="file_list.html">
+            Files
+          </a></span>
         
       </div>
       <div id="search">Search: <input type="text" /></div>
 
-      <ul id="full_list" class="methods">
+      <ul id="full_list" class="method">
         
 
   <li class="r1 ">
@@ -849,9 +855,25 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="ROS/GraphManager.html#is_ok%3F-instance_method" title="ROS::GraphManager#is_ok? (method)">#is_ok?</a></span>
+    
+      <small>ROS::GraphManager</small>
+    
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/ParameterSubscriber.html#key-instance_method" title="ROS::ParameterSubscriber#key (method)">#key</a></span>
     
       <small>ROS::ParameterSubscriber</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="ROS/TCPROS/Server.html#last_published_msg-instance_method" title="ROS::TCPROS::Server#last_published_msg (method)">#last_published_msg</a></span>
+    
+      <small>ROS::TCPROS::Server</small>
     
   </li>
   
@@ -953,17 +975,17 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="ROS/TCPROS/Server.html#msg_queue-instance_method" title="ROS::TCPROS::Server#msg_queue (method)">#msg_queue</a></span>
+    <span class='object_link'><a href="ROS/TCPROS/Client.html#msg_queue-instance_method" title="ROS::TCPROS::Client#msg_queue (method)">#msg_queue</a></span>
     
-      <small>ROS::TCPROS::Server</small>
+      <small>ROS::TCPROS::Client</small>
     
   </li>
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="ROS/TCPROS/Client.html#msg_queue-instance_method" title="ROS::TCPROS::Client#msg_queue (method)">#msg_queue</a></span>
+    <span class='object_link'><a href="ROS/TCPROS/Server.html#msg_queue-instance_method" title="ROS::TCPROS::Server#msg_queue (method)">#msg_queue</a></span>
     
-      <small>ROS::TCPROS::Client</small>
+      <small>ROS::TCPROS::Server</small>
     
   </li>
   
@@ -1249,17 +1271,17 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="ROS/TCPROS/Server.html#serve-instance_method" title="ROS::TCPROS::Server#serve (method)">#serve</a></span>
+    <span class='object_link'><a href="ROS/TCPROS/ServiceServer.html#serve-instance_method" title="ROS::TCPROS::ServiceServer#serve (method)">#serve</a></span>
     
-      <small>ROS::TCPROS::Server</small>
+      <small>ROS::TCPROS::ServiceServer</small>
     
   </li>
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="ROS/TCPROS/ServiceServer.html#serve-instance_method" title="ROS::TCPROS::ServiceServer#serve (method)">#serve</a></span>
+    <span class='object_link'><a href="ROS/TCPROS/Server.html#serve-instance_method" title="ROS::TCPROS::Server#serve (method)">#serve</a></span>
     
-      <small>ROS::TCPROS::ServiceServer</small>
+      <small>ROS::TCPROS::Server</small>
     
   </li>
   
@@ -1305,22 +1327,6 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="ROS/ParameterSubscriber.html#set_manager-instance_method" title="ROS::ParameterSubscriber#set_manager (method)">#set_manager</a></span>
-    
-      <small>ROS::ParameterSubscriber</small>
-    
-  </li>
-  
-
-  <li class="r2 ">
-    <span class='object_link'><a href="ROS/Topic.html#set_manager-instance_method" title="ROS::Topic#set_manager (method)">#set_manager</a></span>
-    
-      <small>ROS::Topic</small>
-    
-  </li>
-  
-
-  <li class="r1 ">
     <span class='object_link'><a href="ROS/ServiceServer.html#set_manager-instance_method" title="ROS::ServiceServer#set_manager (method)">#set_manager</a></span>
     
       <small>ROS::ServiceServer</small>
@@ -1329,14 +1335,22 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="ROS/Node.html#set_param-instance_method" title="ROS::Node#set_param (method)">#set_param</a></span>
+    <span class='object_link'><a href="ROS/ParameterSubscriber.html#set_manager-instance_method" title="ROS::ParameterSubscriber#set_manager (method)">#set_manager</a></span>
     
-      <small>ROS::Node</small>
+      <small>ROS::ParameterSubscriber</small>
     
   </li>
   
 
   <li class="r1 ">
+    <span class='object_link'><a href="ROS/Topic.html#set_manager-instance_method" title="ROS::Topic#set_manager (method)">#set_manager</a></span>
+    
+      <small>ROS::Topic</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/ParameterManager.html#set_param-instance_method" title="ROS::ParameterManager#set_param (method)">#set_param</a></span>
     
       <small>ROS::ParameterManager</small>
@@ -1344,18 +1358,10 @@
   </li>
   
 
-  <li class="r2 ">
-    <span class='object_link'><a href="ROS/Publisher.html#shutdown-instance_method" title="ROS::Publisher#shutdown (method)">#shutdown</a></span>
-    
-      <small>ROS::Publisher</small>
-    
-  </li>
-  
-
   <li class="r1 ">
-    <span class='object_link'><a href="ROS/ParameterSubscriber.html#shutdown-instance_method" title="ROS::ParameterSubscriber#shutdown (method)">#shutdown</a></span>
+    <span class='object_link'><a href="ROS/Node.html#set_param-instance_method" title="ROS::Node#set_param (method)">#set_param</a></span>
     
-      <small>ROS::ParameterSubscriber</small>
+      <small>ROS::Node</small>
     
   </li>
   
@@ -1369,22 +1375,14 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="ROS/ServiceServer.html#shutdown-instance_method" title="ROS::ServiceServer#shutdown (method)">#shutdown</a></span>
+    <span class='object_link'><a href="ROS/TCPROS/Client.html#shutdown-instance_method" title="ROS::TCPROS::Client#shutdown (method)">#shutdown</a></span>
     
-      <small>ROS::ServiceServer</small>
+      <small>ROS::TCPROS::Client</small>
     
   </li>
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="ROS/SlaveProxy.html#shutdown-instance_method" title="ROS::SlaveProxy#shutdown (method)">#shutdown</a></span>
-    
-      <small>ROS::SlaveProxy</small>
-    
-  </li>
-  
-
-  <li class="r1 ">
     <span class='object_link'><a href="ROS/GraphManager.html#shutdown-instance_method" title="ROS::GraphManager#shutdown (method)">#shutdown</a></span>
     
       <small>ROS::GraphManager</small>
@@ -1392,10 +1390,34 @@
   </li>
   
 
-  <li class="r2 ">
-    <span class='object_link'><a href="ROS/TCPROS/Client.html#shutdown-instance_method" title="ROS::TCPROS::Client#shutdown (method)">#shutdown</a></span>
+  <li class="r1 ">
+    <span class='object_link'><a href="ROS/Subscriber.html#shutdown-instance_method" title="ROS::Subscriber#shutdown (method)">#shutdown</a></span>
     
-      <small>ROS::TCPROS::Client</small>
+      <small>ROS::Subscriber</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="ROS/ParameterSubscriber.html#shutdown-instance_method" title="ROS::ParameterSubscriber#shutdown (method)">#shutdown</a></span>
+    
+      <small>ROS::ParameterSubscriber</small>
+    
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="ROS/Publisher.html#shutdown-instance_method" title="ROS::Publisher#shutdown (method)">#shutdown</a></span>
+    
+      <small>ROS::Publisher</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="ROS/ServiceServer.html#shutdown-instance_method" title="ROS::ServiceServer#shutdown (method)">#shutdown</a></span>
+    
+      <small>ROS::ServiceServer</small>
     
   </li>
   
@@ -1417,55 +1439,7 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="ROS/Subscriber.html#shutdown-instance_method" title="ROS::Subscriber#shutdown (method)">#shutdown</a></span>
-    
-      <small>ROS::Subscriber</small>
-    
-  </li>
-  
-
-  <li class="r2 ">
-    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_parameter_subscriber-instance_method" title="ROS::GraphManager#shutdown_parameter_subscriber (method)">#shutdown_parameter_subscriber</a></span>
-    
-      <small>ROS::GraphManager</small>
-    
-  </li>
-  
-
-  <li class="r1 ">
-    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_publisher-instance_method" title="ROS::GraphManager#shutdown_publisher (method)">#shutdown_publisher</a></span>
-    
-      <small>ROS::GraphManager</small>
-    
-  </li>
-  
-
-  <li class="r2 ">
-    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_service_server-instance_method" title="ROS::GraphManager#shutdown_service_server (method)">#shutdown_service_server</a></span>
-    
-      <small>ROS::GraphManager</small>
-    
-  </li>
-  
-
-  <li class="r1 ">
-    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_subscriber-instance_method" title="ROS::GraphManager#shutdown_subscriber (method)">#shutdown_subscriber</a></span>
-    
-      <small>ROS::GraphManager</small>
-    
-  </li>
-  
-
-  <li class="r2 ">
-    <span class='object_link'><a href="ROS/MasterProxy.html#slave_uri-instance_method" title="ROS::MasterProxy#slave_uri (method)">#slave_uri</a></span>
-    
-      <small>ROS::MasterProxy</small>
-    
-  </li>
-  
-
-  <li class="r1 ">
-    <span class='object_link'><a href="ROS/SlaveProxy.html#slave_uri-instance_method" title="ROS::SlaveProxy#slave_uri (method)">#slave_uri</a></span>
+    <span class='object_link'><a href="ROS/SlaveProxy.html#shutdown-instance_method" title="ROS::SlaveProxy#shutdown (method)">#shutdown</a></span>
     
       <small>ROS::SlaveProxy</small>
     
@@ -1473,9 +1447,57 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="ROS/Rate.html#sleep-instance_method" title="ROS::Rate#sleep (method)">#sleep</a></span>
+    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_all-class_method" title="ROS::GraphManager.shutdown_all (method)">shutdown_all</a></span>
     
-      <small>ROS::Rate</small>
+      <small>ROS::GraphManager</small>
+    
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_parameter_subscriber-instance_method" title="ROS::GraphManager#shutdown_parameter_subscriber (method)">#shutdown_parameter_subscriber</a></span>
+    
+      <small>ROS::GraphManager</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_publisher-instance_method" title="ROS::GraphManager#shutdown_publisher (method)">#shutdown_publisher</a></span>
+    
+      <small>ROS::GraphManager</small>
+    
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_service_server-instance_method" title="ROS::GraphManager#shutdown_service_server (method)">#shutdown_service_server</a></span>
+    
+      <small>ROS::GraphManager</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="ROS/GraphManager.html#shutdown_subscriber-instance_method" title="ROS::GraphManager#shutdown_subscriber (method)">#shutdown_subscriber</a></span>
+    
+      <small>ROS::GraphManager</small>
+    
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="ROS/MasterProxy.html#slave_uri-instance_method" title="ROS::MasterProxy#slave_uri (method)">#slave_uri</a></span>
+    
+      <small>ROS::MasterProxy</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="ROS/SlaveProxy.html#slave_uri-instance_method" title="ROS::SlaveProxy#slave_uri (method)">#slave_uri</a></span>
+    
+      <small>ROS::SlaveProxy</small>
     
   </li>
   
@@ -1489,7 +1511,23 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="ROS/Rate.html#sleep-instance_method" title="ROS::Rate#sleep (method)">#sleep</a></span>
+    
+      <small>ROS::Rate</small>
+    
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/Node.html#spin-instance_method" title="ROS::Node#spin (method)">#spin</a></span>
+    
+      <small>ROS::Node</small>
+    
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="ROS/Node.html#spin_once-instance_method" title="ROS::Node#spin_once (method)">#spin_once</a></span>
     
       <small>ROS::Node</small>
     
@@ -1505,14 +1543,6 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="ROS/Node.html#spin_once-instance_method" title="ROS::Node#spin_once (method)">#spin_once</a></span>
-    
-      <small>ROS::Node</small>
-    
-  </li>
-  
-
-  <li class="r1 ">
     <span class='object_link'><a href="ROS/TCPROS/Client.html#start-instance_method" title="ROS::TCPROS::Client#start (method)">#start</a></span>
     
       <small>ROS::TCPROS::Client</small>
@@ -1520,7 +1550,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/Node.html#subscribe-instance_method" title="ROS::Node#subscribe (method)">#subscribe</a></span>
     
       <small>ROS::Node</small>
@@ -1528,7 +1558,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/MasterProxy.html#subscribe_param-instance_method" title="ROS::MasterProxy#subscribe_param (method)">#subscribe_param</a></span>
     
       <small>ROS::MasterProxy</small>
@@ -1536,7 +1566,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/Node.html#subscribe_parameter-instance_method" title="ROS::Node#subscribe_parameter (method)">#subscribe_parameter</a></span>
     
       <small>ROS::Node</small>
@@ -1544,7 +1574,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/GraphManager.html#subscribers-instance_method" title="ROS::GraphManager#subscribers (method)">#subscribers</a></span>
     
       <small>ROS::GraphManager</small>
@@ -1552,7 +1582,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/TCPROS/Client.html#target_uri-instance_method" title="ROS::TCPROS::Client#target_uri (method)">#target_uri</a></span>
     
       <small>ROS::TCPROS::Client</small>
@@ -1560,7 +1590,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/Subscriber.html#tcp_no_delay-instance_method" title="ROS::Subscriber#tcp_no_delay (method)">#tcp_no_delay</a></span>
     
       <small>ROS::Subscriber</small>
@@ -1568,7 +1598,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/TimeValue.html#to_nsec-instance_method" title="ROS::TimeValue#to_nsec (method)">#to_nsec</a></span>
     
       <small>ROS::TimeValue</small>
@@ -1576,7 +1606,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/TimeValue.html#to_sec-instance_method" title="ROS::TimeValue#to_sec (method)">#to_sec</a></span>
     
       <small>ROS::TimeValue</small>
@@ -1584,7 +1614,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/Topic.html#topic_name-instance_method" title="ROS::Topic#topic_name (method)">#topic_name</a></span>
     
       <small>ROS::Topic</small>
@@ -1592,7 +1622,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/Topic.html#topic_type-instance_method" title="ROS::Topic#topic_type (method)">#topic_type</a></span>
     
       <small>ROS::Topic</small>
@@ -1600,7 +1630,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/Struct.html#unpack-instance_method" title="ROS::Struct#unpack (method)">#unpack</a></span>
     
       <small>ROS::Struct</small>
@@ -1608,7 +1638,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/MasterProxy.html#unregister_publisher-instance_method" title="ROS::MasterProxy#unregister_publisher (method)">#unregister_publisher</a></span>
     
       <small>ROS::MasterProxy</small>
@@ -1616,7 +1646,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/MasterProxy.html#unregister_service-instance_method" title="ROS::MasterProxy#unregister_service (method)">#unregister_service</a></span>
     
       <small>ROS::MasterProxy</small>
@@ -1624,7 +1654,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/MasterProxy.html#unregister_subscriber-instance_method" title="ROS::MasterProxy#unregister_subscriber (method)">#unregister_subscriber</a></span>
     
       <small>ROS::MasterProxy</small>
@@ -1632,7 +1662,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/MasterProxy.html#unsubscribe_param-instance_method" title="ROS::MasterProxy#unsubscribe_param (method)">#unsubscribe_param</a></span>
     
       <small>ROS::MasterProxy</small>
@@ -1640,7 +1670,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/TCPROS/Header.html#valid%3F-instance_method" title="ROS::TCPROS::Header#valid? (method)">#valid?</a></span>
     
       <small>ROS::TCPROS::Header</small>
@@ -1648,7 +1678,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/GraphManager.html#wait_for_service-instance_method" title="ROS::GraphManager#wait_for_service (method)">#wait_for_service</a></span>
     
       <small>ROS::GraphManager</small>
@@ -1656,7 +1686,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/Node.html#wait_for_service-instance_method" title="ROS::Node#wait_for_service (method)">#wait_for_service</a></span>
     
       <small>ROS::Node</small>
@@ -1664,7 +1694,7 @@
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="ROS/TCPROS/Message.html#write_header-instance_method" title="ROS::TCPROS::Message#write_header (method)">#write_header</a></span>
     
       <small>ROS::TCPROS::Message</small>
@@ -1672,7 +1702,7 @@
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="ROS/TCPROS/Message.html#write_msg-instance_method" title="ROS::TCPROS::Message#write_msg (method)">#write_msg</a></span>
     
       <small>ROS::TCPROS::Message</small>
