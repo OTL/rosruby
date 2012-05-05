@@ -22,7 +22,6 @@ module ROS
       @caller_id = caller_id
       @service_name = service_name
       @service_type = service_type
-      @host = "localhost"
     end
 
     # @return [String] caller id of this node
