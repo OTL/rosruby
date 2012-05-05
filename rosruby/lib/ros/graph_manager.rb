@@ -46,7 +46,7 @@ module ROS
 
     # @return [String] value hostname of this node
     attr_reader :host
-    # @return [Fixnum] value port number of this node
+    # @return [Integer] value port number of this node
     attr_reader :port
 
     ##
@@ -95,7 +95,7 @@ module ROS
 
     ##
     # get available port number by opening port 0.
-    # @return [Fixnum] port_num
+    # @return [Integer] port_num
     #
     def get_available_port
       server = TCPServer.open(0)

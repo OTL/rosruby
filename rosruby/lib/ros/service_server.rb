@@ -86,7 +86,7 @@ module ROS
       [@num_request, @server.byte_received, @server.byte_sent]
     end
 
-    # @return [Fixnum] how many times this service called
+    # @return [Integer] how many times this service called
     attr_reader :num_request
   end
 end

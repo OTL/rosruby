@@ -69,8 +69,8 @@ module ROS
     end
 
     # register a subscriber
-    # @param [String] topic name
-    # @param [String] topic type
+    # @param [String] topic topic name
+    # @param [String] topic_type topic type
     # @return [Array] URI of current publishers
     # @raise [RuntimeError] if error
     def register_subscriber(topic, topic_type)
@@ -107,8 +107,8 @@ module ROS
     end
 
     # register a publisher
-    # @param [String] topic name of topic
-    # @param [String] type of topic
+    # @param [String] topic topic name of topic
+    # @param [String] topic_type type of topic
     # @return [Array] URI of current subscribers
     # @raise RuntimeError
     def register_publisher(topic, topic_type)
@@ -236,7 +236,7 @@ module ROS
     attr_reader :master_uri
 
     # set the master uri
-    # @param [String] master uri
+    # @param [String] uri master uri
     # @return [MasterProxy] self
     def master_uri=(uri)
       @master_uri = uri

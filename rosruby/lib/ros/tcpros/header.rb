@@ -73,8 +73,8 @@ module ROS::TCPROS
 
     # serialize the data into header.
     # return the byte of the serialized data.
-    # @param [IO] where to write data
-    # @return [Fixnum] byte of serialized data
+    # @param [IO] buff where to write data
+    # @return [Integer] byte of serialized data
     def serialize(buff)
       serialized_data = ''
       @data.each_pair do |key, value|

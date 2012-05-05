@@ -42,7 +42,7 @@ module ROS
     ##
     # get hostname and port from uri
     # @param [String] uri decompose uri string to host and port
-    # @return [Array<String, Fixnum>] [host, port]
+    # @return [Array<String, Integer>] [host, port]
     def get_host_port_from_uri(uri) #:nodoc:
       uri_data = URI.split(uri)
       [uri_data[2], uri_data[3]]

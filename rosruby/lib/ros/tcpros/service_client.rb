@@ -18,7 +18,7 @@ module ROS::TCPROS
     include ::ROS::TCPROS::Message
 
     # @param [String] host host name
-    # @param [Fixnum] port port number
+    # @param [Integer] port port number
     # @param [String] caller_id caller_id of this node
     # @param [String] service_name name of service
     # @param [Class] service_type class of this service
@@ -73,14 +73,14 @@ module ROS::TCPROS
 
     ##
     # read ok byte for boolean service result.
-    # @return [Fixnum] 1 for OK, 0 for NG
+    # @return [Integer] 1 for OK, 0 for NG
     def read_ok_byte
       @socket.recv(1).unpack('c')[0]
     end
 
     ##
     # check md5sum only.
-    # @param [Header] received header
+    # @param [Header] header received header
     # @return [Boolean] true if it is ok.
     def check_header(header)
       header.valid?('md5sum', @service_type.md5sum)
@@ -93,7 +93,7 @@ module ROS::TCPROS
     end
 
     # port number of this socket
-    # @return [Fixnum] port number
+    # @return [Integer] port number
     attr_reader :port
 
     # host of this connection

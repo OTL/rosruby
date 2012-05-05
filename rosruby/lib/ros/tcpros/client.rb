@@ -20,7 +20,7 @@ module ROS::TCPROS
 
     ##
     # @param [String] host host name
-    # @param [Fixnum] port port number
+    # @param [Integer] port port number
     # @param [String] caller_id caller id of this node
     # @param [String] topic_name name of this topic
     # @param [Class] topic_type type of topic
@@ -92,13 +92,13 @@ module ROS::TCPROS
       end
     end
 
-    # @return [Fixnum] port number of this client
+    # @return [Integer] port number of this client
     attr_reader :port
     # @return [String] host name
     attr_reader :host
     # @return [Queue] message queue
     attr_reader :msg_queue
-    # @return [Fixnum] received byte
+    # @return [Integer] received byte
     attr_reader :byte_received
     # @return [String] URI of connection target
     attr_reader :target_uri

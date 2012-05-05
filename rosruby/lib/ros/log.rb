@@ -51,7 +51,7 @@ module ROS
     # @param [String] message  your message
     # @param [String] file file name in which called this method
     # @param [String] function function name in which called this method
-    # @param [Fixnum] line line number in which called this method
+    # @param [Integer] line line number in which called this method
     # @return [Log] self
     def log(severity, message, file='', function='', line=0)
       @local_logger.log(@ruby_dict[severity], message, @node.node_name)

@@ -55,7 +55,8 @@ module ROS
     # get env, parse args, and start slave xmlrpc servers.
     #
     # @param [String] node_name name of this node
-    # @param [Hash] options :anonymous => anonymous node generates a unique name
+    # @param [Hash] options options
+    # @option options [Boolean] :anonymous (false) use anonymous name if true. anonymous node generates a unique name
     def initialize(node_name, options={})
       @remappings = {}
       get_env
@@ -111,8 +112,8 @@ module ROS
     # get the param for key.
     # You can set default value. That is uesed when the key is not set yet.
     # @param [String] key key for search the parameters
-    # @param [String, Fixnum, Float, Boolean] default default value
-    # @return [String, Fixnum, Float, Boolean] parameter value for key
+    # @param [String, Integer, Float, Boolean] default default value
+    # @return [String, Integer, Float, Boolean] parameter value for key
     #
     def get_param(key, default=nil)
       key = expand_local_name(@node_name, key)
@@ -153,7 +154,7 @@ module ROS
     ##
     # set parameter for 'key'.
     # @param [String] key key of parameter
-    # @param [String, Fixnum, Float, Boolean] value value of parameter
+    # @param [String, Integer, Float, Boolean] value value of parameter
     # @return [Boolean] return true if succeed
     def set_param(key, value)
       @parameter.set_param(expand_local_name(@node_name, key), value)
@@ -165,6 +166,8 @@ module ROS
     # @param [String] topic_name name of topic (string)
     # @param [Class] topic_type topic class
     # @param [Hash] options :latched, :resolve
+    # @option options [Boolean] :latched (false) latched topic
+    # @option options [Boolean] :resolve (true) resolve topic_name or not. This is for publish /rosout with namespaced node.
     # @return [Publisher] Publisher instance
     def advertise(topic_name, topic_type, options={})
       if options[:no_resolve]
@@ -367,7 +370,7 @@ module ROS
     #   convert_if_needed('0.1') # => 0.1
     #   convert_if_needed('string') # => 'string'
     # @param [String] value string
-    # @return [Float, Fixnum, String] return converted value.
+    # @return [Float, Integer, String] return converted value.
     def convert_if_needed(value)  #:nodoc:
       if value =~ /^[+-]?\d+\.?\d*$/ # float
         value = value.to_f

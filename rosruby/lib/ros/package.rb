@@ -47,7 +47,7 @@ module ROS
     # search all packages that has manifest.xml
     # @param [Hash] packages current found packages
     # @param [Array] roots root directories for searching
-    # @param [Array] fullpath list of all packages
+    # @return [Array] fullpath list of all packages
     def self.find_all_packages(packages={}, roots=ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT']))
       roots.each do |root|
         if File.exists?("#{root}/manifest.xml")

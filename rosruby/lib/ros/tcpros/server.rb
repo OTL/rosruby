@@ -24,6 +24,10 @@ module ROS::TCPROS
     # @param [String] topic_name name of this topic
     # @param [Class] topic_type type of topic
     # @param [Hash] options :latched, :port, host, :last_published_msg
+    # @option [Boolean] options :latched (false)
+    # @option [Integer] options :port (0) tcp port number.
+    # @option [String] options :host (GServer::DEFAULT_HOST) host name
+    # @option [Message] options :last_published_msg
     def initialize(caller_id, topic_name, topic_type, options={})
       if options[:port]
         port = options[:port]

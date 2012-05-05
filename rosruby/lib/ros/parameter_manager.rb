@@ -47,7 +47,7 @@ module ROS
     ##
     # set parameter for 'key'
     # @param [String] key key of parameter
-    # @param [String, Fixnum, Float, Boolean] value value of parameter
+    # @param [String, Integer, Float, Boolean] value value of parameter
     # @return [Boolean] true if succeed
     # @raise
     def set_param(key, value)
@@ -65,8 +65,7 @@ module ROS
     ##
     # delete parameter 'key'
     # @param [String] key key for remove
-    # @param [Boolean] return true if success, false if it is not exist
-    #
+    # @return [Boolean] return true if success, false if it is not exist
     def delete_param(key)
       code, message, value = @server.call("deleteParam", @caller_id, key)
       case code
@@ -80,7 +79,7 @@ module ROS
     ##
     # search the all namespace for key
     # @param [String] key key for search
-    # @param [Array] values
+    # @return [Array] values
     def search_param(key)
       code, message, value = @server.call("searchParam", @caller_id, key)
       case code
@@ -96,7 +95,7 @@ module ROS
     ##
     # check if the master has the key
     # @param [String] key key for check
-    # @param [String, Fixnum, Float, Boolean] value of key
+    # @return [String, Integer, Float, Boolean] value of key
     def has_param(key)
       code, message, value = @server.call("hasParam", @caller_id, key)
       case code

@@ -26,7 +26,7 @@ module ROS::TCPROS
     # @param [String] service_name name of this service
     # @param [Class] service_type class of this service message
     # @param [Proc] callback of this service
-    # @param [Fixnum] port port number
+    # @param [Integer] port port number
     # @param [host] host host name
     def initialize(caller_id, service_name, service_type, callback,
                    port=0, host=::GServer::DEFAULT_HOST)
@@ -121,11 +121,11 @@ module ROS::TCPROS
     end
 
     # received data amout for slave api
-    # @return [Fixnum] byte received
+    # @return [Integer] byte received
     attr_reader :byte_received
 
     # sent data amout for slave api
-    # @return [Fixnum] byte sent
+    # @return [Integer] byte sent
     attr_reader :byte_sent
 
   end

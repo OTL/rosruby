@@ -34,7 +34,7 @@ module ROS
     end
 
     # unpack from string
-    # @param [String] data
+    # @param [String] arg
     # @return [Array] unpacked data
     def unpack(arg)
       arg.unpack(@format)

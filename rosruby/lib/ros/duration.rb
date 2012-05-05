@@ -22,8 +22,8 @@ module ROS
     # @overload initialize(secs)
     #  @param [Float] secs initialize from seconds
     # @overload initialize(secs, nsecs)
-    #  @param [Fixnum] secs seconds
-    #  @param [Fixnum] nsecs nano seconds
+    #  @param [Integer] secs seconds
+    #  @param [Integer] nsecs nano seconds
     def initialize(secs=0, nsecs=nil)
       @secs = secs.to_i
       if nsecs
@@ -45,7 +45,7 @@ module ROS
     end
 
     # create a new duration
-    # @param [Duration] duration Duration for substituting
+    # @param [Duration] other Duration for substituting
     # @return [Duration] substituted duration
     def -(other)
       d = ::ROS::Duration.new

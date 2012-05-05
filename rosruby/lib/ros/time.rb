@@ -14,10 +14,10 @@ module ROS
 
     include Comparable
 
-    # @return [Fixnum] seconds
+    # @return [Integer] seconds
     attr_accessor :secs
 
-    # @return [Fixnum] nano seconds
+    # @return [Integer] nano seconds
     attr_accessor :nsecs
 
     # canonicalize secs and nsecs
@@ -48,7 +48,7 @@ module ROS
 
     # compare time value
     # @param [TimeValue] other compare target
-    # @return [Fixnum] result
+    # @return [Integer] result
     def <=>(other)
       diff = self.to_nsec - other.to_nsec
       if diff > 0
@@ -87,7 +87,7 @@ module ROS
     end
 
     # add time value
-    # @param [Duration]
+    # @param [Duration] duration duration for adding
     # @return [Time] new time
     def +(duration)
       tm = ::ROS::Time.new

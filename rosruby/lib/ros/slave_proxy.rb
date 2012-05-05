@@ -72,7 +72,7 @@ module ROS
       end
     end
 
-    # @return [Fixnum] pid of the slave process
+    # @return [Integer] pid of the slave process
     # @raise [RuntimeError] if fail
     def get_pid
       code, message, pid = @proxy.getPid(@caller_id)
@@ -106,7 +106,7 @@ module ROS
     end
 
     # @param [String] param_key  key for param
-    # @param [String, Fixnum, Float, Boolean, Array] param_value  new value for key
+    # @param [String, Integer, Float, Boolean, Array] param_value  new value for key
     # @return [Boolean] true
     # @raise [RuntimeError] if fail
     def param_update(param_key, param_value)
