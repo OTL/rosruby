@@ -66,6 +66,27 @@ class TestNode < Test::Unit::TestCase
     node1.shutdown
   end
 
+  def test_ros_env
+    # check ROS_IP
+    ENV['ROS_IP']='127.0.0.1'
+    node1 = ROS::Node.new('/test_ros_env')
+    assert_equal('127.0.0.1', node1.host)
+    node1.shutdown
+    ENV.delete('ROS_IP')
+
+    # check ROS_HOSTNAME
+    ENV['ROS_HOSTNAME']='localhost'
+    node2 = ROS::Node.new('/test_ros_env2')
+    assert_equal('localhost', node2.host)
+    node2.shutdown
+
+    ENV['ROS_HOSTNAME']='127.0.0.1'
+    node2 = ROS::Node.new('/test_ros_env2')
+    assert_equal('127.0.0.1', node2.host)
+    node2.shutdown
+    ENV.delete('ROS_HOSTNAME')
+  end
+
   def test_param_set_get
     node = ROS::Node.new('hoge')
     # integer

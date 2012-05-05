@@ -59,13 +59,13 @@ module ROS
     # @option options [Boolean] :anonymous (false) use anonymous name if true. anonymous node generates a unique name
     def initialize(node_name, options={})
       @remappings = {}
+      # @host is rewrited by ARGS[ROS_IP] or ARGS[ROS_HOSTNAME]
+      @host = Socket.gethostname
       get_env
       if options[:anonymous]
         node_name = anonymous_name(node_name)
       end
       @node_name = resolve_name(node_name)
-      # @host is rewrited by ARGS[ROS_IP] or ARGS[ROS_HOSTNAME]
-      @host = Socket.gethostname
       @remappings = parse_args(ARGV)
       if not @master_uri
         raise 'ROS_MASTER_URI is nos set. please check environment variables'
