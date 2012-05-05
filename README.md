@@ -25,7 +25,7 @@ Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installatio
 You can install ruby by apt.
 
 ```bash
-$ sudo apt-get install ruby rake
+$ sudo apt-get install ruby
 ```
 
 Download rosruby into your ROS_PACKAGE_PATH.
@@ -153,6 +153,14 @@ run client with args ('a' and 'b' for roscpp_tutorials/TwoInts)
 $ rosrun rosruby add_two_ints_client.rb 10 20
 ```
 
+and more...
+----------------------
+You need more tools for testing, generating documentations.
+
+```bash
+$ sudo apt-get install rake gem
+$ sudo gem install yard redcarpet simplecov
+```
 
 do all tests
 -------------------------
@@ -165,11 +173,25 @@ $ roscore
 and run the unit tests.
 
 ```bash
-$ rosrun rosruby run-test.rb
-```
-
-or
-
-```bash
 $ roscd rosruby
 $ rake test
+```
+
+
+documents
+--------------------------
+you can generate API documents using yard.
+Document generation needs yard and redcarpet.
+You can install these by gem command like this.
+
+```bash
+$ gem install yard redcarpet
+```
+
+Then try to generate documentds.
+
+```bash
+$ rake yard
+```
+
+You can access to the generated documents from [here](http://otl.github.com/rosruby/doc/).
