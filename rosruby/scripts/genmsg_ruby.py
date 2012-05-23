@@ -100,8 +100,8 @@ PYTHON_RUBY_DICT = { #see python module struct
     'B': 'C',
     'h' : 's',
     'H' : 'S',
-    'i' : 'v',
-    'I' : 'V',
+    'i' : 'l',
+    'I' : 'L',
     'q' : 'q',
     'Q' : 'Q',
     'f': 'f',
@@ -436,7 +436,7 @@ def int32_pack(var):
     @type  var: str
     @return: struct packing code for an int32
     """
-    return serialize('@@struct_V.pack(%s)'%var)
+    return serialize('@@struct_L.pack(%s)'%var)
 
 # int32 is very common due to length serialization, so it is special cased
 def int32_unpack(var, buff):
@@ -445,7 +445,7 @@ def int32_unpack(var, buff):
     @type  var: str
     @return: struct unpacking code for an int32
     """
-    return '(%s,) = @@struct_V.unpack(%s)'%(var, buff)
+    return '(%s,) = @@struct_L.unpack(%s)'%(var, buff)
 
 #NOTE: '<' = little endian
 def pack(pattern, vars):
@@ -636,9 +636,9 @@ def string_serializer_generator(package, type_, name, serialize):
             yield "# - if encoded as a list instead, serialize as bytes instead of string"
             if array_len is None:
                 yield "if type(%s) in [list, tuple]"%var
-                yield INDENT+pack2('"Va#{length}"', "[length, *%s]"%var)
+                yield INDENT+pack2('"La#{length}"', "[length, *%s]"%var)
                 yield "else"
-                yield INDENT+pack2('"Va#{length}"', "[length, %s]"%var)
+                yield INDENT+pack2('"La#{length}"', "[length, %s]"%var)
                 yield "end"
             else:
                 yield "if type(%s) in [list, tuple]"%var
@@ -650,7 +650,7 @@ def string_serializer_generator(package, type_, name, serialize):
             # py3k: struct.pack() now only allows bytes for the s string pack code.
             # FIXME: for py3k, this needs to be w/ encode, but this interferes with actual byte data
             #yield pack2("'<I%ss'%length", "length, %s.encode()"%var) #Py3k bugfix (see http://docs.python.org/dev/whatsnew/3.2.html#porting-to-python-3-2)
-            yield pack2('"Va#{length}"', "[length, %s]"%var)
+            yield pack2('"La#{length}"', "[length, %s]"%var)
     else:
         yield "start = end_point"
         if array_len is not None:
@@ -1035,10 +1035,10 @@ def msg_generator_internal(package, name, spec):
 
     yield '_REPLACE_FOR_STRUCT_'
     if len(spec_names):
-        yield "  @@struct_V = ::ROS::Struct.new(\"V\")"
+        yield "  @@struct_L = ::ROS::Struct.new(\"L\")"
         yield "  @@slot_types = ['"+"','".join(spec.types)+"']"
     else:
-        yield "  @@struct_V = ::ROS::Struct.new(\"V\")"
+        yield "  @@struct_L = ::ROS::Struct.new(\"L\")"
         yield "  @@slot_types = []"
 
     yield """
