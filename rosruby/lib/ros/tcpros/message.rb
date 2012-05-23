@@ -29,7 +29,7 @@ module ROS::TCPROS
       sio.rewind
       data = sio.read
       len = data.length
-      data = [len, data].pack("Va#{len}")
+      data = [len, data].pack("La#{len}")
       socket.write(data)
       data
     end

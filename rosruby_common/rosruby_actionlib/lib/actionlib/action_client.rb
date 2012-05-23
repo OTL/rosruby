@@ -28,6 +28,9 @@ module Actionlib
       @last_result = nil
       @result_subscriber = node.subscribe("#{action_name}/result",
                                           @result_class) do |msg|
+        if @result_callback
+          @result_callback.call(msg.result)
+        end
         @last_result = msg.result
       end
 
@@ -40,14 +43,18 @@ module Actionlib
       end
     end
 
-    def send_goal(goal, feedback_callback=nil)
-      @feedback_callback = feedback_callback
+    def send_goal(goal, options={})
+      @feedback_callback = options[:feedback_callback]
+      @result_callback = options[:result_callback]
 
       action_goal = @goal_class.new
       action_goal.header.stamp = ROS::Time::now
       action_goal.goal = goal
       action_goal.goal_id = generate_id
       @goal_publisher.publish(action_goal)
+      if options[:wait]
+        wait_for_server
+      end
     end
 
     def cancel_all_goals
@@ -57,7 +64,7 @@ module Actionlib
       @cancel_publisher.publish(cancel_msg)
     end
 
-    def wait_for_server(timeout_sec=3.0)
+    def wait_for_server(timeout_sec=10.0)
       begin
         timeout(timeout_sec) do
           while not @last_status
@@ -71,7 +78,7 @@ module Actionlib
       end
     end
 
-    def wait_for_result(timeout_sec=3.0)
+    def wait_for_result(timeout_sec=10.0)
       begin
         timeout(timeout_sec) do
           while not @last_result

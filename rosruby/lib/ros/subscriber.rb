@@ -101,6 +101,14 @@ module ROS
       info
     end
 
+    def has_connection_with?(uri)
+      get_connected_uri.include?(uri)
+    end
+
+    def get_connected_uri
+      @connections.map {|x| x.target_uri}
+    end
+
     ##
     # user interface of shutdown this subscriber
     #
