@@ -27,6 +27,27 @@ module ROS
       @format = format
     end
 
+    attr_reader :format
+
+    def self.calc_size(format)
+      array = []
+      start = 0
+      while start < format.length
+        re = /(\w)(\d*)/
+        re =~ format[start..(format.length-1)]
+        number = $2.to_i
+        if number == 0
+          array.push(0)
+        else
+          for i in 1..number
+            array.push(0)
+          end
+        end
+        start += $&.length
+      end
+      array.pack(format).length
+    end
+
     # pack the data
     # @param [Array] args
     def pack(*args)

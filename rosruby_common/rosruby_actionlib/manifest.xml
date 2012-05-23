@@ -1,0 +1,16 @@
+<package>
+  <description brief="rosruby_actionlib">
+
+     rosruby_actionlib
+
+  </description>
+  <author>Takashi Ogura</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rosruby_actionlib</url>
+  <depend package="rosruby"/>
+  <depend package="actionlib_msgs"/>
+
+</package>
+
+

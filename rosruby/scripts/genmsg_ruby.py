@@ -690,7 +690,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
         if is_simple(base_type):
             if var_length:
                 pattern = compute_struct_pattern([base_type])
-                yield "pattern = '%%s%s'%%length"%pattern
+                yield 'pattern = "%s#{length}"'%convert_to_ruby_pattern(pattern)
                 if serialize:
                     if is_numpy:
                         yield pack_numpy(var)
@@ -698,7 +698,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
                         yield pack2('pattern', "*"+var)
                 else:
                     yield "start = end_point"
-                    yield "end_point += struct.calcsize(pattern)"
+                    yield 'end_point += ROS::Struct::calc_size("#{pattern}")'
                     if is_numpy:
                         dtype = _NUMPY_DTYPE[base_type]
                         yield unpack_numpy(var, 'length', dtype, 'str[start..(end_point-1)]')
@@ -713,7 +713,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
                         yield pack(pattern, "*"+var)
                 else:
                     yield "start = end_point"
-                    yield "end_point += %s"%struct.calcsize('%s'%pattern)
+                    yield "end_point += %s"%struct.calcsize('%s'%convert_to_ruby_pattern(pattern))
                     if is_numpy:
                         dtype = _NUMPY_DTYPE[base_type]
                         yield unpack_numpy(var, length, dtype, 'str[start..(end_point-1)]')
@@ -828,7 +828,7 @@ def simple_serializer_generator(spec, start, end_point, serialize): #primitives 
         yield pack(pattern, vars_)
     else:
         yield "start = end_point"
-        yield "end_point += %s"%struct.calcsize('%s'%reduce_pattern(pattern))
+        yield "end_point += ROS::Struct::calc_size('%s')"%convert_to_ruby_pattern(reduce_pattern(pattern))
         yield unpack('(%s,)'%vars_, pattern, 'str[start..(end_point-1)]')
 
         # convert uint8 to bool. this doesn't add much value as Python
