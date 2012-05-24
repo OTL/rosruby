@@ -18,6 +18,7 @@ require 'ros/service_server'
 require 'ros/service_client'
 require 'ros/log'
 require 'ros/time'
+require 'ros/rate'
 require 'ros/duration'
 
 module ROS
@@ -46,6 +47,9 @@ module ROS
 #   end
 #
   class Node
+
+    # for node shutdown hook
+    @@shutdown_hook = []
 
     # Naming functions of ROS
     include Name
@@ -422,9 +426,14 @@ module ROS
       end
     end
 
+    def self.add_shutdown_hook(proc)
+      @@shutdown_hook.push(proc)
+    end
+
     # shutdown all nodes.
     def self.shutdown_all_nodes
       GraphManager.shutdown_all
+      @@shutdown_hook.each {|obj| obj.call}
     end
 
   end

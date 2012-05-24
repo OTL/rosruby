@@ -895,8 +895,9 @@ def serialize_fn_generator(package, spec, is_numpy=False):
     for y in serializer_generator(package, flatten(spec), True, is_numpy):
         yield "  "+y
     pop_context()
-    yield """rescue
-      raise 'some erro in serialize'"""
+    yield """rescue => exception
+      raise "some erro in serialize: #{exception}"
+"""
     yield "end"
     # done w/ method-var context #
 
@@ -932,8 +933,8 @@ def deserialize_fn_generator(package, spec, is_numpy=False):
             yield "  %s"%code
 
     yield "  return self"
-    yield "rescue"
-    yield """  raise \"message DeserializationError\" #most likely buffer underfill
+    yield "rescue => exception"
+    yield """  raise \"message DeserializationError: #{exception}\" #most likely buffer underfill
     end"""
 
 def msg_generator_internal(package, name, spec):
