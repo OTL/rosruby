@@ -141,7 +141,9 @@ module Actionlib
     def shutdown
       if @is_running
         @is_running = false
-        @thread.join
+        if not @thread.join(0.1)
+          Thread::kill(@thread)
+        end
       end
     end
 

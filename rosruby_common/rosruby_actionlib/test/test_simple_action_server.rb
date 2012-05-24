@@ -7,16 +7,53 @@ require 'actionlib/simple_action_server'
 require 'actionlib_tutorials/FibonacciAction'
 
 class TestActionServer < Test::Unit::TestCase
-  def test_hoge
-    node = ROS::Node.new('/test_action_server')
-    server = Actionlib::SimpleActionServer.new(node, '/fibonacci', Actionlib_tutorials::FibonacciAction)
+  def test_success_pubsub
+    node = ROS::Node.new('/test_simple_action_server')
+    server = Actionlib::SimpleActionServer.new(node, '/fibonacci',
+                                               Actionlib_tutorials::FibonacciAction)
+    @order = nil
     server.start do |goal|
-      p 'goal has come'
-      p goal.order
+      @order = goal.order
       result = Actionlib_tutorials::FibonacciResult.new
-      result.sequence = [1]
+      result.sequence = [0, 1, 2]
       server.set_succeeded(result)
     end
-    node.spin
+
+    node2 = ROS::Node.new('/test_action_server_check')
+    goal_publisher = node2.advertise('/fibonacci/goal', Actionlib_tutorials::FibonacciActionGoal)
+    @result = nil
+    @id = nil
+    node2.subscribe('/fibonacci/result', Actionlib_tutorials::FibonacciActionResult) do |msg|
+      @id = msg.status.goal_id.id
+      @result = msg.result
+    end
+
+    @status_come = nil
+    node2.subscribe('/fibonacci/status', Actionlib_msgs::GoalStatusArray) do |msg|
+      @status_come = msg
+    end
+
+    sleep 1
+    goal = Actionlib_tutorials::FibonacciActionGoal.new
+    goal.goal_id.id = '/test_id'
+
+    goal.goal.order = 2
+    goal_publisher.publish(goal)
+    sleep 1
+    node.spin_once
+    node2.spin_once
+
+    sleep 1
+    node.spin_once
+    node2.spin_once
+
+    assert_equal(2, @order)
+    assert(@result)
+    assert_equal([0, 1, 2], @result.sequence)
+    assert_equal('/test_id', @id)
+    assert(@status_come)
+    server.shutdown
+    node.shutdown
+    node2.shutdown
   end
 end
