@@ -42,7 +42,7 @@ import os
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        packages = ['std_msgs', 'rosgraph_msgs', 'roscpp_tutorials']
+        packages = ['std_msgs', 'rosgraph_msgs', 'roscpp_tutorials', 'actionlib_tutorials']
     else:
         packages = sys.argv[1:]
 
