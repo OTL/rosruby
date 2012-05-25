@@ -1,0 +1,4 @@
+- git:
+    local-name: rosruby
+    uri: https://github.com/OTL/rosruby.git
+    version: master
