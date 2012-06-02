@@ -20,21 +20,21 @@ module ROS
                    stdlog="#{ENV['HOME']}/.ros/log/rosruby.log")
       super({})
       require 'webrick'
-      @server = WEBrick::HTTPServer.new(:Port => port, 
+      FileUtils.mkdir_p(File.dirname(stdlog))
+      @server = WEBrick::HTTPServer.new(:Port => port,
                                         :BindAddress => host,
                                         :MaxClients => maxConnections,
                                         :Logger => WEBrick::Log.new(stdlog),
                                         :AccessLog => [])
       @server.mount("/", self)
     end
-    
+
     def serve
       @server.start
     end
-  
+
     def shutdown
       @server.shutdown
     end
   end
 end
-
