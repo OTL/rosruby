@@ -139,6 +139,7 @@ module ROS
       else
         raise message
       end
+      return false
     end
 
     ##

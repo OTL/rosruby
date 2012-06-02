@@ -6,3 +6,4 @@ trash/
 #*
 msg_gen/
 srv_gen/
+.yardoc/

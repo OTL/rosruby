@@ -77,7 +77,9 @@ module ROS
 
       @manager = GraphManager.new(@node_name, @master_uri, @host)
       @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
-      @logger = ::ROS::Log.new(self)
+      if not options[:nologger]
+        @logger = ::ROS::Log.new(self)
+      end
       # because xmlrpc server use signal trap, after serve, it have to trap sig      trap_signals
       ObjectSpace.define_finalizer(self, proc {|id| self.shutdown})
     end

@@ -9,9 +9,10 @@
 #
 #
 
-require 'xmlrpc/server'
 require 'xmlrpc/client'
+require 'ros/xmlrpcserver'
 require 'ros/name'
+require 'ros/slave_proxy'
 
 module ROS
 
@@ -21,9 +22,6 @@ module ROS
   class Master
 
     include Name
-
-    # max slave connection
-    MAX_CONNECTION = 100
 
     # ROS parameter
     class Parameter
@@ -60,18 +58,18 @@ module ROS
 
       # @param [String] caller_id caller_id of service server
       # @param [String] service_name name of service
-      # @param [String] service_api XMLRPC URI of service server node
-      # @param [String] service_uri Service URI
-      def initialize(caller_id, service_name, service_api, slave_uri)
+      # @param [String] api XMLRPC URI of service server node
+      # @param [String] service_api Service URI
+      def initialize(caller_id, service_name, api, service_api)
         @caller_id = caller_id
         @name = service_name
-        @api = service_api
-        @uri = slave_uri
+        @api = api
+        @service_api = service_api
       end
 
       attr_accessor :caller_id
       attr_accessor :name
-      attr_accessor :uri
+      attr_accessor :service_api
       attr_accessor :api
     end
 
@@ -125,8 +123,11 @@ module ROS
         end
       end
       if delete_api
-        proxy = XMLRPC::Client.new2(delete_api).proxy  
-        proxy.shutdown('/master', "registered new node #{api}")
+        proxy = SlaveProxy.new('/master', delete_api)
+        begin
+          proxy.shutdown("registered new node #{delete_api}")
+        rescue
+        end
         # delete
         [@publishers, @subscribers, @services].each do |list|
           list.delete_if {|x| x.api == delete_api}
@@ -143,22 +144,21 @@ module ROS
       @subscribers = []
       @parameters = []
       @param_subscribers = []
-      @server = XMLRPC::Server.new(uri.port, uri.host, MAX_CONNECTION,
-                                   $stderr, false, false)
+      @server = XMLRPCServer.new(uri.port, uri.host)
 
       @server.set_default_handler do |method, *args|
         puts "unhandled call with #{method}, #{args}"
         [0, "I DON'T KNOW", 0]
       end
       
-      @server.add_handler('registerService') do |caller_id, service_name, api, uri|
+      @server.add_handler('registerService') do |caller_id, service_name, service_api, caller_api|
         service_name = canonicalize_name(service_name)
-        kill_same_name_node(caller_id, api)
-        @services.push(ServiceServer.new(caller_id, service_name, api, uri))
+        kill_same_name_node(caller_id, caller_api)
+        @services.push(ServiceServer.new(caller_id, service_name, caller_api, service_api))
         [1, "registered", 0]
       end
 
-      @server.add_handler('unregisterService') do |caller_id, service_name, api|
+      @server.add_handler('unregisterService') do |caller_id, service_name, service_api|
         service_name = canonicalize_name(service_name)
         before = @services.length
         @services.delete_if {|x| x.name == service_name and x.caller_id == caller_id}
@@ -188,10 +188,10 @@ module ROS
         @publishers.push(Publisher.new(caller_id, topic_name, type, api))
         sub_apis = @subscribers.select {|x|x.name == topic_name and x.type == type}.map {|x| x.api }
         pub_apis = @publishers.select {|x|x.name == topic_name and x.type == type}.map {|x| x.api }
-        proxy = XMLRPC::Client.new2(api).proxy
-        code, status, ignore = proxy.publisherUpdate('/master', topic_name, pub_apis)
-        if code != 1
-          p 'publisherUpdate fail'
+        proxy = SlaveProxy.new('/master', api)
+        begin
+          proxy.publisher_update(topic_name, pub_apis)
+        rescue
         end
         if not sub_apis
           sub_apis = []
@@ -204,35 +204,40 @@ module ROS
         before = @publishers.length
         @publishers.delete_if {|x| x.name == topic_name and x.caller_id == caller_id}
         pub_apis = @publishers.select {|x|x.name == topic_name and x.caller_id == caller_id}.map {|x| x.api }
-        proxy = XMLRPC::Client.new2(api).proxy
+        proxy = SlaveProxy.new('/master', api)
         begin
-          code, status, ignore = proxy.publisherUpdate('/master', topic_name, pub_apis)
+          code, status, ignore = proxy.publisher_update(topic_name, pub_apis)
         rescue
-          p 'do nothing'
+          #
         end
         after = @publishers.length
         [1, "deleted", before - after]
       end
 
+      @server.add_handler('getPid') do |caller_id|
+        [1, "ok", $$]
+      end
+
       @server.add_handler('lookupNode') do |caller_id, node_name|
-        pub = @publishers.select {|x| x.caller_id = node_name}
-        sub = @subscribers.select {|x| x.caller_id = node_name}
-        service = @services.select {|x| x.caller_id = node_name}
+        pub = @publishers.select {|x| x.caller_id == node_name}
+        sub = @subscribers.select {|x| x.caller_id == node_name}
+        service = @services.select {|x| x.caller_id == node_name}
         if not pub.empty?
-          return [1, "found", pub.first.api]
+          [1, "found", pub.first.api]
         elsif not sub.empty?
-          return [1, "found", sub.first.api]
+          [1, "found", sub.first.api]
         elsif not service.empty?
-          return [1, "found", service.first.api]
+          [1, "found", service.first.api]
+        else
+          [0, "not found", 0]
         end
-        [0, "not found", 0]
       end
       
       @server.add_handler('getPublishedTopics') do |caller_id, subgraph|
         if subgraph == ''
           [1, "ok", @publishers.map {|x| [x.name, x.type]}]
         else
-          [1, "ok", @publishers.select {|x| x.caller_id.scan(/#{subgraph}/)}
+          [1, "ok", @publishers.select {|x| not x.caller_id.scan(/^#{subgraph}/).empty?}
              .map {|x| [x.name, x.type]}]
         end
       end
@@ -272,7 +277,7 @@ module ROS
             ser_info[ser.name]= [ser.caller_id]
           end
         end
-        
+
         [1, "ok", [convert_info_to_list(pub_info),
                    convert_info_to_list(sub_info),
                    convert_info_to_list(ser_info)]]
@@ -287,7 +292,7 @@ module ROS
         if ser.empty?
           [0, "fail", 0]
         else
-          [1, "ok", ser.first.api]
+          [1, "ok", ser.first.service_api]
         end
       end
 
@@ -315,8 +320,11 @@ module ROS
         end
         @param_subscribers.each do |x|
           if x.key == key
-            proxy = XMLRPC::Client.new2(x.api).proxy
-            proxy.paramUpdate('/master', key, value)
+            begin
+              proxy = SlaveProxy.new('/master', x.api)
+              proxy.param_update(key, value)
+            rescue
+            end
           end
         end
         [1, "ok", 0]
@@ -339,7 +347,6 @@ module ROS
         else
           param = @parameters.select {|x| not x.key.scan(/#{key}/).empty?}
         end
-        p param
         if param.empty?
           [-1, "no param", 0]
         else
