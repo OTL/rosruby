@@ -113,6 +113,10 @@ class TestNode < Test::Unit::TestCase
     assert(node.delete_param('/test_s'))
     assert(!node.has_param('/test_s'))
 
+    # clean
+    assert(node.delete_param('/test1'))
+    assert(node.delete_param('/test2'))
+
     node.shutdown
   end
 
@@ -151,10 +155,12 @@ class TestNode < Test::Unit::TestCase
     node.set_param('/test_param1', 1)
     sleep(0.5)
     assert_equal(1, called)
-    node.set_param('/test_param1', 2)
     subscriber.shutdown
+    node.set_param('/test_param1', 2)
     sleep(0.5)
     assert_equal(1, called)
+    assert(node.delete_param('/test_param1'))
+
     node.shutdown
   end
 end

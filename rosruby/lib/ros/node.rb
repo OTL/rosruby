@@ -143,7 +143,7 @@ module ROS
     # @param [String] key key for check
     # @return [Boolean] true if exits
     def has_param(key)
-      @parameter.has_param(key)
+      @parameter.has_param(expand_local_name(@node_name, key))
     end
 
     ##
@@ -152,7 +152,7 @@ module ROS
     # @param [String] key key for delete
     # @return [Boolean]  true if success, false if it is not exist
     def delete_param(key)
-      @parameter.delete_param(key)
+      @parameter.delete_param(expand_local_name(@node_name, key))
     end
 
     ##
