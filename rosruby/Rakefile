@@ -1,35 +1,41 @@
-task :default => :msg_local
-
-message_dir = "#{ENV['HOME']}/.ros/rosruby"
-
-desc "generate all messages in local dir"
-task :msg_local => message_dir
-
-require 'rake/clean'
-CLEAN << 'doc'
-CLEAN << message_dir
-
-require 'rubygems'
-require 'yard'
-YARD::Rake::YardocTask.new do |t|
-  t.files = ['lib/**/*.rb']
-  t.options = ['--readme', '../README.md']
-end
-
-desc "generate all messages in local dir."
-file message_dir do |file|
-  sh('scripts/gen_for_precompiled.py')
-end
-
-require 'rake/testtask'
-Rake::TestTask.new do |t|
-  require 'ros/roscore'
-  thread = Thread.new do
-    ROS::start_roscore
+namespace :rosruby do
+  task :default => :msg_local
+  
+  message_dir = "#{ENV['HOME']}/.ros/rosruby"
+  
+  desc "generate all messages in local dir"
+  task :msg_local => message_dir
+  
+  require 'rake/clean'
+  CLEAN << 'doc'
+  CLEAN << message_dir
+  
+  require 'rubygems'
+  require 'yard'
+  YARD::Rake::YardocTask.new do |t|
+    t.files = ['lib/**/*.rb']
+    t.options = ['--readme', '../README.md']
   end
-  sleep 1.5
-  t.test_files = FileList['test/test*.rb']
-#  t.test_files = FileList['test/test_node.rb']
-  t.verbose = true
+  
+  desc "generate all messages in local dir."
+  file message_dir do |file|
+    sh('scripts/gen_for_precompiled.py')
+  end
+  
+  require 'rake/testtask'
+  Rake::TestTask.new(:test_inner) do |t|
+    t.test_files = FileList['test/test*.rb']
+    t.verbose = true
+  end
+
+  desc "test with roscore"
+  task :test => [:msg_local] do
+    require 'ros/roscore'
+    thread = Thread.new do
+      ROS::start_roscore
+    end
+    sleep 1.5
+    Rake::Task["rosruby:test_inner"].invoke
+  end
+
 end
-task :test => [:msg_local]

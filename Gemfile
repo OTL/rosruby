@@ -1,0 +1,1 @@
+gem 'rosruby_msgs'
