@@ -5,5 +5,4 @@ rvm:
  - jruby-18mode # JRuby in 1.8 mode
 # - jruby-19mode # JRuby in 1.9 mode
 env:
- - ROS_MASTER_URI=http://localhost:11311 ROS_PACKAGE_PATH=$HOME
- - ROS_MASTER_URI=http://localhost:11311
+ - ROS_MASTER_URI=http://localhost:11311 ROS_PACKAGE_PATH=$HOME RUBYLIB=$HOME/builds/OTL/rosruby/rosruby/lib
