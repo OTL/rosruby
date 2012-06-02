@@ -22,9 +22,9 @@ end
 Gem::PackageTask.new(rosruby_msgs_spec).define
 
 task :default do
-  chdir('rosruby') do
-    Rake::Task["rosruby:default"].invoke
-  end
+#  chdir('rosruby') do
+#    Rake::Task["rosruby:default"].invoke
+#  end
 end
 
 task :test do
