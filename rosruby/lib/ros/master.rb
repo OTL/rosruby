@@ -5,7 +5,7 @@
 # Copyright (C) 2012 Takashi Ogura <t.ogura@gmail.com>
 #
 #
-# == ruby ROS Master 
+# == ruby ROS Master
 #
 #
 
@@ -38,7 +38,7 @@ module ROS
 
     # parameter subscriber
     class ParameterSubscriber
-      
+
       # @param [String] caller_id caller_id of subscriber node
       # @param [String] api XMLRPC URI of subscriber
       # @param [String] key key for parameter
@@ -47,12 +47,12 @@ module ROS
         @api = api
         @key = key
       end
-      
+
       attr_accessor :caller_id
       attr_accessor :key
       attr_accessor :api
     end
-    
+
     # service server
     class ServiceServer
 
@@ -75,7 +75,7 @@ module ROS
 
     # subscriber of topic
     class Subscriber
-      
+
       # @param [String] caller_id caller_id of subscriber node
       # @param [String] topic_name name of topic
       # @param [String] api XMLRPC URI of subscriber node
@@ -85,13 +85,13 @@ module ROS
         @type = topic_type
         @api = api
       end
-      
+
       attr_accessor :caller_id
       attr_accessor :name
       attr_accessor :type
       attr_accessor :api
     end
-    
+
     class Publisher
       # @param [String] caller_id caller_id of publisher node
       # @param [String] topic_name name of topic
@@ -102,7 +102,7 @@ module ROS
         @type = topic_type
         @api = api
       end
-      
+
       attr_accessor :caller_id
       attr_accessor :name
       attr_accessor :type
@@ -150,7 +150,7 @@ module ROS
         puts "unhandled call with #{method}, #{args}"
         [0, "I DON'T KNOW", 0]
       end
-      
+
       @server.add_handler('registerService') do |caller_id, service_name, service_api, caller_api|
         service_name = canonicalize_name(service_name)
         kill_same_name_node(caller_id, caller_api)
@@ -232,16 +232,15 @@ module ROS
           [0, "not found", 0]
         end
       end
-      
+
       @server.add_handler('getPublishedTopics') do |caller_id, subgraph|
         if subgraph == ''
           [1, "ok", @publishers.map {|x| [x.name, x.type]}]
         else
-          [1, "ok", @publishers.select {|x| not x.caller_id.scan(/^#{subgraph}/).empty?}
-             .map {|x| [x.name, x.type]}]
+          [1, "ok", @publishers.select {|x| not x.caller_id.scan(/^#{subgraph}/).empty?}.map {|x| [x.name, x.type]}]
         end
       end
-      
+
       @server.add_handler('getSystemState') do |caller_id|
         def convert_info_to_list(info)
           list = []
@@ -259,7 +258,7 @@ module ROS
             pub_info[pub.name]= [pub.caller_id]
           end
         end
-        
+
         sub_info = {}
         @subscribers.each do |sub|
           if sub_info[sub.name]
@@ -268,7 +267,7 @@ module ROS
             sub_info[sub.name]= [sub.caller_id]
           end
         end
-        
+
         ser_info = {}
         @services.each do |ser|
           if ser_info[ser.name]
@@ -353,7 +352,7 @@ module ROS
           [1, "ok", param.first.key]
         end
       end
-      
+
       @server.add_handler('subscribeParam') do |caller_id, caller_api, key|
         key = canonicalize_name(key)
         @param_subscribers.push(ParameterSubscriber.new(caller_id, caller_api, key))
@@ -382,7 +381,7 @@ module ROS
           [1, "ok", params.first.value]
         end
       end
-      
+
       @server.add_handler('getParamNames') do |caller_id|
         [1, "ok", @parameters.map{|x| x.key}]
       end
@@ -391,7 +390,7 @@ module ROS
       @server.add_handler('getTopicTypes') do |caller_id|
         [1, "ok", @publishers.map {|x| [x.name, x.type]} | @subscribers.map {|x| [x.name, x.type]}]
       end
-      
+
     end
 
     # start server and set default parameters
@@ -399,10 +398,9 @@ module ROS
       puts "=== starting Ruby ROS master @#{@master_uri} ==="
       @parameters.push(Parameter.new('/rosversion', '1.8.6'))
       @parameters.push(Parameter.new('/rosdistro', 'fuerte'))
-      
+
       @server.serve
       self
     end
   end
 end
-

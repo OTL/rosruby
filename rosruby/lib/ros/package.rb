@@ -80,14 +80,18 @@ module ROS
     # @param [Array] packages current found depends
     # @return [Array] packages
     def self.depends(package, packages=[])
-      file = File.open("#{@@all_packages[package]}/manifest.xml")
-      doc = REXML::Document.new(file)
-      doc.elements.each('/package/depend') do |element|
-        depend_package = element.attributes['package']
-        if not packages.include?(depend_package)
-          packages.push(depend_package)
-          self.depends(depend_package, packages)
+      begin
+        file = File.open("#{@@all_packages[package]}/manifest.xml")
+        doc = REXML::Document.new(file)
+        doc.elements.each('/package/depend') do |element|
+          depend_package = element.attributes['package']
+          if not packages.include?(depend_package)
+            packages.push(depend_package)
+            self.depends(depend_package, packages)
+          end
         end
+      rescue
+        puts "#{package}'s manifest.xml not found"
       end
       packages
     end
