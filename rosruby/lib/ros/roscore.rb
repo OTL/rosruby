@@ -11,7 +11,15 @@ module ROS
       ROS::Master.new.start
     end
     
-    sleep 1
+    proxy = XMLRPC::Client.new2(ENV['ROS_MASTER_URI']).proxy
+    pid = nil
+    while not pid
+      begin
+        pid = proxy.getPid('/roscore')
+      rescue
+        sleep 0.5
+      end
+    end
     
     # rosout
     rosout_node = ROS::Node.new('/rosout', :nologger=>true)
