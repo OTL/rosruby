@@ -8,3 +8,5 @@ rvm:
  - rbx-19mode
 env:
  - ROS_MASTER_URI=http://localhost:11311
+ - ROS_PACKAGE_PATH=""
+ - ROS_ROOT=""
