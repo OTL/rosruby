@@ -50,7 +50,7 @@ namespace :rosruby do
   end
 
   desc "test with roscore"
-  task :test => [:msg_local] do
+  task :test do
     require "ros/roscore"
     thread = Thread.new do
       ROS::start_roscore
