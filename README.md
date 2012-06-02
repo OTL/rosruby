@@ -4,27 +4,21 @@ ROS Ruby Client: rosruby
 
 This project supports ruby ROS client. You can program robots by ruby, very easily.
 
-**Homepage**:     http://otl.github.com/rosruby
-**Git**:          http://github.com/OTL/rosruby
-**Author**:       Takashi Ogura
-**Copyright**:    2012
-**License**:      new BSD License
-**Latest Version**: 0.1.0
+**Homepage**:     http://otl.github.com/rosruby   
+**Git**:          http://github.com/OTL/rosruby   
+**Author**:       Takashi Ogura   
+**Copyright**:    2012   
+**License**:      new BSD License   
+**Latest Version**: 0.2.0   
 
 Requirements
 ----------
 - ruby (1.8.7/1.9.3/jruby-18mode)
 - ROS (electric/fuerte)
 
-Let's start
+Install from source
 ---------------
 Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installation](http://ros.org/wiki/ROS/Installation) .
-
-You can install ruby by apt.
-
-```bash
-$ sudo apt-get install ruby
-```
 
 Download rosruby into your ROS_PACKAGE_PATH.
 
@@ -164,7 +158,7 @@ do all tests
 -------------------------
 [![Build Status](https://secure.travis-ci.org/OTL/rosruby.png)](http://travis-ci.org/OTL/rosruby)
 
-run the unit tests.
+run tests.
 
 ```bash
 $ roscd rosruby
