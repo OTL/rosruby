@@ -4,12 +4,12 @@ ROS Ruby Client: rosruby
 
 This project supports ruby ROS client. You can program robots by ruby, very easily.
 
-**Homepage**:     http://otl.github.com/rosruby   
-**Git**:          http://github.com/OTL/rosruby   
-**Author**:       Takashi Ogura   
-**Copyright**:    2012   
-**License**:      new BSD License   
-**Latest Version**: 0.2.0   
+**Homepage**:     http://otl.github.com/rosruby
+**Git**:          http://github.com/OTL/rosruby
+**Author**:       Takashi Ogura
+**Copyright**:    2012
+**License**:      new BSD License
+**Latest Version**: 0.2.0
 
 Requirements
 ----------
@@ -44,12 +44,12 @@ $ source ~/.bashrc
 To use with precompiled electric release
 -----------------------
 If you are using precompiled ROS distro, use the msg/srv generation script
-(gen_for_precompiled.py)
+(rosruby_genmsg.py)
 If you are using ROS from source, it requires just recompile the msg/srv
 packages by rosmake rosruby.
 
 ```bash
-$ rosrun rosruby gen_for_precompiled.py
+$ rosrun rosruby rosruby_genmsg.py
 ```
 
 This converts msg/srv to .rb which is needed by sample programs.
@@ -58,7 +58,7 @@ If you want to make other packages, add package names for args.
 For example,
 
 ```bash
-$ rosrun rosruby gen_for_precompiled.py geometry_msgs nav_msgs
+$ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
 ```
 
 
