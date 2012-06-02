@@ -47,12 +47,12 @@ module ROS
     # It checks all queues of connections and callback for all messages.
     def process_queue #:nodoc:
       @connections.each do |connection|
-        while not connection.msg_queue.empty?
-          msg = connection.msg_queue.pop
-          if @callback
-            @callback.call(msg)
-          end
-        end
+	while not connection.msg_queue.empty?
+	  msg = connection.msg_queue.pop
+	  if @callback
+	    @callback.call(msg)
+	  end
+	end
       end
     end
 
@@ -63,21 +63,21 @@ module ROS
     def add_connection(uri) #:nodoc:
       publisher = SlaveProxy.new(@caller_id, uri)
       begin
-        protocol, host, port = publisher.request_topic(@topic_name, [["TCPROS"]])
-        if protocol == "TCPROS"
-          connection = TCPROS::Client.new(host, port, @caller_id, @topic_name, @topic_type, uri, @tcp_no_delay)
-          connection.start
-        else
-          puts "not support protocol: #{protocol}"
-          raise "not support protocol: #{protocol}"
-        end
-        connection.id = "#{@topic_name}_in_#{@connection_id_number}"
-        @connection_id_number += 1
-        @connections.push(connection)
-        return connection
+	protocol, host, port = publisher.request_topic(@topic_name, [["TCPROS"]])
+	if protocol == "TCPROS"
+	  connection = TCPROS::Client.new(host, port, @caller_id, @topic_name, @topic_type, uri, @tcp_no_delay)
+	  connection.start
+	else
+	  puts "not support protocol: #{protocol}"
+	  raise "not support protocol: #{protocol}"
+	end
+	connection.id = "#{@topic_name}_in_#{@connection_id_number}"
+	@connection_id_number += 1
+	@connections.push(connection)
+	return connection
       rescue
-        puts "request fail"
-        return false
+	puts "request to #{uri} fail"
+	return false
       end
     end
 
@@ -86,7 +86,7 @@ module ROS
     # @return [Array] connection data
     def get_connection_data
       @connections.map do |connection|
-        [connection.id, connection.byte_received, 1]
+	[connection.id, connection.byte_received, 1]
       end
     end
 
@@ -96,7 +96,7 @@ module ROS
     def get_connection_info
       info = []
       @connections.each do |connection|
-        info.push([connection.id, connection.target_uri, 'i', connection.protocol, @topic_name])
+	info.push([connection.id, connection.target_uri, 'i', connection.protocol, @topic_name])
       end
       info
     end

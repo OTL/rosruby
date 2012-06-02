@@ -25,4 +25,10 @@ task :default do
   chdir('rosruby') do
     Rake::Task["rosruby:test"].invoke
   end
+  chdir('rosruby_tf') do
+    Rake::Task["tf:test"].invoke
+  end
+  chdir('rosruby_actionlib') do
+    Rake::Task["actionlib:test"].invoke
+  end
 end

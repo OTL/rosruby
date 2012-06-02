@@ -26,15 +26,15 @@ module Actionlib
 
     def wait_for_result(timeout_sec=10.0)
       begin
-        timeout(timeout_sec) do
-          while not @result
-            sleep 0.1
-            @client.spin_once
-          end
-          @result
-        end
+	timeout(timeout_sec) do
+	  while not @result
+	    sleep 0.1
+	    @client.spin_once
+	  end
+	  @result
+	end
       rescue Timeout::Error
-        nil
+	nil
       end
     end
 
@@ -59,35 +59,35 @@ module Actionlib
       @cancel_publisher = node.advertise("#{action_name}/cancel", Actionlib_msgs::GoalID)
       @last_status = nil
       @status_subscriber = node.subscribe("#{action_name}/status",
-                                          Actionlib_msgs::GoalStatusArray) do |msg|
-        @last_status = msg
+					  Actionlib_msgs::GoalStatusArray) do |msg|
+	@last_status = msg
       end
       @last_result = nil
       @result_subscriber = node.subscribe("#{action_name}/result",
-                                          @result_class) do |msg|
-        @goal_handles.each do |handle|
-          # check if it is my goal
-          if msg.status.goal_id.id == handle.goal_id.id
-            handle.set_result(msg.result)
-            if @result_callback
-              @result_callback.call(msg.result)
-            end
-            @last_result = msg.result
-          end
-        end
+					  @result_class) do |msg|
+	@goal_handles.each do |handle|
+	  # check if it is my goal
+	  if msg.status.goal_id.id == handle.goal_id.id
+	    handle.set_result(msg.result)
+	    if @result_callback
+	      @result_callback.call(msg.result)
+	    end
+	    @last_result = msg.result
+	  end
+	end
       end
 
       @feedback_callback = nil
       @feedback_subscriber = node.subscribe("#{action_name}/feedback",
-                                            @feedback_class) do |msg|
-        @goal_handles.each do |handle|
-          # check if it is my goal
-          if msg.status.goal_id.id == handle.goal_id.id
-            if @feedback_callback
-              @feedback_callback.call(msg.feedback)
-            end
-          end
-        end
+					    @feedback_class) do |msg|
+	@goal_handles.each do |handle|
+	  # check if it is my goal
+	  if msg.status.goal_id.id == handle.goal_id.id
+	    if @feedback_callback
+	      @feedback_callback.call(msg.feedback)
+	    end
+	  end
+	end
       end
     end
 
@@ -103,7 +103,7 @@ module Actionlib
       goal_handle = ClientGoalHandle.new(self, action_goal, @spec)
       @goal_handles.push(goal_handle)
       if options[:wait]
-        wait_for_server
+	wait_for_server
       end
       goal_handle
     end
@@ -122,15 +122,15 @@ module Actionlib
 
     def wait_for_server(timeout_sec=10.0)
       begin
-        timeout(timeout_sec) do
-          while not @last_status
-            sleep 0.1
-            @node.spin_once
-          end
-          true
-        end
+	timeout(timeout_sec) do
+	  while not @last_status
+	    sleep 0.1
+	    @node.spin_once
+	  end
+	  true
+	end
       rescue Timeout::Error
-        false
+	false
       end
     end
 

@@ -2,25 +2,39 @@
 
 require 'ros/master'
 require 'ros'
+require 'timeout'
 
 module ROS
 
-  def self.start_roscore
-    # master
-    thread = Thread.new do 
-      ROS::Master.new.start
-    end
-    
+  def self.wait_roscore(timeout_sec=10.0)
     proxy = XMLRPC::Client.new2(ENV['ROS_MASTER_URI']).proxy
     pid = nil
-    while not pid
-      begin
-        pid = proxy.getPid('/roscore')
-      rescue
-        sleep 0.5
+    begin
+      timeout(timeout_sec) do
+	while not pid
+	  begin
+	    pid = proxy.getPid('/roscore')
+	  rescue
+	    sleep 0.5
+	  end
+	end
       end
+      true
+    rescue Timeout::Error
+      false
     end
-    
+  end
+
+  def self.start_roscore
+    # master
+    thread = Thread.new do
+      ROS::Master.new.start
+    end
+
+    if not wait_roscore(10.0)
+      raise "rosmaster did not response in 10.0 secs"
+    end
+
     # rosout
     rosout_node = ROS::Node.new('/rosout', :nologger=>true)
     rosout_agg_publisher = rosout_node.advertise('/rosout_agg', Rosgraph_msgs::Log)
@@ -34,4 +48,3 @@ end
 if $0 == __FILE__
   ROS::start_roscore
 end
-
