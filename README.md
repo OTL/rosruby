@@ -4,12 +4,12 @@ ROS Ruby Client: rosruby
 
 This project supports ruby ROS client. You can program robots by ruby, very easily.
 
-**Homepage**:     http://otl.github.com/rosruby
-**Git**:          http://github.com/OTL/rosruby
-**Author**:       Takashi Ogura
-**Copyright**:    2012
-**License**:      new BSD License
-**Latest Version**: 0.2.0
+**Homepage**:     http://otl.github.com/rosruby   
+**Git**:          http://github.com/OTL/rosruby   
+**Author**:       Takashi Ogura   
+**Copyright**:    2012   
+**License**:      new BSD License   
+**Latest Version**: 0.1.0   
 
 Requirements
 ----------
