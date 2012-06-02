@@ -48,7 +48,20 @@ module ROS
     # @param [Hash] packages current found packages
     # @param [Array] roots root directories for searching
     # @return [Array] fullpath list of all packages
-    def self.find_all_packages(packages={}, roots=ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT']))
+    def self.find_all_packages(packages={}, roots=[])
+      if roots.empty?
+        if ENV['ROS_PACKAGE_PATH']
+          roots = ENV['ROS_PACKAGE_PATH'].split(':')
+        else
+          puts 'Waring: ROS_PACKAGE_PATH is not set'
+        end
+        if ENV['ROS_ROOT']
+          roots.push(ENV['ROS_ROOT'])
+        else
+          puts 'Waring: ROS_ROOT is not set'
+        end
+      end
+        
       roots.each do |root|
         if File.exists?("#{root}/manifest.xml")
           packages[File.basename(root)] = root
