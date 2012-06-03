@@ -49,8 +49,16 @@ module ROS
         @key = key
       end
 
+      # Get caller_id.
+      # @return [String] caller_id
       attr_accessor :caller_id
+
+      # Get key of parameter.
+      # @return [String] key
       attr_accessor :key
+
+      # Get api URI of this subscriber.
+      # @return [String] URI of the subscriber.
       attr_accessor :api
     end
 
@@ -68,9 +76,21 @@ module ROS
         @service_api = service_api
       end
 
+
+      # Get caller_id.
+      # @return [String] caller_id
       attr_accessor :caller_id
+
+      # Get the name of service.
+      # @return [String] name of service.
       attr_accessor :name
+
+      # Get TCPROS api URI.
+      # @return [String] URI of service (TCPROS URI).
       attr_accessor :service_api
+
+      # Get XMLRPC URI.
+      # @return [String] URI of service server (XMLRPC URI)
       attr_accessor :api
     end
 
@@ -87,12 +107,24 @@ module ROS
         @api = api
       end
 
+      # Get caller_id.
+      # @return [String] caller_id
       attr_accessor :caller_id
+
+      # Get the name of topic.
+      # @return [String] name of topic.
       attr_accessor :name
+
+      # Get type of topic.
+      # @return [String] type of topic in String.
       attr_accessor :msg_type
+
+      # Get XMLRPC URI.
+      # @return [String] URI of this publisher (XMLRPC URI)
       attr_accessor :api
     end
 
+    # Publisher struct for Master
     class Publisher
       # @param [String] caller_id caller_id of publisher node
       # @param [String] topic_name name of topic
@@ -104,9 +136,20 @@ module ROS
         @api = api
       end
 
+      # Get caller_id.
+      # @return [String] caller_id
       attr_accessor :caller_id
+
+      # Get the name of topic.
+      # @return [String] name of topic.
       attr_accessor :name
+
+      # Get type of topic.
+      # @return [String] type of topic in String.
       attr_accessor :msg_type
+
+      # Get XMLRPC API URI
+      # @return [String] URI of this publisher (XMLPRC URI).
       attr_accessor :api
     end
 
@@ -137,12 +180,16 @@ module ROS
       end
     end
 
+    # Delete connection of this api (XMLRPC URI).
+    # @param [String] api URI of node to delete connection.
     def delete_connection(api)
       @subscribers.delete_if {|x| x.api == api}
       @publishers.delete_if {|x| x.api == api}
       @services.delete_if {|x| x.api == api}
     end
 
+    # Initialize XMLRPC Server.
+    # Master#start must be called to be started.
     # @param [String] master_uri uri of master
     def initialize(master_uri=ENV['ROS_MASTER_URI'])
       @master_uri = master_uri

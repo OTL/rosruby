@@ -6,6 +6,10 @@ require 'timeout'
 
 module ROS
 
+  ##
+  # Wait until roscore is ready.
+  # @param [Float] timeout_sec time to wait [sec]
+  # @return [Bool] true: roscore is ready now. false: timeouted.
   def self.wait_roscore(timeout_sec=10.0)
     proxy = XMLRPC::Client.new2(ENV['ROS_MASTER_URI']).proxy
     pid = nil
@@ -25,6 +29,9 @@ module ROS
     end
   end
 
+  ##
+  # Start roscore.
+  # starts rosmaster and rosout.
   def self.start_roscore
     # master
     thread = Thread.new do

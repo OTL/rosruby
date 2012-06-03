@@ -108,10 +108,16 @@ module ROS
       info
     end
 
+    ##
+    # Check if it has connection to the uri
+    # @return [Bool] true: it has connection. false: not connected yet.
     def has_connection_with?(uri)
       get_connected_uri.include?(uri)
     end
 
+    ##
+    # Get the uri list of connected publishers.
+    # @return [Array] URI list.
     def get_connected_uri
       @connections.map {|x| x.target_uri}
     end
