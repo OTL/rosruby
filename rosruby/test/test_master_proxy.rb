@@ -55,7 +55,7 @@ class TestSystem < Test::Unit::TestCase
     assert_equal(1, pub.length)
     assert_equal(1, sub.length)
     # assert_equal(2, ser.length) # ruby logger has no service
-    assert(/^http:.*:11311/ =~ proxy.get_uri)
+    assert(proxy.get_uri.scan(/^#{ENV['ROS_MASTER_URI']}/))
   end
 
   def test_accessor
