@@ -179,7 +179,7 @@ $ gem install yard redcarpet
 Then try to generate documentds.
 
 ```bash
-$ rake yard
+$ rake rosruby:yard
 ```
 
 You can access to the generated documents from [here](http://otl.github.com/rosruby/doc/).
