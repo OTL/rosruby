@@ -11,13 +11,13 @@ module ROS
     pid = nil
     begin
       timeout(timeout_sec) do
-	while not pid
-	  begin
-	    pid = proxy.getPid('/roscore')
-	  rescue
-	    sleep 0.5
-	  end
-	end
+        while not pid
+          begin
+            pid = proxy.getPid('/roscore')
+          rescue
+            sleep 0.5
+          end
+        end
       end
       true
     rescue Timeout::Error

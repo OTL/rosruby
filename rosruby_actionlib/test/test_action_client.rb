@@ -11,19 +11,19 @@ class TestActionClient < Test::Unit::TestCase
     node = ROS::Node.new('/test_action_client')
     client =
       Actionlib::ActionClient.new(node,
-				  '/fibonacci',
-				  Actionlib_tutorials::FibonacciAction)
+                                  '/fibonacci',
+                                  Actionlib_tutorials::FibonacciAction)
     node2 = ROS::Node.new('/test_action_client_check')
-    sleep 2
+    sleep 1
     status_publisher =
       node2.advertise('/fibonacci/status', Actionlib_msgs::GoalStatusArray)
     result_publisher =
       node2.advertise('/fibonacci/result',
-		      Actionlib_tutorials::FibonacciActionResult)
+                      Actionlib_tutorials::FibonacciActionResult)
     @goal = nil
     goal_subscriber =
       node2.subscribe('/fibonacci/goal',
-		      Actionlib_tutorials::FibonacciActionGoal) do |msg|
+                      Actionlib_tutorials::FibonacciActionGoal) do |msg|
       @goal = msg
       result = Actionlib_tutorials::FibonacciActionResult.new
       result.result.sequence = [1,2,3]
@@ -37,14 +37,24 @@ class TestActionClient < Test::Unit::TestCase
     msg = Actionlib_msgs::GoalStatusArray.new
     status_publisher.publish(msg)
 
-    assert(client.wait_for_server(1.0))
+    assert(client.wait_for_server(3.0))
 
     goal = Actionlib_tutorials::FibonacciGoal.new
     goal.order = 5
     handle = client.send_goal(goal)
-    sleep 1
-    node.spin_once
-    node2.spin_once
+
+    begin
+      timeout(3.0) do
+        while not @goal
+          sleep 0.5
+          node.spin_once
+          node2.spin_once
+        end
+      end
+    rescue Timeout::Error
+      assert(nil, 'timeouted')
+    end
+
     assert(@goal)
 
     assert_not_equal("", handle.goal_id.id)

@@ -20,14 +20,14 @@ class TestRegister < Test::Unit::TestCase
   end
 
   def test_subscriber
-    proxy = ROS::MasterProxy.new('/test_node2', ENV['ROS_MASTER_URI'], 'http://dummy:11111')
+    proxy = ROS::MasterProxy.new('/test_node2', ENV['ROS_MASTER_URI'], 'http://dummy:11112')
     pub = proxy.register_subscriber('/rosout_agg', 'rosgraph_msgs/Log')
     assert(pub.length > 0)
     proxy.unregister_subscriber('/rosout_agg')
   end
 
   def test_publisher
-    proxy = ROS::MasterProxy.new('/test_node3', ENV['ROS_MASTER_URI'], 'http://dummy:11111')
+    proxy = ROS::MasterProxy.new('/test_node3', ENV['ROS_MASTER_URI'], 'http://dummy:11113')
     sub = proxy.register_publisher('/rosout', 'rosgraph_msgs/Log')
     assert(sub.length > 0)
     num = proxy.unregister_publisher('/rosout')
@@ -35,7 +35,7 @@ class TestRegister < Test::Unit::TestCase
   end
 
   def test_param_subscriber
-    proxy = ROS::MasterProxy.new('/test_node4', ENV['ROS_MASTER_URI'], 'http://dummy:11111')
+    proxy = ROS::MasterProxy.new('/test_node4', ENV['ROS_MASTER_URI'], 'http://dummy:11114')
     assert(proxy.subscribe_param('/rosversion'))
     assert(proxy.unsubscribe_param('/rosversion'))
   end

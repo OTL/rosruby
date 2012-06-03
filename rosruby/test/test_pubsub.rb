@@ -107,6 +107,35 @@ class TestPubSubNormal < Test::Unit::TestCase
     node.shutdown
   end
 
+  def test_single_subpub
+    # subscribe -> advertise
+    node = ROS::Node.new('/test6')
+    message_has_come1 = nil
+
+    sub1 = node.subscribe('/chatter', Std_msgs::String) do |msg|
+      if msg.data == TEST_STRING1
+        message_has_come1 = true
+      end
+    end
+
+    sleep(1) # wait for registration and update
+
+    pub1 = node.advertise('/chatter', Std_msgs::String)
+
+    sleep(5) # wait for registration and update
+
+    pub_msg1 = Std_msgs::String.new
+    pub_msg1.data = TEST_STRING1
+
+    pub1.publish(pub_msg1)
+
+    sleep(1)
+    node.spin_once
+
+    assert(message_has_come1)
+
+  end
+
   def test_shutdown_by_publisher_or_subscriber_directly
     node = ROS::Node.new('/test4')
     pub = node.advertise('/hoge', Std_msgs::String)

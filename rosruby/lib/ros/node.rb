@@ -97,6 +97,12 @@ module ROS
     # @return [String] uri string of master
     attr_reader :master_uri
 
+    # get node URI
+    # @return [String] uri of this node's api
+    def slave_uri
+      @manager.get_uri
+    end
+
     # hostname of this node.
     # @return [String] host name
     attr_reader :host

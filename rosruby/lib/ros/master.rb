@@ -83,13 +83,13 @@ module ROS
       def initialize(caller_id, topic_name, topic_type, api)
         @caller_id = caller_id
         @name = topic_name
-        @type = topic_type
+        @msg_type = topic_type
         @api = api
       end
 
       attr_accessor :caller_id
       attr_accessor :name
-      attr_accessor :type
+      attr_accessor :msg_type
       attr_accessor :api
     end
 
@@ -100,13 +100,13 @@ module ROS
       def initialize(caller_id, topic_name, topic_type, api)
         @caller_id = caller_id
         @name = topic_name
-        @type = topic_type
+        @msg_type = topic_type
         @api = api
       end
 
       attr_accessor :caller_id
       attr_accessor :name
-      attr_accessor :type
+      attr_accessor :msg_type
       attr_accessor :api
     end
 
@@ -179,7 +179,7 @@ module ROS
         topic_name = canonicalize_name(topic_name)
         kill_same_name_node(caller_id, api)
         @subscribers.push(Subscriber.new(caller_id, topic_name, type, api))
-        pub_apis = @publishers.select {|x|x.name == topic_name and x.type == type}.map {|x| x.api }
+        pub_apis = @publishers.select {|x|x.name == topic_name and x.msg_type == type}.map {|x| x.api }
         [1, "registered", pub_apis]
       end
 
@@ -195,17 +195,19 @@ module ROS
         topic_name = canonicalize_name(topic_name)
         kill_same_name_node(caller_id, api)
         @publishers.push(Publisher.new(caller_id, topic_name, type, api))
-        sub_apis = @subscribers.select {|x|x.name == topic_name and x.type == type}.map {|x| x.api }
-        pub_apis = @publishers.select {|x|x.name == topic_name and x.type == type}.map {|x| x.api }
+        sub_apis = @subscribers.select {|x|x.name == topic_name and x.msg_type == type}.map {|x| x.api }
         if not sub_apis
           sub_apis = []
         end
+        pub_apis = @publishers.select {|x|x.name == topic_name and x.msg_type == type}.map {|x| x.api }
         @queue.push(proc{
                       sub_apis.each do |s_api|
                         proxy = SlaveProxy.new('/master', s_api)
                         begin
                           proxy.publisher_update(topic_name, pub_apis)
-                        rescue
+                        rescue => e
+                          p e.faultCode
+                          p e.faultString
                           delete_connection(s_api)
                         end
                       end
@@ -218,12 +220,22 @@ module ROS
         before = @publishers.length
         @publishers.delete_if {|x| x.name == topic_name and x.caller_id == caller_id}
         pub_apis = @publishers.select {|x|x.name == topic_name and x.caller_id == caller_id}.map {|x| x.api }
-        proxy = SlaveProxy.new('/master', api)
-        begin
-          code, status, ignore = proxy.publisher_update(topic_name, pub_apis)
-        rescue
-          delete_connection(api)
+        sub_apis = @subscribers.select {|x|x.name == topic_name}.map {|x| x.api }
+        if not sub_apis
+          sub_apis = []
         end
+#        @queue.push(proc{
+                      sub_apis.each do |s_api|
+                        proxy = SlaveProxy.new('/master', s_api)
+                        begin
+                          proxy.publisher_update(topic_name, pub_apis)
+                        rescue => e
+                          p e.faultCode
+                          p e.faultString
+                          delete_connection(s_api)
+                        end
+                      end
+ #                   })
         after = @publishers.length
         [1, "deleted", before - after]
       end
@@ -249,9 +261,9 @@ module ROS
 
       @server.add_handler('getPublishedTopics') do |caller_id, subgraph|
         if subgraph == ''
-          [1, "ok", @publishers.map {|x| [x.name, x.type]}]
+          [1, "ok", @publishers.map {|x| [x.name, x.msg_type]}]
         else
-          [1, "ok", @publishers.select {|x| not x.caller_id.scan(/^#{subgraph}/).empty?}.map {|x| [x.name, x.type]}]
+          [1, "ok", @publishers.select {|x| not x.caller_id.scan(/^#{subgraph}/).empty?}.map {|x| [x.name, x.msg_type]}]
         end
       end
 
@@ -402,7 +414,7 @@ module ROS
 
       # not documented api
       @server.add_handler('getTopicTypes') do |caller_id|
-        [1, "ok", @publishers.map {|x| [x.name, x.type]} | @subscribers.map {|x| [x.name, x.type]}]
+        [1, "ok", @publishers.map {|x| [x.name, x.msg_type]} | @subscribers.map {|x| [x.name, x.msg_type]}]
       end
 
     end
@@ -414,9 +426,22 @@ module ROS
       @parameters.push(Parameter.new('/rosdistro', 'fuerte'))
       @thread = Thread.new do
         while true
+          procs = []
+          # lock here
           proc_obj = @queue.pop
-          sleep 0.1
-          proc_obj.call
+          procs.push(proc_obj)
+          while not @queue.empty?
+            proc_obj = @queue.pop
+            procs.push(proc_obj)
+          end
+          # wait until server returns xmlrpc response...
+          sleep 0.2
+          begin
+            procs.each {|x| x.call}
+          rescue => e
+            p 'error!'
+            p e.faultString
+          end
         end
       end
       @server.serve
