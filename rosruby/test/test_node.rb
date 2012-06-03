@@ -171,4 +171,31 @@ class TestNode < Test::Unit::TestCase
 
     node.shutdown
   end
+
+  def test_sim_time
+    param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/use_sim_time', {})
+    param.set_param('/use_sim_time', true)
+
+    clock_node = ROS::Node.new('/clock')
+    clock_pub = clock_node.advertise('/clock', Rosgraph_msgs::Clock)
+    sleep 1
+    node = ROS::Node.new('/test_sim_time')
+    sleep 1
+
+    time_msg = Rosgraph_msgs::Clock.new
+    time_msg.clock = ROS::Time.new(::Time.now)
+
+    clock_pub.publish(time_msg)
+
+    sleep 1
+    node.spin_once
+
+    sim_current = ROS::Time.now
+    assert_equal(time_msg.clock, sim_current)
+    param.delete_param('/use_sim_time')
+
+    ROS::Time.initialize_with_sim_or_wall(node)
+    node.shutdown
+    clock_node.shutdown
+  end
 end

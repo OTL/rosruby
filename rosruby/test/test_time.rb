@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'test/unit'
-require 'ros/time'
-require 'ros/duration'
+require 'ros'
 
 class TestTime < Test::Unit::TestCase
   def test_time
@@ -36,4 +35,10 @@ class TestTime < Test::Unit::TestCase
     assert(d1 < d2)
 
   end
+
+  def test_to_time
+    t1 = ROS::Time.new
+    assert_equal(::Time, t1.to_time.class)
+  end
+
 end

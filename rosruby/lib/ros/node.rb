@@ -80,6 +80,9 @@ module ROS
       if not options[:nologger]
         @logger = ::ROS::Log.new(self)
       end
+      # use sim time
+      ROS::Time.initialize_with_sim_or_wall(self)
+
       # because xmlrpc server use signal trap, after serve, it have to trap sig      trap_signals
       ObjectSpace.define_finalizer(self, proc {|id| self.shutdown})
     end
