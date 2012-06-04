@@ -7,6 +7,4 @@
   <depend stack="ros" /> <!-- roslang, rospack -->
   <depend stack="ros_comm" /> <!-- rosgraph_msgs, std_msgs -->
   <depend stack="ros_tutorials" /> <!-- for test and samples -->
-  <depend stack="common_tutorials" /> <!-- for test and samples -->
-  <depend stack="geometry" /> <!-- for tf -->
 </stack>

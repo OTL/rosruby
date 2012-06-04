@@ -122,7 +122,7 @@ class TestPubSubNormal < Test::Unit::TestCase
 
     pub1 = node.advertise('/chatter', Std_msgs::String)
 
-    sleep(5) # wait for registration and update
+    sleep(1) # wait for registration and update
 
     pub_msg1 = Std_msgs::String.new
     pub_msg1.data = TEST_STRING1
