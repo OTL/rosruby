@@ -1043,44 +1043,40 @@ def msg_generator_internal(package, name, spec):
         yield "  @@slot_types = []"
 
     yield """
-  def initialize
-    #    Constructor. Any message fields that are implicitly/explicitly
-    #    set to None will be assigned a default value. The recommend
-    #    use is keyword arguments as this is more robust to future message
-    #    changes.  You cannot mix in-order arguments and keyword arguments.
-    #
-    #    The available fields are:
-    #       %s
-    #
-    #    @param args: complete set of field values, in .msg order
-    #    @param kwds: use keyword arguments corresponding to message field names
-    #    to set specific fields.
-    #
-"""%','.join(spec_names)
+  # Constructor. You can set the default values using keyword operators.
+  #
+  # @param [Hash] args keyword for initializing values"""
+    for (t, s) in zip(spec.types, spec_names):
+        yield "  # @option args [%s] :%s initialize value"%(t, s)
+    yield "  def initialize(args={})"
     if len(spec_names):
         yield "    # message fields cannot be None, assign default values for those that are"
     if len(spec_names) > 0:
       for (t, s) in zip(spec.types, spec_names):
-          yield "    @%s = %s"%(s, default_value(t, package))
-      yield "  end"
+        yield """    if args[:%s]
+      @%s = args[:%s]
+    else"""%(s, s, s)
+        yield "      @%s = %s"%(s, default_value(t, package))
+        yield "    end"
+    yield "  end" # end of initialize
+
     yield """
+  # internal API method
+  # @return [String] Message type string.
   def _get_types
-    # internal API method
-    return @slot_types
+    @slot_types
   end
 
-  def serialize(buff)
-    #    serialize message into buffer
-    #    @param buff: buffer
-    #    @type  buff: StringIO"""
+  # serialize message into buffer
+  # @param [IO] buff buffer
+  def serialize(buff)"""
     for y in serialize_fn_generator(package, spec):
         yield "    "+ y
     yield "  end"
     yield """
+  #  unpack serialized message in str into this message instance
+  #  @param [String] str: byte array of serialized message
   def deserialize(str)
-    #    unpack serialized message in str into this message instance
-    #    @param str: byte array of serialized message
-    #    @type  str: str
 """
     for y in deserialize_fn_generator(package, spec):
         yield "    " + y
