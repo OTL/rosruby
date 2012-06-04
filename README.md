@@ -2,7 +2,7 @@ ROS Ruby Client: rosruby
 =======
 [ROS](http://ros.org) is Robot Operating System developed by [Willow Garage](http://www.willowgarage.com/) and open source communities.
 
-This project supports ruby ROS client. You can program robots by ruby, very easily.
+This project supports ruby ROS client. You can program intelligent robots by ruby, very easily.
 
 **Homepage**:     http://otl.github.com/rosruby   
 **Git**:          http://github.com/OTL/rosruby   
@@ -26,6 +26,11 @@ Download rosruby into your ROS_PACKAGE_PATH.
 $ git clone git://github.com/OTL/rosruby.git
 ```
 
+Or use rosinstall/rosws. rosintall file is
+
+    https://raw.github.com/OTL/rosruby/master/rosruby.rosinstall
+
+
 please add RUBYLIB environment variable, like below (if you are using bash).
 
 ```bash
@@ -33,7 +38,7 @@ $ echo "export RUBYLIB=`rospack find rosruby`/lib" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
-To use with precompiled electric release
+Use with precompiled electric release
 -----------------------
 If you are using precompiled ROS distro, use the msg/srv generation script
 (rosruby_genmsg.py)
@@ -131,7 +136,6 @@ $ rostopic list
 $ rostopic echo /chatter
 ```
 
-
 Try Service?
 ----------------------
 
@@ -145,28 +149,30 @@ run client with args ('a' and 'b' for roscpp_tutorials/TwoInts)
 $ rosrun rosruby add_two_ints_client.rb 10 20
 ```
 
-and more...
+And more...
 ----------------------
-You need more tools for testing, generating documentations.
+There are [rosruby_common](https://github.com/OTL/rosruby_common) stack that contains actionlib and tf.
+
+Do all tests
+-------------------------
+
+[![Build Status](https://secure.travis-ci.org/OTL/rosruby.png)](http://travis-ci.org/OTL/rosruby)
+
+Install some packages for tests.
 
 ```bash
 $ sudo apt-get install rake gem
 $ sudo gem install yard redcarpet simplecov
 ```
 
-do all tests
--------------------------
-[![Build Status](https://secure.travis-ci.org/OTL/rosruby.png)](http://travis-ci.org/OTL/rosruby)
-
 run tests.
 
 ```bash
 $ roscd rosruby
-$ rake rosruby:test
+$ rake test
 ```
 
-
-documents
+Documents
 --------------------------
 you can generate API documents using yard.
 Document generation needs yard and redcarpet.
@@ -179,7 +185,7 @@ $ gem install yard redcarpet
 Then try to generate documentds.
 
 ```bash
-$ rake rosruby:yard
+$ rake yard
 ```
 
 You can access to the generated documents from [here](http://otl.github.com/rosruby/doc/).
