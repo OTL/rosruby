@@ -1,7 +1,7 @@
 <package>
   <description brief="rosruby_actionlib">
 
-     rosruby_actionlib
+    actionlib for rosruby.
 
   </description>
   <author>Takashi Ogura</author>
@@ -10,6 +10,7 @@
   <url>http://ros.org/wiki/rosruby_actionlib</url>
   <depend package="rosruby"/>
   <depend package="actionlib_msgs"/>
+  <depend package="actionlib_tutorials"/> <!-- for test only -->
 
 </package>
 

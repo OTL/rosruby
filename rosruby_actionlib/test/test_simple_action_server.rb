@@ -6,7 +6,7 @@ require 'test/unit'
 require 'actionlib/simple_action_server'
 require 'actionlib_tutorials/FibonacciAction'
 
-class TestActionServer < Test::Unit::TestCase
+class TestSimpleActionServer < Test::Unit::TestCase
   def test_success_pubsub
     node = ROS::Node.new('/test_simple_action_server')
     server = Actionlib::SimpleActionServer.new(node, '/fibonacci',
@@ -19,7 +19,7 @@ class TestActionServer < Test::Unit::TestCase
       server.set_succeeded(result)
     end
 
-    node2 = ROS::Node.new('/test_action_server_check')
+    node2 = ROS::Node.new('/test_simple_action_server_check')
     goal_publisher = node2.advertise('/fibonacci/goal', Actionlib_tutorials::FibonacciActionGoal)
     @result = nil
     @id = nil
@@ -39,13 +39,18 @@ class TestActionServer < Test::Unit::TestCase
 
     goal.goal.order = 2
     goal_publisher.publish(goal)
-    sleep 1
-    node.spin_once
-    node2.spin_once
 
-    sleep 1
-    node.spin_once
-    node2.spin_once
+    begin
+      timeout(5.0) do
+        while not @order or not @result
+          sleep 0.5
+          node.spin_once
+          node2.spin_once
+        end
+      end
+    rescue Timeout::Error
+      assert(nil, 'timeouted')
+    end
 
     assert_equal(2, @order)
     assert(@result)

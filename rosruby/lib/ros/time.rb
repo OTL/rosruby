@@ -6,6 +6,9 @@
 #
 # Time object for ROS.
 #
+
+require 'rosgraph_msgs/Clock'
+
 module ROS
 
   ##
@@ -67,9 +70,51 @@ module ROS
   #
   class Time < TimeValue
 
+    # use simulated time?
+    @@use_sim_time = false
+
+    # current simulated time
+    @@current_sim_time = nil
+
+    # subscriber for /clock
+    @@clock_subscriber = nil
+
+    # parameter name for switching sim/wall time.
+    SIM_TIME_PARAMETER = '/use_sim_time'
+
+    ##
+    # initialize Time
+    # @param [Node] node for subscribe /clock.
+    def self.initialize_with_sim_or_wall(node)
+      @@use_sim_time = node.get_param(SIM_TIME_PARAMETER, false)
+      if @@use_sim_time and not @@clock_subscriber
+        puts 'initializing simulated clock (/clock)'
+        @@clock_subscriber = node.subscribe('/clock',
+                                            Rosgraph_msgs::Clock) do |msg|
+          @@current_sim_time = msg.clock
+        end
+        @@sim_thread = Thread.new do
+          while node.ok?
+            @@clock_subscriber.process_queue
+          end
+        end
+      elsif not @@use_sim_time and @@clock_subscriber
+        begin
+          @@clock_subscriber.shutdown
+        rescue => e
+          # even if node is already shutdown, do nothing.
+        end
+        @@current_sim_time = nil
+      end
+    end
+
     # initialize with current time
     def self.now
-      self.new(::Time::now)
+      if @@current_sim_time
+        @@current_sim_time
+      else
+        self.new(::Time::now)
+      end
     end
 
     # @overload initialize(time)
@@ -96,7 +141,7 @@ module ROS
       tm.canonicalize
     end
 
-    # subtract time value
+    # subtract time value.
     # @param [Time] other
     # @return [Duration] duration
     def -(other)
@@ -104,6 +149,12 @@ module ROS
       d.secs = @secs - other.secs
       d.nsecs = @nsecs - other.nsecs
       d.canonicalize
+    end
+
+    # returns ruby Time object.
+    # @return [Time] ruby time object
+    def to_time
+      ::Time.at(@secs, @nsecs)
     end
   end
 end

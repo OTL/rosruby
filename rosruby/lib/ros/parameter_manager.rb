@@ -19,7 +19,7 @@ module ROS
 
     # @param [String] master_uri URI of ROS Master (parameter server)
     # @param [String] caller_id caller_id of this node
-    # @param [Array] remappings remapps to use for local remappings
+    # @param [Hash] remappings remapps to use for local remappings
     def initialize(master_uri, caller_id, remappings)
       @caller_id = caller_id
       @master_uri = master_uri

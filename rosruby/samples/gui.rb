@@ -7,7 +7,7 @@
 #
 # if you don't have the message files, try
 #
-# $ rosrun rosruby gen_for_precompiled.py geometry_msgs
+# $ rosrun rosruby rosruby_genmsg.py geometry_msgs
 #
 
 require 'tk'

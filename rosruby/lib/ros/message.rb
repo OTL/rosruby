@@ -27,8 +27,15 @@ module ROS
       @format = format
     end
 
+    ##
+    # get the format string.
+    # @return [String] format string.
     attr_reader :format
 
+    ##
+    # Calc the size
+    # @param [String] format format string to calculate.
+    # @return [Integer] size of this format (byte).
     def self.calc_size(format)
       array = []
       start = 0

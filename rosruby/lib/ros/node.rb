@@ -77,7 +77,12 @@ module ROS
 
       @manager = GraphManager.new(@node_name, @master_uri, @host)
       @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
-      @logger = ::ROS::Log.new(self)
+      if not options[:nologger]
+        @logger = ::ROS::Log.new(self)
+      end
+      # use sim time
+      ROS::Time.initialize_with_sim_or_wall(self)
+
       # because xmlrpc server use signal trap, after serve, it have to trap sig      trap_signals
       ObjectSpace.define_finalizer(self, proc {|id| self.shutdown})
     end
@@ -94,6 +99,12 @@ module ROS
     # URI of master
     # @return [String] uri string of master
     attr_reader :master_uri
+
+    # get node URI
+    # @return [String] uri of this node's api
+    def slave_uri
+      @manager.get_uri
+    end
 
     # hostname of this node.
     # @return [String] host name
@@ -143,7 +154,7 @@ module ROS
     # @param [String] key key for check
     # @return [Boolean] true if exits
     def has_param(key)
-      @parameter.has_param(key)
+      @parameter.has_param(expand_local_name(@node_name, key))
     end
 
     ##
@@ -152,7 +163,7 @@ module ROS
     # @param [String] key key for delete
     # @return [Boolean]  true if success, false if it is not exist
     def delete_param(key)
-      @parameter.delete_param(key)
+      @parameter.delete_param(expand_local_name(@node_name, key))
     end
 
     ##

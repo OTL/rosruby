@@ -48,7 +48,20 @@ module ROS
     # @param [Hash] packages current found packages
     # @param [Array] roots root directories for searching
     # @return [Array] fullpath list of all packages
-    def self.find_all_packages(packages={}, roots=ENV['ROS_PACKAGE_PATH'].split(':').push(ENV['ROS_ROOT']))
+    def self.find_all_packages(packages={}, roots=[])
+      if roots.empty?
+        if ENV['ROS_PACKAGE_PATH']
+          roots = ENV['ROS_PACKAGE_PATH'].split(':')
+        else
+          puts 'Waring: ROS_PACKAGE_PATH is not set'
+        end
+        if ENV['ROS_ROOT']
+          roots.push(ENV['ROS_ROOT'])
+        else
+          puts 'Waring: ROS_ROOT is not set'
+        end
+      end
+        
       roots.each do |root|
         if File.exists?("#{root}/manifest.xml")
           packages[File.basename(root)] = root
@@ -80,14 +93,18 @@ module ROS
     # @param [Array] packages current found depends
     # @return [Array] packages
     def self.depends(package, packages=[])
-      file = File.open("#{@@all_packages[package]}/manifest.xml")
-      doc = REXML::Document.new(file)
-      doc.elements.each('/package/depend') do |element|
-        depend_package = element.attributes['package']
-        if not packages.include?(depend_package)
-          packages.push(depend_package)
-          self.depends(depend_package, packages)
+      begin
+        file = File.open("#{@@all_packages[package]}/manifest.xml")
+        doc = REXML::Document.new(file)
+        doc.elements.each('/package/depend') do |element|
+          depend_package = element.attributes['package']
+          if not packages.include?(depend_package)
+            packages.push(depend_package)
+            self.depends(depend_package, packages)
+          end
         end
+      rescue
+        puts "#{package}'s manifest.xml not found"
       end
       packages
     end

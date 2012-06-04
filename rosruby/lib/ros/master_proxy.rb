@@ -139,6 +139,7 @@ module ROS
       else
         raise message
       end
+      return false
     end
 
     ##
@@ -232,7 +233,7 @@ module ROS
     end
 
     # Master URI
-    # @return [String]
+    # @return [String] uri of master
     attr_reader :master_uri
 
     # set the master uri

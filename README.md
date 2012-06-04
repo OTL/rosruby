@@ -13,20 +13,12 @@ This project supports ruby ROS client. You can program robots by ruby, very easi
 
 Requirements
 ----------
-- ruby (1.8.x/1.9.x)
+- ruby (1.8.7/1.9.3/jruby-18mode)
 - ROS (electric/fuerte)
-  - ROS requires python2.7 or more libraries
 
-
-Let's start
+Install from source
 ---------------
 Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installation](http://ros.org/wiki/ROS/Installation) .
-
-You can install ruby by apt.
-
-```bash
-$ sudo apt-get install ruby
-```
 
 Download rosruby into your ROS_PACKAGE_PATH.
 
@@ -44,12 +36,12 @@ $ source ~/.bashrc
 To use with precompiled electric release
 -----------------------
 If you are using precompiled ROS distro, use the msg/srv generation script
-(gen_for_precompiled.py)
+(rosruby_genmsg.py)
 If you are using ROS from source, it requires just recompile the msg/srv
 packages by rosmake rosruby.
 
 ```bash
-$ rosrun rosruby gen_for_precompiled.py
+$ rosrun rosruby rosruby_genmsg.py
 ```
 
 This converts msg/srv to .rb which is needed by sample programs.
@@ -58,7 +50,7 @@ If you want to make other packages, add package names for args.
 For example,
 
 ```bash
-$ rosrun rosruby gen_for_precompiled.py geometry_msgs nav_msgs
+$ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
 ```
 
 
@@ -164,17 +156,13 @@ $ sudo gem install yard redcarpet simplecov
 
 do all tests
 -------------------------
-run roscore if is not running.
+[![Build Status](https://secure.travis-ci.org/OTL/rosruby.png)](http://travis-ci.org/OTL/rosruby)
 
-```bash
-$ roscore
-```
-
-and run the unit tests.
+run tests.
 
 ```bash
 $ roscd rosruby
-$ rake test
+$ rake rosruby:test
 ```
 
 
@@ -191,7 +179,7 @@ $ gem install yard redcarpet
 Then try to generate documentds.
 
 ```bash
-$ rake yard
+$ rake rosruby:yard
 ```
 
 You can access to the generated documents from [here](http://otl.github.com/rosruby/doc/).

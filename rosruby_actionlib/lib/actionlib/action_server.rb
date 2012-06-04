@@ -1,3 +1,9 @@
+#  actionlib/action_server.rb
+#
+# License: BSD
+#
+# Copyright (C) 2012  Takashi Ogura <t.ogura@gmail.com>
+#
 require 'ros'
 require 'timeout'
 
@@ -7,7 +13,13 @@ require 'actionlib_msgs/GoalID'
 
 module Actionlib
 
+  # Goal hander of action server.
   class ServerGoalHandle
+
+    # @param [ActionServer] server server of this goal.
+    # @param [ROS::Message] goal object.
+    # @param [ROS::Message] status object.
+    # @param [Class] spec Action spec.
     def initialize(server, action_goal, status, spec)
       @server = server
       @goal = action_goal.goal
@@ -19,10 +31,14 @@ module Actionlib
       @status = status
     end
 
+    # broadcast a feedback object for clients.
+    # @param [ROS::Message] feedback actionlib feedback object
     def publish_feedback(feedback)
       @server.publish_feedback(Actionlib_msgs::GoalStatus::ACTIVE, feedback, @goal_id)
     end
 
+    # set 'this is succeeded' with a result.
+    # @param [ROS::Message] result actionlib result object.
     def set_succeeded(result=nil)
       if not result
         result = @result_class.new.result
@@ -30,6 +46,8 @@ module Actionlib
       @server.publish_result(Actionlib_msgs::GoalStatus::SUCCEEDED, result, @goal_id)
     end
 
+    # set this goal has canceled with a result.
+    # @param [ROS::Message] result actionlib result object.
     def set_canceled(result=nil)
       if not result
         result = @result_class.new.result
@@ -37,6 +55,8 @@ module Actionlib
       @server.publish_result(Actionlib_msgs::GoalStatus::PREEMPTED, result, @goal_id)
     end
 
+    # set this goal has aborted with a result.
+    # @param [ROS::Message] result actionlib result object.
     def set_aborted(result=nil)
       if not result
         result = @result_class.new.result
@@ -44,14 +64,24 @@ module Actionlib
       @server.publish_result(Actionlib_msgs::GoalStatus::ABORTED, result, @goal_id)
     end
 
+    # @param [Actionlib_msgs::GoalID] goal_id goal id
     attr_reader :goal_id
+
+    # @param [ROS::Message] actionlib goal object
     attr_reader :goal
+
+    # @param [ROS::Message] actionlib status object
     attr_reader :status
   end
 
-
+  # Action server of Actionlib
   class ActionServer
 
+    # @param [ROS::Node] node node for pub/sub.
+    # @param [String] action_name name of this action.
+    # @param [Class] spec class object of this Action.
+    # @param [Hash] options option
+    # @option [proc] :cancel_callback call back for /cancel
     def initialize(node, action_name, spec, options={})
       @spec = spec
       @action_name = action_name
@@ -63,6 +93,8 @@ module Actionlib
       @node = node
     end
 
+    # start serve in a thread
+    # @param [proc] callback callback for /goal
     def start(&callback)
       @goal_callback = callback
       @goal_status_array = Actionlib_msgs::GoalStatusArray.new
@@ -118,6 +150,10 @@ module Actionlib
       end
     end
 
+    # Publishes result.
+    # @param [ROS::Message] status actionlib status message.
+    # @param [ROS::Message] result actionlib result.
+    # @param [Actionlib_msgs::GoalID] goal_id goal id.
     def publish_result(status, result, goal_id)
       action_result = @result_class.new
       action_result.header.stamp = ROS::Time::now
@@ -128,6 +164,10 @@ module Actionlib
       set_status(goal_id, status)
     end
 
+    # Publishes feedback.
+    # @param [ROS::Message] status actionlib status message.
+    # @param [ROS::Message] feedback actionlib feedback.
+    # @param [Actionlib_msgs::GoalID] goal_id goal id.
     def publish_feedback(status, feedback, goal_id)
       action_feedback = @result_class.new
       action_feedback.header.stamp = ROS::Time::now
@@ -138,6 +178,7 @@ module Actionlib
       set_status(goal_id, status)
     end
 
+    # Shutdown this server.
     def shutdown
       if @is_running
         @is_running = false
@@ -149,6 +190,9 @@ module Actionlib
 
     :private
 
+    # Set status for a goal_id
+    # @param [Actionlib_msgs::GoalID] goal_id goal id.
+    # @param [ROS::Message] status status of goal id.
     def set_status(goal_id, status)
       @goal_status_array.status_list.each do |x|
         if x.goal_id.id == goal_id.id

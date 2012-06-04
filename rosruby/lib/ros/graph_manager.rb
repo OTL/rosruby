@@ -10,7 +10,7 @@
 # Master API document is http://ros.org/wiki/ROS/Master_API
 # Slave API is http://ros.org/wiki/ROS/Slave_API
 #
-require 'xmlrpc/server'
+require 'ros/xmlrpcserver'
 require 'ros/master_proxy'
 require 'timeout'
 
@@ -26,9 +26,6 @@ module ROS
 
     # for canonicalize_name(parameter_key)
     include Name
-
-    # max number of connection with other slave nodes
-    MAX_CONNECTION = 100
 
     # @return [Array] all Publisher of this node
     attr_reader :publishers
@@ -62,7 +59,7 @@ module ROS
       @master_uri = master_uri
       @is_ok = true
       @master = MasterProxy.new(@caller_id, @master_uri, get_uri)
-      @server = XMLRPC::Server.new(@port, @host, MAX_CONNECTION, $stderr, false, false)
+      @server = XMLRPCServer.new(@port, @host)
       @publishers = []
       @subscribers = []
       @service_servers = []
@@ -200,43 +197,54 @@ module ROS
     # shutdown a publisher.
     # @param [Publisher] publisher Publisher to be shutdown
     def shutdown_publisher(publisher)
-      @master.unregister_publisher(publisher.topic_name)
-      @publishers.delete(publisher) do |pub|
-        raise "publisher not found"
+      begin
+        @master.unregister_publisher(publisher.topic_name)
+      ensure
+        @publishers.delete(publisher) do |pub|
+          raise "publisher not found"
+        end
+        publisher.close
       end
-      publisher.close
     end
 
     ##
     # shutdown a subscriber.
     # @param [Subscriber] subscriber Subscriber to be shutdown
     def shutdown_subscriber(subscriber)
-      @master.unregister_subscriber(subscriber.topic_name)
-      @subscribers.delete(subscriber) do |pub|
-        raise "subscriber not found"
+      begin
+        @master.unregister_subscriber(subscriber.topic_name)
+        @subscribers.delete(subscriber) do |pub|
+          raise "subscriber not found"
+        end
+      ensure
+        subscriber.close
       end
-      subscriber.close
     end
 
     ##
     # shutdown a service server.
     # @param [ServiceServer] service ServiceServer to be shutdown
     def shutdown_service_server(service)
-      @master.unregister_service(service.service_name,
-                                 service.service_uri)
-      @service_servers.delete(service) do |pub|
-        raise "service_server not found"
+      begin
+        @master.unregister_service(service.service_name,
+                                   service.service_uri)
+        @service_servers.delete(service) do |pub|
+          raise "service_server not found"
+        end
+      ensure
+        service.close
       end
-      service.close
     end
 
     ##
     # shutdown a parameter subscriber.
     # @param [Subscriber] subscriber ParameterSubscriber to be shutdown
     def shutdown_parameter_subscriber(subscriber)
-      @master.unsubscribe_param(subscriber.key)
-      @parameter_subscribers.delete(subscriber) do |sub|
-        raise "parameter server not found"
+      begin
+        @master.unsubscribe_param(subscriber.key)
+        @parameter_subscribers.delete(subscriber) do |sub|
+          raise "parameter server not found"
+        end
       end
     end
 
@@ -257,30 +265,43 @@ module ROS
         Thread::kill(@thread)
       end
 
-      @publishers.each do |publisher|
-        @master.unregister_publisher(publisher.topic_name)
-        publisher.close
+      begin
+        @publishers.each do |publisher|
+          @master.unregister_publisher(publisher.topic_name)
+          publisher.close
+        end
+      rescue
+      ensure
+        @publishers = nil
       end
-      @publishers = nil
 
-      @subscribers.each do |subscriber|
-        @master.unregister_subscriber(subscriber.topic_name)
-        subscriber.close
+      begin
+        @subscribers.each do |subscriber|
+          @master.unregister_subscriber(subscriber.topic_name)
+          subscriber.close
+        end
+      rescue
+      ensure
+        @subscribers = nil
       end
-      @subscribers = nil
-
-      @service_servers.each do |service|
-        @master.unregister_service(service.service_name,
-                                   service.service_uri)
-        service.close
+      begin
+        @service_servers.each do |service|
+          @master.unregister_service(service.service_name,
+                                     service.service_uri)
+          service.close
+        end
+      rescue
+      ensure
+        @service_servers = nil
       end
-      @service_servers = nil
-
-      @parameter_subscribers.each do |subscriber|
-        @master.unsubscribe_param(subscriber.key)
+      begin
+        @parameter_subscribers.each do |subscriber|
+          @master.unsubscribe_param(subscriber.key)
+        end
+      rescue
+      ensure
+        @parameter_subscribers = nil
       end
-      @parameter_subscribers = nil
-
       @@all_nodes.delete(self)
 
       self
@@ -351,7 +372,7 @@ module ROS
       end
 
       @server.add_handler('shutdown') do |caller_id, msg|
-        puts "shutting down by master request: #{msg}"
+        # puts "shutting down by master request: #{msg}"
         shutdown
         [1, 'shutdown ok', 0]
       end

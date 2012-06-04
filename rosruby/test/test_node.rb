@@ -68,23 +68,31 @@ class TestNode < Test::Unit::TestCase
 
   def test_ros_env
     # check ROS_IP
+    original = ENV['ROS_IP']
     ENV['ROS_IP']='127.0.0.1'
     node1 = ROS::Node.new('/test_ros_env')
     assert_equal('127.0.0.1', node1.host)
+    sleep 1
     node1.shutdown
     ENV.delete('ROS_IP')
 
     # check ROS_HOSTNAME
-    ENV['ROS_HOSTNAME']='localhost'
+    original_host = ENV['ROS_HOSTNAME']
+    ENV['ROS_HOSTNAME'] = 'localhost'
     node2 = ROS::Node.new('/test_ros_env2')
     assert_equal('localhost', node2.host)
+    sleep 1
     node2.shutdown
 
     ENV['ROS_HOSTNAME']='127.0.0.1'
     node2 = ROS::Node.new('/test_ros_env2')
     assert_equal('127.0.0.1', node2.host)
+    sleep 1
     node2.shutdown
     ENV.delete('ROS_HOSTNAME')
+    # recover
+    ENV['ROS_HOSTNAME'] = original_host
+    ENV['ROS_IP'] = original
   end
 
   def test_param_set_get
@@ -112,6 +120,10 @@ class TestNode < Test::Unit::TestCase
     assert(node.has_param('/test_s'))
     assert(node.delete_param('/test_s'))
     assert(!node.has_param('/test_s'))
+
+    # clean
+    assert(node.delete_param('/test1'))
+    assert(node.delete_param('/test2'))
 
     node.shutdown
   end
@@ -151,10 +163,39 @@ class TestNode < Test::Unit::TestCase
     node.set_param('/test_param1', 1)
     sleep(0.5)
     assert_equal(1, called)
-    node.set_param('/test_param1', 2)
     subscriber.shutdown
+    node.set_param('/test_param1', 2)
     sleep(0.5)
     assert_equal(1, called)
+    assert(node.delete_param('/test_param1'))
+
     node.shutdown
+  end
+
+  def test_sim_time
+    param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/use_sim_time', {})
+    param.set_param('/use_sim_time', true)
+
+    clock_node = ROS::Node.new('/clock')
+    clock_pub = clock_node.advertise('/clock', Rosgraph_msgs::Clock)
+    sleep 1
+    node = ROS::Node.new('/test_sim_time')
+    sleep 1
+
+    time_msg = Rosgraph_msgs::Clock.new
+    time_msg.clock = ROS::Time.new(::Time.now)
+
+    clock_pub.publish(time_msg)
+
+    sleep 1
+    node.spin_once
+
+    sim_current = ROS::Time.now
+    assert_equal(time_msg.clock, sim_current)
+    param.delete_param('/use_sim_time')
+
+    ROS::Time.initialize_with_sim_or_wall(node)
+    node.shutdown
+    clock_node.shutdown
   end
 end
