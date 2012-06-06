@@ -633,19 +633,19 @@ def string_serializer_generator(package, type_, name, serialize):
         #check to see if its a uint8/char type, in which case we need to convert to string before serializing
         base_type, is_array, array_len = roslib.msgs.parse_type(type_)
         if base_type in ['uint8', 'char']:
-            yield "# - if encoded as a list instead, serialize as bytes instead of string"
+#            yield "# - if encoded as a list instead, serialize as bytes instead of string"
             if array_len is None:
-                yield "if type(%s) in [list, tuple]"%var
-                yield INDENT+pack2('"La#{length}"', "[length, *%s]"%var)
-                yield "else"
-                yield INDENT+pack2('"La#{length}"', "[length, %s]"%var)
-                yield "end"
+#                yield "if type(%s) in [list, tuple]"%var
+#                yield INDENT+pack2('"La#{length}"', "[length, *%s]"%var)
+#                yield "else"
+                yield pack2('"La#{length}"', "[length, %s]"%var)
+#                yield "end"
             else:
-                yield "if type(%s) in [list, tuple]"%var
-                yield INDENT+pack('C%s'%array_len, "*%s"%var)
-                yield "else"
-                yield INDENT+pack('C%s'%array_len, var)
-                yield "end"
+#                yield "if type(%s) in [list, tuple]"%var
+#                yield INDENT+pack('C%s'%array_len, "*%s"%var)
+#                yield "else"
+                yield pack('C%s'%array_len, var)
+#                yield "end"
         else:
             # py3k: struct.pack() now only allows bytes for the s string pack code.
             # FIXME: for py3k, this needs to be w/ encode, but this interferes with actual byte data
