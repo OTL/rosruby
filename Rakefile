@@ -37,6 +37,34 @@ end
 
 Gem::PackageTask.new(rosruby_spec).define
 
+desc "Generate precompiled msg gem"
+task :msg_gem do
+  target_msg_packages = "actionlib_msgs pr2_controllers_msgs std_msgs visualization_msgs actionlib_tutorials roscpp stereo_msgs geometry_msgs rosgraph_msgs tf nav_msgs sensor_msgs trajectory_msgs std_srvs"
+  system("scripts/rosruby_genmsg.py #{target_msg_packages}")
+  mkdir_p('msg_gem')
+  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/msg_gen/ruby/*"), "msg_gem")
+  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/srv_gen/ruby/*"), "msg_gem")
+  chdir('msg_gem') do
+    namespace :msg do
+      msg_spec = Gem::Specification.new do |s|
+        s.name    = "rosruby_msgs"
+        s.summary = "rosruby's basic msg/srv"
+        s.requirements << 'none'
+        s.version = '0.0.3'
+        s.author = "Takashi Ogura"
+        s.email = "t.ogura@gmail.com"
+        s.homepage = "http://github.com/OTL/rosruby"
+        s.platform = Gem::Platform::RUBY
+        s.has_rdoc = false
+        s.files = Dir['**/**'].map
+        s.description = "precompiled msg files for rosruby."
+      end
+      Gem::PackageTask.new(msg_spec).define
+    end
+    Rake::Task["msg:package"].invoke
+  end
+end
+
 desc "generate all messages in local dir."
 file message_dir do |file|
   sh('scripts/rosruby_genmsg.py')
