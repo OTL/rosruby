@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="378.24887"
+   height="375.96722"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="rosruby_logo.svg"
+   inkscape:export-filename="/home/ogutti/ros/rosruby/rosruby_logo.png"
+   inkscape:export-xdpi="26.389486"
+   inkscape:export-ydpi="26.389486">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="216.99661"
+     inkscape:cy="86.611542"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1400"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     fit-margin-top="10"
+     fit-margin-right="10"
+     fit-margin-bottom="10"
+     fit-margin-left="10" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="レイヤー"
+     style="display:none"
+     transform="translate(-202.57142,-306.36218)" />
+  <g
+     inkscape:label="レイヤー 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(-202.57142,-306.36218)">
+    <g
+       id="g3000"
+       transform="matrix(0.33592575,0,0,0.33592575,116.06706,345.08798)"
+       inkscape:export-filename="/home/ogutti/ros/rosruby/rosruby_logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="translate(4,4)"
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none"
+         sodipodi:type="arc" />
+      <path
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-8"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc"
+         transform="translate(6.000007,130.28572)" />
+      <path
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-6"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc"
+         transform="translate(6.857149,264.85715)" />
+      <path
+         transform="translate(136.77603,4.8243625)"
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-4"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc" />
+      <path
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-8-7"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc"
+         transform="translate(138.77603,131.11009)" />
+      <path
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-6-7"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc"
+         transform="translate(139.63318,265.68152)" />
+      <path
+         transform="translate(265.10601,4.8243626)"
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-4-8"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc" />
+      <path
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-8-7-9"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc"
+         transform="translate(267.10601,131.1101)" />
+      <path
+         d="m 302.85714,359.50504 c 0,26.03628 -21.10658,47.14285 -47.14286,47.14285 -26.03628,0 -47.14286,-21.10657 -47.14286,-47.14285 0,-26.03629 21.10658,-47.14286 47.14286,-47.14286 26.03628,0 47.14286,21.10657 47.14286,47.14286 z"
+         sodipodi:ry="47.142857"
+         sodipodi:rx="47.142857"
+         sodipodi:cy="359.50504"
+         sodipodi:cx="255.71428"
+         id="path2997-6-7-8"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:none;display:inline"
+         sodipodi:type="arc"
+         transform="translate(267.96316,265.68152)" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2992"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(-118.42858,398.36218)"
+       inkscape:export-filename="/home/ogutti/ros/rosruby/rosruby_logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion2994"><rect
+           id="rect2996"
+           width="632"
+           height="232"
+           x="436"
+           y="3.967226"
+           style="fill:#ff0000" /></flowRegion><flowPara
+         id="flowPara2998"
+         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans;fill:#ff0000">rosruby</flowPara></flowRoot>  </g>
+</svg>
