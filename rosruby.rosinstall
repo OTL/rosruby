@@ -6,3 +6,7 @@
     local-name: rosruby_common
     uri: https://github.com/OTL/rosruby_common.git
     version: master
+- git:
+    local-name: rosruby_pr2
+    uri: https://github.com/OTL/rosruby_pr2.git
+    version: master
