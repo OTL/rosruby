@@ -2,11 +2,11 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
@@ -28,44 +26,39 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html">Index</a> &raquo; 
+    <a href="_index.html" title="Index">Index</a> &raquo; 
     <span class="title">File: README</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><div id='filecontents'><h1>ROS Ruby Client: rosruby</h1>
 
 <p><a href="http://ros.org">ROS</a> is Robot Operating System developed by <a href="http://www.willowgarage.com/">Willow Garage</a> and open source communities.</p>
 
-<p>This project supports ruby ROS client. You can program robots by ruby, very easily.</p>
+<p>This project supports ruby ROS client. You can program intelligent robots by ruby, very easily.</p>
 
 <p><strong>Homepage</strong>:     <a href="http://otl.github.com/rosruby">http://otl.github.com/rosruby</a><br>
 <strong>Git</strong>:          <a href="http://github.com/OTL/rosruby">http://github.com/OTL/rosruby</a><br>
@@ -77,26 +70,22 @@
 <h2>Requirements</h2>
 
 <ul>
-<li>ruby (1.8.x/1.9.x)</li>
-<li>ROS (electric/fuerte)
-
-<ul>
-<li>ROS requires python2.7 or more libraries</li>
-</ul></li>
+<li>ruby (1.8.7/1.9.3/jruby-18mode)</li>
+<li>ROS (electric/fuerte)</li>
 </ul>
 
-<h2>Let&#39;s start</h2>
+<h2>Install from source</h2>
 
 <p>Install ROS and ruby first. ROS document is <a href="http://ros.org/wiki/ROS/Installation">http://ros.org/wiki/ROS/Installation</a> .</p>
-
-<p>You can install ruby by apt.</p>
-
-<pre class="code bash"><code>$ sudo apt-get install ruby rake
-</code></pre>
 
 <p>Download rosruby into your ROS<em>PACKAGE</em>PATH.</p>
 
 <pre class="code bash"><code>$ git clone git://github.com/OTL/rosruby.git
+</code></pre>
+
+<p>Or use rosinstall/rosws. rosintall file is</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_https'>https</span><span class='symbol'>:/</span><span class='op'>/</span><span class='id identifier rubyid_raw'>raw</span><span class='period'>.</span><span class='id identifier rubyid_github'>github</span><span class='period'>.</span><span class='id identifier rubyid_com'>com</span><span class='op'>/</span><span class='const'>OTL</span><span class='op'>/</span><span class='id identifier rubyid_rosruby'>rosruby</span><span class='op'>/</span><span class='id identifier rubyid_master'>master</span><span class='op'>/</span><span class='id identifier rubyid_rosruby'>rosruby</span><span class='period'>.</span><span class='id identifier rubyid_rosinstall'>rosinstall</span>
 </code></pre>
 
 <p>please add RUBYLIB environment variable, like below (if you are using bash).</p>
@@ -105,14 +94,14 @@
 $ source ~/.bashrc
 </code></pre>
 
-<h2>To use with precompiled electric release</h2>
+<h2>Use with precompiled electric release</h2>
 
 <p>If you are using precompiled ROS distro, use the msg/srv generation script
-(gen<em>for</em>precompiled.py)
+(rosruby_genmsg.py)
 If you are using ROS from source, it requires just recompile the msg/srv
 packages by rosmake rosruby.</p>
 
-<pre class="code bash"><code>$ rosrun rosruby gen_for_precompiled.py
+<pre class="code bash"><code>$ rosrun rosruby rosruby_genmsg.py
 </code></pre>
 
 <p>This converts msg/srv to .rb which is needed by sample programs.
@@ -120,49 +109,49 @@ If you want to make other packages, add package names for args.</p>
 
 <p>For example,</p>
 
-<pre class="code bash"><code>$ rosrun rosruby gen_for_precompiled.py geometry_msgs nav_msgs
+<pre class="code bash"><code>$ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
 </code></pre>
 
 <h2>Sample Source</h2>
 
 <h2>Subscriber</h2>
 
-<pre class="code ruby"><code><span class='comment val'>#!/usr/bin/env ruby</span>
+<pre class="code ruby"><code><span class='comment'>#!/usr/bin/env ruby
+</span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ros</span><span class='tstring_end'>'</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>std_msgs/String</span><span class='tstring_end'>'</span></span>
 
-<span class='rubyid_require identifier id'>require</span> <span class='string val'>'ros'</span>
-<span class='rubyid_require identifier id'>require</span> <span class='string val'>'std_msgs/String'</span>
+<span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_subscriber</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_subscribe'>subscribe</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/chatter</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>message come! = \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_content'>\'</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
 
-<span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Node constant id'>Node</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'/rosruby/sample_subscriber'</span><span class='rparen token'>)</span>
-<span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_subscribe identifier id'>subscribe</span><span class='lparen token'>(</span><span class='string val'>'/chatter'</span><span class='comma token'>,</span> <span class='rubyid_Std_msgs constant id'>Std_msgs</span><span class='colon2 op'>::</span><span class='rubyid_String constant id'>String</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_msg identifier id'>msg</span><span class='bitor op'>|</span>
-  <span class='rubyid_puts identifier id'>puts</span> <span class='dstring node'>&quot;message come! = \'#{msg.data}\'&quot;</span>
-<span class='rubyid_end end kw'>end</span>
-
-<span class='rubyid_while while kw'>while</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_ok? fid id'>ok?</span>
-  <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_spin_once identifier id'>spin_once</span>
-  <span class='rubyid_sleep identifier id'>sleep</span><span class='lparen token'>(</span><span class='integer val'>1</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
+<span class='kw'>while</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span>
+  <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_spin_once'>spin_once</span>
+  <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
 
 </code></pre>
 
 <h2>Publisher</h2>
 
-<pre class="code ruby"><code><span class='comment val'>#!/usr/bin/env ruby</span>
+<pre class="code ruby"><code><span class='comment'>#!/usr/bin/env ruby
+</span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ros</span><span class='tstring_end'>'</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>std_msgs/String</span><span class='tstring_end'>'</span></span>
 
-<span class='rubyid_require identifier id'>require</span> <span class='string val'>'ros'</span>
-<span class='rubyid_require identifier id'>require</span> <span class='string val'>'std_msgs/String'</span>
+<span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_publisher</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_publisher'>publisher</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_advertise'>advertise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/chatter</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span>
 
-<span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Node constant id'>Node</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'/rosruby/sample_publisher'</span><span class='rparen token'>)</span>
-<span class='rubyid_publisher identifier id'>publisher</span> <span class='assign token'>=</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_advertise identifier id'>advertise</span><span class='lparen token'>(</span><span class='string val'>'/chatter'</span><span class='comma token'>,</span> <span class='rubyid_Std_msgs constant id'>Std_msgs</span><span class='colon2 op'>::</span><span class='rubyid_String constant id'>String</span><span class='rparen token'>)</span>
+<span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
-<span class='rubyid_msg identifier id'>msg</span> <span class='assign token'>=</span> <span class='rubyid_Std_msgs constant id'>Std_msgs</span><span class='colon2 op'>::</span><span class='rubyid_String constant id'>String</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-
-<span class='rubyid_i identifier id'>i</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-<span class='rubyid_while while kw'>while</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_ok? fid id'>ok?</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;Hello, rosruby!: #{i}&quot;</span>
-  <span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_publish identifier id'>publish</span><span class='lparen token'>(</span><span class='rubyid_msg identifier id'>msg</span><span class='rparen token'>)</span>
-  <span class='rubyid_sleep identifier id'>sleep</span><span class='lparen token'>(</span><span class='float val'>1.0</span><span class='rparen token'>)</span>
-  <span class='rubyid_i identifier id'>i</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-<span class='rubyid_end end kw'>end</span>
+<span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>while</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, rosruby!: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_publisher'>publisher</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+<span class='kw'>end</span>
 </code></pre>
 
 <h2>Note</h2>
@@ -204,29 +193,47 @@ $ rostopic echo /chatter
 <pre class="code bash"><code>$ rosrun rosruby add_two_ints_client.rb 10 20
 </code></pre>
 
-<h2>do all tests</h2>
+<h2>And more...</h2>
 
-<p>run roscore if is not running.</p>
+<p>There are <a href="https://github.com/OTL/rosruby_common">rosruby_common</a> stack that contains actionlib and tf.</p>
 
-<pre class="code bash"><code>$ roscore
+<h2>Do all tests</h2>
+
+<p><a href="http://travis-ci.org/OTL/rosruby"><img src="https://secure.travis-ci.org/OTL/rosruby.png" alt="Build Status"></a></p>
+
+<p>Install some packages for tests.</p>
+
+<pre class="code bash"><code>$ sudo apt-get install rake gem
+$ sudo gem install yard redcarpet simplecov
 </code></pre>
 
-<p>and run the unit tests.</p>
-
-<pre class="code bash"><code>$ rosrun rosruby run-test.rb
-</code></pre>
-
-<p>or</p>
+<p>run tests.</p>
 
 <pre class="code bash"><code>$ roscd rosruby
 $ rake test
 </code></pre>
-</div></div>
 
+<h2>Documents</h2>
+
+<p>you can generate API documents using yard.
+Document generation needs yard and redcarpet.
+You can install these by gem command like this.</p>
+
+<pre class="code bash"><code>$ gem install yard redcarpet
+</code></pre>
+
+<p>Then try to generate documentds.</p>
+
+<pre class="code bash"><code>$ rake yard
+</code></pre>
+
+<p>You can access to the generated documents from <a href="http://otl.github.com/rosruby/doc/">here</a>.</p>
+</div></div>
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:27 2012 by
+  Generated on Sat Jun  9 21:44:47 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

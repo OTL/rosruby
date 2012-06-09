@@ -6,7 +6,7 @@
 <title>
   Class: ROS::ParameterSubscriber
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  relpath = '..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (P)</a> &raquo;
+    <a href="../_index.html">Index (P)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">ParameterSubscriber</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Class: ROS::ParameterSubscriber
   
   
@@ -101,9 +94,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-callback object for paramUpdate
-</p>
+    
+<p>callback object for paramUpdate</p>
 
 
   </div>
@@ -128,7 +120,6 @@ callback object for paramUpdate
   </span>
   
   
-  
     
     
   
@@ -138,9 +129,8 @@ callback object for paramUpdate
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-key of parameter for subscription.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>key of parameter for subscription.</p>
 </div></span>
   
 </li>
@@ -173,12 +163,10 @@ key of parameter for subscription.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-callback with param value.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>callback with param value.</p>
 </div></span>
   
 </li>
@@ -193,7 +181,6 @@ callback with param value.
     
   </span>
   
-  
     <span class="note title constructor">constructor</span>
   
   
@@ -203,9 +190,8 @@ callback with param value.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-do not make instance directory.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>do not make instance directory.</p>
 </div></span>
   
 </li>
@@ -225,12 +211,10 @@ do not make instance directory.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-set GraphManager for management.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>set GraphManager for management.</p>
 </div></span>
   
 </li>
@@ -250,12 +234,10 @@ set GraphManager for management.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-shutdown this subscription.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>shutdown this subscription.</p>
 </div></span>
   
 </li>
@@ -268,25 +250,22 @@ shutdown this subscription.
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
+  <p class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::ParameterSubscriber (class)">ParameterSubscriber</a></span></tt>) <strong>initialize</strong>(key, callback) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-do not make instance directory. Plese use Node#subscribe_parameter.
-</p>
+    
+<p>do not make instance directory. Plese use Node#subscribe_parameter.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -299,9 +278,8 @@ do not make instance directory. Plese use Node#subscribe_parameter.
       
       
         &mdash;
-        <div class='inline'><p>
-param key to subscribe
-</p>
+        <div class='inline'>
+<p>param key to subscribe</p>
 </div>
       
     </li>
@@ -316,9 +294,8 @@ param key to subscribe
       
       
         &mdash;
-        <div class='inline'><p>
-callback when parameter updated
-</p>
+        <div class='inline'>
+<p>callback when parameter updated</p>
 </div>
       
     </li>
@@ -340,11 +317,10 @@ callback when parameter updated
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_subscriber.rb', line 21</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_callback identifier id'>callback</span><span class='rparen token'>)</span>
-  <span class='rubyid_@key ivar id'>@key</span> <span class='assign token'>=</span> <span class='rubyid_key identifier id'>key</span>
-  <span class='rubyid_@callback ivar id'>@callback</span> <span class='assign token'>=</span> <span class='rubyid_callback identifier id'>callback</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
+  <span class='ivar'>@key</span> <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span>
+  <span class='ivar'>@callback</span> <span class='op'>=</span> <span class='id identifier rubyid_callback'>callback</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -359,19 +335,16 @@ callback when parameter updated
       <span id="key=-instance_method"></span>
       <span id="key-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="key-instance_method">
+  <p class="signature first" id="key-instance_method">
   
     - (<tt>Object</tt>) <strong>key</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-key of parameter for subscription
-</p>
+    
+<p>key of parameter for subscription</p>
 
 
   </div>
@@ -392,10 +365,9 @@ key of parameter for subscription
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_subscriber.rb', line 44</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_key identifier id'>key</span>
-  <span class='rubyid_@key ivar id'>@key</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_key'>key</span>
+  <span class='ivar'>@key</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -406,28 +378,25 @@ key of parameter for subscription
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="call-instance_method">
+  <p class="signature first" id="call-instance_method">
   
     - (<tt>Object</tt>) <strong>call</strong>(value) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-callback with param value
-</p>
+    
+<p>callback with param value</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -440,9 +409,8 @@ callback with param value
       
       
         &mdash;
-        <div class='inline'><p>
-value of updated parameter
-</p>
+        <div class='inline'>
+<p>value of updated parameter</p>
 </div>
       
     </li>
@@ -463,35 +431,31 @@ value of updated parameter
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_subscriber.rb', line 28</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
-  <span class='rubyid_@callback ivar id'>@callback</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='ivar'>@callback</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="set_manager-instance_method">
+  <p class="signature " id="set_manager-instance_method">
   
     - (<tt>Object</tt>) <strong>set_manager</strong>(manager) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-set GraphManager for management
-</p>
+    
+<p>set GraphManager for management</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -504,9 +468,8 @@ set GraphManager for management
       
       
         &mdash;
-        <div class='inline'><p>
-GraphManager
-</p>
+        <div class='inline'>
+<p>GraphManager</p>
 </div>
       
     </li>
@@ -527,29 +490,25 @@ GraphManager
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_subscriber.rb', line 34</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_set_manager identifier id'>set_manager</span><span class='lparen token'>(</span><span class='rubyid_manager identifier id'>manager</span><span class='rparen token'>)</span> <span class='comment val'>#:nodoc</span>
-  <span class='rubyid_@manager ivar id'>@manager</span> <span class='assign token'>=</span> <span class='rubyid_manager identifier id'>manager</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_set_manager'>set_manager</span><span class='lparen'>(</span><span class='id identifier rubyid_manager'>manager</span><span class='rparen'>)</span> <span class='comment'>#:nodoc
+</span>  <span class='ivar'>@manager</span> <span class='op'>=</span> <span class='id identifier rubyid_manager'>manager</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="shutdown-instance_method">
+  <p class="signature " id="shutdown-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-shutdown this subscription
-</p>
+    
+<p>shutdown this subscription</p>
 
 
   </div>
@@ -570,10 +529,9 @@ shutdown this subscription
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/parameter_subscriber.rb', line 39</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown identifier id'>shutdown</span>
-  <span class='rubyid_@manager ivar id'>@manager</span><span class='dot token'>.</span><span class='rubyid_shutdown_parameter_subscriber identifier id'>shutdown_parameter_subscriber</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
+  <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_shutdown_parameter_subscriber'>shutdown_parameter_subscriber</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -582,11 +540,11 @@ shutdown this subscription
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:36 2012 by
+  Generated on Sat Jun  9 21:44:51 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

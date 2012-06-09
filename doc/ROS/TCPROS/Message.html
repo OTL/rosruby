@@ -6,7 +6,7 @@
 <title>
   Module: ROS::TCPROS::Message
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../../';
-  framesUrl = "../../frames.html#!" + escape(window.location.href);
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (M)</a> &raquo;
+    <a href="../../_index.html">Index (M)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../../ROS.html" title="ROS (module)">ROS</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TCPROS.html" title="ROS::TCPROS (module)">TCPROS</a></span></span>
      &raquo; 
     <span class="title">Message</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Module: ROS::TCPROS::Message
   
   
@@ -90,9 +83,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-functions for TCPROS
-</p>
+    
+<p>functions for TCPROS</p>
 
 
   </div>
@@ -129,12 +121,10 @@ functions for TCPROS
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Prototol string &#8216;TCPROS&#8217;.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Prototol string 'TCPROS'.</p>
 </div></span>
   
 </li>
@@ -154,12 +144,10 @@ Prototol string &#8216;TCPROS&#8217;.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-read the size of data and read it from socket.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>read the size of data and read it from socket.</p>
 </div></span>
   
 </li>
@@ -179,12 +167,10 @@ read the size of data and read it from socket.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-read a connection header from socket.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>read a connection header from socket.</p>
 </div></span>
   
 </li>
@@ -204,12 +190,10 @@ read a connection header from socket.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-write a connection header to socket.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>write a connection header to socket.</p>
 </div></span>
   
 </li>
@@ -229,12 +213,10 @@ write a connection header to socket.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-write message to socket.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>write message to socket.</p>
 </div></span>
   
 </li>
@@ -247,29 +229,26 @@ write message to socket.
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="protocol-instance_method">
+  <p class="signature first" id="protocol-instance_method">
   
     - (<tt>String</tt>) <strong>protocol</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-Prototol string &#8216;TCPROS&#8217;
-</p>
+    
+<p>Prototol string 'TCPROS'</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -280,9 +259,8 @@ Prototol string &#8216;TCPROS&#8217;
       
       
         &mdash;
-        <div class='inline'><p>
-prototol string &#8216;TCPROS&#8217;
-</p>
+        <div class='inline'>
+<p>prototol string 'TCPROS'</p>
 </div>
       
     </li>
@@ -302,35 +280,31 @@ prototol string &#8216;TCPROS&#8217;
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/message.rb', line 70</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_protocol identifier id'>protocol</span>
-  <span class='string val'>'TCPROS'</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_protocol'>protocol</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TCPROS</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="read_all-instance_method">
+  <p class="signature " id="read_all-instance_method">
   
     - (<tt>String</tt>) <strong>read_all</strong>(socket) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-read the size of data and read it from socket.
-</p>
+    
+<p>read the size of data and read it from socket.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -343,16 +317,15 @@ read the size of data and read it from socket.
       
       
         &mdash;
-        <div class='inline'><p>
-socket for reading
-</p>
+        <div class='inline'>
+<p>socket for reading</p>
 </div>
       
     </li>
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -363,9 +336,8 @@ socket for reading
       
       
         &mdash;
-        <div class='inline'><p>
-received data
-</p>
+        <div class='inline'>
+<p>received data</p>
 </div>
       
     </li>
@@ -390,40 +362,36 @@ received data
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/message.rb', line 41</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_read_all identifier id'>read_all</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_total_bytes identifier id'>total_bytes</span> <span class='assign token'>=</span> <span class='rubyid_socket identifier id'>socket</span><span class='dot token'>.</span><span class='rubyid_recv identifier id'>recv</span><span class='lparen token'>(</span><span class='integer val'>4</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_unpack identifier id'>unpack</span><span class='lparen token'>(</span><span class='string val'>&quot;V&quot;</span><span class='rparen token'>)</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_total_bytes identifier id'>total_bytes</span> <span class='rubyid_and and kw'>and</span> <span class='rubyid_total_bytes identifier id'>total_bytes</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
-    <span class='rubyid_socket identifier id'>socket</span><span class='dot token'>.</span><span class='rubyid_recv identifier id'>recv</span><span class='lparen token'>(</span><span class='rubyid_total_bytes identifier id'>total_bytes</span><span class='rparen token'>)</span>
-  <span class='rubyid_else else kw'>else</span>
-    <span class='string val'>''</span>
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_read_all'>read_all</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_total_bytes'>total_bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='int'>4</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>V</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_total_bytes'>total_bytes</span> <span class='kw'>and</span> <span class='id identifier rubyid_total_bytes'>total_bytes</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='id identifier rubyid_total_bytes'>total_bytes</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="read_header-instance_method">
+  <p class="signature " id="read_header-instance_method">
   
     - (<tt><span class='object_link'><a href="Header.html" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>read_header</strong>(socket) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-read a connection header from socket
-</p>
+    
+<p>read a connection header from socket</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -436,16 +404,15 @@ read a connection header from socket
       
       
         &mdash;
-        <div class='inline'><p>
-socket for reading
-</p>
+        <div class='inline'>
+<p>socket for reading</p>
 </div>
       
     </li>
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -456,9 +423,8 @@ socket for reading
       
       
         &mdash;
-        <div class='inline'><p>
-header
-</p>
+        <div class='inline'>
+<p>header</p>
 </div>
       
     </li>
@@ -480,37 +446,33 @@ header
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/message.rb', line 54</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_read_header identifier id'>read_header</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_header identifier id'>header</span> <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_TCPROS constant id'>TCPROS</span><span class='colon2 op'>::</span><span class='rubyid_Header constant id'>Header</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_deserialize identifier id'>deserialize</span><span class='lparen token'>(</span><span class='rubyid_read_all identifier id'>read_all</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-  <span class='rubyid_header identifier id'>header</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_read_header'>read_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>ROS</span><span class='op'>::</span><span class='const'>TCPROS</span><span class='op'>::</span><span class='const'>Header</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_read_all'>read_all</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_header'>header</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="write_header-instance_method">
+  <p class="signature " id="write_header-instance_method">
   
     - (<tt>Object</tt>) <strong>write_header</strong>(socket, header) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-write a connection header to socket.
-</p>
+    
+<p>write a connection header to socket.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -523,9 +485,8 @@ write a connection header to socket.
       
       
         &mdash;
-        <div class='inline'><p>
-socket for writing.
-</p>
+        <div class='inline'>
+<p>socket for writing.</p>
 </div>
       
     </li>
@@ -540,9 +501,8 @@ socket for writing.
       
       
         &mdash;
-        <div class='inline'><p>
-header data
-</p>
+        <div class='inline'>
+<p>header data</p>
 </div>
       
     </li>
@@ -564,36 +524,32 @@ header data
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/message.rb', line 64</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_write_header identifier id'>write_header</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='comma token'>,</span> <span class='rubyid_header identifier id'>header</span><span class='rparen token'>)</span>
-  <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_serialize identifier id'>serialize</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_socket identifier id'>socket</span><span class='dot token'>.</span><span class='rubyid_flush identifier id'>flush</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_write_header'>write_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="write_msg-instance_method">
+  <p class="signature " id="write_msg-instance_method">
   
     - (<tt>String</tt>) <strong>write_msg</strong>(socket, msg) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-write message to socket.
-</p>
+    
+<p>write message to socket.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -606,9 +562,8 @@ write message to socket.
       
       
         &mdash;
-        <div class='inline'><p>
-socket for writing
-</p>
+        <div class='inline'>
+<p>socket for writing</p>
 </div>
       
     </li>
@@ -623,16 +578,15 @@ socket for writing
       
       
         &mdash;
-        <div class='inline'><p>
-message for writing
-</p>
+        <div class='inline'>
+<p>message for writing</p>
 </div>
       
     </li>
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -643,9 +597,8 @@ message for writing
       
       
         &mdash;
-        <div class='inline'><p>
-wrote data
-</p>
+        <div class='inline'>
+<p>wrote data</p>
 </div>
       
     </li>
@@ -672,17 +625,16 @@ wrote data
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/message.rb', line 26</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_write_msg identifier id'>write_msg</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='comma token'>,</span> <span class='rubyid_msg identifier id'>msg</span><span class='rparen token'>)</span>
-  <span class='rubyid_sio identifier id'>sio</span> <span class='assign token'>=</span> <span class='rubyid_StringIO constant id'>StringIO</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>''</span><span class='comma token'>,</span> <span class='string val'>'r+'</span><span class='rparen token'>)</span>
-  <span class='rubyid_len identifier id'>len</span> <span class='assign token'>=</span> <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_serialize identifier id'>serialize</span><span class='lparen token'>(</span><span class='rubyid_sio identifier id'>sio</span><span class='rparen token'>)</span>
-  <span class='rubyid_sio identifier id'>sio</span><span class='dot token'>.</span><span class='rubyid_rewind identifier id'>rewind</span>
-  <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='rubyid_sio identifier id'>sio</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span>
-  <span class='rubyid_len identifier id'>len</span> <span class='assign token'>=</span> <span class='rubyid_data identifier id'>data</span><span class='dot token'>.</span><span class='rubyid_length identifier id'>length</span>
-  <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rubyid_len identifier id'>len</span><span class='comma token'>,</span> <span class='rubyid_data identifier id'>data</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_pack identifier id'>pack</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Va#{len}&quot;</span><span class='rparen token'>)</span>
-  <span class='rubyid_socket identifier id'>socket</span><span class='dot token'>.</span><span class='rubyid_write identifier id'>write</span><span class='lparen token'>(</span><span class='rubyid_data identifier id'>data</span><span class='rparen token'>)</span>
-  <span class='rubyid_data identifier id'>data</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_write_msg'>write_msg</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sio'>sio</span> <span class='op'>=</span> <span class='const'>StringIO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>r+</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_sio'>sio</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sio'>sio</span><span class='period'>.</span><span class='id identifier rubyid_rewind'>rewind</span>
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_sio'>sio</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span>
+  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_len'>len</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>La</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_len'>len</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_data'>data</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -691,11 +643,11 @@ wrote data
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:28 2012 by
+  Generated on Sat Jun  9 21:44:51 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

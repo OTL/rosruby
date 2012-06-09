@@ -6,7 +6,7 @@
 <title>
   Class: ROS::Log
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  relpath = '..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (L)</a> &raquo;
+    <a href="../_index.html">Index (L)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Log</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Class: ROS::Log
   
   
@@ -101,10 +94,10 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <h2>Logging class for ROS</h2>
-<p>
-This class enable double logging: ROS Logging system and ruby log.
-</p>
+    
+<h2>Logging class for ROS</h2>
+
+<p>This class enable double logging: ROS Logging system and ruby log.</p>
 
 
   </div>
@@ -120,9 +113,8 @@ This class enable double logging: ROS Logging system and ruby log.
         <dt id="ROSOUT_TOPIC-constant" class="">ROSOUT_TOPIC =
           <div class="docstring">
   <div class="discussion">
-    <p>
-topic name of rosout
-</p>
+    
+<p>topic name of rosout</p>
 
 
   </div>
@@ -132,8 +124,7 @@ topic name of rosout
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'/rosout'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosout</span><span class='tstring_end'>'</span></span></pre></dd>
       
     </dl>
   
@@ -161,7 +152,6 @@ topic name of rosout
     
   </span>
   
-  
     <span class="note title constructor">constructor</span>
   
   
@@ -171,9 +161,8 @@ topic name of rosout
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-start publishing /rosout and make a ruby logger instance for local output.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>start publishing /rosout and make a ruby logger instance for local output.</p>
 </div></span>
   
 </li>
@@ -193,12 +182,10 @@ start publishing /rosout and make a ruby logger instance for local output.
   
   
   
-  
 
   
-    <span class="summary_desc"><div class='inline'><p>
-outputs log messages with level and informations which rosout needs.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>outputs log messages with level and informations which rosout needs.</p>
 </div></span>
   
 </li>
@@ -211,25 +198,22 @@ outputs log messages with level and informations which rosout needs.
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
+  <p class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Log (class)">Log</a></span></tt>) <strong>initialize</strong>(node, output = $stdout) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-start publishing /rosout and make a ruby logger instance for local output
-</p>
+    
+<p>start publishing /rosout and make a ruby logger instance for local output</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -242,9 +226,8 @@ start publishing /rosout and make a ruby logger instance for local output
       
       
         &mdash;
-        <div class='inline'><p>
-<span class='object_link'><a href="Node.html" title="ROS::Node (class)">Node</a></span> instance
-</p>
+        <div class='inline'>
+<p><span class='object_link'><a href="Node.html" title="ROS::Node (class)">Node</a></span> instance</p>
 </div>
       
     </li>
@@ -261,9 +244,8 @@ start publishing /rosout and make a ruby logger instance for local output
       
       
         &mdash;
-        <div class='inline'><p>
-local output. $stdout is default
-</p>
+        <div class='inline'>
+<p>local output. $stdout is default</p>
 </div>
       
     </li>
@@ -297,23 +279,22 @@ local output. $stdout is default
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/log.rb', line 30</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_node identifier id'>node</span><span class='comma token'>,</span> <span class='rubyid_output identifier id'>output</span><span class='assign token'>=</span><span class='rubyid_$stdout gvar id'>$stdout</span><span class='rparen token'>)</span>
-  <span class='rubyid_@node ivar id'>@node</span> <span class='assign token'>=</span> <span class='rubyid_node identifier id'>node</span>
-  <span class='rubyid_@rosout ivar id'>@rosout</span> <span class='assign token'>=</span> <span class='rubyid_@node ivar id'>@node</span><span class='dot token'>.</span><span class='rubyid_advertise identifier id'>advertise</span><span class='lparen token'>(</span><span class='rubyid_ROSOUT_TOPIC constant id'>ROSOUT_TOPIC</span><span class='comma token'>,</span> <span class='rubyid_Rosgraph_msgs constant id'>Rosgraph_msgs</span><span class='colon2 op'>::</span><span class='rubyid_Log constant id'>Log</span><span class='comma token'>,</span>
-                            <span class='symbol val'>:no_resolve=</span><span class='gt op'>&gt;</span><span class='rubyid_true true kw'>true</span><span class='rparen token'>)</span>
-  <span class='rubyid_@ruby_dict ivar id'>@ruby_dict</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='string val'>'FATAL'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='rubyid_Logger constant id'>Logger</span><span class='colon2 op'>::</span><span class='rubyid_FATAL constant id'>FATAL</span><span class='comma token'>,</span>
-    <span class='string val'>'ERROR'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='rubyid_Logger constant id'>Logger</span><span class='colon2 op'>::</span><span class='rubyid_ERROR constant id'>ERROR</span><span class='comma token'>,</span>
-    <span class='string val'>'WARN'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='rubyid_Logger constant id'>Logger</span><span class='colon2 op'>::</span><span class='rubyid_WARN constant id'>WARN</span><span class='comma token'>,</span>
-    <span class='string val'>'INFO'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='rubyid_Logger constant id'>Logger</span><span class='colon2 op'>::</span><span class='rubyid_INFO constant id'>INFO</span><span class='comma token'>,</span>
-    <span class='string val'>'DEBUG'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='rubyid_Logger constant id'>Logger</span><span class='colon2 op'>::</span><span class='rubyid_DEBUG constant id'>DEBUG</span><span class='rbrace token'>}</span>
-  <span class='rubyid_@msg_dict ivar id'>@msg_dict</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='string val'>'FATAL'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='colon3 op'>::</span><span class='rubyid_Rosgraph_msgs constant id'>Rosgraph_msgs</span><span class='colon2 op'>::</span><span class='rubyid_Log constant id'>Log</span><span class='colon2 op'>::</span><span class='rubyid_FATAL constant id'>FATAL</span><span class='comma token'>,</span>
-    <span class='string val'>'ERROR'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='colon3 op'>::</span><span class='rubyid_Rosgraph_msgs constant id'>Rosgraph_msgs</span><span class='colon2 op'>::</span><span class='rubyid_Log constant id'>Log</span><span class='colon2 op'>::</span><span class='rubyid_ERROR constant id'>ERROR</span><span class='comma token'>,</span>
-    <span class='string val'>'WARN'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='colon3 op'>::</span><span class='rubyid_Rosgraph_msgs constant id'>Rosgraph_msgs</span><span class='colon2 op'>::</span><span class='rubyid_Log constant id'>Log</span><span class='colon2 op'>::</span><span class='rubyid_WARN constant id'>WARN</span><span class='comma token'>,</span>
-    <span class='string val'>'INFO'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='colon3 op'>::</span><span class='rubyid_Rosgraph_msgs constant id'>Rosgraph_msgs</span><span class='colon2 op'>::</span><span class='rubyid_Log constant id'>Log</span><span class='colon2 op'>::</span><span class='rubyid_INFO constant id'>INFO</span><span class='comma token'>,</span>
-    <span class='string val'>'DEBUG'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='colon3 op'>::</span><span class='rubyid_Rosgraph_msgs constant id'>Rosgraph_msgs</span><span class='colon2 op'>::</span><span class='rubyid_Log constant id'>Log</span><span class='colon2 op'>::</span><span class='rubyid_DEBUG constant id'>DEBUG</span><span class='rbrace token'>}</span>
-  <span class='rubyid_@local_logger ivar id'>@local_logger</span> <span class='assign token'>=</span> <span class='rubyid_Logger constant id'>Logger</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_output identifier id'>output</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span><span class='op'>=</span><span class='gvar'>$stdout</span><span class='rparen'>)</span>
+  <span class='ivar'>@node</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span>
+  <span class='ivar'>@rosout</span> <span class='op'>=</span> <span class='ivar'>@node</span><span class='period'>.</span><span class='id identifier rubyid_advertise'>advertise</span><span class='lparen'>(</span><span class='const'>ROSOUT_TOPIC</span><span class='comma'>,</span> <span class='const'>Rosgraph_msgs</span><span class='op'>::</span><span class='const'>Log</span><span class='comma'>,</span>
+                            <span class='symbol'>:no_resolve</span><span class='op'>=&gt;</span><span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='ivar'>@ruby_dict</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>FATAL</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='const'>Logger</span><span class='op'>::</span><span class='const'>FATAL</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ERROR</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='const'>Logger</span><span class='op'>::</span><span class='const'>ERROR</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>WARN</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='const'>Logger</span><span class='op'>::</span><span class='const'>WARN</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>INFO</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='const'>Logger</span><span class='op'>::</span><span class='const'>INFO</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>DEBUG</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='const'>Logger</span><span class='op'>::</span><span class='const'>DEBUG</span><span class='rbrace'>}</span>
+  <span class='ivar'>@msg_dict</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>FATAL</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='op'>::</span><span class='const'>Rosgraph_msgs</span><span class='op'>::</span><span class='const'>Log</span><span class='op'>::</span><span class='const'>FATAL</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ERROR</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='op'>::</span><span class='const'>Rosgraph_msgs</span><span class='op'>::</span><span class='const'>Log</span><span class='op'>::</span><span class='const'>ERROR</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>WARN</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='op'>::</span><span class='const'>Rosgraph_msgs</span><span class='op'>::</span><span class='const'>Log</span><span class='op'>::</span><span class='const'>WARN</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>INFO</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='op'>::</span><span class='const'>Rosgraph_msgs</span><span class='op'>::</span><span class='const'>Log</span><span class='op'>::</span><span class='const'>INFO</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>DEBUG</span><span class='tstring_end'>'</span></span><span class='op'>=&gt;</span><span class='op'>::</span><span class='const'>Rosgraph_msgs</span><span class='op'>::</span><span class='const'>Log</span><span class='op'>::</span><span class='const'>DEBUG</span><span class='rbrace'>}</span>
+  <span class='ivar'>@local_logger</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_output'>output</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -324,28 +305,25 @@ local output. $stdout is default
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="log-instance_method">
+  <p class="signature first" id="log-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Log (class)">Log</a></span></tt>) <strong>log</strong>(severity, message, file = '', function = '', line = 0) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
-    <p>
-outputs log messages with level and informations which rosout needs.
-</p>
+    
+<p>outputs log messages with level and informations which rosout needs.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -358,10 +336,8 @@ outputs log messages with level and informations which rosout needs.
       
       
         &mdash;
-        <div class='inline'><p>
-log level: one of &#8216;DEBUG&#8217;, &#8216;INFO&#8217;,
-&#8216;WARN&#8217;, &#8216;ERROR&#8217;, &#8216;FATAL&#8217;
-</p>
+        <div class='inline'>
+<p>log level: one of 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'</p>
 </div>
       
     </li>
@@ -376,9 +352,8 @@ log level: one of &#8216;DEBUG&#8217;, &#8216;INFO&#8217;,
       
       
         &mdash;
-        <div class='inline'><p>
-your message
-</p>
+        <div class='inline'>
+<p>your message</p>
 </div>
       
     </li>
@@ -395,9 +370,8 @@ your message
       
       
         &mdash;
-        <div class='inline'><p>
-file name in which called this method
-</p>
+        <div class='inline'>
+<p>file name in which called this method</p>
 </div>
       
     </li>
@@ -414,9 +388,8 @@ file name in which called this method
       
       
         &mdash;
-        <div class='inline'><p>
-function name in which called this method
-</p>
+        <div class='inline'>
+<p>function name in which called this method</p>
 </div>
       
     </li>
@@ -433,16 +406,15 @@ function name in which called this method
       
       
         &mdash;
-        <div class='inline'><p>
-line number in which called this method
-</p>
+        <div class='inline'>
+<p>line number in which called this method</p>
 </div>
       
     </li>
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -453,9 +425,8 @@ line number in which called this method
       
       
         &mdash;
-        <div class='inline'><p>
-self
-</p>
+        <div class='inline'>
+<p>self</p>
 </div>
       
     </li>
@@ -487,22 +458,21 @@ self
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/log.rb', line 56</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_log identifier id'>log</span><span class='lparen token'>(</span><span class='rubyid_severity identifier id'>severity</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_file identifier id'>file</span><span class='assign token'>=</span><span class='string val'>''</span><span class='comma token'>,</span> <span class='rubyid_function identifier id'>function</span><span class='assign token'>=</span><span class='string val'>''</span><span class='comma token'>,</span> <span class='rubyid_line identifier id'>line</span><span class='assign token'>=</span><span class='integer val'>0</span><span class='rparen token'>)</span>
-  <span class='rubyid_@local_logger ivar id'>@local_logger</span><span class='dot token'>.</span><span class='rubyid_log identifier id'>log</span><span class='lparen token'>(</span><span class='rubyid_@ruby_dict ivar id'>@ruby_dict</span><span class='lbrack token'>[</span><span class='rubyid_severity identifier id'>severity</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='rubyid_message identifier id'>message</span><span class='comma token'>,</span> <span class='rubyid_@node ivar id'>@node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span><span class='rparen token'>)</span>
-  <span class='rubyid_msg identifier id'>msg</span> <span class='assign token'>=</span> <span class='rubyid_Rosgraph_msgs constant id'>Rosgraph_msgs</span><span class='colon2 op'>::</span><span class='rubyid_Log constant id'>Log</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_msg identifier id'>msg</span> <span class='assign token'>=</span> <span class='rubyid_message identifier id'>message</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_stamp identifier id'>stamp</span> <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Time constant id'>Time</span><span class='dot token'>.</span><span class='rubyid_now identifier id'>now</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_frame_id identifier id'>frame_id</span> <span class='assign token'>=</span> <span class='string val'>'rosout'</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_level identifier id'>level</span> <span class='assign token'>=</span> <span class='rubyid_@msg_dict ivar id'>@msg_dict</span><span class='lbrack token'>[</span><span class='rubyid_severity identifier id'>severity</span><span class='rbrack token'>]</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='rubyid_@node ivar id'>@node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_file identifier id'>file</span> <span class='assign token'>=</span> <span class='rubyid_file identifier id'>file</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_function identifier id'>function</span> <span class='assign token'>=</span> <span class='rubyid_function identifier id'>function</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_line identifier id'>line</span> <span class='assign token'>=</span> <span class='rubyid_line identifier id'>line</span>
-  <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_topics identifier id'>topics</span> <span class='assign token'>=</span> <span class='rubyid_@node ivar id'>@node</span><span class='dot token'>.</span><span class='rubyid_get_published_topics identifier id'>get_published_topics</span>
-  <span class='rubyid_@rosout ivar id'>@rosout</span><span class='dot token'>.</span><span class='rubyid_publish identifier id'>publish</span><span class='lparen token'>(</span><span class='rubyid_msg identifier id'>msg</span><span class='rparen token'>)</span>
-  <span class='rubyid_self self kw'>self</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_severity'>severity</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_function'>function</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
+  <span class='ivar'>@local_logger</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='ivar'>@ruby_dict</span><span class='lbracket'>[</span><span class='id identifier rubyid_severity'>severity</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='ivar'>@node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='const'>Rosgraph_msgs</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_stamp'>stamp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>ROS</span><span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_frame_id'>frame_id</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rosout</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='ivar'>@msg_dict</span><span class='lbracket'>[</span><span class='id identifier rubyid_severity'>severity</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='ivar'>@node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_function'>function</span> <span class='op'>=</span> <span class='id identifier rubyid_function'>function</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span>
+  <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_topics'>topics</span> <span class='op'>=</span> <span class='ivar'>@node</span><span class='period'>.</span><span class='id identifier rubyid_get_published_topics'>get_published_topics</span>
+  <span class='ivar'>@rosout</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -511,11 +481,11 @@ self
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:28 2012 by
+  Generated on Sat Jun  9 21:44:48 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>
