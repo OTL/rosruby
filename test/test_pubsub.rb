@@ -12,8 +12,10 @@ class TestPubSubNormal < Test::Unit::TestCase
     node1 = ROS::Node.new('/test_pubsub1')
     node2 = ROS::Node.new('/test_pubsub2')
     pub1 = node1.advertise('/chatter', Std_msgs::String)
+    assert_equal(0, pub1.get_number_of_subscribers)
 
     pub2 = node2.advertise('/chatter', Std_msgs::String)
+    assert_equal(0, pub2.get_number_of_subscribers)
 
     pub_msg1 = Std_msgs::String.new
     pub_msg1.data = TEST_STRING1
@@ -41,14 +43,31 @@ class TestPubSubNormal < Test::Unit::TestCase
         message_has_come2[1] = true
       end
     end
-    sleep(1) # wait for registration and update
+
+    while sub1.get_number_of_publishers < 2
+      sleep 0.1
+    end
+    while sub2.get_number_of_publishers < 2
+      sleep 0.1
+    end
+
+    assert_equal(2, sub1.get_number_of_publishers)
+    assert_equal(2, sub2.get_number_of_publishers)
+    assert_equal(2, pub1.get_number_of_subscribers)
+    assert_equal(2, pub2.get_number_of_subscribers)
 
     pub1.publish(pub_msg1)
     pub2.publish(pub_msg2)
 
-    sleep(1)
-    node1.spin_once
-    node2.spin_once
+    sleep 0.1
+
+    while not node1.spin_once
+      sleep 0.1
+    end
+
+    while not node2.spin_once
+      sleep 0.1
+    end
 
     assert(message_has_come1[0])
     assert(message_has_come1[1])
@@ -63,7 +82,7 @@ class TestPubSubNormal < Test::Unit::TestCase
     node1.shutdown
     node2.shutdown
   end
-
+  
   def test_single_pubsub
     node = ROS::Node.new('/test3')
     pub1 = node.advertise('/chatter', Std_msgs::String)
@@ -79,11 +98,18 @@ class TestPubSubNormal < Test::Unit::TestCase
       end
     end
 
-    sleep(1) # wait for registration and update
+    while sub1.get_number_of_publishers < 1
+      sleep 0.1
+    end
 
     pub1.publish(pub_msg1)
-    sleep(1)
-    node.spin_once
+
+    sleep(0.1)
+
+    while not node.spin_once
+      sleep 0.1
+    end
+
     assert(message_has_come1)
 
     assert_equal([["/chatter_out_0", 13, 1, 1]], pub1.get_connection_data)
@@ -118,19 +144,20 @@ class TestPubSubNormal < Test::Unit::TestCase
       end
     end
 
-    sleep(1) # wait for registration and update
-
     pub1 = node.advertise('/chatter', Std_msgs::String)
 
-    sleep(1) # wait for registration and update
+    while sub1.get_number_of_publishers < 1
+      sleep 0.1
+    end
 
     pub_msg1 = Std_msgs::String.new
     pub_msg1.data = TEST_STRING1
 
     pub1.publish(pub_msg1)
 
-    sleep(1)
-    node.spin_once
+    while not node.spin_once
+      sleep 0.1
+    end
 
     assert(message_has_come1)
 
@@ -162,11 +189,8 @@ class TestPubSubNormal < Test::Unit::TestCase
     pub_msg1 = Std_msgs::String.new
     pub_msg1.data = TEST_STRING1
 
-    sleep(1) # wait for registration and update
-
     pub1.publish(pub_msg1)
 
-    sleep(1) # wait for registration and update
     message_has_come1 = nil
 
     sub1 = node.subscribe('/chatter', Std_msgs::String) do |msg|
@@ -175,8 +199,14 @@ class TestPubSubNormal < Test::Unit::TestCase
       end
     end
 
-    sleep(1)
-    node.spin_once
+    while sub1.get_number_of_publishers < 1
+      sleep 0.1
+    end
+
+    while not node.spin_once
+      sleep 0.1
+    end
+
     assert(message_has_come1)
     node.shutdown
   end

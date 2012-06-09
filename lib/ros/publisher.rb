@@ -70,6 +70,12 @@ module ROS
       return connection
     end
 
+    # get number of subscribers to this publisher
+    # @return [Integer] number of subscribers
+    def get_number_of_subscribers
+      @connections.length
+    end
+
     # @return [Array] connection data for slave api
     def get_connection_data
       @connections.map do |connection|

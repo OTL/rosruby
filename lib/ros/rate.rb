@@ -6,6 +6,8 @@
 #
 #
 
+require 'ros/time'
+
 module ROS
 
   ##
@@ -18,24 +20,31 @@ module ROS
 
     # @param [Float] hz Hz
     def initialize(hz)
-      @sleep_duration = 1.0 / hz
-      @last_time = ::Time.now
+      @sleep_duration = ::ROS::Duration.new(1.0 / hz)
+      @last_time = ::ROS::Time.now
     end
 
     ##
     # sleep for preset rate [Hz]
     #
     def sleep
-      current_time = ::Time.now
+      current_time = ::ROS::Time.now
+      if @last_time > current_time
+        @last_time = current_time
+      end
       elapsed = current_time - @last_time
-      Kernel.sleep(@sleep_duration - elapsed)
+      time_to_sleep = @sleep_duration - elapsed
+      if time_to_sleep.to_sec > 0.0
+        time_to_sleep.sleep
+      end
       @last_time = @last_time + @sleep_duration
 
       # detect time jumping forwards, as well as loops that are
       # inherently too slow
-      if current_time - @last_time > @sleep_duration * 2
-          @last_time = current_time
+      if (current_time - @last_time).to_sec > @sleep_duration.to_sec * 2
+        @last_time = current_time
       end
+      nil
     end
   end
 end

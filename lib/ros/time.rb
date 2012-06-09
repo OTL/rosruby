@@ -108,6 +108,14 @@ module ROS
       end
     end
 
+    def self.get_walltime
+      self.new(::Time::now)
+    end
+
+    def self.get_simtime
+      @@current_sim_time
+    end
+
     # initialize with current time
     def self.now
       if @@current_sim_time

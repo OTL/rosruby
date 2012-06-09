@@ -23,11 +23,17 @@ class TestSlaveProxy < Test::Unit::TestCase
       end
     end
 
-    sleep(1) # wait for registration and update
+    # wait for registration and update
+    while sub1.get_number_of_publishers < 1
+      sleep 0.1
+    end
 
     pub1.publish(pub_msg1)
-    sleep(1)
-    node.spin_once
+
+    while not node.spin_once
+      sleep 0.1
+    end
+
     sub1.get_connection_info
     slave_uri = sub1.get_connection_info[0][1]
     slave = ROS::SlaveProxy.new('/slave1', slave_uri)

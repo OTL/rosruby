@@ -41,20 +41,32 @@ module ROS
     # @return [Proc] callback of this subscription
     attr_reader :callback
 
+    # get number of publishers to this subscriber
+    # @return [Integer] number of publishers
+    def get_number_of_publishers
+      @connections.length
+    end
+
     ##
     # execute callback for all queued messages.
     # This is called by {Node#spin_once}.
     # It checks all queues of connections and callback for all messages.
+    # @return [Bool] some message has come or not.
     def process_queue #:nodoc:
+      messages_come = false
       @connections.each do |connection|
         while not connection.msg_queue.empty?
           msg = connection.msg_queue.pop
+          messages_come = true
           if @callback
             @callback.call(msg)
           end
         end
       end
+      messages_come
     end
+
+    alias_method :spin_once, :process_queue
 
     ##
     # request topic to master and start connection with publisher.

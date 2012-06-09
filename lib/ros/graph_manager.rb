@@ -189,8 +189,10 @@ module ROS
     ##
     # process all messages of subscribers.
     # This means that callbacks for all queued messages are called.
+    # @return [Bool] some message has come or not.
     def spin_once
-      @subscribers.each {|subscriber| subscriber.process_queue}
+      results = @subscribers.map {|subscriber| subscriber.process_queue}
+      results.index(true)
     end
 
     ##
@@ -272,7 +274,7 @@ module ROS
         end
       rescue
       ensure
-        @publishers = nil
+        @publishers = []
       end
 
       begin
@@ -282,7 +284,7 @@ module ROS
         end
       rescue
       ensure
-        @subscribers = nil
+        @subscribers = []
       end
       begin
         @service_servers.each do |service|
@@ -292,7 +294,7 @@ module ROS
         end
       rescue
       ensure
-        @service_servers = nil
+        @service_servers = []
       end
       begin
         @parameter_subscribers.each do |subscriber|
@@ -300,7 +302,7 @@ module ROS
         end
       rescue
       ensure
-        @parameter_subscribers = nil
+        @parameter_subscribers = []
       end
       @@all_nodes.delete(self)
 

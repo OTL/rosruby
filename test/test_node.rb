@@ -178,17 +178,15 @@ class TestNode < Test::Unit::TestCase
 
     clock_node = ROS::Node.new('/clock')
     clock_pub = clock_node.advertise('/clock', Rosgraph_msgs::Clock)
-    sleep 1
     node = ROS::Node.new('/test_sim_time')
-    sleep 1
-
     time_msg = Rosgraph_msgs::Clock.new
     time_msg.clock = ROS::Time.new(::Time.now)
-
+    while clock_pub.get_number_of_subscribers < 1
+      sleep 0.1
+    end
     clock_pub.publish(time_msg)
 
-    sleep 1
-    node.spin_once
+    sleep 0.5
 
     sim_current = ROS::Time.now
     assert_equal(time_msg.clock, sim_current)
