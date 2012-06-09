@@ -108,10 +108,16 @@ module ROS
       end
     end
 
+    ##
+    # get the system real time
+    # @return [ROS::Time] current time
     def self.get_walltime
       self.new(::Time::now)
     end
 
+    ##
+    # get the simulated time
+    # @return [ROS::Time] current time in simulator.
     def self.get_simtime
       @@current_sim_time
     end
