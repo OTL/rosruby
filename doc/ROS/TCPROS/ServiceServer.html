@@ -6,7 +6,7 @@
 <title>
   Class: ROS::TCPROS::ServiceServer
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../../';
-  framesUrl = "../../frames.html#!" + escape(window.location.href);
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (S)</a> &raquo;
+    <a href="../../_index.html">Index (S)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../../ROS.html" title="ROS (module)">ROS</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TCPROS.html" title="ROS::TCPROS (module)">TCPROS</a></span></span>
      &raquo; 
     <span class="title">ServiceServer</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Class: ROS::TCPROS::ServiceServer
   
   
@@ -137,8 +130,7 @@ max number of connection with clients
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='integer val'>100</span>
-</pre></dd>
+        <dd><pre class="code"><span class='int'>100</span></pre></dd>
       
     </dl>
   
@@ -159,10 +151,7 @@ max number of connection with clients
   </span>
   
   
-  
-    
-      <span class="note title readonly">readonly</span>
-    
+    <span class="note title readonly">readonly</span>
     
   
   
@@ -189,10 +178,7 @@ received data amout for slave api.
   </span>
   
   
-  
-    
-      <span class="note title readonly">readonly</span>
-    
+    <span class="note title readonly">readonly</span>
     
   
   
@@ -236,7 +222,6 @@ sent data amout for slave api.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -261,7 +246,6 @@ build header message for service server.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -280,7 +264,6 @@ check header.
 
     
   </span>
-  
   
     <span class="note title constructor">constructor</span>
   
@@ -313,7 +296,6 @@ A new instance of ServiceServer.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -332,7 +314,6 @@ main loop of this connection.
 
     
   </span>
-  
   
   
   
@@ -363,7 +344,6 @@ message must send 1 byte for service call result (fail).
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -382,7 +362,6 @@ message must send 1 byte for service call result (success).
 
     
   </span>
-  
   
   
   
@@ -410,7 +389,6 @@ this is called by socket accept.
   
   
   
-  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Message.html" title="ROS::TCPROS::Message (module)">Message</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Message.html#protocol-instance_method" title="ROS::TCPROS::Message#protocol (method)">#protocol</a></span>, <span class='object_link'><a href="Message.html#read_all-instance_method" title="ROS::TCPROS::Message#read_all (method)">#read_all</a></span>, <span class='object_link'><a href="Message.html#read_header-instance_method" title="ROS::TCPROS::Message#read_header (method)">#read_header</a></span>, <span class='object_link'><a href="Message.html#write_header-instance_method" title="ROS::TCPROS::Message#write_header (method)">#write_header</a></span>, <span class='object_link'><a href="Message.html#write_msg-instance_method" title="ROS::TCPROS::Message#write_msg (method)">#write_msg</a></span></p>
 
@@ -418,15 +396,13 @@ this is called by socket accept.
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
+  <p class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>initialize</strong>(caller_id, service_name, service_type, callback, port = 0, host = ::GServer::DEFAULT_HOST) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 A new instance of ServiceServer
@@ -436,7 +412,7 @@ A new instance of ServiceServer
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -568,17 +544,16 @@ host name
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 31</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span> <span class='rubyid_service_type identifier id'>service_type</span><span class='comma token'>,</span> <span class='rubyid_callback identifier id'>callback</span><span class='comma token'>,</span>
-               <span class='rubyid_port identifier id'>port</span><span class='assign token'>=</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='rubyid_host identifier id'>host</span><span class='assign token'>=</span><span class='colon3 op'>::</span><span class='rubyid_GServer constant id'>GServer</span><span class='colon2 op'>::</span><span class='rubyid_DEFAULT_HOST constant id'>DEFAULT_HOST</span><span class='rparen token'>)</span>
-  <span class='rubyid_super super kw'>super</span><span class='lparen token'>(</span><span class='rubyid_port identifier id'>port</span><span class='comma token'>,</span> <span class='rubyid_host identifier id'>host</span><span class='comma token'>,</span> <span class='rubyid_MAX_CONNECTION constant id'>MAX_CONNECTION</span><span class='rparen token'>)</span>
-  <span class='rubyid_@caller_id ivar id'>@caller_id</span> <span class='assign token'>=</span> <span class='rubyid_caller_id identifier id'>caller_id</span>
-  <span class='rubyid_@service_name ivar id'>@service_name</span> <span class='assign token'>=</span> <span class='rubyid_service_name identifier id'>service_name</span>
-  <span class='rubyid_@service_type ivar id'>@service_type</span> <span class='assign token'>=</span> <span class='rubyid_service_type identifier id'>service_type</span>
-  <span class='rubyid_@callback ivar id'>@callback</span> <span class='assign token'>=</span> <span class='rubyid_callback identifier id'>callback</span>
-  <span class='rubyid_@byte_received ivar id'>@byte_received</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-  <span class='rubyid_@byte_sent ivar id'>@byte_sent</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='comma'>,</span> <span class='id identifier rubyid_callback'>callback</span><span class='comma'>,</span>
+               <span class='id identifier rubyid_port'>port</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_host'>host</span><span class='op'>=</span><span class='op'>::</span><span class='const'>GServer</span><span class='op'>::</span><span class='const'>DEFAULT_HOST</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='const'>MAX_CONNECTION</span><span class='rparen'>)</span>
+  <span class='ivar'>@caller_id</span> <span class='op'>=</span> <span class='id identifier rubyid_caller_id'>caller_id</span>
+  <span class='ivar'>@service_name</span> <span class='op'>=</span> <span class='id identifier rubyid_service_name'>service_name</span>
+  <span class='ivar'>@service_type</span> <span class='op'>=</span> <span class='id identifier rubyid_service_type'>service_type</span>
+  <span class='ivar'>@callback</span> <span class='op'>=</span> <span class='id identifier rubyid_callback'>callback</span>
+  <span class='ivar'>@byte_received</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@byte_sent</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -593,15 +568,13 @@ host name
       <span id=""></span>
       <span id="byte_received-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="byte_received-instance_method">
+  <p class="signature first" id="byte_received-instance_method">
   
     - (<tt>Integer</tt>) <strong>byte_received</strong>  <span class="extras">(readonly)</span>
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 received data amout for slave api
@@ -612,7 +585,7 @@ received data amout for slave api
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -645,10 +618,9 @@ byte received
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 125</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_byte_received identifier id'>byte_received</span>
-  <span class='rubyid_@byte_received ivar id'>@byte_received</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_byte_received'>byte_received</span>
+  <span class='ivar'>@byte_received</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -658,15 +630,13 @@ byte received
       <span id=""></span>
       <span id="byte_sent-instance_method"></span>
       <div class="method_details ">
-  <h3 class="signature " id="byte_sent-instance_method">
+  <p class="signature " id="byte_sent-instance_method">
   
     - (<tt>Integer</tt>) <strong>byte_sent</strong>  <span class="extras">(readonly)</span>
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 sent data amout for slave api
@@ -677,7 +647,7 @@ sent data amout for slave api
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -710,10 +680,9 @@ byte sent
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 129</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_byte_sent identifier id'>byte_sent</span>
-  <span class='rubyid_@byte_sent ivar id'>@byte_sent</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_byte_sent'>byte_sent</span>
+  <span class='ivar'>@byte_sent</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -724,18 +693,16 @@ byte sent
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="build_header-instance_method">
+  <p class="signature first" id="build_header-instance_method">
   
     - (<tt><span class='object_link'><a href="Header.html" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>build_header</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 build header message for service server. It contains callerid, type,
@@ -747,7 +714,7 @@ md5sum.
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -784,29 +751,26 @@ built header
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 115</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_build_header identifier id'>build_header</span>
-  <span class='rubyid_header identifier id'>header</span> <span class='assign token'>=</span> <span class='rubyid_Header constant id'>Header</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_header identifier id'>header</span><span class='lbrack token'>[</span><span class='string val'>&quot;callerid&quot;</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span>
-  <span class='rubyid_header identifier id'>header</span><span class='lbrack token'>[</span><span class='string val'>'type'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_@service_type ivar id'>@service_type</span><span class='dot token'>.</span><span class='rubyid_type identifier id'>type</span>
-  <span class='rubyid_header identifier id'>header</span><span class='lbrack token'>[</span><span class='string val'>'md5sum'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_@service_type ivar id'>@service_type</span><span class='dot token'>.</span><span class='rubyid_md5sum identifier id'>md5sum</span>
-  <span class='rubyid_header identifier id'>header</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_build_header'>build_header</span>
+  <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='const'>Header</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>callerid</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@caller_id</span>
+  <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>type</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
+  <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>md5sum</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_md5sum'>md5sum</span>
+  <span class='id identifier rubyid_header'>header</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="check_header-instance_method">
+  <p class="signature " id="check_header-instance_method">
   
     - (<tt>Boolean</tt>) <strong>check_header</strong>(header) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 check header. check md5sum only.
@@ -816,7 +780,7 @@ check header. check md5sum only.
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -838,7 +802,7 @@ header for checking
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -871,25 +835,22 @@ check result (true means ok)
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 107</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_check_header identifier id'>check_header</span><span class='lparen token'>(</span><span class='rubyid_header identifier id'>header</span><span class='rparen token'>)</span>
-  <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_valid? fid id'>valid?</span><span class='lparen token'>(</span><span class='string val'>'md5sum'</span><span class='comma token'>,</span> <span class='rubyid_@service_type ivar id'>@service_type</span><span class='dot token'>.</span><span class='rubyid_md5sum identifier id'>md5sum</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_check_header'>check_header</span><span class='lparen'>(</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>md5sum</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_md5sum'>md5sum</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="read_and_callback-instance_method">
+  <p class="signature " id="read_and_callback-instance_method">
   
     - (<tt>Boolean</tt>) <strong>read_and_callback</strong>(socket) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 main loop of this connection. read data and do callback.
@@ -899,7 +860,7 @@ main loop of this connection. read data and do callback.
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -915,7 +876,7 @@ main loop of this connection. read data and do callback.
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -963,40 +924,37 @@ result of callback
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 61</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_read_and_callback identifier id'>read_and_callback</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_request identifier id'>request</span> <span class='assign token'>=</span> <span class='rubyid_@service_type ivar id'>@service_type</span><span class='dot token'>.</span><span class='rubyid_request_class identifier id'>request_class</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_response identifier id'>response</span> <span class='assign token'>=</span> <span class='rubyid_@service_type ivar id'>@service_type</span><span class='dot token'>.</span><span class='rubyid_response_class identifier id'>response_class</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='rubyid_read_all identifier id'>read_all</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_@byte_received ivar id'>@byte_received</span> <span class='opasgn op'>+=</span> <span class='rubyid_data identifier id'>data</span><span class='dot token'>.</span><span class='rubyid_length identifier id'>length</span>
-  <span class='rubyid_request identifier id'>request</span><span class='dot token'>.</span><span class='rubyid_deserialize identifier id'>deserialize</span><span class='lparen token'>(</span><span class='rubyid_data identifier id'>data</span><span class='rparen token'>)</span>
-  <span class='rubyid_result identifier id'>result</span> <span class='assign token'>=</span> <span class='rubyid_@callback ivar id'>@callback</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_request identifier id'>request</span><span class='comma token'>,</span> <span class='rubyid_response identifier id'>response</span><span class='rparen token'>)</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_result identifier id'>result</span>
-    <span class='rubyid_send_ok_byte identifier id'>send_ok_byte</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-    <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='rubyid_write_msg identifier id'>write_msg</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='comma token'>,</span> <span class='rubyid_response identifier id'>response</span><span class='rparen token'>)</span>
-    <span class='rubyid_@byte_sent ivar id'>@byte_sent</span> <span class='opasgn op'>+=</span> <span class='rubyid_data identifier id'>data</span><span class='dot token'>.</span><span class='rubyid_length identifier id'>length</span>
-  <span class='rubyid_else else kw'>else</span>
-    <span class='rubyid_send_ng_byte identifier id'>send_ng_byte</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-    <span class='rubyid_write_header identifier id'>write_header</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='comma token'>,</span> <span class='rubyid_build_header identifier id'>build_header</span><span class='rparen token'>)</span>
-    <span class='comment val'># write some message</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_result identifier id'>result</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_read_and_callback'>read_and_callback</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_request_class'>request_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='ivar'>@service_type</span><span class='period'>.</span><span class='id identifier rubyid_response_class'>response_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_read_all'>read_all</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='ivar'>@byte_received</span> <span class='op'>+=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='ivar'>@callback</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span>
+    <span class='id identifier rubyid_send_ok_byte'>send_ok_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_write_msg'>write_msg</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
+    <span class='ivar'>@byte_sent</span> <span class='op'>+=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_send_ng_byte'>send_ng_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_write_header'>write_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_build_header'>build_header</span><span class='rparen'>)</span>
+    <span class='comment'># write some message
+</span>  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="send_ng_byte-instance_method">
+  <p class="signature " id="send_ng_byte-instance_method">
   
     - (<tt>Object</tt>) <strong>send_ng_byte</strong>(socket) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 message must send 1 byte for service call result (fail)
@@ -1006,7 +964,7 @@ message must send 1 byte for service call result (fail)
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -1036,25 +994,22 @@ message must send 1 byte for service call result (fail)
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 52</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_send_ng_byte identifier id'>send_ng_byte</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_socket identifier id'>socket</span><span class='dot token'>.</span><span class='rubyid_write identifier id'>write</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_pack identifier id'>pack</span><span class='lparen token'>(</span><span class='string val'>'c'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_send_ng_byte'>send_ng_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>c</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="send_ok_byte-instance_method">
+  <p class="signature " id="send_ok_byte-instance_method">
   
     - (<tt>Object</tt>) <strong>send_ok_byte</strong>(socket) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 message must send 1 byte for service call result (success)
@@ -1064,7 +1019,7 @@ message must send 1 byte for service call result (success)
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -1094,25 +1049,22 @@ message must send 1 byte for service call result (success)
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 45</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_send_ok_byte identifier id'>send_ok_byte</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_socket identifier id'>socket</span><span class='dot token'>.</span><span class='rubyid_write identifier id'>write</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_pack identifier id'>pack</span><span class='lparen token'>(</span><span class='string val'>'c'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_send_ok_byte'>send_ok_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>c</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="serve-instance_method">
+  <p class="signature " id="serve-instance_method">
   
     - (<tt>Object</tt>) <strong>serve</strong>(socket) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 this is called by socket accept
@@ -1122,7 +1074,7 @@ this is called by socket accept
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -1173,25 +1125,24 @@ given socket
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/tcpros/service_server.rb', line 83</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_serve identifier id'>serve</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='rubyid_header identifier id'>header</span> <span class='assign token'>=</span> <span class='rubyid_read_header identifier id'>read_header</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-  <span class='comment val'># not documented protocol?</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_header identifier id'>header</span><span class='lbrack token'>[</span><span class='string val'>'probe'</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>'1'</span>
-    <span class='rubyid_write_header identifier id'>write_header</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='comma token'>,</span> <span class='rubyid_build_header identifier id'>build_header</span><span class='rparen token'>)</span>
-  <span class='rubyid_elsif elsif kw'>elsif</span> <span class='rubyid_check_header identifier id'>check_header</span><span class='lparen token'>(</span><span class='rubyid_header identifier id'>header</span><span class='rparen token'>)</span>
-    <span class='rubyid_write_header identifier id'>write_header</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='comma token'>,</span> <span class='rubyid_build_header identifier id'>build_header</span><span class='rparen token'>)</span>
-    <span class='rubyid_read_and_callback identifier id'>read_and_callback</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-    <span class='rubyid_if if kw'>if</span> <span class='rubyid_header identifier id'>header</span><span class='lbrack token'>[</span><span class='string val'>'persistent'</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>'1'</span>
-      <span class='rubyid_loop identifier id'>loop</span> <span class='rubyid_do do kw'>do</span>
-        <span class='rubyid_read_and_callback identifier id'>read_and_callback</span><span class='lparen token'>(</span><span class='rubyid_socket identifier id'>socket</span><span class='rparen token'>)</span>
-      <span class='rubyid_end end kw'>end</span>
-    <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_else else kw'>else</span>
-    <span class='rubyid_socket identifier id'>socket</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
-    <span class='rubyid_raise identifier id'>raise</span> <span class='string val'>'header check error'</span>
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_serve'>serve</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='id identifier rubyid_read_header'>read_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='comment'># not documented protocol?
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>probe</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_write_header'>write_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_build_header'>build_header</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_check_header'>check_header</span><span class='lparen'>(</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_write_header'>write_header</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_build_header'>build_header</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_read_and_callback'>read_and_callback</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_header'>header</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>persistent</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1</span><span class='tstring_end'>'</span></span>
+      <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+        <span class='id identifier rubyid_read_and_callback'>read_and_callback</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>header check error</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1200,11 +1151,11 @@ given socket
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:36 2012 by
+  Generated on Thu Apr 26 22:13:16 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.2).
 </div>
 
   </body>

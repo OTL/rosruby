@@ -6,7 +6,7 @@
 <title>
   Class: ROS::Time
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  relpath = '..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (T)</a> &raquo;
+    <a href="../_index.html">Index (T)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Time</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Class: ROS::Time
   
   
@@ -147,7 +140,6 @@ ROS Time object. This is used as msg object for time
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -181,7 +173,6 @@ initialize with current time.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -206,7 +197,6 @@ add time value.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -225,7 +215,6 @@ subtract time value.
 
     
   </span>
-  
   
     <span class="note title constructor">constructor</span>
   
@@ -255,7 +244,6 @@ A new instance of Time.
   
   
   
-  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="TimeValue.html" title="ROS::TimeValue (class)">TimeValue</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="TimeValue.html#%3C%3D%3E-instance_method" title="ROS::TimeValue#&lt;=&gt; (method)">#<=></a></span>, <span class='object_link'><a href="TimeValue.html#canonicalize-instance_method" title="ROS::TimeValue#canonicalize (method)">#canonicalize</a></span>, <span class='object_link'><a href="TimeValue.html#to_nsec-instance_method" title="ROS::TimeValue#to_nsec (method)">#to_nsec</a></span>, <span class='object_link'><a href="TimeValue.html#to_sec-instance_method" title="ROS::TimeValue#to_sec (method)">#to_sec</a></span></p>
 
@@ -263,7 +251,7 @@ A new instance of Time.
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
+  <p class="signature first" id="initialize-instance_method">
   
     
       <span class="overload">- (<tt><span class='object_link'><a href="" title="ROS::Time (class)">Time</a></span></tt>) <strong>initialize</strong>(time) </span>
@@ -273,9 +261,7 @@ A new instance of Time.
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 A new instance of Time
@@ -286,7 +272,7 @@ A new instance of Time
 </div>
 <div class="tags">
   
-  <p class="tag_title">Overloads:</p>
+  <h3>Overloads:</h3>
   <ul class="overload">
     
       
@@ -299,7 +285,7 @@ A new instance of Time
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -349,17 +335,16 @@ with this time
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/time.rb', line 78</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_time identifier id'>time</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_time identifier id'>time</span>
-    <span class='rubyid_@secs ivar id'>@secs</span> <span class='assign token'>=</span> <span class='rubyid_time identifier id'>time</span><span class='dot token'>.</span><span class='rubyid_to_i identifier id'>to_i</span>
-    <span class='rubyid_@nsecs ivar id'>@nsecs</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='rubyid_time identifier id'>time</span><span class='dot token'>.</span><span class='rubyid_to_f identifier id'>to_f</span> <span class='minus op'>-</span> <span class='rubyid_@secs ivar id'>@secs</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='float val'>1e9</span><span class='dot token'>.</span><span class='rubyid_to_i identifier id'>to_i</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_to_i identifier id'>to_i</span>
-  <span class='rubyid_else else kw'>else</span>
-    <span class='rubyid_@secs ivar id'>@secs</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-    <span class='rubyid_@nsecs ivar id'>@nsecs</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_canonicalize identifier id'>canonicalize</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_time'>time</span>
+    <span class='ivar'>@secs</span> <span class='op'>=</span> <span class='id identifier rubyid_time'>time</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+    <span class='ivar'>@nsecs</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>-</span> <span class='ivar'>@secs</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='float'>1e9</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@secs</span> <span class='op'>=</span> <span class='int'>0</span>
+    <span class='ivar'>@nsecs</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_canonicalize'>canonicalize</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -370,18 +355,16 @@ with this time
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="now-class_method">
+  <p class="signature first" id="now-class_method">
   
     + (<tt>Object</tt>) <strong>now</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 initialize with current time
@@ -406,10 +389,9 @@ initialize with current time
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/time.rb', line 71</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_now identifier id'>now</span>
-  <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='colon3 op'>::</span><span class='rubyid_Time constant id'>Time</span><span class='colon2 op'>::</span><span class='rubyid_now identifier id'>now</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Time</span><span class='op'>::</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -419,18 +401,16 @@ initialize with current time
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="+-instance_method">
+  <p class="signature first" id="+-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Time (class)">Time</a></span></tt>) <strong>+</strong>(duration) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 add time value
@@ -440,29 +420,23 @@ add time value
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
       
-        <span class='name'>duration</span>
+        <span class='name'></span>
       
       
         <span class='type'>(<tt><span class='object_link'><a href="Duration.html" title="ROS::Duration (class)">Duration</a></span></tt>)</span>
       
       
       
-        &mdash;
-        <div class='inline'><p>
-duration for adding
-</p>
-</div>
-      
     </li>
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -498,28 +472,25 @@ new time
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/time.rb', line 92</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='plus op'>+</span><span class='lparen token'>(</span><span class='rubyid_duration identifier id'>duration</span><span class='rparen token'>)</span>
-  <span class='rubyid_tm identifier id'>tm</span> <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Time constant id'>Time</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_tm identifier id'>tm</span><span class='dot token'>.</span><span class='rubyid_secs identifier id'>secs</span> <span class='assign token'>=</span> <span class='rubyid_@secs ivar id'>@secs</span> <span class='plus op'>+</span> <span class='rubyid_duration identifier id'>duration</span><span class='dot token'>.</span><span class='rubyid_secs identifier id'>secs</span>
-  <span class='rubyid_tm identifier id'>tm</span><span class='dot token'>.</span><span class='rubyid_nsecs identifier id'>nsecs</span> <span class='assign token'>=</span> <span class='rubyid_@nsecs ivar id'>@nsecs</span> <span class='plus op'>+</span> <span class='rubyid_duration identifier id'>duration</span><span class='dot token'>.</span><span class='rubyid_nsecs identifier id'>nsecs</span>
-  <span class='rubyid_tm identifier id'>tm</span><span class='dot token'>.</span><span class='rubyid_canonicalize identifier id'>canonicalize</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_duration'>duration</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_tm'>tm</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>ROS</span><span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_tm'>tm</span><span class='period'>.</span><span class='id identifier rubyid_secs'>secs</span> <span class='op'>=</span> <span class='ivar'>@secs</span> <span class='op'>+</span> <span class='id identifier rubyid_duration'>duration</span><span class='period'>.</span><span class='id identifier rubyid_secs'>secs</span>
+  <span class='id identifier rubyid_tm'>tm</span><span class='period'>.</span><span class='id identifier rubyid_nsecs'>nsecs</span> <span class='op'>=</span> <span class='ivar'>@nsecs</span> <span class='op'>+</span> <span class='id identifier rubyid_duration'>duration</span><span class='period'>.</span><span class='id identifier rubyid_nsecs'>nsecs</span>
+  <span class='id identifier rubyid_tm'>tm</span><span class='period'>.</span><span class='id identifier rubyid_canonicalize'>canonicalize</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="--instance_method">
+  <p class="signature " id="--instance_method">
   
     - (<tt><span class='object_link'><a href="Duration.html" title="ROS::Duration (class)">Duration</a></span></tt>) <strong>-</strong>(other) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 subtract time value
@@ -529,7 +500,7 @@ subtract time value
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -545,7 +516,7 @@ subtract time value
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -581,13 +552,12 @@ duration
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/time.rb', line 102</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='minus op'>-</span><span class='lparen token'>(</span><span class='rubyid_other identifier id'>other</span><span class='rparen token'>)</span>
-  <span class='rubyid_d identifier id'>d</span> <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Duration constant id'>Duration</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_d identifier id'>d</span><span class='dot token'>.</span><span class='rubyid_secs identifier id'>secs</span> <span class='assign token'>=</span> <span class='rubyid_@secs ivar id'>@secs</span> <span class='minus op'>-</span> <span class='rubyid_other identifier id'>other</span><span class='dot token'>.</span><span class='rubyid_secs identifier id'>secs</span>
-  <span class='rubyid_d identifier id'>d</span><span class='dot token'>.</span><span class='rubyid_nsecs identifier id'>nsecs</span> <span class='assign token'>=</span> <span class='rubyid_@nsecs ivar id'>@nsecs</span> <span class='minus op'>-</span> <span class='rubyid_other identifier id'>other</span><span class='dot token'>.</span><span class='rubyid_nsecs identifier id'>nsecs</span>
-  <span class='rubyid_d identifier id'>d</span><span class='dot token'>.</span><span class='rubyid_canonicalize identifier id'>canonicalize</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='op'>-</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_d'>d</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>ROS</span><span class='op'>::</span><span class='const'>Duration</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_secs'>secs</span> <span class='op'>=</span> <span class='ivar'>@secs</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_secs'>secs</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_nsecs'>nsecs</span> <span class='op'>=</span> <span class='ivar'>@nsecs</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_nsecs'>nsecs</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_canonicalize'>canonicalize</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -596,11 +566,11 @@ duration
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:28 2012 by
+  Generated on Thu Apr 26 22:13:14 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.2).
 </div>
 
   </body>

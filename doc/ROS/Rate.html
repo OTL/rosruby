@@ -6,7 +6,7 @@
 <title>
   Class: ROS::Rate
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  relpath = '..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (R)</a> &raquo;
+    <a href="../_index.html">Index (R)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Rate</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Class: ROS::Rate
   
   
@@ -111,12 +104,11 @@ sleep in a Hz timing.
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h3>Examples:</h3>
     
-      
-      <pre class="example code"><span class='rubyid_r identifier id'>r</span> <span class='assign token'>=</span> <span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Rate constant id'>Rate</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='integer val'>10</span><span class='rparen token'>)</span>
-<span class='rubyid_r identifier id'>r</span><span class='dot token'>.</span><span class='rubyid_sleep identifier id'>sleep</span>
-</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code"><span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Rate</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_sleep'>sleep</span></pre>
     
   </div>
 
@@ -144,7 +136,6 @@ sleep in a Hz timing.
 
     
   </span>
-  
   
     <span class="note title constructor">constructor</span>
   
@@ -177,7 +168,6 @@ A new instance of Rate.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -195,15 +185,13 @@ sleep for preset rate [Hz].
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
+  <p class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Rate (class)">Rate</a></span></tt>) <strong>initialize</strong>(hz) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 A new instance of Rate
@@ -213,7 +201,7 @@ A new instance of Rate
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -250,11 +238,10 @@ Hz
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/rate.rb', line 20</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_hz identifier id'>hz</span><span class='rparen token'>)</span>
-  <span class='rubyid_@sleep_duration ivar id'>@sleep_duration</span> <span class='assign token'>=</span> <span class='float val'>1.0</span> <span class='div op'>/</span> <span class='rubyid_hz identifier id'>hz</span>
-  <span class='rubyid_@last_time ivar id'>@last_time</span> <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_Time constant id'>Time</span><span class='dot token'>.</span><span class='rubyid_now identifier id'>now</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hz'>hz</span><span class='rparen'>)</span>
+  <span class='ivar'>@sleep_duration</span> <span class='op'>=</span> <span class='float'>1.0</span> <span class='op'>/</span> <span class='id identifier rubyid_hz'>hz</span>
+  <span class='ivar'>@last_time</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -265,18 +252,16 @@ Hz
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="sleep-instance_method">
+  <p class="signature first" id="sleep-instance_method">
   
     - (<tt>Object</tt>) <strong>sleep</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 sleep for preset rate [Hz]
@@ -310,19 +295,18 @@ sleep for preset rate [Hz]
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/rate.rb', line 28</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_sleep identifier id'>sleep</span>
-  <span class='rubyid_current_time identifier id'>current_time</span> <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_Time constant id'>Time</span><span class='dot token'>.</span><span class='rubyid_now identifier id'>now</span>
-  <span class='rubyid_elapsed identifier id'>elapsed</span> <span class='assign token'>=</span> <span class='rubyid_current_time identifier id'>current_time</span> <span class='minus op'>-</span> <span class='rubyid_@last_time ivar id'>@last_time</span>
-  <span class='rubyid_Kernel constant id'>Kernel</span><span class='dot token'>.</span><span class='rubyid_sleep identifier id'>sleep</span><span class='lparen token'>(</span><span class='rubyid_@sleep_duration ivar id'>@sleep_duration</span> <span class='minus op'>-</span> <span class='rubyid_elapsed identifier id'>elapsed</span><span class='rparen token'>)</span>
-  <span class='rubyid_@last_time ivar id'>@last_time</span> <span class='assign token'>=</span> <span class='rubyid_@last_time ivar id'>@last_time</span> <span class='plus op'>+</span> <span class='rubyid_@sleep_duration ivar id'>@sleep_duration</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_sleep'>sleep</span>
+  <span class='id identifier rubyid_current_time'>current_time</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='id identifier rubyid_elapsed'>elapsed</span> <span class='op'>=</span> <span class='id identifier rubyid_current_time'>current_time</span> <span class='op'>-</span> <span class='ivar'>@last_time</span>
+  <span class='const'>Kernel</span><span class='period'>.</span><span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='ivar'>@sleep_duration</span> <span class='op'>-</span> <span class='id identifier rubyid_elapsed'>elapsed</span><span class='rparen'>)</span>
+  <span class='ivar'>@last_time</span> <span class='op'>=</span> <span class='ivar'>@last_time</span> <span class='op'>+</span> <span class='ivar'>@sleep_duration</span>
 
-  <span class='comment val'># detect time jumping forwards, as well as loops that are</span>
-  <span class='comment val'># inherently too slow</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_current_time identifier id'>current_time</span> <span class='minus op'>-</span> <span class='rubyid_@last_time ivar id'>@last_time</span> <span class='gt op'>&gt;</span> <span class='rubyid_@sleep_duration ivar id'>@sleep_duration</span> <span class='mult op'>*</span> <span class='integer val'>2</span>
-      <span class='rubyid_@last_time ivar id'>@last_time</span> <span class='assign token'>=</span> <span class='rubyid_current_time identifier id'>current_time</span>
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+  <span class='comment'># detect time jumping forwards, as well as loops that are
+</span>  <span class='comment'># inherently too slow
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_current_time'>current_time</span> <span class='op'>-</span> <span class='ivar'>@last_time</span> <span class='op'>&gt;</span> <span class='ivar'>@sleep_duration</span> <span class='op'>*</span> <span class='int'>2</span>
+      <span class='ivar'>@last_time</span> <span class='op'>=</span> <span class='id identifier rubyid_current_time'>current_time</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -331,11 +315,11 @@ sleep for preset rate [Hz]
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:30 2012 by
+  Generated on Thu Apr 26 22:13:14 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.2).
 </div>
 
   </body>

@@ -6,7 +6,7 @@
 <title>
   Module: ROS::Name
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  relpath = '..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (N)</a> &raquo;
+    <a href="../_index.html">Index (N)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Name</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Module: ROS::Name
   
   
@@ -120,8 +113,7 @@ name sparation char (&#8217;/&#8217;)
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'/'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span></pre></dd>
       
     </dl>
   
@@ -154,7 +146,6 @@ name sparation char (&#8217;/&#8217;)
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -173,7 +164,6 @@ generate anonymous name using input id.
 
     
   </span>
-  
   
   
   
@@ -204,7 +194,6 @@ start with &#8217;/&#8217; and use single &#8217;/&#8217; for names.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -229,7 +218,6 @@ expand ~local_param like names.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -247,18 +235,16 @@ expand local, canonicalize, remappings.
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="anonymous_name-instance_method">
+  <p class="signature first" id="anonymous_name-instance_method">
   
     - (<tt>String</tt>) <strong>anonymous_name</strong>(id) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 generate anonymous name using input id. (arange from roslib)
@@ -268,7 +254,7 @@ generate anonymous name using input id. (arange from roslib)
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -290,7 +276,7 @@ base id (String)
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -326,28 +312,25 @@ return generated id
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/name.rb', line 58</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_anonymous_name identifier id'>anonymous_name</span><span class='lparen token'>(</span><span class='rubyid_id identifier id'>id</span><span class='rparen token'>)</span>
-  <span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{id}_#{Socket.gethostname}_#{Process.pid}_#{rand(1000000)}&quot;</span>
-  <span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='rubyid_name identifier id'>name</span><span class='dot token'>.</span><span class='rubyid_gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'.'</span><span class='comma token'>,</span> <span class='string val'>'_'</span><span class='rparen token'>)</span>
-  <span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='rubyid_name identifier id'>name</span><span class='dot token'>.</span><span class='rubyid_gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'-'</span><span class='comma token'>,</span> <span class='string val'>'_'</span><span class='rparen token'>)</span>
-  <span class='rubyid_name identifier id'>name</span><span class='dot token'>.</span><span class='rubyid_gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='comma token'>,</span> <span class='string val'>'_'</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_anonymous_name'>anonymous_name</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='tstring_content'>_</span><span class='embexpr_beg'>#{</span><span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_gethostname'>gethostname</span><span class='rbrace'>}</span><span class='tstring_content'>_</span><span class='embexpr_beg'>#{</span><span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_pid'>pid</span><span class='rbrace'>}</span><span class='tstring_content'>_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>1000000</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="canonicalize_name-instance_method">
+  <p class="signature " id="canonicalize_name-instance_method">
   
     - (<tt>String</tt>) <strong>canonicalize_name</strong>(name) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 start with &#8217;/&#8217; and use single &#8217;/&#8217; for names
@@ -357,7 +340,7 @@ start with &#8217;/&#8217; and use single &#8217;/&#8217; for names
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -379,7 +362,7 @@ input name
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -418,31 +401,28 @@ canonicalized name
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/name.rb', line 29</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_canonicalize_name identifier id'>canonicalize_name</span><span class='lparen token'>(</span><span class='rubyid_name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_name identifier id'>name</span> <span class='eq op'>==</span> <span class='rubyid_nil nil kw'>nil</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_name identifier id'>name</span> <span class='eq op'>==</span> <span class='rubyid_SEP constant id'>SEP</span>
-    <span class='rubyid_return return kw'>return</span> <span class='rubyid_name identifier id'>name</span>
-  <span class='rubyid_elsif elsif kw'>elsif</span> <span class='rubyid_name identifier id'>name</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='rubyid_SEP constant id'>SEP</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span>
-    <span class='rubyid_return return kw'>return</span> <span class='rubyid_name identifier id'>name</span><span class='dot token'>.</span><span class='rubyid_split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/\/+/</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_join identifier id'>join</span><span class='lparen token'>(</span><span class='rubyid_SEP constant id'>SEP</span><span class='rparen token'>)</span>
-  <span class='rubyid_else else kw'>else</span>
-    <span class='rubyid_return return kw'>return</span> <span class='rubyid_SEP constant id'>SEP</span> <span class='plus op'>+</span> <span class='rubyid_name identifier id'>name</span><span class='dot token'>.</span><span class='rubyid_split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/\/+/</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_join identifier id'>join</span><span class='lparen token'>(</span><span class='rubyid_SEP constant id'>SEP</span><span class='rparen token'>)</span>
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_canonicalize_name'>canonicalize_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='kw'>or</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='const'>SEP</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_name'>name</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='const'>SEP</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\/+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>SEP</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='const'>SEP</span> <span class='op'>+</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\/+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>SEP</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="expand_local_name-instance_method">
+  <p class="signature " id="expand_local_name-instance_method">
   
     - (<tt>String</tt>) <strong>expand_local_name</strong>(caller_id, name) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 expand ~local_param like names.
@@ -452,7 +432,7 @@ expand ~local_param like names.
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -491,7 +471,7 @@ param name like &#8217;~param&#8217;
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -528,29 +508,26 @@ expanded name
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/name.rb', line 45</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_expand_local_name identifier id'>expand_local_name</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_name identifier id'>name</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>'~'</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span>
-    <span class='rubyid_caller_id identifier id'>caller_id</span> <span class='plus op'>+</span> <span class='rubyid_SEP constant id'>SEP</span> <span class='plus op'>+</span> <span class='rubyid_name identifier id'>name</span><span class='lbrack token'>[</span><span class='float val'>1</span><span class='dot2 op'>..</span><span class='integer val'>-1</span><span class='rbrack token'>]</span>
-  <span class='rubyid_else else kw'>else</span>
-    <span class='rubyid_name identifier id'>name</span>
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_expand_local_name'>expand_local_name</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>~</span><span class='tstring_end'>'</span></span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_caller_id'>caller_id</span> <span class='op'>+</span> <span class='const'>SEP</span> <span class='op'>+</span> <span class='id identifier rubyid_name'>name</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="resolve_name_with_call_id-instance_method">
+  <p class="signature " id="resolve_name_with_call_id-instance_method">
   
     - (<tt>String</tt>) <strong>resolve_name_with_call_id</strong>(caller_id, ns, name, remappings) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 expand local, canonicalize, remappings
@@ -560,7 +537,7 @@ expand local, canonicalize, remappings
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -633,7 +610,7 @@ name remappings
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -677,21 +654,20 @@ resolved name
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/name.rb', line 73</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_resolve_name_with_call_id identifier id'>resolve_name_with_call_id</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_ns identifier id'>ns</span><span class='comma token'>,</span> <span class='rubyid_name identifier id'>name</span><span class='comma token'>,</span> <span class='rubyid_remappings identifier id'>remappings</span><span class='rparen token'>)</span>
-  <span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='rubyid_canonicalize_name identifier id'>canonicalize_name</span><span class='lparen token'>(</span><span class='rubyid_expand_local_name identifier id'>expand_local_name</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_name identifier id'>name</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_remappings identifier id'>remappings</span>
-    <span class='rubyid_remappings identifier id'>remappings</span><span class='dot token'>.</span><span class='rubyid_each_pair identifier id'>each_pair</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='bitor op'>|</span>
-      <span class='rubyid_if if kw'>if</span> <span class='rubyid_name identifier id'>name</span> <span class='eq op'>==</span> <span class='rubyid_canonicalize_name identifier id'>canonicalize_name</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
-        <span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='rubyid_value identifier id'>value</span>
-      <span class='rubyid_end end kw'>end</span>
-    <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_ns identifier id'>ns</span>
-    <span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='rubyid_ns identifier id'>ns</span> <span class='plus op'>+</span> <span class='rubyid_SEP constant id'>SEP</span> <span class='plus op'>+</span> <span class='rubyid_name identifier id'>name</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_return return kw'>return</span> <span class='rubyid_canonicalize_name identifier id'>canonicalize_name</span><span class='lparen token'>(</span><span class='rubyid_name identifier id'>name</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_resolve_name_with_call_id'>resolve_name_with_call_id</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_ns'>ns</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_remappings'>remappings</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_canonicalize_name'>canonicalize_name</span><span class='lparen'>(</span><span class='id identifier rubyid_expand_local_name'>expand_local_name</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_remappings'>remappings</span>
+    <span class='id identifier rubyid_remappings'>remappings</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='id identifier rubyid_canonicalize_name'>canonicalize_name</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_ns'>ns</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_ns'>ns</span> <span class='op'>+</span> <span class='const'>SEP</span> <span class='op'>+</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_canonicalize_name'>canonicalize_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -700,11 +676,11 @@ resolved name
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:28 2012 by
+  Generated on Thu Apr 26 22:13:14 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.2).
 </div>
 
   </body>

@@ -6,7 +6,7 @@
 <title>
   Class: ROS::Publisher
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -15,11 +15,9 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
-  relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  relpath = '..';
+  if (relpath != '') relpath += '/';
 </script>
-
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -28,41 +26,36 @@
 
   </head>
   <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (P)</a> &raquo;
+    <a href="../_index.html">Index (P)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Publisher</span>
   
-
+  
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="../class_list.html">
-      Class List
-    </a>
+    <a id="class_list_link" href="#">Class List</a>
   
-    <a class="full_list_link" id="method_list_link"
-        href="../method_list.html">
-      Method List
-    </a>
+    <a id="method_list_link" href="#">Method List</a>
   
-    <a class="full_list_link" id="file_list_link"
-        href="../file_list.html">
-      File List
-    </a>
+    <a id="file_list_link" href="#">File List</a>
   
 </div>
       <div class="clear"></div>
     </div>
-
+    
     <iframe id="search_frame"></iframe>
-
+    
     <div id="content"><h1>Class: ROS::Publisher
   
   
@@ -110,17 +103,16 @@ is sample code. You can shutdown publisher by using this instance
 (ROS::Publisher#shutdown)
 </p>
 <pre class="code ruby"><code>
-  <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Node constant id'>Node</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'/rosruby/sample_publisher'</span><span class='rparen token'>)</span>
-  <span class='rubyid_publisher identifier id'>publisher</span> <span class='assign token'>=</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_advertise identifier id'>advertise</span><span class='lparen token'>(</span><span class='string val'>'/chatter'</span><span class='comma token'>,</span> <span class='rubyid_Std_msgs constant id'>Std_msgs</span><span class='colon2 op'>::</span><span class='rubyid_String constant id'>String</span><span class='rparen token'>)</span>
-  <span class='rubyid_sleep identifier id'>sleep</span><span class='lparen token'>(</span><span class='integer val'>1</span><span class='rparen token'>)</span>
-  <span class='rubyid_msg identifier id'>msg</span> <span class='assign token'>=</span> <span class='rubyid_Std_msgs constant id'>Std_msgs</span><span class='colon2 op'>::</span><span class='rubyid_String constant id'>String</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-  <span class='rubyid_i identifier id'>i</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-  <span class='rubyid_while while kw'>while</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_ok? fid id'>ok?</span>
-    <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;Hello, rosruby!: #{i}&quot;</span>
-    <span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_publish identifier id'>publish</span><span class='lparen token'>(</span><span class='rubyid_msg identifier id'>msg</span><span class='rparen token'>)</span>
-    <span class='rubyid_i identifier id'>i</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-  <span class='rubyid_end end kw'>end</span>
-</code></pre>
+  <span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_publisher</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_publisher'>publisher</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_advertise'>advertise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/chatter</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>while</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span>
+    <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, rosruby!: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_publisher'>publisher</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>end</span></code></pre>
 
 
   </div>
@@ -162,7 +154,6 @@ is sample code. You can shutdown publisher by using this instance
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -181,7 +172,6 @@ add tcpros connection as server.
 
     
   </span>
-  
   
   
   
@@ -212,7 +202,6 @@ Connection data for slave api.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -231,7 +220,6 @@ Connection info for slave api.
 
     
   </span>
-  
   
     <span class="note title constructor">constructor</span>
   
@@ -264,7 +252,6 @@ A new instance of Publisher.
   
   
   
-  
 
   
     <span class="summary_desc"><div class='inline'><p>
@@ -283,7 +270,6 @@ publish msg object.
 
     
   </span>
-  
   
   
   
@@ -311,22 +297,19 @@ user interface of shutdown this publisher.
   
   
   
-  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Topic.html" title="ROS::Topic (class)">Topic</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Topic.html#close-instance_method" title="ROS::Topic#close (method)">#close</a></span>, <span class='object_link'><a href="Topic.html#set_manager-instance_method" title="ROS::Topic#set_manager (method)">#set_manager</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
+  <p class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Publisher (class)">Publisher</a></span></tt>) <strong>initialize</strong>(caller_id, topic_name, topic_type, is_latched, host) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 A new instance of Publisher
@@ -336,7 +319,7 @@ A new instance of Publisher
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -443,13 +426,12 @@ host name of this node
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 34</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_topic_name identifier id'>topic_name</span><span class='comma token'>,</span> <span class='rubyid_topic_type identifier id'>topic_type</span><span class='comma token'>,</span> <span class='rubyid_is_latched identifier id'>is_latched</span><span class='comma token'>,</span> <span class='rubyid_host identifier id'>host</span><span class='rparen token'>)</span>
-  <span class='rubyid_super super kw'>super</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_topic_name identifier id'>topic_name</span><span class='comma token'>,</span> <span class='rubyid_topic_type identifier id'>topic_type</span><span class='rparen token'>)</span>
-  <span class='rubyid_@host ivar id'>@host</span> <span class='assign token'>=</span> <span class='rubyid_host identifier id'>host</span>
-  <span class='rubyid_@is_latched ivar id'>@is_latched</span> <span class='assign token'>=</span> <span class='rubyid_is_latched identifier id'>is_latched</span>
-  <span class='rubyid_@seq ivar id'>@seq</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_name'>topic_name</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_type'>topic_type</span><span class='comma'>,</span> <span class='id identifier rubyid_is_latched'>is_latched</span><span class='comma'>,</span> <span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_name'>topic_name</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_type'>topic_type</span><span class='rparen'>)</span>
+  <span class='ivar'>@host</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span>
+  <span class='ivar'>@is_latched</span> <span class='op'>=</span> <span class='id identifier rubyid_is_latched'>is_latched</span>
+  <span class='ivar'>@seq</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -460,18 +442,16 @@ host name of this node
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-
+    
     
       <div class="method_details first">
-  <h3 class="signature first" id="add_connection-instance_method">
+  <p class="signature first" id="add_connection-instance_method">
   
     - (<tt><span class='object_link'><a href="TCPROS/Server.html" title="ROS::TCPROS::Server (class)">TCPROS::Server</a></span></tt>) <strong>add_connection</strong>(caller_id) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 add tcpros connection as server
@@ -481,7 +461,7 @@ add tcpros connection as server
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -503,7 +483,7 @@ caller_id of subscriber
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -529,6 +509,7 @@ connection object
       <pre class="lines">
 
 
+60
 61
 62
 63
@@ -537,40 +518,34 @@ connection object
 66
 67
 68
-69
-70
-71</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 60</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_add_connection identifier id'>add_connection</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='rparen token'>)</span> <span class='comment val'>#:nodoc:</span>
-  <span class='rubyid_connection identifier id'>connection</span> <span class='assign token'>=</span> <span class='rubyid_TCPROS constant id'>TCPROS</span><span class='colon2 op'>::</span><span class='rubyid_Server constant id'>Server</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_@topic_name ivar id'>@topic_name</span><span class='comma token'>,</span> <span class='rubyid_@topic_type ivar id'>@topic_type</span><span class='comma token'>,</span>
-                                  <span class='symbol val'>:host=</span><span class='gt op'>&gt;</span><span class='rubyid_@host ivar id'>@host</span><span class='comma token'>,</span>
-                                  <span class='symbol val'>:latched=</span><span class='gt op'>&gt;</span><span class='rubyid_@is_latched ivar id'>@is_latched</span><span class='comma token'>,</span>
-                                  <span class='symbol val'>:last_published_msg=</span><span class='gt op'>&gt;</span><span class='rubyid_@last_published_msg ivar id'>@last_published_msg</span><span class='rparen token'>)</span>
-  <span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_start identifier id'>start</span>
-  <span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_id identifier id'>id</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{@topic_name}_out_#{@connection_id_number}&quot;</span>
-  <span class='rubyid_@connection_id_number ivar id'>@connection_id_number</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-  <span class='rubyid_@connections ivar id'>@connections</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_connection identifier id'>connection</span><span class='rparen token'>)</span>
-  <span class='rubyid_return return kw'>return</span> <span class='rubyid_connection identifier id'>connection</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_add_connection'>add_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
+</span>  <span class='id identifier rubyid_connection'>connection</span> <span class='op'>=</span> <span class='const'>TCPROS</span><span class='op'>::</span><span class='const'>Server</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span> <span class='ivar'>@topic_name</span><span class='comma'>,</span> <span class='ivar'>@topic_type</span><span class='comma'>,</span>
+                                  <span class='ivar'>@is_latched</span><span class='comma'>,</span>
+                                  <span class='int'>0</span><span class='comma'>,</span> <span class='ivar'>@host</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
+  <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@topic_name</span><span class='rbrace'>}</span><span class='tstring_content'>_out_</span><span class='embexpr_beg'>#{</span><span class='ivar'>@connection_id_number</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@connection_id_number</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_connection'>connection</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="get_connection_data-instance_method">
+  <p class="signature " id="get_connection_data-instance_method">
   
     - (<tt>Array</tt>) <strong>get_connection_data</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 Connection data for slave api
@@ -581,7 +556,7 @@ Connection data for slave api
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -607,36 +582,33 @@ connection data for slave api
       <pre class="lines">
 
 
+72
+73
 74
 75
-76
-77
-78</pre>
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 72</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_connection_data identifier id'>get_connection_data</span>
-  <span class='rubyid_@connections ivar id'>@connections</span><span class='dot token'>.</span><span class='rubyid_map identifier id'>map</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_connection identifier id'>connection</span><span class='bitor op'>|</span>
-    <span class='lbrack token'>[</span><span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_id identifier id'>id</span><span class='comma token'>,</span> <span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_byte_sent identifier id'>byte_sent</span><span class='comma token'>,</span> <span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_num_sent identifier id'>num_sent</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='rbrack token'>]</span>
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_connection_data'>get_connection_data</span>
+  <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_byte_sent'>byte_sent</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_num_sent'>num_sent</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="get_connection_info-instance_method">
+  <p class="signature " id="get_connection_info-instance_method">
   
     - (<tt>array</tt>) <strong>get_connection_info</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 Connection info for slave api
@@ -647,7 +619,7 @@ Connection info for slave api
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -673,40 +645,37 @@ connection info for slave api
       <pre class="lines">
 
 
+79
+80
 81
 82
 83
 84
-85
-86
-87</pre>
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 79</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_connection_info identifier id'>get_connection_info</span>
-  <span class='rubyid_info identifier id'>info</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='rubyid_@connections ivar id'>@connections</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_connection identifier id'>connection</span><span class='bitor op'>|</span>
-    <span class='rubyid_info identifier id'>info</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_id identifier id'>id</span><span class='comma token'>,</span> <span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='string val'>'o'</span><span class='comma token'>,</span> <span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_protocol identifier id'>protocol</span><span class='comma token'>,</span> <span class='rubyid_@topic_name ivar id'>@topic_name</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_info identifier id'>info</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_connection_info'>get_connection_info</span>
+  <span class='id identifier rubyid_info'>info</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
+    <span class='id identifier rubyid_info'>info</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>o</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span><span class='comma'>,</span> <span class='ivar'>@topic_name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_info'>info</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="publish-instance_method">
+  <p class="signature " id="publish-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Publisher (class)">Publisher</a></span></tt>) <strong>publish</strong>(message) 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 publish msg object
@@ -716,7 +685,7 @@ publish msg object
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -738,7 +707,7 @@ instance of topic_type class
   
 </ul>
 
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -773,39 +742,34 @@ self
 51
 52
 53
-54
-55</pre>
+54</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 45</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_publish identifier id'>publish</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='rubyid_@seq ivar id'>@seq</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-  <span class='rubyid_@last_published_msg ivar id'>@last_published_msg</span> <span class='assign token'>=</span> <span class='rubyid_message identifier id'>message</span>
-  <span class='rubyid_if if kw'>if</span> <span class='rubyid_message identifier id'>message</span><span class='dot token'>.</span><span class='rubyid_has_header? fid id'>has_header?</span>
-    <span class='rubyid_message identifier id'>message</span><span class='dot token'>.</span><span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_seq identifier id'>seq</span> <span class='assign token'>=</span> <span class='rubyid_@seq ivar id'>@seq</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_@connections ivar id'>@connections</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_connection identifier id'>connection</span><span class='bitor op'>|</span>
-    <span class='rubyid_connection identifier id'>connection</span><span class='dot token'>.</span><span class='rubyid_msg_queue identifier id'>msg_queue</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_self self kw'>self</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_publish'>publish</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='ivar'>@seq</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_has_header?'>has_header?</span>
+    <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_seq'>seq</span> <span class='op'>=</span> <span class='ivar'>@seq</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
+    <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_msg_queue'>msg_queue</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="shutdown-instance_method">
+  <p class="signature " id="shutdown-instance_method">
   
     - (<tt>nil</tt>) <strong>shutdown</strong> 
   
 
   
-
-  
-</h3><div class="docstring">
+</p><div class="docstring">
   <div class="discussion">
     <p>
 user interface of shutdown this publisher
@@ -816,7 +780,7 @@ user interface of shutdown this publisher
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -842,17 +806,16 @@ nil
       <pre class="lines">
 
 
-92
-93
-94</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/publisher.rb', line 90</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown identifier id'>shutdown</span>
-  <span class='rubyid_@manager ivar id'>@manager</span><span class='dot token'>.</span><span class='rubyid_shutdown_publisher identifier id'>shutdown_publisher</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
+  <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_shutdown_publisher'>shutdown_publisher</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -861,11 +824,11 @@ nil
   </div>
 
 </div>
-
+    
     <div id="footer">
-  Generated on Sat May  5 11:29:31 2012 by
+  Generated on Thu Apr 26 22:13:15 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.2).
 </div>
 
   </body>
