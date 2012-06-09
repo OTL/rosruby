@@ -41,22 +41,22 @@ desc "Generate precompiled msg gem"
 task :msg_gem do
   target_msg_packages = "actionlib_msgs pr2_controllers_msgs std_msgs visualization_msgs actionlib_tutorials roscpp stereo_msgs geometry_msgs rosgraph_msgs tf nav_msgs sensor_msgs trajectory_msgs std_srvs"
   system("scripts/rosruby_genmsg.py #{target_msg_packages}")
-  mkdir_p('msg_gem')
-  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/msg_gen/ruby/*"), "msg_gem")
-  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/srv_gen/ruby/*"), "msg_gem")
+  mkdir_p('msg_gem/lib')
+  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/msg_gen/ruby/*"), "msg_gem/lib/")
+  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/srv_gen/ruby/*"), "msg_gem/lib/")
   chdir('msg_gem') do
     namespace :msg do
       msg_spec = Gem::Specification.new do |s|
         s.name    = "rosruby_msgs"
         s.summary = "rosruby's basic msg/srv"
         s.requirements << 'none'
-        s.version = '0.0.3'
+        s.version = '0.0.4'
         s.author = "Takashi Ogura"
         s.email = "t.ogura@gmail.com"
         s.homepage = "http://github.com/OTL/rosruby"
         s.platform = Gem::Platform::RUBY
         s.has_rdoc = false
-        s.files = Dir['**/**'].map
+        s.files = Dir['lib/**/**']
         s.description = "precompiled msg files for rosruby."
       end
       Gem::PackageTask.new(msg_spec).define
