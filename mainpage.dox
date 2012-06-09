@@ -2,14 +2,11 @@
 \mainpage
 \htmlinclude manifest.html
 
-\b rosruby is ... 
-
-<!-- 
-Provide an overview of your package.
--->
-
+\b rosruby is ruby ROS client.
 
 \section codeapi Code API
+Doxygen does not support ruby.
+Please see http://otl.github.com/rosruby/doc.
 
 <!--
 Provide links to specific auto-generated API documentation within your
