@@ -1,0 +1,2571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ROS::GraphManager
+  
+    &mdash; Documentation by YARD 0.8.1
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (G)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
+     &raquo; 
+    <span class="title">GraphManager</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: ROS::GraphManager
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ROS::GraphManager</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Name.html" title="ROS::Name (module)">Name</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ros/graph_manager.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Manager of ROS graph
+</p>
+<p>
+This contains all subscribers, publishers, service_servers of a node. It
+connects with master and manage pub/sub and services.
+</p>
+<ul>
+<li>Master API document is http://ros.org/wiki/ROS/Master_API
+
+</li>
+<li>Slave API is http://ros.org/wiki/ROS/Slave_API
+
+</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="MAX_CONNECTION-constant" class="">MAX_CONNECTION =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+max number of connection with other slave nodes
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='integer val'>100</span>
+</pre></dd>
+      
+        <dt id="all_nodes-classvariable" class="">@@all_nodes =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+current running all nodes. This is used for shutdown all nodes.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Name.html" title="ROS::Name (module)">Name</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Name.html#SEP-constant" title="ROS::Name::SEP (constant)">Name::SEP</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#host-instance_method" title="#host (instance method)">- (String) <strong>host</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Value hostname of this node.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parameter_subscribers-instance_method" title="#parameter_subscribers (instance method)">- (Array) <strong>parameter_subscribers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+All ParameterSubscriber of this node.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#port-instance_method" title="#port (instance method)">- (Integer) <strong>port</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Value port number of this node.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#publishers-instance_method" title="#publishers (instance method)">- (Array) <strong>publishers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+All Publisher of this node.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#service_servers-instance_method" title="#service_servers (instance method)">- (Array) <strong>service_servers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+All ServiceServer of this node.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subscribers-instance_method" title="#subscribers (instance method)">- (Array) <strong>subscribers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+All Subscriber of this node.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown_all-class_method" title="shutdown_all (class method)">+ (Object) <strong>shutdown_all</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown all nodes.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_parameter_subscriber-instance_method" title="#add_parameter_subscriber (instance method)">- (ParameterSubscriber) <strong>add_parameter_subscriber</strong>(subscriber) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+register callback for paramUpdate.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_publisher-instance_method" title="#add_publisher (instance method)">- (Publisher) <strong>add_publisher</strong>(publisher) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+register a publisher.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_service_server-instance_method" title="#add_service_server (instance method)">- (ServiceServer) <strong>add_service_server</strong>(service_server) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+register a service to master, and add it in the controlling server list.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_subscriber-instance_method" title="#add_subscriber (instance method)">- (Subscriber) <strong>add_subscriber</strong>(subscriber) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+register a subscriber to master.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_available_port-instance_method" title="#get_available_port (instance method)">- (Integer) <strong>get_available_port</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get available port number by opening port 0.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_uri-instance_method" title="#get_uri (instance method)">- (String) <strong>get_uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get this slave node&#8217;s URI.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (GraphManager) <strong>initialize</strong>(caller_id, master_uri, host) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+add xmlrpc handlers for slave connections.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#is_ok%3F-instance_method" title="#is_ok? (instance method)">- (Boolean) <strong>is_ok?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+check if this node is running or not.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown-instance_method" title="#shutdown (instance method)">- (GraphManager) <strong>shutdown</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown this slave node.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown_parameter_subscriber-instance_method" title="#shutdown_parameter_subscriber (instance method)">- (Object) <strong>shutdown_parameter_subscriber</strong>(subscriber) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown a parameter subscriber.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown_publisher-instance_method" title="#shutdown_publisher (instance method)">- (Object) <strong>shutdown_publisher</strong>(publisher) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown a publisher.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown_service_server-instance_method" title="#shutdown_service_server (instance method)">- (Object) <strong>shutdown_service_server</strong>(service) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown a service server.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown_subscriber-instance_method" title="#shutdown_subscriber (instance method)">- (Object) <strong>shutdown_subscriber</strong>(subscriber) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown a subscriber.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#spin_once-instance_method" title="#spin_once (instance method)">- (Object) <strong>spin_once</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+process all messages of subscribers.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait_for_service-instance_method" title="#wait_for_service (instance method)">- (Boolean) <strong>wait_for_service</strong>(service_name, timeout_sec) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+wait until service is available.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Name.html" title="ROS::Name (module)">Name</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Name.html#anonymous_name-instance_method" title="ROS::Name#anonymous_name (method)">#anonymous_name</a></span>, <span class='object_link'><a href="Name.html#canonicalize_name-instance_method" title="ROS::Name#canonicalize_name (method)">#canonicalize_name</a></span>, <span class='object_link'><a href="Name.html#expand_local_name-instance_method" title="ROS::Name#expand_local_name (method)">#expand_local_name</a></span>, <span class='object_link'><a href="Name.html#resolve_name_with_call_id-instance_method" title="ROS::Name#resolve_name_with_call_id (method)">#resolve_name_with_call_id</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::GraphManager (class)">GraphManager</a></span></tt>) <strong>initialize</strong>(caller_id, master_uri, host) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+add xmlrpc handlers for slave connections. Then start serve thread.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>caller_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+caller_id of this node
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>master_uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of ROS Master
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+hostname of this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 58</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_master_uri identifier id'>master_uri</span><span class='comma token'>,</span> <span class='rubyid_host identifier id'>host</span><span class='rparen token'>)</span>
+  <span class='rubyid_@caller_id ivar id'>@caller_id</span> <span class='assign token'>=</span> <span class='rubyid_caller_id identifier id'>caller_id</span>
+  <span class='rubyid_@host ivar id'>@host</span> <span class='assign token'>=</span> <span class='rubyid_host identifier id'>host</span>
+  <span class='rubyid_@port ivar id'>@port</span> <span class='assign token'>=</span> <span class='rubyid_get_available_port identifier id'>get_available_port</span>
+  <span class='rubyid_@master_uri ivar id'>@master_uri</span> <span class='assign token'>=</span> <span class='rubyid_master_uri identifier id'>master_uri</span>
+  <span class='rubyid_@is_ok ivar id'>@is_ok</span> <span class='assign token'>=</span> <span class='rubyid_true true kw'>true</span>
+  <span class='rubyid_@master ivar id'>@master</span> <span class='assign token'>=</span> <span class='rubyid_MasterProxy constant id'>MasterProxy</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span> <span class='rubyid_@master_uri ivar id'>@master_uri</span><span class='comma token'>,</span> <span class='rubyid_get_uri identifier id'>get_uri</span><span class='rparen token'>)</span>
+  <span class='rubyid_@server ivar id'>@server</span> <span class='assign token'>=</span> <span class='rubyid_XMLRPC constant id'>XMLRPC</span><span class='colon2 op'>::</span><span class='rubyid_Server constant id'>Server</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_@port ivar id'>@port</span><span class='comma token'>,</span> <span class='rubyid_@host ivar id'>@host</span><span class='comma token'>,</span> <span class='rubyid_MAX_CONNECTION constant id'>MAX_CONNECTION</span><span class='comma token'>,</span> <span class='rubyid_$stderr gvar id'>$stderr</span><span class='comma token'>,</span> <span class='rubyid_false false kw'>false</span><span class='comma token'>,</span> <span class='rubyid_false false kw'>false</span><span class='rparen token'>)</span>
+  <span class='rubyid_@publishers ivar id'>@publishers</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='rubyid_@subscribers ivar id'>@subscribers</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='rubyid_@service_servers ivar id'>@service_servers</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='rubyid_@parameter_subscribers ivar id'>@parameter_subscribers</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+
+  <span class='rubyid_add_handlers identifier id'>add_handlers</span>
+
+  <span class='rubyid_@thread ivar id'>@thread</span> <span class='assign token'>=</span> <span class='rubyid_Thread constant id'>Thread</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span> <span class='rubyid_do do kw'>do</span>
+    <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_serve identifier id'>serve</span>
+  <span class='rubyid_end end kw'>end</span>
+
+  <span class='rubyid_@@all_nodes ivar id'>@@all_nodes</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="host-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="host-instance_method">
+  
+    - (<tt>String</tt>) <strong>host</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Value hostname of this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+value hostname of this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 48</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_host identifier id'>host</span>
+  <span class='rubyid_@host ivar id'>@host</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="parameter_subscribers-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="parameter_subscribers-instance_method">
+  
+    - (<tt>Array</tt>) <strong>parameter_subscribers</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+All ParameterSubscriber of this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+all ParameterSubscriber of this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 40</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_parameter_subscribers identifier id'>parameter_subscribers</span>
+  <span class='rubyid_@parameter_subscribers ivar id'>@parameter_subscribers</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="port-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="port-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>port</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Value port number of this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+value port number of this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 50</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_port identifier id'>port</span>
+  <span class='rubyid_@port ivar id'>@port</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="publishers-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="publishers-instance_method">
+  
+    - (<tt>Array</tt>) <strong>publishers</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+All Publisher of this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+all Publisher of this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 34</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_publishers identifier id'>publishers</span>
+  <span class='rubyid_@publishers ivar id'>@publishers</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="service_servers-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="service_servers-instance_method">
+  
+    - (<tt>Array</tt>) <strong>service_servers</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+All ServiceServer of this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+all ServiceServer of this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 38</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_service_servers identifier id'>service_servers</span>
+  <span class='rubyid_@service_servers ivar id'>@service_servers</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="subscribers-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="subscribers-instance_method">
+  
+    - (<tt>Array</tt>) <strong>subscribers</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+All Subscriber of this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+all Subscriber of this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 36</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_subscribers identifier id'>subscribers</span>
+  <span class='rubyid_@subscribers ivar id'>@subscribers</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="shutdown_all-class_method">
+  
+    + (<tt>Object</tt>) <strong>shutdown_all</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown all nodes
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 81</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_shutdown_all identifier id'>shutdown_all</span>
+  <span class='rubyid_@@all_nodes ivar id'>@@all_nodes</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_node identifier id'>node</span><span class='bitor op'>|</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_is_ok? fid id'>is_ok?</span>
+      <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_shutdown identifier id'>shutdown</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add_parameter_subscriber-instance_method">
+  
+    - (<tt><span class='object_link'><a href="ParameterSubscriber.html" title="ROS::ParameterSubscriber (class)">ParameterSubscriber</a></span></tt>) <strong>add_parameter_subscriber</strong>(subscriber) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+register callback for paramUpdate
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>subscriber</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ParameterSubscriber.html" title="ROS::ParameterSubscriber (class)">ParameterSubscriber</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+ParameterSubscriber instance to be added
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ParameterSubscriber.html" title="ROS::ParameterSubscriber (class)">ParameterSubscriber</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+subscriber
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175
+176
+177
+178</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 173</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_add_parameter_subscriber identifier id'>add_parameter_subscriber</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span>
+  <span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_set_manager identifier id'>set_manager</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+  <span class='rubyid_@parameter_subscribers ivar id'>@parameter_subscribers</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_subscribe_param identifier id'>subscribe_param</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_subscriber identifier id'>subscriber</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_publisher-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span></tt>) <strong>add_publisher</strong>(publisher) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+register a publisher. raise if fail.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>publisher</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Publisher instance to be added
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+publisher
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+184
+185
+186
+187
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 184</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_add_publisher identifier id'>add_publisher</span><span class='lparen token'>(</span><span class='rubyid_publisher identifier id'>publisher</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_register_publisher identifier id'>register_publisher</span><span class='lparen token'>(</span><span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_topic_name identifier id'>topic_name</span><span class='comma token'>,</span>
+                             <span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_topic_type identifier id'>topic_type</span><span class='dot token'>.</span><span class='rubyid_type identifier id'>type</span><span class='rparen token'>)</span>
+  <span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_set_manager identifier id'>set_manager</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+  <span class='rubyid_@publishers ivar id'>@publishers</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_publisher identifier id'>publisher</span><span class='rparen token'>)</span>
+  <span class='rubyid_publisher identifier id'>publisher</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_service_server-instance_method">
+  
+    - (<tt><span class='object_link'><a href="ServiceServer.html" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>add_service_server</strong>(service_server) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+register a service to master, and add it in the controlling server list.
+raise if fail.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service_server</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ServiceServer.html" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+ServiceServer to be added
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ServiceServer.html" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+service_server
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147
+148
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 145</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_add_service_server identifier id'>add_service_server</span><span class='lparen token'>(</span><span class='rubyid_service_server identifier id'>service_server</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_register_service identifier id'>register_service</span><span class='lparen token'>(</span><span class='rubyid_service_server identifier id'>service_server</span><span class='dot token'>.</span><span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span>
+                           <span class='rubyid_service_server identifier id'>service_server</span><span class='dot token'>.</span><span class='rubyid_service_uri identifier id'>service_uri</span><span class='rparen token'>)</span>
+  <span class='rubyid_service_server identifier id'>service_server</span><span class='dot token'>.</span><span class='rubyid_set_manager identifier id'>set_manager</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+  <span class='rubyid_@service_servers ivar id'>@service_servers</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_service_server identifier id'>service_server</span><span class='rparen token'>)</span>
+  <span class='rubyid_service_server identifier id'>service_server</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_subscriber-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></tt>) <strong>add_subscriber</strong>(subscriber) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+register a subscriber to master. raise if fail.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>subscriber</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Subscriber to be added
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+subscriber
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 158</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_add_subscriber identifier id'>add_subscriber</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span>
+  <span class='rubyid_uris identifier id'>uris</span> <span class='assign token'>=</span> <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_register_subscriber identifier id'>register_subscriber</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_topic_name identifier id'>topic_name</span><span class='comma token'>,</span>
+                                     <span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_topic_type identifier id'>topic_type</span><span class='dot token'>.</span><span class='rubyid_type identifier id'>type</span><span class='rparen token'>)</span>
+  <span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_set_manager identifier id'>set_manager</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+  <span class='rubyid_uris identifier id'>uris</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_publisher_uri identifier id'>publisher_uri</span><span class='bitor op'>|</span>
+    <span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_add_connection identifier id'>add_connection</span><span class='lparen token'>(</span><span class='rubyid_publisher_uri identifier id'>publisher_uri</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@subscribers ivar id'>@subscribers</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span>
+  <span class='rubyid_subscriber identifier id'>subscriber</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_available_port-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>get_available_port</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+get available port number by opening port 0.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+port_num
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102
+103
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 100</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_available_port identifier id'>get_available_port</span>
+  <span class='rubyid_server identifier id'>server</span> <span class='assign token'>=</span> <span class='rubyid_TCPServer constant id'>TCPServer</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='rparen token'>)</span>
+  <span class='rubyid_saddr identifier id'>saddr</span> <span class='assign token'>=</span> <span class='rubyid_server identifier id'>server</span><span class='dot token'>.</span><span class='rubyid_getsockname identifier id'>getsockname</span>
+  <span class='rubyid_port identifier id'>port</span> <span class='assign token'>=</span> <span class='rubyid_Socket constant id'>Socket</span><span class='dot token'>.</span><span class='rubyid_unpack_sockaddr_in identifier id'>unpack_sockaddr_in</span><span class='lparen token'>(</span><span class='rubyid_saddr identifier id'>saddr</span><span class='rparen token'>)</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span>
+  <span class='rubyid_server identifier id'>server</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+  <span class='rubyid_port identifier id'>port</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_uri-instance_method">
+  
+    - (<tt>String</tt>) <strong>get_uri</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+get this slave node&#8217;s URI
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+uri (&#8216;http://host:port&#8217;)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 112</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_uri identifier id'>get_uri</span>
+  <span class='string val'>&quot;http://&quot;</span> <span class='plus op'>+</span> <span class='rubyid_@host ivar id'>@host</span> <span class='plus op'>+</span> <span class='string val'>&quot;:&quot;</span> <span class='plus op'>+</span> <span class='rubyid_@port ivar id'>@port</span><span class='dot token'>.</span><span class='rubyid_to_s identifier id'>to_s</span> <span class='plus op'>+</span> <span class='string val'>&quot;/&quot;</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="is_ok?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>is_ok?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+check if this node is running or not.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+true if node is running.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 92</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_is_ok? fid id'>is_ok?</span>
+  <span class='rubyid_@is_ok ivar id'>@is_ok</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shutdown-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::GraphManager (class)">GraphManager</a></span></tt>) <strong>shutdown</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown this slave node. shutdown the xmlrpc server and all pub/sub
+connections. and delelte all pub/sub instance from connection list
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="ROS::GraphManager (class)">GraphManager</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+self
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 248</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown identifier id'>shutdown</span>
+  <span class='rubyid_begin begin kw'>begin</span>
+    <span class='rubyid_@is_ok ivar id'>@is_ok</span> <span class='assign token'>=</span> <span class='rubyid_false false kw'>false</span>
+    <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_shutdown identifier id'>shutdown</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_not not kw'>not</span> <span class='rubyid_@thread ivar id'>@thread</span><span class='dot token'>.</span><span class='rubyid_join identifier id'>join</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='integer val'>.1</span><span class='rparen token'>)</span>
+      <span class='rubyid_Thread constant id'>Thread</span><span class='colon2 op'>::</span><span class='rubyid_kill identifier id'>kill</span><span class='lparen token'>(</span><span class='rubyid_@thread ivar id'>@thread</span><span class='rparen token'>)</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_rescue rescue kw'>rescue</span>
+    <span class='rubyid_puts identifier id'>puts</span> <span class='string val'>'fail while shutdown'</span>
+    <span class='rubyid_Thread constant id'>Thread</span><span class='colon2 op'>::</span><span class='rubyid_kill identifier id'>kill</span><span class='lparen token'>(</span><span class='rubyid_@thread ivar id'>@thread</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+
+  <span class='rubyid_@publishers ivar id'>@publishers</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_publisher identifier id'>publisher</span><span class='bitor op'>|</span>
+    <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unregister_publisher identifier id'>unregister_publisher</span><span class='lparen token'>(</span><span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_topic_name identifier id'>topic_name</span><span class='rparen token'>)</span>
+    <span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@publishers ivar id'>@publishers</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span>
+
+  <span class='rubyid_@subscribers ivar id'>@subscribers</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='bitor op'>|</span>
+    <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unregister_subscriber identifier id'>unregister_subscriber</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_topic_name identifier id'>topic_name</span><span class='rparen token'>)</span>
+    <span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@subscribers ivar id'>@subscribers</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span>
+
+  <span class='rubyid_@service_servers ivar id'>@service_servers</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_service identifier id'>service</span><span class='bitor op'>|</span>
+    <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unregister_service identifier id'>unregister_service</span><span class='lparen token'>(</span><span class='rubyid_service identifier id'>service</span><span class='dot token'>.</span><span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span>
+                               <span class='rubyid_service identifier id'>service</span><span class='dot token'>.</span><span class='rubyid_service_uri identifier id'>service_uri</span><span class='rparen token'>)</span>
+    <span class='rubyid_service identifier id'>service</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@service_servers ivar id'>@service_servers</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span>
+
+  <span class='rubyid_@parameter_subscribers ivar id'>@parameter_subscribers</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='bitor op'>|</span>
+    <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unsubscribe_param identifier id'>unsubscribe_param</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@parameter_subscribers ivar id'>@parameter_subscribers</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span>
+
+  <span class='rubyid_@@all_nodes ivar id'>@@all_nodes</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+
+  <span class='rubyid_self self kw'>self</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shutdown_parameter_subscriber-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shutdown_parameter_subscriber</strong>(subscriber) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown a parameter subscriber.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>subscriber</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+ParameterSubscriber to be shutdown
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 236</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown_parameter_subscriber identifier id'>shutdown_parameter_subscriber</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unsubscribe_param identifier id'>unsubscribe_param</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_@parameter_subscribers ivar id'>@parameter_subscribers</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_sub identifier id'>sub</span><span class='bitor op'>|</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='string val'>&quot;parameter server not found&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shutdown_publisher-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shutdown_publisher</strong>(publisher) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown a publisher.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>publisher</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Publisher to be shutdown
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+202
+203
+204
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 202</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown_publisher identifier id'>shutdown_publisher</span><span class='lparen token'>(</span><span class='rubyid_publisher identifier id'>publisher</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unregister_publisher identifier id'>unregister_publisher</span><span class='lparen token'>(</span><span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_topic_name identifier id'>topic_name</span><span class='rparen token'>)</span>
+  <span class='rubyid_@publishers ivar id'>@publishers</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_publisher identifier id'>publisher</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_pub identifier id'>pub</span><span class='bitor op'>|</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='string val'>&quot;publisher not found&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_publisher identifier id'>publisher</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shutdown_service_server-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shutdown_service_server</strong>(service) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown a service server.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ServiceServer.html" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+ServiceServer to be shutdown
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230
+231</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 224</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown_service_server identifier id'>shutdown_service_server</span><span class='lparen token'>(</span><span class='rubyid_service identifier id'>service</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unregister_service identifier id'>unregister_service</span><span class='lparen token'>(</span><span class='rubyid_service identifier id'>service</span><span class='dot token'>.</span><span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span>
+                             <span class='rubyid_service identifier id'>service</span><span class='dot token'>.</span><span class='rubyid_service_uri identifier id'>service_uri</span><span class='rparen token'>)</span>
+  <span class='rubyid_@service_servers ivar id'>@service_servers</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_service identifier id'>service</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_pub identifier id'>pub</span><span class='bitor op'>|</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='string val'>&quot;service_server not found&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_service identifier id'>service</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shutdown_subscriber-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shutdown_subscriber</strong>(subscriber) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown a subscriber.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>subscriber</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Subscriber to be shutdown
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+213
+214
+215
+216
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 213</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown_subscriber identifier id'>shutdown_subscriber</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span>
+  <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_unregister_subscriber identifier id'>unregister_subscriber</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_topic_name identifier id'>topic_name</span><span class='rparen token'>)</span>
+  <span class='rubyid_@subscribers ivar id'>@subscribers</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_pub identifier id'>pub</span><span class='bitor op'>|</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='string val'>&quot;subscriber not found&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="spin_once-instance_method">
+  
+    - (<tt>Object</tt>) <strong>spin_once</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+process all messages of subscribers. This means that callbacks for all
+queued messages are called.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+195
+196
+197</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 195</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_spin_once identifier id'>spin_once</span>
+  <span class='rubyid_@subscribers ivar id'>@subscribers</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='rubyid_subscriber identifier id'>subscriber</span><span class='bitor op'>|</span> <span class='rubyid_subscriber identifier id'>subscriber</span><span class='dot token'>.</span><span class='rubyid_process_queue identifier id'>process_queue</span><span class='rbrace token'>}</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="wait_for_service-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>wait_for_service</strong>(service_name, timeout_sec) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+wait until service is available
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of service for waiting
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>timeout_sec</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+wait for this seconds, then time out
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+true: available, false: time out
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 121</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_wait_for_service identifier id'>wait_for_service</span><span class='lparen token'>(</span><span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span> <span class='rubyid_timeout_sec identifier id'>timeout_sec</span><span class='rparen token'>)</span>
+  <span class='rubyid_begin begin kw'>begin</span>
+    <span class='rubyid_timeout identifier id'>timeout</span><span class='lparen token'>(</span><span class='rubyid_timeout_sec identifier id'>timeout_sec</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span>
+      <span class='rubyid_while while kw'>while</span> <span class='rubyid_@is_ok ivar id'>@is_ok</span>
+        <span class='rubyid_if if kw'>if</span> <span class='rubyid_@master ivar id'>@master</span><span class='dot token'>.</span><span class='rubyid_lookup_service identifier id'>lookup_service</span><span class='lparen token'>(</span><span class='rubyid_service_name identifier id'>service_name</span><span class='rparen token'>)</span>
+          <span class='rubyid_return return kw'>return</span> <span class='rubyid_true true kw'>true</span>
+        <span class='rubyid_end end kw'>end</span>
+        <span class='rubyid_sleep identifier id'>sleep</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='integer val'>.1</span><span class='rparen token'>)</span>
+      <span class='rubyid_end end kw'>end</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_rescue rescue kw'>rescue</span> <span class='rubyid_Timeout constant id'>Timeout</span><span class='colon2 op'>::</span><span class='rubyid_Error constant id'>Error</span>
+    <span class='rubyid_puts identifier id'>puts</span> <span class='dstring node'>&quot;time outed for wait service #{service_name}&quot;</span>
+    <span class='rubyid_return return kw'>return</span> <span class='rubyid_nil nil kw'>nil</span>
+  <span class='rubyid_rescue rescue kw'>rescue</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='dstring node'>&quot;connection with master failed. master = #{@master_uri}&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sat May  5 11:29:34 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

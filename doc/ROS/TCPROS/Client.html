@@ -1,0 +1,1245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ROS::TCPROS::Client
+  
+    &mdash; Documentation by YARD 0.8.1
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../ROS.html" title="ROS (module)">ROS</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TCPROS.html" title="ROS::TCPROS (module)">TCPROS</a></span></span>
+     &raquo; 
+    <span class="title">Client</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: ROS::TCPROS::Client
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ROS::TCPROS::Client</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Message.html" title="ROS::TCPROS::Message (module)">Message</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ros/tcpros/client.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+rosrpc&#8217;s client for subscriber
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#byte_received-instance_method" title="#byte_received (instance method)">- (Integer) <strong>byte_received</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Received byte.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#host-instance_method" title="#host (instance method)">- (String) <strong>host</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Host name.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-instance_method" title="#id (instance method)">- (String) <strong>id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Id for slave API.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#msg_queue-instance_method" title="#msg_queue (instance method)">- (Queue) <strong>msg_queue</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Message queue.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#port-instance_method" title="#port (instance method)">- (Integer) <strong>port</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Port number of this client.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#target_uri-instance_method" title="#target_uri (instance method)">- (String) <strong>target_uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+URI of connection target.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_header-instance_method" title="#build_header (instance method)">- (TCPROS::Header) <strong>build_header</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+build header data for subscription.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Client) <strong>initialize</strong>(host, port, caller_id, topic_name, topic_type, target_uri, tcp_no_delay) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Client.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown-instance_method" title="#shutdown (instance method)">- (Object) <strong>shutdown</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+close the connection.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start-instance_method" title="#start (instance method)">- (Object) <strong>start</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+start recieving data.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Message.html" title="ROS::TCPROS::Message (module)">Message</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Message.html#protocol-instance_method" title="ROS::TCPROS::Message#protocol (method)">#protocol</a></span>, <span class='object_link'><a href="Message.html#read_all-instance_method" title="ROS::TCPROS::Message#read_all (method)">#read_all</a></span>, <span class='object_link'><a href="Message.html#read_header-instance_method" title="ROS::TCPROS::Message#read_header (method)">#read_header</a></span>, <span class='object_link'><a href="Message.html#write_header-instance_method" title="ROS::TCPROS::Message#write_header (method)">#write_header</a></span>, <span class='object_link'><a href="Message.html#write_msg-instance_method" title="ROS::TCPROS::Message#write_msg (method)">#write_msg</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::Client (class)">Client</a></span></tt>) <strong>initialize</strong>(host, port, caller_id, topic_name, topic_type, target_uri, tcp_no_delay) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Client
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+host name
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+port number
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>caller_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+caller id of this node
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>topic_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of this topic
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>topic_type</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+type of topic
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>target_uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of connection target
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>tcp_no_delay</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+use tcp no delay option or not
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 29</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_host identifier id'>host</span><span class='comma token'>,</span> <span class='rubyid_port identifier id'>port</span><span class='comma token'>,</span>
+               <span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_topic_name identifier id'>topic_name</span><span class='comma token'>,</span> <span class='rubyid_topic_type identifier id'>topic_type</span><span class='comma token'>,</span> <span class='rubyid_target_uri identifier id'>target_uri</span><span class='comma token'>,</span>
+               <span class='rubyid_tcp_no_delay identifier id'>tcp_no_delay</span><span class='rparen token'>)</span>
+  <span class='rubyid_@caller_id ivar id'>@caller_id</span> <span class='assign token'>=</span> <span class='rubyid_caller_id identifier id'>caller_id</span>
+  <span class='rubyid_@topic_name ivar id'>@topic_name</span> <span class='assign token'>=</span> <span class='rubyid_topic_name identifier id'>topic_name</span>
+  <span class='rubyid_@topic_type ivar id'>@topic_type</span> <span class='assign token'>=</span> <span class='rubyid_topic_type identifier id'>topic_type</span>
+  <span class='rubyid_@port ivar id'>@port</span> <span class='assign token'>=</span> <span class='rubyid_port identifier id'>port</span>
+  <span class='rubyid_@host ivar id'>@host</span> <span class='assign token'>=</span> <span class='rubyid_host identifier id'>host</span>
+  <span class='rubyid_@target_uri ivar id'>@target_uri</span> <span class='assign token'>=</span> <span class='rubyid_target_uri identifier id'>target_uri</span>
+  <span class='rubyid_@msg_queue ivar id'>@msg_queue</span> <span class='assign token'>=</span> <span class='rubyid_Queue constant id'>Queue</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
+  <span class='rubyid_@socket ivar id'>@socket</span> <span class='assign token'>=</span> <span class='rubyid_TCPSocket constant id'>TCPSocket</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_@host ivar id'>@host</span><span class='comma token'>,</span> <span class='rubyid_@port ivar id'>@port</span><span class='rparen token'>)</span>
+  <span class='rubyid_@tcp_no_delay ivar id'>@tcp_no_delay</span> <span class='assign token'>=</span> <span class='rubyid_tcp_no_delay identifier id'>tcp_no_delay</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_tcp_no_delay identifier id'>tcp_no_delay</span>
+    <span class='rubyid_@socket ivar id'>@socket</span><span class='dot token'>.</span><span class='rubyid_setsockopt identifier id'>setsockopt</span><span class='lparen token'>(</span><span class='rubyid_Socket constant id'>Socket</span><span class='colon2 op'>::</span><span class='rubyid_IPPROTO_TCP constant id'>IPPROTO_TCP</span><span class='comma token'>,</span> <span class='rubyid_Socket constant id'>Socket</span><span class='colon2 op'>::</span><span class='rubyid_TCP_NODELAY constant id'>TCP_NODELAY</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@byte_received ivar id'>@byte_received</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+  <span class='rubyid_@is_running ivar id'>@is_running</span> <span class='assign token'>=</span> <span class='rubyid_true true kw'>true</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="byte_received-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="byte_received-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>byte_received</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Received byte
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+received byte
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 102</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_byte_received identifier id'>byte_received</span>
+  <span class='rubyid_@byte_received ivar id'>@byte_received</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="host-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="host-instance_method">
+  
+    - (<tt>String</tt>) <strong>host</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Host name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+host name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 98</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_host identifier id'>host</span>
+  <span class='rubyid_@host ivar id'>@host</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="id=-instance_method"></span>
+      <span id="id-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
+  
+    - (<tt>String</tt>) <strong>id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Id for slave API
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+id for slave API
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 106</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_id identifier id'>id</span>
+  <span class='rubyid_@id ivar id'>@id</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="msg_queue-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="msg_queue-instance_method">
+  
+    - (<tt>Queue</tt>) <strong>msg_queue</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Message queue
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Queue</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+message queue
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 100</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_msg_queue identifier id'>msg_queue</span>
+  <span class='rubyid_@msg_queue ivar id'>@msg_queue</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="port-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="port-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>port</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Port number of this client
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+port number of this client
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 96</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_port identifier id'>port</span>
+  <span class='rubyid_@port ivar id'>@port</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="target_uri-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="target_uri-instance_method">
+  
+    - (<tt>String</tt>) <strong>target_uri</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+URI of connection target
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URI of connection target
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 104</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_target_uri identifier id'>target_uri</span>
+  <span class='rubyid_@target_uri ivar id'>@target_uri</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="build_header-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Header.html" title="ROS::TCPROS::Header (class)">TCPROS::Header</a></span></tt>) <strong>build_header</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+build header data for subscription.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Header.html" title="ROS::TCPROS::Header (class)">TCPROS::Header</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+built header
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 51</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_build_header identifier id'>build_header</span>
+  <span class='rubyid_header identifier id'>header</span> <span class='assign token'>=</span> <span class='rubyid_Header constant id'>Header</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
+  <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_push_data identifier id'>push_data</span><span class='lparen token'>(</span><span class='string val'>&quot;callerid&quot;</span><span class='comma token'>,</span> <span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='rparen token'>)</span>
+  <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_push_data identifier id'>push_data</span><span class='lparen token'>(</span><span class='string val'>&quot;topic&quot;</span><span class='comma token'>,</span> <span class='rubyid_@topic_name ivar id'>@topic_name</span><span class='rparen token'>)</span>
+  <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_push_data identifier id'>push_data</span><span class='lparen token'>(</span><span class='string val'>&quot;md5sum&quot;</span><span class='comma token'>,</span> <span class='rubyid_@topic_type ivar id'>@topic_type</span><span class='dot token'>.</span><span class='rubyid_md5sum identifier id'>md5sum</span><span class='rparen token'>)</span>
+  <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_push_data identifier id'>push_data</span><span class='lparen token'>(</span><span class='string val'>&quot;type&quot;</span><span class='comma token'>,</span> <span class='rubyid_@topic_type ivar id'>@topic_type</span><span class='dot token'>.</span><span class='rubyid_type identifier id'>type</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_@tcp_no_delay ivar id'>@tcp_no_delay</span>
+    <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_push_data identifier id'>push_data</span><span class='lparen token'>(</span><span class='string val'>&quot;tcp_nodelay&quot;</span><span class='comma token'>,</span> <span class='string val'>'1'</span><span class='rparen token'>)</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_header identifier id'>header</span><span class='dot token'>.</span><span class='rubyid_push_data identifier id'>push_data</span><span class='lparen token'>(</span><span class='string val'>&quot;tcp_nodelay&quot;</span><span class='comma token'>,</span> <span class='string val'>'0'</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_header identifier id'>header</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shutdown-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shutdown</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+close the connection. kill the thread if it is not response.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87
+88
+89
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 85</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown identifier id'>shutdown</span>
+  <span class='rubyid_@is_running ivar id'>@is_running</span> <span class='assign token'>=</span> <span class='rubyid_false false kw'>false</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_not not kw'>not</span> <span class='rubyid_@thread ivar id'>@thread</span><span class='dot token'>.</span><span class='rubyid_join identifier id'>join</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='integer val'>.1</span><span class='rparen token'>)</span>
+    <span class='rubyid_Thread constant id'>Thread</span><span class='colon2 op'>::</span><span class='rubyid_kill identifier id'>kill</span><span class='lparen token'>(</span><span class='rubyid_@thread ivar id'>@thread</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_not not kw'>not</span> <span class='rubyid_@socket ivar id'>@socket</span><span class='dot token'>.</span><span class='rubyid_closed? fid id'>closed?</span>
+    <span class='rubyid_@socket ivar id'>@socket</span><span class='dot token'>.</span><span class='rubyid_close identifier id'>close</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="start-instance_method">
+  
+    - (<tt>Object</tt>) <strong>start</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+start recieving data. The received messages are pushed into a message
+queue.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/tcpros/client.rb', line 68</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_start identifier id'>start</span>
+  <span class='rubyid_write_header identifier id'>write_header</span><span class='lparen token'>(</span><span class='rubyid_@socket ivar id'>@socket</span><span class='comma token'>,</span> <span class='rubyid_build_header identifier id'>build_header</span><span class='rparen token'>)</span>
+  <span class='rubyid_read_header identifier id'>read_header</span><span class='lparen token'>(</span><span class='rubyid_@socket ivar id'>@socket</span><span class='rparen token'>)</span>
+  <span class='rubyid_@thread ivar id'>@thread</span> <span class='assign token'>=</span> <span class='rubyid_Thread constant id'>Thread</span><span class='dot token'>.</span><span class='rubyid_start identifier id'>start</span> <span class='rubyid_do do kw'>do</span>
+    <span class='rubyid_while while kw'>while</span> <span class='rubyid_@is_running ivar id'>@is_running</span>
+      <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='rubyid_read_all identifier id'>read_all</span><span class='lparen token'>(</span><span class='rubyid_@socket ivar id'>@socket</span><span class='rparen token'>)</span>
+      <span class='rubyid_msg identifier id'>msg</span> <span class='assign token'>=</span> <span class='rubyid_@topic_type ivar id'>@topic_type</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
+      <span class='rubyid_msg identifier id'>msg</span><span class='dot token'>.</span><span class='rubyid_deserialize identifier id'>deserialize</span><span class='lparen token'>(</span><span class='rubyid_data identifier id'>data</span><span class='rparen token'>)</span>
+      <span class='rubyid_@byte_received ivar id'>@byte_received</span> <span class='opasgn op'>+=</span> <span class='rubyid_data identifier id'>data</span><span class='dot token'>.</span><span class='rubyid_length identifier id'>length</span>
+      <span class='rubyid_@msg_queue ivar id'>@msg_queue</span><span class='dot token'>.</span><span class='rubyid_push identifier id'>push</span><span class='lparen token'>(</span><span class='rubyid_msg identifier id'>msg</span><span class='rparen token'>)</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sat May  5 11:29:35 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

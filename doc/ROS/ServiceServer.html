@@ -1,0 +1,973 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ROS::ServiceServer
+  
+    &mdash; Documentation by YARD 0.8.1
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
+     &raquo; 
+    <span class="title">ServiceServer</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: ROS::ServiceServer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Service.html" title="ROS::Service (class)">Service</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Service.html" title="ROS::Service (class)">Service</a></span></li>
+          
+            <li class="next">ROS::ServiceServer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ros/service_server.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+server of ROS Service. <span class='object_link'><a href="Node.html#advertise_service-instance_method" title="ROS::Node#advertise_service (method)">Node#advertise_service</a></span> return a instance of this
+class. Service can be shutdown by <span class='object_link'><a href="#shutdown-instance_method" title="ROS::ServiceServer#shutdown (method)">#shutdown</a></span>. This class uses
+<span class='object_link'><a href="TCPROS/ServiceServer.html" title="ROS::TCPROS::ServiceServer (class)">TCPROS::ServiceServer</a></span> for data transfer.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_ROS constant id'>ROS</span><span class='colon2 op'>::</span><span class='rubyid_Node constant id'>Node</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'/rosruby/sample_service_server'</span><span class='rparen token'>)</span>
+<span class='rubyid_server identifier id'>server</span> <span class='assign token'>=</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_advertise_service identifier id'>advertise_service</span><span class='lparen token'>(</span><span class='string val'>'/add_two_ints'</span><span class='comma token'>,</span> <span class='rubyid_Roscpp_tutorials constant id'>Roscpp_tutorials</span><span class='colon2 op'>::</span><span class='rubyid_TwoInts constant id'>TwoInts</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_req identifier id'>req</span><span class='comma token'>,</span> <span class='rubyid_res identifier id'>res</span><span class='bitor op'>|</span>
+  <span class='rubyid_res identifier id'>res</span><span class='dot token'>.</span><span class='rubyid_sum identifier id'>sum</span> <span class='assign token'>=</span> <span class='rubyid_req identifier id'>req</span><span class='dot token'>.</span><span class='rubyid_a identifier id'>a</span> <span class='plus op'>+</span> <span class='rubyid_req identifier id'>req</span><span class='dot token'>.</span><span class='rubyid_b identifier id'>b</span>
+  <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_loginfo identifier id'>loginfo</span><span class='lparen token'>(</span><span class='dstring node'>&quot;a=#{req.a}, b=#{req.b}&quot;</span><span class='rparen token'>)</span>
+  <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_loginfo identifier id'>loginfo</span><span class='lparen token'>(</span><span class='dstring node'>&quot;  sum = #{res.sum}&quot;</span><span class='rparen token'>)</span>
+  <span class='rubyid_true true kw'>true</span>
+<span class='rubyid_end end kw'>end</span>
+<span class='rubyid_while while kw'>while</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_ok? fid id'>ok?</span>
+  <span class='rubyid_sleep identifier id'>sleep</span> <span class='lparen token'>(</span><span class='float val'>1.0</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    
+  </div>
+
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#num_request-instance_method" title="#num_request (instance method)">- (Integer) <strong>num_request</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+How many times this service called.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Service.html" title="ROS::Service (class)">Service</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Service.html#caller_id-instance_method" title="ROS::Service#caller_id (method)">#caller_id</a></span>, <span class='object_link'><a href="Service.html#service_name-instance_method" title="ROS::Service#service_name (method)">#service_name</a></span>, <span class='object_link'><a href="Service.html#service_type-instance_method" title="ROS::Service#service_type (method)">#service_type</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#call-instance_method" title="#call (instance method)">- (Boolean) <strong>call</strong>(request, response) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+execute the service callback.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">- (Object) <strong>close</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+user should not call this method.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_connection_data-instance_method" title="#get_connection_data (instance method)">- (Array) <strong>get_connection_data</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Connection data.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ServiceServer) <strong>initialize</strong>(caller_id, service_name, service_type, callback) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of ServiceServer.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#service_uri-instance_method" title="#service_uri (instance method)">- (String) <strong>service_uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+URI of this service (rosrpc://**).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_manager-instance_method" title="#set_manager (instance method)">- (Object) <strong>set_manager</strong>(manager) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+set GraphManager for shutdown.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown-instance_method" title="#shutdown (instance method)">- (Object) <strong>shutdown</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shutdown the service connection.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>initialize</strong>(caller_id, service_name, service_type, callback) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of ServiceServer
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>caller_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+caller id of this node
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+name of this service (String)
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_type</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+class of srv
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>callback</span>
+      
+      
+        <span class='type'>(<tt>Proc</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+callback object of this service.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 36</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span> <span class='rubyid_service_type identifier id'>service_type</span><span class='comma token'>,</span> <span class='rubyid_callback identifier id'>callback</span><span class='rparen token'>)</span>
+  <span class='rubyid_super super kw'>super</span><span class='lparen token'>(</span><span class='rubyid_caller_id identifier id'>caller_id</span><span class='comma token'>,</span> <span class='rubyid_service_name identifier id'>service_name</span><span class='comma token'>,</span> <span class='rubyid_service_type identifier id'>service_type</span><span class='rparen token'>)</span>
+  <span class='rubyid_@callback ivar id'>@callback</span> <span class='assign token'>=</span> <span class='rubyid_callback identifier id'>callback</span>
+  <span class='rubyid_@server ivar id'>@server</span> <span class='assign token'>=</span> <span class='rubyid_TCPROS constant id'>TCPROS</span><span class='colon2 op'>::</span><span class='rubyid_ServiceServer constant id'>ServiceServer</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_@caller_id ivar id'>@caller_id</span><span class='comma token'>,</span>
+                                      <span class='rubyid_@service_name ivar id'>@service_name</span><span class='comma token'>,</span>
+                                      <span class='rubyid_@service_type ivar id'>@service_type</span><span class='comma token'>,</span>
+                                      <span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+  <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_start identifier id'>start</span>
+  <span class='rubyid_@num_request ivar id'>@num_request</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="num_request-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="num_request-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>num_request</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+How many times this service called
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+how many times this service called
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 90</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_num_request identifier id'>num_request</span>
+  <span class='rubyid_@num_request ivar id'>@num_request</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="call-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>call</strong>(request, response) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+execute the service callback. User should not call this directly.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>request</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Message.html" title="ROS::Message (class)">Message</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+srv Request instance
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>response</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Message.html" title="ROS::Message (class)">Message</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+srv Response instance
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+callback result
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 53</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_request identifier id'>request</span><span class='comma token'>,</span> <span class='rubyid_response identifier id'>response</span><span class='rparen token'>)</span>
+  <span class='rubyid_@num_request ivar id'>@num_request</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
+  <span class='rubyid_@callback ivar id'>@callback</span><span class='dot token'>.</span><span class='rubyid_call identifier id'>call</span><span class='lparen token'>(</span><span class='rubyid_request identifier id'>request</span><span class='comma token'>,</span> <span class='rubyid_response identifier id'>response</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="close-instance_method">
+  
+    - (<tt>Object</tt>) <strong>close</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+user should not call this method. Please use shutdown method.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 67</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_close identifier id'>close</span> 
+  <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_shutdown identifier id'>shutdown</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_connection_data-instance_method">
+  
+    - (<tt>Array</tt>) <strong>get_connection_data</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Connection data
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+connection data
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 85</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_connection_data identifier id'>get_connection_data</span>
+  <span class='lbrack token'>[</span><span class='rubyid_@num_request ivar id'>@num_request</span><span class='comma token'>,</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_byte_received identifier id'>byte_received</span><span class='comma token'>,</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_byte_sent identifier id'>byte_sent</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="service_uri-instance_method">
+  
+    - (<tt>String</tt>) <strong>service_uri</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+URI of this service (rosrpc://**)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+rosrpc service uri
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 60</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_service_uri identifier id'>service_uri</span>
+  <span class='string val'>'rosrpc://'</span> <span class='plus op'>+</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_host identifier id'>host</span> <span class='plus op'>+</span> <span class='string val'>':'</span> <span class='plus op'>+</span> <span class='rubyid_@server ivar id'>@server</span><span class='dot token'>.</span><span class='rubyid_port identifier id'>port</span><span class='dot token'>.</span><span class='rubyid_to_s identifier id'>to_s</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_manager-instance_method">
+  
+    - (<tt>Object</tt>) <strong>set_manager</strong>(manager) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+set GraphManager for shutdown
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>manager</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="GraphManager.html" title="ROS::GraphManager (class)">GraphManager</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+set as manager
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 80</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_set_manager identifier id'>set_manager</span><span class='lparen token'>(</span><span class='rubyid_manager identifier id'>manager</span><span class='rparen token'>)</span> <span class='comment val'>#:nodoc:</span>
+  <span class='rubyid_@manager ivar id'>@manager</span> <span class='assign token'>=</span> <span class='rubyid_manager identifier id'>manager</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shutdown-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shutdown</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+shutdown the service connection
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 74</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_shutdown identifier id'>shutdown</span>
+  <span class='rubyid_@manager ivar id'>@manager</span><span class='dot token'>.</span><span class='rubyid_shutdow_service_server identifier id'>shutdow_service_server</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sat May  5 11:29:35 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
