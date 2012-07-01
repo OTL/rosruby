@@ -189,7 +189,7 @@ class TestNode < Test::Unit::TestCase
     end
     clock_pub.publish(time_msg)
 
-    sleep 0.5
+    sleep 1.0
 
     sim_current = ROS::Time.now
     assert_equal(time_msg.clock, sim_current)

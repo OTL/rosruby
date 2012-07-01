@@ -5,6 +5,8 @@ require 'test/unit'
 
 class TestRate_rate < Test::Unit::TestCase
   def test_sleep
+    param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/use_sim_time', {})
+    param.set_param('/use_sim_time', false)
     r = ROS::Rate.new(10)
     (1..10).each do |i|
       start = ::Time.now
