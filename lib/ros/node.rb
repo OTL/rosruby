@@ -211,7 +211,8 @@ module ROS
       server = ::ROS::ServiceServer.new(@node_name,
                                         resolve_name(service_name),
                                         service_type,
-                                        callback)
+                                        callback,
+                                        @manager.host)
       @manager.add_service_server(server)
       trap_signals
       server

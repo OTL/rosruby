@@ -192,7 +192,7 @@ module ROS
     # @return [Bool] some message has come or not.
     def spin_once
       results = @subscribers.map {|subscriber| subscriber.process_queue}
-      results.index(true)
+      results.include?(true)
     end
 
     ##

@@ -26,10 +26,22 @@ module ROS::TCPROS
     # @param [String] service_name name of this service
     # @param [Class] service_type class of this service message
     # @param [Proc] callback of this service
-    # @param [Integer] port port number
-    # @param [host] host host name
+    # @param [Hash] options options
+    # @option options [Integer] port port number (default: 0)
+    # @option options [host] host host name (defualt: Socket.gethostname)
     def initialize(caller_id, service_name, service_type, callback,
-                   port=0, host=::GServer::DEFAULT_HOST)
+                   options={})
+      if options[:host]
+        host = options[:host]
+      else
+        host = Socket.gethostname
+      end
+      if options[:port]
+        port = options[:port]
+      else
+        port = 0
+      end
+
       super(port, host, MAX_CONNECTION)
       @caller_id = caller_id
       @service_name = service_name

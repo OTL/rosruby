@@ -33,13 +33,15 @@ module ROS
     # @param [String] service_name name of this service (String)
     # @param [Class] service_type class of srv
     # @param [Proc] callback callback object of this service.
-    def initialize(caller_id, service_name, service_type, callback)
+    # @param [String] host host name
+    def initialize(caller_id, service_name, service_type, callback, host)
       super(caller_id, service_name, service_type)
       @callback = callback
       @server = TCPROS::ServiceServer.new(@caller_id,
                                           @service_name,
                                           @service_type,
-                                          self)
+                                          self,
+                                          :host => host)
       @server.start
       @num_request = 0
     end
