@@ -135,6 +135,7 @@ class TestNode < Test::Unit::TestCase
 
     node.set_param('~param2', 10)
     assert_equal(10, node.get_param('/hoge/param2'))
+    assert(node.delete_param('~param1'))
     assert(node.delete_param('~param2'))
     node.shutdown
   end
@@ -176,9 +177,7 @@ class TestNode < Test::Unit::TestCase
     param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/use_sim_time', {})
     param.set_param('/use_sim_time', true)
 
-    while not param.get_param('/use_sim_time')
-      sleep 0.5
-    end
+    assert(param.get_param('/use_sim_time'))
 
     clock_node = ROS::Node.new('/clock')
     clock_pub = clock_node.advertise('/clock', Rosgraph_msgs::Clock)
@@ -195,6 +194,8 @@ class TestNode < Test::Unit::TestCase
     sim_current = ROS::Time.now
     assert_equal(time_msg.clock, sim_current)
     param.delete_param('/use_sim_time')
+
+    assert(!param.get_param('/use_sim_time'))
 
     ROS::Time.initialize_with_sim_or_wall(node)
     node.shutdown
