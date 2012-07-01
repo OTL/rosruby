@@ -176,6 +176,10 @@ class TestNode < Test::Unit::TestCase
     param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/use_sim_time', {})
     param.set_param('/use_sim_time', true)
 
+    while not param.get_param('/use_sim_time')
+      sleep 0.5
+    end
+
     clock_node = ROS::Node.new('/clock')
     clock_pub = clock_node.advertise('/clock', Rosgraph_msgs::Clock)
     node = ROS::Node.new('/test_sim_time')
