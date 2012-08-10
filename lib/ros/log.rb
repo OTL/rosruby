@@ -62,7 +62,11 @@ module ROS
       msg.level = @msg_dict[severity]
       msg.name = @node.node_name
       msg.file = file
-      msg.function = function
+      if /in `(.*)'/ =~ function
+        msg.function = $1
+      else
+        msg.function = ''
+      end
       msg.line = line
       msg.topics = @node.get_published_topics
       @rosout.publish(msg)
