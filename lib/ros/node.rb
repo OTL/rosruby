@@ -222,7 +222,7 @@ module ROS
     # wait until start the service.
     # @param [String] service_name name of service for waiting
     # @param [Float] timeout_sec time out seconds. default infinity.
-    # @return [Boolean] true if success, false if timeouted
+    # @return [Boolean] true if success, false if timeout
     def wait_for_service(service_name, timeout_sec=nil)
       @manager.wait_for_service(service_name, timeout_sec)
     end

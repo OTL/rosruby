@@ -126,7 +126,7 @@ module ROS
           end
         end
       rescue Timeout::Error
-        puts "time outed for wait service #{service_name}"
+        puts "time out for wait service #{service_name}"
         return nil
       rescue
         raise "connection with master failed. master = #{@master_uri}"

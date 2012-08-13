@@ -5,6 +5,10 @@ require 'ros'
 
 class TestTime < Test::Unit::TestCase
   def test_time
+    param = ROS::ParameterManager.new(ENV['ROS_MASTER_URI'], '/use_sim_time', {})
+    param.set_param('/use_sim_time', false)
+    assert(!param.get_param('/use_sim_time'))
+
     t1 = ROS::Time.new
     assert_equal(0, t1.secs)
     assert_equal(0, t1.nsecs)

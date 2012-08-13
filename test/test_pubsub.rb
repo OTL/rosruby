@@ -82,7 +82,7 @@ class TestPubSubNormal < Test::Unit::TestCase
     node1.shutdown
     node2.shutdown
   end
-  
+
   def test_single_pubsub
     node = ROS::Node.new('/test3')
     pub1 = node.advertise('/chatter', Std_msgs::String)
@@ -154,13 +154,15 @@ class TestPubSubNormal < Test::Unit::TestCase
     pub_msg1.data = TEST_STRING1
 
     pub1.publish(pub_msg1)
+    sleep 0.1
 
     while not node.spin_once
+      pub1.publish(pub_msg1)
       sleep 0.1
     end
 
     assert(message_has_come1)
-
+    node.shutdown
   end
 
   def test_shutdown_by_publisher_or_subscriber_directly

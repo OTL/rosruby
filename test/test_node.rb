@@ -178,20 +178,26 @@ class TestNode < Test::Unit::TestCase
     param.set_param('/use_sim_time', true)
 
     assert(param.get_param('/use_sim_time'))
-
+    sleep 1
     clock_node = ROS::Node.new('/clock')
     clock_pub = clock_node.advertise('/clock', Rosgraph_msgs::Clock)
     node = ROS::Node.new('/test_sim_time')
     time_msg = Rosgraph_msgs::Clock.new
     time_msg.clock = ROS::Time.new(::Time.now)
+
     while clock_pub.get_number_of_subscribers < 1
       sleep 0.1
     end
     clock_pub.publish(time_msg)
+    sleep 1
 
-    sleep 1.0
-
+    # wait until get simulated clock
     sim_current = ROS::Time.now
+    while sim_current != time_msg.clock
+      sim_current = ROS::Time.now
+      sleep 0.1
+    end
+
     assert_equal(time_msg.clock, sim_current)
     param.delete_param('/use_sim_time')
 
