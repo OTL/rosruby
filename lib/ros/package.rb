@@ -63,7 +63,8 @@ module ROS
       end
         
       roots.each do |root|
-        if File.exists?("#{root}/manifest.xml")
+        if File.exists?("#{root}/manifest.xml") or 
+            File.exists?("#{root}/package.xml")
           packages[File.basename(root)] = root
         else
           if File.exists?(root)
@@ -86,7 +87,6 @@ module ROS
     #
     @@all_packages = self.read_cache_or_find_all
 
-
     ##
     # get the depend packages of the arg
     # @param [String] package find depends packages of this package
@@ -94,17 +94,29 @@ module ROS
     # @return [Array] packages
     def self.depends(package, packages=[])
       begin
-        file = File.open("#{@@all_packages[package]}/manifest.xml")
-        doc = REXML::Document.new(file)
-        doc.elements.each('/package/depend') do |element|
-          depend_package = element.attributes['package']
-          if not packages.include?(depend_package)
-            packages.push(depend_package)
-            self.depends(depend_package, packages)
+        if File.exists?("#{@@all_packages[package]}/manifest.xml")
+          file = File.open("#{@@all_packages[package]}/manifest.xml")
+          doc = REXML::Document.new(file)
+          doc.elements.each('/package/depend') do |element|
+            depend_package = element.attributes['package']
+            if not packages.include?(depend_package)
+              packages.push(depend_package)
+              self.depends(depend_package, packages)
+            end
+          end
+        else
+          file = File.open("#{@@all_packages[package]}/package.xml")
+          doc = REXML::Document.new(file)
+          doc.elements.each('/package/run_depend') do |element|
+            depend_package = element.text
+            if not packages.include?(depend_package)
+              packages.push(depend_package)
+              self.depends(depend_package, packages)
+            end
           end
         end
       rescue
-        puts "#{package}'s manifest.xml not found"
+#        puts "#{package}'s manifest.xml/package.xml not found"
       end
       packages
     end
@@ -149,7 +161,6 @@ module ROS
         add_path_of_package(pack)
       end
     end
-
   end
 
   ##
