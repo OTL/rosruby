@@ -1,6 +1,6 @@
 ROS Ruby Client: rosruby
 =======
-[ROS](http://ros.org) is Robot Operating System developed by [Willow Garage](http://www.willowgarage.com/) and open source communities.
+[ROS](http://ros.org) is Robot Operating System developed by [OSRF](http://osrfoundation.org/) and open source communities.
 
 This project supports ruby ROS client. You can program intelligent robots by ruby, very easily.
 
@@ -9,7 +9,7 @@ This project supports ruby ROS client. You can program intelligent robots by rub
 **Author**:       Takashi Ogura   
 **Copyright**:    2012   
 **License**:      new BSD License   
-**Latest Version**: 0.2.0   
+**Latest Version**: 0.3.0   
 
 Requirements
 ----------
@@ -24,7 +24,7 @@ Install from source
 ---------------
 Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installation](http://ros.org/wiki/ROS/Installation) .
 
-Please use catkin, to install rosruby.
+Please use catkin to install rosruby.
 If you have not catkin_ws yet, please read [this wiki](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
 ````bash
@@ -59,15 +59,9 @@ export RUBYLIB=~/catkin_ws/install/lib/ruby
 
 Message generation
 -----------------------
+You must generate ROS msg/srv files for rosruby manually.
 Please use the msg/srv generation script (rosruby_genmsg.py) in order to 
 generage rosruby messages.
-
-```bash
-$ rosrun rosruby rosruby_genmsg.py
-```
-
-This converts msg/srv to .rb which is needed by sample programs.
-If you want to make other packages, add package names for args.
 
 For example,
 
@@ -75,7 +69,10 @@ For example,
 $ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
 ```
 
-This generates message files in ~/.ros/rosruby.
+Arguments are msg package names. If arguments are not given,
+that converts msg/srv to .rb which is needed by sample programs.
+
+This generates message files in ~/.ros/rosruby directory.
 
 Sample Source
 --------------

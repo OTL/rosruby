@@ -1,4 +1,4 @@
- cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 2.8.3)
 project(rosruby)
 
 find_package(catkin REQUIRED COMPONENTS)
@@ -37,7 +37,6 @@ install(PROGRAMS
 install(DIRECTORY lib/
   DESTINATION ${CATKIN_GLOBAL_LIB_DESTINATION}/ruby
   FILES_MATCHING PATTERN "*.rb"
-  PATTERN ".svn" EXCLUDE
 )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
