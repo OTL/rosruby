@@ -1,6 +1,6 @@
 ROS Ruby Client: rosruby
 =======
-[ROS](http://ros.org) is Robot Operating System developed by [Willow Garage](http://www.willowgarage.com/) and open source communities.
+[ROS](http://ros.org) is Robot Operating System developed by [OSRF](http://osrfoundation.org/) and open source communities.
 
 This project supports ruby ROS client. You can program intelligent robots by ruby, very easily.
 
@@ -9,27 +9,30 @@ This project supports ruby ROS client. You can program intelligent robots by rub
 **Author**:       Takashi Ogura   
 **Copyright**:    2012   
 **License**:      new BSD License   
-**Latest Version**: 0.2.0   
+**Latest Version**: 0.3.0   
 
 Requirements
 ----------
-- ruby (1.8.7/1.9.3/jruby-18mode)
-- ROS (electric/fuerte)
+- ruby (1.8.7/1.9.3)
+- ROS (groovy)
+
+electric/fuerte
+---------
+If you are using electric or fuerte, please use v0.2.1.
 
 Install from source
 ---------------
 Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installation](http://ros.org/wiki/ROS/Installation) .
 
-Download rosruby into your ROS_PACKAGE_PATH.
+Please use catkin to install rosruby.
+If you have not catkin_ws yet, please read [this wiki](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
 ````bash
+$ cd ~/catkin_ws/src
 $ git clone git://github.com/OTL/rosruby.git
+$ cd ~/catkin_ws
+$ catkin_make
 ```
-
-Or use rosinstall/rosws. rosintall file is
-
-    https://raw.github.com/OTL/rosruby/master/rosruby.rosinstall
-
 
 please add RUBYLIB environment variable, like below (if you are using bash).
 
@@ -38,19 +41,27 @@ $ echo "export RUBYLIB=`rospack find rosruby`/lib" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
-Use with precompiled electric release
------------------------
-If you are using precompiled ROS distro, use the msg/srv generation script
-(rosruby_genmsg.py)
-If you are using ROS from source, it requires just recompile the msg/srv
-packages by rosmake rosruby.
+If you are using install environment for catkin....(advanced)
+---------------------------------------------------------------
+if you want to use rosruby in `install` environment,
+this means you are doing like this.
 
 ```bash
-$ rosrun rosruby rosruby_genmsg.py
+$ catkin_make install
+$ source ~/catkin_ws/install/setup.bash
 ```
 
-This converts msg/srv to .rb which is needed by sample programs.
-If you want to make other packages, add package names for args.
+then you must use below RUBYLIB environment.
+
+```bash
+export RUBYLIB=~/catkin_ws/install/lib/ruby
+```
+
+Message generation
+-----------------------
+You must generate ROS msg/srv files for rosruby manually.
+Please use the msg/srv generation script (rosruby_genmsg.py) in order to 
+generage rosruby messages.
 
 For example,
 
@@ -58,9 +69,14 @@ For example,
 $ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
 ```
 
+Arguments are msg package names. If arguments are not given,
+that converts msg/srv to .rb which is needed by sample programs.
+
+This generates message files in ~/.ros/rosruby directory.
 
 Sample Source
 --------------
+
 ## Subscriber
 
 ```ruby
@@ -151,7 +167,7 @@ $ rosrun rosruby add_two_ints_client.rb 10 20
 
 And more...
 ----------------------
-There are [rosruby_common](https://github.com/OTL/rosruby_common) stack that contains actionlib and tf.
+There are [rosruby_common](https://github.com/OTL/rosruby_common) stack that contains actionlib and tf (highly under development).
 
 Do all tests
 -------------------------

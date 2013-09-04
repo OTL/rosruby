@@ -1,0 +1,27 @@
+<package>
+  <name>rosruby</name>
+  <version>0.3.0</version>
+  <description>This package is a Ruby client library for ROS, the Robot Operating System.</description>
+  <maintainer email="t.ogura@gmail.com">Takashi Ogura</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/rosruby</url>
+  <url type="bugtracker">http://github.com/OTL/rosruby</url>
+
+  <author>Takashi Ogura</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>ruby</build_depend>
+  <build_depend>rake</build_depend>
+
+  <run_depend>roslang</run_depend>
+  <run_depend>rosgraph_msgs</run_depend>
+
+  <test_depend>std_msgs</test_depend>
+  <test_depend>roscpp_tutorials</test_depend>
+
+  <export>
+  </export>
+</package>
