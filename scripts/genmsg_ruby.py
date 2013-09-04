@@ -713,7 +713,7 @@ def array_serializer_generator(package, type_, name, serialize, is_numpy):
                         yield pack(pattern, "*"+var)
                 else:
                     yield "start = end_point"
-                    yield "end_point += %s"%struct.calcsize('%s'%convert_to_ruby_pattern(pattern))
+                    yield "end_point += ROS::Struct::calc_size('%s')"%convert_to_ruby_pattern(pattern)
                     if is_numpy:
                         dtype = _NUMPY_DTYPE[base_type]
                         yield unpack_numpy(var, length, dtype, 'str[start..(end_point-1)]')
