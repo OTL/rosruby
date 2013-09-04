@@ -23,6 +23,5 @@
   <test_depend>roscpp_tutorials</test_depend>
 
   <export>
-    <roslang cmake="${prefix}/cmake/rosruby.cmake"/>
   </export>
 </package>
