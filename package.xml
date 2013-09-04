@@ -12,8 +12,13 @@
   <author>Takashi Ogura</author>
 
   <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>ruby</build_depend>
+  <build_depend>rake</build_depend>
+
   <run_depend>roslang</run_depend>
   <run_depend>rosgraph_msgs</run_depend>
+
   <test_depend>std_msgs</test_depend>
   <test_depend>roscpp_tutorials</test_depend>
 
