@@ -13,23 +13,26 @@ This project supports ruby ROS client. You can program intelligent robots by rub
 
 Requirements
 ----------
-- ruby (1.8.7/1.9.3/jruby-18mode)
-- ROS (electric/fuerte)
+- ruby (1.8.7/1.9.3)
+- ROS (groovy)
+
+electric/fuerte
+---------
+If you are using electric or fuerte, please use v0.2.1.
 
 Install from source
 ---------------
 Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installation](http://ros.org/wiki/ROS/Installation) .
 
-Download rosruby into your ROS_PACKAGE_PATH.
+Please use catkin, to install rosruby.
+If you have not catkin_ws yet, please read [this wiki](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
 ````bash
+$ cd ~/catkin_ws/src
 $ git clone git://github.com/OTL/rosruby.git
+$ cd ~/catkin_ws
+$ catkin_make
 ```
-
-Or use rosinstall/rosws. rosintall file is
-
-    https://raw.github.com/OTL/rosruby/master/rosruby.rosinstall
-
 
 please add RUBYLIB environment variable, like below (if you are using bash).
 
@@ -38,12 +41,26 @@ $ echo "export RUBYLIB=`rospack find rosruby`/lib" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
-Use with precompiled electric release
+If you are using install environment for catkin....(advanced)
+---------------------------------------------------------------
+if you want to use rosruby in `install` environment,
+this means you are doing like this.
+
+```bash
+$ catkin_make install
+$ source ~/catkin_ws/install/setup.bash
+```
+
+then you must use below RUBYLIB environment.
+
+```bash
+export RUBYLIB=~/catkin_ws/install/lib/ruby
+```
+
+Message generation
 -----------------------
-If you are using precompiled ROS distro, use the msg/srv generation script
-(rosruby_genmsg.py)
-If you are using ROS from source, it requires just recompile the msg/srv
-packages by rosmake rosruby.
+Please use the msg/srv generation script (rosruby_genmsg.py) in order to 
+generage rosruby messages.
 
 ```bash
 $ rosrun rosruby rosruby_genmsg.py
@@ -58,9 +75,11 @@ For example,
 $ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
 ```
 
+This generates message files in ~/.ros/rosruby.
 
 Sample Source
 --------------
+
 ## Subscriber
 
 ```ruby
@@ -151,7 +170,7 @@ $ rosrun rosruby add_two_ints_client.rb 10 20
 
 And more...
 ----------------------
-There are [rosruby_common](https://github.com/OTL/rosruby_common) stack that contains actionlib and tf.
+There are [rosruby_common](https://github.com/OTL/rosruby_common) stack that contains actionlib and tf (highly under development).
 
 Do all tests
 -------------------------
