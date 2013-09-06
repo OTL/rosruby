@@ -5,20 +5,50 @@ find_package(catkin REQUIRED COMPONENTS)
 
 find_package(Ruby)
 
-###################################
-## catkin specific configuration ##
-###################################
 catkin_package(
-   CATKIN_DEPENDS roslang rosgraph_msgs
-   DEPENDS ruby
+  CATKIN_DEPENDS roslang rosgraph_msgs
+  DEPENDS ruby
 )
 
+#
+# macro definitions
+#
+macro(rosruby_setup)
+  set(ROSRUBY_DEVEL_LIB_DESTINATION ${CATKIN_DEVEL_PREFIX}/lib/ruby/vendor_ruby)
+  set(ROSRUBY_LIB_DESTINATION ${CATKIN_GLOBAL_LIB_DESTINATION}/ruby/vendor_ruby)
+endmacro()
 
-# all install targets should use catkin DESTINATION variables
-# See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
+macro(rosruby_generate_messages)
+  add_custom_target(rosruby_genmsg_${PROJECT_NAME} ALL
+    COMMAND rosrun rosruby rosruby_genmsg.py -d ${ROSRUBY_DEVEL_LIB_DESTINATION} ${ARGN})
+  install(DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/
+    DESTINATION ${ROSRUBY_LIB_DESTINATION}/msg
+    )
+  install(DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION}/srv/
+    DESTINATION ${ROSRUBY_LIB_DESTINATION}/srv
+    )
+endmacro()
 
-## Mark executable scripts (Python etc.) for installation
-## in contrast to setup.py, you can choose the destination
+macro(rosruby_add_libraries)
+  foreach(file ${ARGN})
+    get_filename_component(fullpath ${file} ABSOLUTE)
+    get_filename_component(name ${file} NAME)
+    add_custom_target(rosruby_${name}_link ALL
+      COMMAND ${CMAKE_COMMAND} -E create_symlink ${fullpath} ${ROSRUBY_DEVEL_LIB_DESTINATION}/${name}
+      DEPENDS rosruby_devel_mkdir)
+  endforeach()
+endmacro()
+#
+# end macro
+#
+
+rosruby_setup()
+
+rosruby_generate_messages(rosgraph_msgs std_msgs roscpp_tutorials)
+
+add_custom_target(rosruby_devel_mkdir ALL
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${ROSRUBY_DEVEL_LIB_DESTINATION})
+
 install(PROGRAMS
   bin/rubyroscore
   samples/add_two_ints_client.rb
@@ -34,14 +64,10 @@ install(PROGRAMS
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-install(DIRECTORY lib/
-  DESTINATION ${CATKIN_GLOBAL_LIB_DESTINATION}/ruby
-  FILES_MATCHING PATTERN "*.rb"
-)
+rosruby_add_libraries(
+  lib/ros.rb
+  lib/ros)
 
-## Mark other files for installation (e.g. launch and bag files, etc.)
-# install(FILES
-#   # myfile1
-#   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+install(DIRECTORY lib/
+  DESTINATION ${ROSRUBY_LIB_DESTINATION}
+  )

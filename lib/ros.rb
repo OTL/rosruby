@@ -10,17 +10,17 @@
 # add rospackage paths to $:.
 #
 
-require 'ros/package'
 if not ENV['ROS_MASTER_URI']
   ENV['ROS_MASTER_URI'] = 'http://localhost:11311'
   puts "Warning: ROS_MASTER_URI is not set. Using #{ENV['ROS_MASTER_URI']}"
 end
 
-ROS::load_manifest('rosruby')
-["#{ENV['HOME']}/.ros/rosruby/msg_gen/ruby", "#{ENV['HOME']}/.ros/rosruby/srv_gen/ruby"].each do |path|
-  if File.exists?(path)
-    if not $:.include?(path)
-      $:.push(path)
+ENV['RUBYLIB'].split(':').each do |rubylib_path|
+  ["#{rubylib_path}/msg", "#{rubylib_path}/srv"].each do |path|
+    if File.exists?(path)
+      if not $:.include?(path)
+        $:.push(path)
+      end
     end
   end
 end

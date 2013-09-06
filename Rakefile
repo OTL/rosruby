@@ -40,10 +40,10 @@ Gem::PackageTask.new(rosruby_spec).define
 desc "Generate precompiled msg gem"
 task :msg_gem do
   target_msg_packages = "actionlib_msgs pr2_controllers_msgs std_msgs visualization_msgs actionlib_tutorials roscpp stereo_msgs geometry_msgs rosgraph_msgs tf nav_msgs sensor_msgs trajectory_msgs std_srvs"
-  system("scripts/rosruby_genmsg.py #{target_msg_packages}")
+  system("scripts/rosruby_genmsg.py #{target_msg_packages} -d /tmp/rosruby/")
   mkdir_p('msg_gem/lib')
-  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/msg_gen/ruby/*"), "msg_gem/lib/")
-  cp_r(Dir.glob("#{ENV['HOME']}/.ros/rosruby/srv_gen/ruby/*"), "msg_gem/lib/")
+  cp_r(Dir.glob("/tmp/rosruby/msg/*"), "msg_gem/lib/")
+  cp_r(Dir.glob("/tmp/rosruby/srv/*"), "msg_gem/lib/")
   chdir('msg_gem') do
     namespace :msg do
       msg_spec = Gem::Specification.new do |s|

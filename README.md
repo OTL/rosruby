@@ -14,11 +14,27 @@ This project supports ruby ROS client. You can program intelligent robots by rub
 Requirements
 ----------
 - ruby (1.8.7/1.9.3)
-- ROS (groovy)
+- ROS (hydro/groovy)
 
 electric/fuerte
 ---------
 If you are using electric or fuerte, please use v0.2.1.
+
+
+Install (binary)
+------------------
+If you want to use groovy,
+
+```bash
+sudo apt-get install ros-groovy-rosruby
+```
+
+and add RUBYLIB environmental variable.
+
+```bash
+$ echo "export RUBYLIB=/opt/ros/groovy/lib/ruby/vendor_ruby" >> ~/.bashrc
+$ source ~/.bashrc
+```
 
 Install from source
 ---------------
@@ -37,25 +53,14 @@ $ catkin_make
 please add RUBYLIB environment variable, like below (if you are using bash).
 
 ```bash
-$ echo "export RUBYLIB=`rospack find rosruby`/lib" >> ~/.bashrc
+$ echo "export RUBYLIB=~/catkin_ws/devel/lib/ruby/vendor_ruby" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
-If you are using install environment for catkin....(advanced)
----------------------------------------------------------------
-if you want to use rosruby in `install` environment,
-this means you are doing like this.
+if you want to use install environment, please edit develop -> install
 
-```bash
-$ catkin_make install
-$ source ~/catkin_ws/install/setup.bash
-```
+export RUBYLIB=~/catkin_ws/install/lib/ruby/vendor_ruby
 
-then you must use below RUBYLIB environment.
-
-```bash
-export RUBYLIB=~/catkin_ws/install/lib/ruby
-```
 
 Message generation
 -----------------------
@@ -66,13 +71,8 @@ generage rosruby messages.
 For example,
 
 ```bash
-$ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
+$ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs -d ~/catkin_ws/devel/lib/ruby/vendor_ruby/
 ```
-
-Arguments are msg package names. If arguments are not given,
-that converts msg/srv to .rb which is needed by sample programs.
-
-This generates message files in ~/.ros/rosruby directory.
 
 Sample Source
 --------------
@@ -205,3 +205,15 @@ $ rake yard
 ```
 
 You can access to the generated documents from [here](http://otl.github.com/rosruby/doc/).
+
+
+catkin and CMakeLists.txt
+-----------------------------
+
+rosruby's CMakeLists.txt defines some macros for your package that uses rosruby.
+you can use these if you add `find_package(rosruby)` to CMakeLists.txt.
+
+* rosruby_setup() : setup some macros and variables for rosruby
+* rosruby_generate_messages(message_pkg1 message_okg2 ...) : generates rosruby msg/srv files
+* rosruby_add_libraries(files or dirs) : install lib files for devel environment.
+
