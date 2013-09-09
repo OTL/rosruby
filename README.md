@@ -29,13 +29,6 @@ If you want to use groovy,
 sudo apt-get install ros-groovy-rosruby
 ```
 
-and add RUBYLIB environmental variable.
-
-```bash
-$ echo "export RUBYLIB=/opt/ros/groovy/lib/ruby/vendor_ruby" >> ~/.bashrc
-$ source ~/.bashrc
-```
-
 Install from source
 ---------------
 Install ROS and ruby first. ROS document is [http://ros.org/wiki/ROS/Installation](http://ros.org/wiki/ROS/Installation) .
@@ -50,21 +43,18 @@ $ cd ~/catkin_ws
 $ catkin_make
 ```
 
-please add RUBYLIB environment variable, like below (if you are using bash).
-
-```bash
-$ echo "export RUBYLIB=~/catkin_ws/devel/lib/ruby/vendor_ruby" >> ~/.bashrc
-$ source ~/.bashrc
-```
-
-if you want to use install environment, please edit develop -> install
-
-export RUBYLIB=~/catkin_ws/install/lib/ruby/vendor_ruby
-
 
 Message generation
 -----------------------
-You must generate ROS msg/srv files for rosruby manually.
+You must generate ROS msg/srv files for rosruby.
+If you are using catkin package, it is easy.
+Please add below to your package CMakeLists.txt.
+
+    find_package(rosruby)
+    rosruby_generate_messages(message_pkg1 message_okg2 ...)
+
+
+You can generate it manually. (not recomended)
 Please use the msg/srv generation script (rosruby_genmsg.py) in order to 
 generage rosruby messages.
 

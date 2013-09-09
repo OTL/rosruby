@@ -3,8 +3,6 @@ project(rosruby)
 
 find_package(catkin REQUIRED COMPONENTS)
 
-find_package(Ruby)
-
 catkin_package(
   CATKIN_DEPENDS roslang rosgraph_msgs
   DEPENDS ruby
@@ -44,6 +42,7 @@ endmacro()
 
 rosruby_setup()
 
+catkin_add_env_hooks(rosruby SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
 rosruby_generate_messages(rosgraph_msgs std_msgs roscpp_tutorials)
 
 add_custom_target(rosruby_devel_mkdir ALL
