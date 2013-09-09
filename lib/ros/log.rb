@@ -15,6 +15,42 @@ require 'logger'
 
 module ROS
 
+  ##
+  # == Logger for local output
+  # output with color escape sequence
+  class LocalLogger
+
+    ##
+    # make local logger with color
+    #
+    # @param [IO] io IO object for output
+    def initialize(io)
+      @logger = Logger.new(io)
+      # add color escape sequence
+      @logger.formatter = proc {|severity, datetime, progname, msg|
+        header = ''
+        footer = ''
+        if severity == 'ERROR' or severity == 'FATAL' 
+          header = "\e[31m"
+          footer = "\e[0m"
+        elsif severity == 'WARN'
+          header = "\e[33m"
+          footer = "\e[0m"
+        end
+        header + "[#{severity}] #{msg}" + footer + "\n"
+      }
+    end
+
+    ##
+    # output to logger with unixtime
+    # @param [String] severity log level
+    # @param [String] message message for output
+    # @param [String] progname name of this program (node name)
+    def log(severity, message, progname)
+      return @logger.log(severity, "[Walltime: #{::Time.now.to_f}] " + message, progname)
+    end
+  end
+
   # == Logging class for ROS
   # This class enable double logging: ROS Logging system and ruby log.
   class Log
@@ -41,7 +77,7 @@ module ROS
         'WARN'=>::Rosgraph_msgs::Log::WARN,
         'INFO'=>::Rosgraph_msgs::Log::INFO,
         'DEBUG'=>::Rosgraph_msgs::Log::DEBUG}
-      @local_logger = Logger.new(output)
+      @local_logger = LocalLogger.new(output)
     end
 
     ##
