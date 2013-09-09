@@ -77,6 +77,14 @@ module ROS
 
       @manager = GraphManager.new(@node_name, @master_uri, @host)
       @parameter = ParameterManager.new(@master_uri, @node_name, @remappings)
+
+      if not @manager.check_master_connection
+        puts "Unable to immediately register with master node [#{@master_uri}]: master may not be running yet. Will keep trying."
+        while not @manager.check_master_connection
+          sleep(1)
+        end
+      end
+
       if not options[:nologger]
         @logger = ::ROS::Log.new(self)
       end

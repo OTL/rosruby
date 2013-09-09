@@ -309,6 +309,18 @@ module ROS
       self
     end
 
+    ##
+    # check connection with master using master API
+    def check_master_connection
+      begin
+        @master.get_system_state
+      rescue
+        # some error
+        return false
+      end
+      return true
+    end
+
     private
 
     ##
