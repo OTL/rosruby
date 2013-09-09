@@ -6,18 +6,20 @@
 <title>
   Class: ROS::Subscriber
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (S)</a> &raquo; 
+    <a href="../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Subscriber</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::Subscriber
   
   
@@ -101,7 +108,7 @@
 proc block for callback method. It uses ROS::TCPROS::Client for message
 transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 
-<pre class="code ruby"><code><span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_subscriber</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_subscriber</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_subscribe'>subscribe</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/chatter</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>message come! = \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_content'>\'</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
@@ -133,7 +140,10 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -159,7 +169,10 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -207,6 +220,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -224,6 +238,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 
     
   </span>
+  
   
   
   
@@ -253,6 +268,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -270,6 +286,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 
     
   </span>
+  
   
   
   
@@ -299,6 +316,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -316,6 +334,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 
     
   </span>
+  
   
   
   
@@ -345,6 +364,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -362,6 +382,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -395,6 +416,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -412,6 +434,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 
     
   </span>
+  
   
   
   
@@ -438,28 +461,31 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   
   
   
+  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Topic.html" title="ROS::Topic (class)">Topic</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Topic.html#close-instance_method" title="ROS::Topic#close (method)">#close</a></span>, <span class='object_link'><a href="Topic.html#set_manager-instance_method" title="ROS::Topic#set_manager (method)">#set_manager</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Subscriber (class)">Subscriber</a></span></tt>) <strong>initialize</strong>(caller_id, topic_name, topic_type, callback = nil, tcp_no_delay = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>A new instance of Subscriber</p>
+<p>Returns a new instance of Subscriber</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -581,25 +607,26 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
     
       
       <span id=""></span>
-      <span id="callback-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="callback-instance_method">
+  <h3 class="signature first" id="callback-instance_method">
   
     - (<tt>Proc</tt>) <strong>callback</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Callback of this subscription</p>
+<p>Returns callback of this subscription</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -641,25 +668,26 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
     
       
       <span id=""></span>
-      <span id="tcp_no_delay-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="tcp_no_delay-instance_method">
+  <h3 class="signature " id="tcp_no_delay-instance_method">
   
     - (<tt>Boolean</tt>) <strong>tcp_no_delay</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Use tcp no delay option or not</p>
+<p>Returns use tcp no delay option or not</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -704,16 +732,18 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="add_connection-instance_method">
+  <h3 class="signature first" id="add_connection-instance_method">
   
     - (<tt><span class='object_link'><a href="TCPROS/Client.html" title="ROS::TCPROS::Client (class)">TCPROS::Client</a></span></tt>) <strong>add_connection</strong>(uri) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>request topic to master and start connection with publisher.</p>
@@ -722,7 +752,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -743,7 +773,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -818,13 +848,15 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="drop_connection-instance_method">
+  <h3 class="signature " id="drop_connection-instance_method">
   
     - (<tt>Object</tt>) <strong>drop_connection</strong>(uri) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>remove connection</p>
@@ -833,7 +865,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -877,13 +909,15 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_connected_uri-instance_method">
+  <h3 class="signature " id="get_connected_uri-instance_method">
   
     - (<tt>Array</tt>) <strong>get_connected_uri</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>Get the uri list of connected publishers.</p>
@@ -893,7 +927,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -934,13 +968,15 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_connection_data-instance_method">
+  <h3 class="signature " id="get_connection_data-instance_method">
   
     - (<tt>Array</tt>) <strong>get_connection_data</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>data of connection. for slave API</p>
@@ -950,7 +986,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -995,13 +1031,15 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_connection_info-instance_method">
+  <h3 class="signature " id="get_connection_info-instance_method">
   
     - (<tt>Array</tt>) <strong>get_connection_info</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>connection information fro slave API</p>
@@ -1011,7 +1049,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1060,13 +1098,15 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_number_of_publishers-instance_method">
+  <h3 class="signature " id="get_number_of_publishers-instance_method">
   
     - (<tt>Integer</tt>) <strong>get_number_of_publishers</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get number of publishers to this subscriber</p>
@@ -1076,7 +1116,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1117,13 +1157,15 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="has_connection_with?-instance_method">
+  <h3 class="signature " id="has_connection_with?-instance_method">
   
     - (<tt>Bool</tt>) <strong>has_connection_with?</strong>(uri) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>Check if it has connection to the uri</p>
@@ -1133,7 +1175,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1174,7 +1216,7 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="process_queue-instance_method">
+  <h3 class="signature " id="process_queue-instance_method">
   
     - (<tt>Bool</tt>) <strong>process_queue</strong> 
   
@@ -1184,7 +1226,9 @@ transfer. Subscription can be shutdown by this ROS::Subscriber#shutdown</p>
     <span class="names"><span id='spin_once-instance_method'>spin_once</span></span>
     </span>
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>execute callback for all queued messages. This is called by
@@ -1196,7 +1240,7 @@ messages.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1257,13 +1301,15 @@ messages.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown-instance_method">
+  <h3 class="signature " id="shutdown-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>user interface of shutdown this subscriber</p>
@@ -1298,11 +1344,11 @@ messages.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:50 2012 by 
+  Generated on Tue Sep 10 01:39:57 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

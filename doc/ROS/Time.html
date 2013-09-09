@@ -6,18 +6,20 @@
 <title>
   Class: ROS::Time
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (T)</a> &raquo; 
+    <a href="../_index.html">Index (T)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Time</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::Time
   
   
@@ -210,6 +217,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -227,6 +235,7 @@
 
     
   </span>
+  
   
   
   
@@ -256,6 +265,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -273,6 +283,7 @@
 
     
   </span>
+  
   
   
   
@@ -311,6 +322,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -334,6 +346,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -351,6 +364,7 @@
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -382,6 +396,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -402,6 +417,7 @@
   
   
   
+  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="TimeValue.html" title="ROS::TimeValue (class)">TimeValue</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="TimeValue.html#%3C%3D%3E-instance_method" title="ROS::TimeValue#&lt;=&gt; (method)">#<=></a></span>, <span class='object_link'><a href="TimeValue.html#canonicalize-instance_method" title="ROS::TimeValue#canonicalize (method)">#canonicalize</a></span>, <span class='object_link'><a href="TimeValue.html#to_nsec-instance_method" title="ROS::TimeValue#to_nsec (method)">#to_nsec</a></span>, <span class='object_link'><a href="TimeValue.html#to_sec-instance_method" title="ROS::TimeValue#to_sec (method)">#to_sec</a></span></p>
 
@@ -409,7 +425,7 @@
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     
       <span class="overload">- (<tt><span class='object_link'><a href="" title="ROS::Time (class)">Time</a></span></tt>) <strong>initialize</strong>(time) </span>
@@ -419,17 +435,19 @@
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>A new instance of Time</p>
+<p>Returns a new instance of Time</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-  <h3>Overloads:</h3>
+  <p class="tag_title">Overloads:</p>
   <ul class="overload">
     
       
@@ -442,7 +460,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -511,16 +529,18 @@
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="get_simtime-class_method">
+  <h3 class="signature first" id="get_simtime-class_method">
   
     + (<tt><span class='object_link'><a href="" title="ROS::Time (class)">ROS::Time</a></span></tt>) <strong>get_simtime</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get the simulated time</p>
@@ -530,7 +550,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -571,13 +591,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_walltime-class_method">
+  <h3 class="signature " id="get_walltime-class_method">
   
     + (<tt><span class='object_link'><a href="" title="ROS::Time (class)">ROS::Time</a></span></tt>) <strong>get_walltime</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get the system real time</p>
@@ -587,7 +609,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -628,13 +650,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="initialize_with_sim_or_wall-class_method">
+  <h3 class="signature " id="initialize_with_sim_or_wall-class_method">
   
     + (<tt>Object</tt>) <strong>initialize_with_sim_or_wall</strong>(node) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>initialize Time</p>
@@ -643,7 +667,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -725,13 +749,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="now-class_method">
+  <h3 class="signature " id="now-class_method">
   
     + (<tt>Object</tt>) <strong>now</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>initialize with current time</p>
@@ -775,16 +801,18 @@
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="+-instance_method">
+  <h3 class="signature first" id="+-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Time (class)">Time</a></span></tt>) <strong>+</strong>(duration) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>add time value</p>
@@ -793,7 +821,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -814,7 +842,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -861,13 +889,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="--instance_method">
+  <h3 class="signature " id="--instance_method">
   
     - (<tt><span class='object_link'><a href="Duration.html" title="ROS::Duration (class)">Duration</a></span></tt>) <strong>-</strong>(other) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>subtract time value.</p>
@@ -876,7 +906,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -892,7 +922,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -939,13 +969,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="to_time-instance_method">
+  <h3 class="signature " id="to_time-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Time (class)">Time</a></span></tt>) <strong>to_time</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>returns ruby Time object.</p>
@@ -955,7 +987,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -998,11 +1030,11 @@
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:48 2012 by 
+  Generated on Tue Sep 10 01:39:56 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

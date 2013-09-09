@@ -2,22 +2,24 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  if (relpath != '') relpath += '/';
+  framesUrl = "frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
@@ -26,37 +28,42 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <a href="_index.html">Index</a> &raquo; 
     <span class="title">File: README</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><div id='filecontents'><h1>ROS Ruby Client: rosruby</h1>
 
-<p><a href="http://ros.org">ROS</a> is Robot Operating System developed by <a href="http://www.willowgarage.com/">Willow Garage</a> and open source communities.</p>
+<p><a href="http://ros.org">ROS</a> is Robot Operating System developed by <a href="http://osrfoundation.org/">OSRF</a> and open source communities.</p>
 
 <p>This project supports ruby ROS client. You can program intelligent robots by ruby, very easily.</p>
 
@@ -65,58 +72,71 @@
 <strong>Author</strong>:       Takashi Ogura<br>
 <strong>Copyright</strong>:    2012<br>
 <strong>License</strong>:      new BSD License<br>
-<strong>Latest Version</strong>: 0.2.0   </p>
+<strong>Latest Version</strong>: 0.3.0   </p>
 
 <h2>Requirements</h2>
 
 <ul>
-<li>ruby (1.8.7/1.9.3/jruby-18mode)</li>
-<li>ROS (electric/fuerte)</li>
+<li>ruby (1.8.7/1.9.3)</li>
+<li>ROS (hydro/groovy)</li>
 </ul>
+
+<h2>electric/fuerte</h2>
+
+<p>If you are using electric or fuerte, please use v0.2.1.</p>
+
+<h2>Install (binary)</h2>
+
+<p>If you want to use groovy,</p>
+
+<pre class="code bash"><code class="bash">sudo apt-get install ros-groovy-rosruby
+</code></pre>
+
+<p>and add RUBYLIB environmental variable.</p>
+
+<pre class="code bash"><code class="bash">$ echo &quot;export RUBYLIB=/opt/ros/groovy/lib/ruby/vendor_ruby&quot; &gt;&gt; ~/.bashrc
+$ source ~/.bashrc
+</code></pre>
 
 <h2>Install from source</h2>
 
 <p>Install ROS and ruby first. ROS document is <a href="http://ros.org/wiki/ROS/Installation">http://ros.org/wiki/ROS/Installation</a> .</p>
 
-<p>Download rosruby into your ROS<em>PACKAGE</em>PATH.</p>
+<p>Please use catkin to install rosruby.
+If you have not catkin_ws yet, please read <a href="http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment">this wiki</a>.</p>
 
-<pre class="code bash"><code>$ git clone git://github.com/OTL/rosruby.git
-</code></pre>
-
-<p>Or use rosinstall/rosws. rosintall file is</p>
-
-<pre class="code ruby"><code><span class='id identifier rubyid_https'>https</span><span class='symbol'>:/</span><span class='op'>/</span><span class='id identifier rubyid_raw'>raw</span><span class='period'>.</span><span class='id identifier rubyid_github'>github</span><span class='period'>.</span><span class='id identifier rubyid_com'>com</span><span class='op'>/</span><span class='const'>OTL</span><span class='op'>/</span><span class='id identifier rubyid_rosruby'>rosruby</span><span class='op'>/</span><span class='id identifier rubyid_master'>master</span><span class='op'>/</span><span class='id identifier rubyid_rosruby'>rosruby</span><span class='period'>.</span><span class='id identifier rubyid_rosinstall'>rosinstall</span>
+<pre class="code bash"><code class="bash">$ cd ~/catkin_ws/src
+$ git clone git://github.com/OTL/rosruby.git
+$ cd ~/catkin_ws
+$ catkin_make
 </code></pre>
 
 <p>please add RUBYLIB environment variable, like below (if you are using bash).</p>
 
-<pre class="code bash"><code>$ echo &quot;export RUBYLIB=`rospack find rosruby`/lib&quot; &gt;&gt; ~/.bashrc
+<pre class="code bash"><code class="bash">$ echo &quot;export RUBYLIB=~/catkin_ws/devel/lib/ruby/vendor_ruby&quot; &gt;&gt; ~/.bashrc
 $ source ~/.bashrc
 </code></pre>
 
-<h2>Use with precompiled electric release</h2>
+<p>if you want to use install environment, please edit develop -> install</p>
 
-<p>If you are using precompiled ROS distro, use the msg/srv generation script
-(rosruby_genmsg.py)
-If you are using ROS from source, it requires just recompile the msg/srv
-packages by rosmake rosruby.</p>
+<p>export RUBYLIB=~/catkin_ws/install/lib/ruby/vendor_ruby</p>
 
-<pre class="code bash"><code>$ rosrun rosruby rosruby_genmsg.py
-</code></pre>
+<h2>Message generation</h2>
 
-<p>This converts msg/srv to .rb which is needed by sample programs.
-If you want to make other packages, add package names for args.</p>
+<p>You must generate ROS msg/srv files for rosruby manually.
+Please use the msg/srv generation script (rosruby_genmsg.py) in order to 
+generage rosruby messages.</p>
 
 <p>For example,</p>
 
-<pre class="code bash"><code>$ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs
+<pre class="code bash"><code class="bash">$ rosrun rosruby rosruby_genmsg.py geometry_msgs nav_msgs -d ~/catkin_ws/devel/lib/ruby/vendor_ruby/
 </code></pre>
 
 <h2>Sample Source</h2>
 
 <h2>Subscriber</h2>
 
-<pre class="code ruby"><code><span class='comment'>#!/usr/bin/env ruby
+<pre class="code ruby"><code class="ruby"><span class='comment'>#!/usr/bin/env ruby
 </span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ros</span><span class='tstring_end'>'</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>std_msgs/String</span><span class='tstring_end'>'</span></span>
@@ -135,7 +155,7 @@ If you want to make other packages, add package names for args.</p>
 
 <h2>Publisher</h2>
 
-<pre class="code ruby"><code><span class='comment'>#!/usr/bin/env ruby
+<pre class="code ruby"><code class="ruby"><span class='comment'>#!/usr/bin/env ruby
 </span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ros</span><span class='tstring_end'>'</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>std_msgs/String</span><span class='tstring_end'>'</span></span>
@@ -157,45 +177,45 @@ If you want to make other packages, add package names for args.</p>
 <h2>Note</h2>
 
 <p>Ruby requires &#39;Start with Capital letter&#39; for class or module names.
-So please use <strong>S</strong>td<em>msgs::String class instead of <strong>s</strong>td</em>msgs::String.</p>
+So please use <strong>S</strong>td_msgs::String class instead of <strong>s</strong>td_msgs::String.</p>
 
 <h2>Try Publish and Subscribe</h2>
 
 <p>You needs three terminal as it is often for ROS users.
 Then you run roscore if is not running.</p>
 
-<pre class="code bash"><code>$ roscore
+<pre class="code bash"><code class="bash">$ roscore
 </code></pre>
 
 <p>run publisher sample</p>
 
-<pre class="code bash"><code>$ rosrun rosruby sample_publisher.rb
+<pre class="code bash"><code class="bash">$ rosrun rosruby sample_publisher.rb
 </code></pre>
 
 <p>run subscription sample</p>
 
-<pre class="code bash"><code>$ rosrun rosruby sample_subscriber.rb
+<pre class="code bash"><code class="bash">$ rosrun rosruby sample_subscriber.rb
 </code></pre>
 
 <p>you can check publication by using rostopic.</p>
 
-<pre class="code bash"><code>$ rostopic list
+<pre class="code bash"><code class="bash">$ rostopic list
 $ rostopic echo /chatter
 </code></pre>
 
 <h2>Try Service?</h2>
 
-<pre class="code bash"><code>$ rosrun rosruby add_two_ints_server.rb
+<pre class="code bash"><code class="bash">$ rosrun rosruby add_two_ints_server.rb
 </code></pre>
 
 <p>run client with args (&#39;a&#39; and &#39;b&#39; for roscpp_tutorials/TwoInts)</p>
 
-<pre class="code bash"><code>$ rosrun rosruby add_two_ints_client.rb 10 20
+<pre class="code bash"><code class="bash">$ rosrun rosruby add_two_ints_client.rb 10 20
 </code></pre>
 
 <h2>And more...</h2>
 
-<p>There are <a href="https://github.com/OTL/rosruby_common">rosruby_common</a> stack that contains actionlib and tf.</p>
+<p>There are <a href="https://github.com/OTL/rosruby_common">rosruby_common</a> stack that contains actionlib and tf (highly under development).</p>
 
 <h2>Do all tests</h2>
 
@@ -203,13 +223,13 @@ $ rostopic echo /chatter
 
 <p>Install some packages for tests.</p>
 
-<pre class="code bash"><code>$ sudo apt-get install rake gem
+<pre class="code bash"><code class="bash">$ sudo apt-get install rake gem
 $ sudo gem install yard redcarpet simplecov
 </code></pre>
 
 <p>run tests.</p>
 
-<pre class="code bash"><code>$ roscd rosruby
+<pre class="code bash"><code class="bash">$ roscd rosruby
 $ rake test
 </code></pre>
 
@@ -219,21 +239,32 @@ $ rake test
 Document generation needs yard and redcarpet.
 You can install these by gem command like this.</p>
 
-<pre class="code bash"><code>$ gem install yard redcarpet
+<pre class="code bash"><code class="bash">$ gem install yard redcarpet
 </code></pre>
 
 <p>Then try to generate documentds.</p>
 
-<pre class="code bash"><code>$ rake yard
+<pre class="code bash"><code class="bash">$ rake yard
 </code></pre>
 
 <p>You can access to the generated documents from <a href="http://otl.github.com/rosruby/doc/">here</a>.</p>
+
+<h2>catkin and CMakeLists.txt</h2>
+
+<p>rosruby&#39;s CMakeLists.txt defines some macros for your package that uses rosruby.
+you can use these if you add <code>find_package(rosruby)</code> to CMakeLists.txt.</p>
+
+<ul>
+<li>rosruby_setup() : setup some macros and variables for rosruby</li>
+<li>rosruby_generate_messages(message_pkg1 message_okg2 ...) : generates rosruby msg/srv files</li>
+<li>rosruby_add_libraries(files or dirs) : install lib files for devel environment.</li>
+</ul>
 </div></div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:47 2012 by 
+  Generated on Tue Sep 10 01:39:56 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

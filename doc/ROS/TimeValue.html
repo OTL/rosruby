@@ -6,18 +6,20 @@
 <title>
   Class: ROS::TimeValue
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (T)</a> &raquo; 
+    <a href="../_index.html">Index (T)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">TimeValue</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::TimeValue
   
   
@@ -128,6 +135,7 @@
   </span>
   
   
+  
     
     
   
@@ -152,6 +160,7 @@
 
     
   </span>
+  
   
   
     
@@ -197,6 +206,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -214,6 +224,7 @@
 
     
   </span>
+  
   
   
   
@@ -243,6 +254,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -260,6 +272,7 @@
 
     
   </span>
+  
   
   
   
@@ -285,25 +298,26 @@
     
       
       <span id="nsecs=-instance_method"></span>
-      <span id="nsecs-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="nsecs-instance_method">
+  <h3 class="signature first" id="nsecs-instance_method">
   
     - (<tt>Integer</tt>) <strong>nsecs</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Nano seconds</p>
+<p>Returns nano seconds</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -345,25 +359,26 @@
     
       
       <span id="secs=-instance_method"></span>
-      <span id="secs-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="secs-instance_method">
+  <h3 class="signature " id="secs-instance_method">
   
     - (<tt>Integer</tt>) <strong>secs</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Seconds</p>
+<p>Returns seconds</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -408,16 +423,18 @@
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="<=>-instance_method">
+  <h3 class="signature first" id="<=>-instance_method">
   
     - (<tt>Integer</tt>) <strong>&lt;=&gt;</strong>(other) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>compare time value</p>
@@ -426,7 +443,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -447,7 +464,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -502,13 +519,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="canonicalize-instance_method">
+  <h3 class="signature " id="canonicalize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TimeValue (class)">TimeValue</a></span></tt>) <strong>canonicalize</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>canonicalize secs and nsecs</p>
@@ -518,7 +537,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -575,13 +594,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="to_nsec-instance_method">
+  <h3 class="signature " id="to_nsec-instance_method">
   
     - (<tt>Float</tt>) <strong>to_nsec</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>convert to nano seconds</p>
@@ -591,7 +612,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -632,13 +653,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="to_sec-instance_method">
+  <h3 class="signature " id="to_sec-instance_method">
   
     - (<tt>Float</tt>) <strong>to_sec</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>convert to seconds</p>
@@ -648,7 +671,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -691,11 +714,11 @@
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:48 2012 by 
+  Generated on Tue Sep 10 01:39:56 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

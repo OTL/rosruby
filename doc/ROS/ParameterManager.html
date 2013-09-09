@@ -6,18 +6,20 @@
 <title>
   Class: ROS::ParameterManager
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (P)</a> &raquo; 
+    <a href="../_index.html">Index (P)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">ParameterManager</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::ParameterManager
   
   
@@ -133,6 +140,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -150,6 +158,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 
     
   </span>
+  
   
   
   
@@ -179,6 +188,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -202,6 +212,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -219,6 +230,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -250,6 +262,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -273,6 +286,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -289,22 +303,24 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::ParameterManager (class)">ParameterManager</a></span></tt>) <strong>initialize</strong>(master_uri, caller_id, remappings) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>A new instance of ParameterManager</p>
+<p>Returns a new instance of ParameterManager</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -390,16 +406,18 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="delete_param-instance_method">
+  <h3 class="signature first" id="delete_param-instance_method">
   
     - (<tt>Boolean</tt>) <strong>delete_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>delete parameter 'key'</p>
@@ -408,7 +426,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -429,7 +447,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -482,13 +500,15 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_param-instance_method">
+  <h3 class="signature " id="get_param-instance_method">
   
     - (<tt>String</tt>) <strong>get_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get parameter named 'key'</p>
@@ -497,7 +517,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -518,7 +538,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -577,13 +597,15 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_param_names-instance_method">
+  <h3 class="signature " id="get_param_names-instance_method">
   
     - (<tt>Array</tt>) <strong>get_param_names</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get the all keys of parameters</p>
@@ -593,7 +615,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -650,13 +672,15 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="has_param-instance_method">
+  <h3 class="signature " id="has_param-instance_method">
   
     - (<tt>String</tt>, ...) <strong>has_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>check if the master has the key</p>
@@ -665,7 +689,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -686,7 +710,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -743,13 +767,15 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="search_param-instance_method">
+  <h3 class="signature " id="search_param-instance_method">
   
     - (<tt>Array</tt>) <strong>search_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>search the all namespace for key</p>
@@ -758,7 +784,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -779,7 +805,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -836,13 +862,15 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="set_param-instance_method">
+  <h3 class="signature " id="set_param-instance_method">
   
     - (<tt>Boolean</tt>) <strong>set_param</strong>(key, value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>set parameter for 'key'</p>
@@ -851,7 +879,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -888,7 +916,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -906,7 +934,7 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -960,11 +988,11 @@ href="http://ros.org/wiki/ROS/Parameter%20Server%20API">ros.org/wiki/ROS/Paramet
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:51 2012 by 
+  Generated on Tue Sep 10 01:39:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

@@ -6,18 +6,20 @@
 <title>
   Class: ROS::ServiceServer
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (S)</a> &raquo; 
+    <a href="../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">ServiceServer</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::ServiceServer
   
   
@@ -107,10 +114,10 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'></div></h4>
-      <pre class="example code"><span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_service_server</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_service_server</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_advertise_service'>advertise_service</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/add_two_ints</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Roscpp_tutorials</span><span class='op'>::</span><span class='const'>TwoInts</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='op'>|</span>
   <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span> <span class='op'>=</span> <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_a'>a</span> <span class='op'>+</span> <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span>
   <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_loginfo'>loginfo</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_a'>a</span><span class='rbrace'>}</span><span class='tstring_content'>, b=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -119,7 +126,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 <span class='kw'>end</span>
 <span class='kw'>while</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span>
   <span class='id identifier rubyid_sleep'>sleep</span> <span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='kw'>end</span></code></pre>
     
   </div>
 
@@ -141,7 +148,10 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -189,6 +199,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -206,6 +217,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 
     
   </span>
+  
   
   
   
@@ -235,6 +247,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -247,11 +260,12 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ServiceServer) <strong>initialize</strong>(caller_id, service_name, service_type, callback) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ServiceServer) <strong>initialize</strong>(caller_id, service_name, service_type, callback, host) </a>
     
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -283,6 +297,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -300,6 +315,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 
     
   </span>
+  
   
   
   
@@ -329,6 +345,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -346,26 +363,29 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   
   
   
+  
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>initialize</strong>(caller_id, service_name, service_type, callback) 
+    - (<tt><span class='object_link'><a href="" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>initialize</strong>(caller_id, service_name, service_type, callback, host) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>A new instance of ServiceServer</p>
+<p>Returns a new instance of ServiceServer</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -432,6 +452,22 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       
     </li>
   
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>host name</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 
@@ -441,7 +477,6 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-36
 37
 38
 39
@@ -450,18 +485,21 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 42
 43
 44
-45</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 37</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='comma'>,</span> <span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='comma'>,</span> <span class='id identifier rubyid_callback'>callback</span><span class='comma'>,</span> <span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_caller_id'>caller_id</span><span class='comma'>,</span> <span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='rparen'>)</span>
   <span class='ivar'>@callback</span> <span class='op'>=</span> <span class='id identifier rubyid_callback'>callback</span>
   <span class='ivar'>@server</span> <span class='op'>=</span> <span class='const'>TCPROS</span><span class='op'>::</span><span class='const'>ServiceServer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@caller_id</span><span class='comma'>,</span>
                                       <span class='ivar'>@service_name</span><span class='comma'>,</span>
                                       <span class='ivar'>@service_type</span><span class='comma'>,</span>
-                                      <span class='kw'>self</span><span class='rparen'>)</span>
+                                      <span class='kw'>self</span><span class='comma'>,</span>
+                                      <span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
   <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
   <span class='ivar'>@num_request</span> <span class='op'>=</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
@@ -477,25 +515,26 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
     
       
       <span id=""></span>
-      <span id="num_request-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="num_request-instance_method">
+  <h3 class="signature first" id="num_request-instance_method">
   
     - (<tt>Integer</tt>) <strong>num_request</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>How many times this service called</p>
+<p>Returns how many times this service called</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -520,12 +559,12 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-90
-91
-92</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_num_request'>num_request</span>
   <span class='ivar'>@num_request</span>
@@ -540,16 +579,18 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="call-instance_method">
+  <h3 class="signature first" id="call-instance_method">
   
     - (<tt>Boolean</tt>) <strong>call</strong>(request, response) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>execute the service callback. User should not call this directly.</p>
@@ -558,7 +599,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -595,7 +636,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -620,13 +661,13 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-53
-54
 55
-56</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
   <span class='ivar'>@num_request</span> <span class='op'>+=</span> <span class='int'>1</span>
@@ -638,13 +679,15 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="close-instance_method">
+  <h3 class="signature " id="close-instance_method">
   
     - (<tt>Object</tt>) <strong>close</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>user should not call this method. Please use shutdown method.</p>
@@ -661,12 +704,12 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-67
-68
-69</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span> <span class='comment'>#:nodoc:
 </span>  <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_shutdown'>shutdown</span>
@@ -677,23 +720,25 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_connection_data-instance_method">
+  <h3 class="signature " id="get_connection_data-instance_method">
   
     - (<tt>Array</tt>) <strong>get_connection_data</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Connection data</p>
+<p>Returns connection data</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -718,12 +763,12 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-85
-86
-87</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_connection_data'>get_connection_data</span>
   <span class='lbracket'>[</span><span class='ivar'>@num_request</span><span class='comma'>,</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_byte_received'>byte_received</span><span class='comma'>,</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_byte_sent'>byte_sent</span><span class='rbracket'>]</span>
@@ -734,13 +779,15 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="service_uri-instance_method">
+  <h3 class="signature " id="service_uri-instance_method">
   
     - (<tt>String</tt>) <strong>service_uri</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>URI of this service (rosrpc://**)</p>
@@ -750,7 +797,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -775,12 +822,12 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-60
-61
-62</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_service_uri'>service_uri</span>
   <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rosrpc://</span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='ivar'>@server</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -791,13 +838,15 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="set_manager-instance_method">
+  <h3 class="signature " id="set_manager-instance_method">
   
     - (<tt>Object</tt>) <strong>set_manager</strong>(manager) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>set GraphManager for shutdown</p>
@@ -806,7 +855,7 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -834,12 +883,12 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-80
-81
-82</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_manager'>set_manager</span><span class='lparen'>(</span><span class='id identifier rubyid_manager'>manager</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
 </span>  <span class='ivar'>@manager</span> <span class='op'>=</span> <span class='id identifier rubyid_manager'>manager</span>
@@ -850,13 +899,15 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown-instance_method">
+  <h3 class="signature " id="shutdown-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>shutdown the service connection</p>
@@ -873,12 +924,12 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
       <pre class="lines">
 
 
-74
-75
-76</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/service_server.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
   <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_shutdow_service_server'>shutdow_service_server</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -891,11 +942,11 @@ class. Service can be shutdown by <span class='object_link'><a href="#shutdown-i
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:51 2012 by 
+  Generated on Tue Sep 10 01:39:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

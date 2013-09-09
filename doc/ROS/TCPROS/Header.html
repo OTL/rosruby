@@ -6,18 +6,20 @@
 <title>
   Class: ROS::TCPROS::Header
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (H)</a> &raquo; 
+    <a href="../../_index.html">Index (H)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../ROS.html" title="ROS (module)">ROS</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TCPROS.html" title="ROS::TCPROS (module)">TCPROS</a></span></span>
      &raquo; 
     <span class="title">Header</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::TCPROS::Header
   
   
@@ -155,6 +162,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -180,6 +188,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -197,6 +206,7 @@
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -230,6 +240,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -247,6 +258,7 @@
 
     
   </span>
+  
   
   
   
@@ -276,6 +288,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -292,13 +305,15 @@
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>initialize</strong>(data = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>initialize with hash</p>
@@ -307,7 +322,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -352,16 +367,18 @@
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="deserialize-instance_method">
+  <h3 class="signature first" id="deserialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>deserialize</strong>(data) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>deserialize the data to header. this does not contain total byte number.</p>
@@ -370,7 +387,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -386,7 +403,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -445,7 +462,7 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_data-instance_method">
+  <h3 class="signature " id="get_data-instance_method">
   
     - (<tt>String</tt>) <strong>get_data</strong>(key) 
   
@@ -455,16 +472,18 @@
     <span class="names"><span id='[]-instance_method'>[]</span></span>
     </span>
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Value of key</p>
+<p>Returns value of key</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -480,7 +499,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -521,7 +540,7 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="push_data-instance_method">
+  <h3 class="signature " id="push_data-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::TCPROS::Header (class)">Header</a></span></tt>) <strong>push_data</strong>(key, value) 
   
@@ -531,7 +550,9 @@
     <span class="names"><span id='[]=-instance_method'>[]=</span></span>
     </span>
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>add key-value data to this header.</p>
@@ -540,7 +561,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -577,7 +598,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -626,13 +647,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="serialize-instance_method">
+  <h3 class="signature " id="serialize-instance_method">
   
     - (<tt>Integer</tt>) <strong>serialize</strong>(buff) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>serialize the data into header. return the byte of the serialized data.</p>
@@ -641,7 +664,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -662,7 +685,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -715,13 +738,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="valid?-instance_method">
+  <h3 class="signature " id="valid?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>valid?</strong>(key, value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>validate the key with the value. if it is WILD_CARD, it is ok!</p>
@@ -730,7 +755,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -757,7 +782,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -800,11 +825,11 @@
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:51 2012 by 
+  Generated on Tue Sep 10 01:39:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

@@ -6,18 +6,20 @@
 <title>
   Class: ROS::Package
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (P)</a> &raquo; 
+    <a href="../_index.html">Index (P)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Package</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::Package
   
   
@@ -155,6 +162,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -172,6 +180,7 @@
 
     
   </span>
+  
   
   
   
@@ -202,6 +211,7 @@ RUBYLIB, if the directory exists.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -219,6 +229,7 @@ RUBYLIB, if the directory exists.</p>
 
     
   </span>
+  
   
   
   
@@ -248,6 +259,7 @@ RUBYLIB, if the directory exists.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -271,6 +283,7 @@ RUBYLIB, if the directory exists.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -287,16 +300,18 @@ RUBYLIB, if the directory exists.</p>
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="add_path_of_package-class_method">
+  <h3 class="signature first" id="add_path_of_package-class_method">
   
     + (<tt>Object</tt>) <strong>add_path_of_package</strong>(package) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>add package's [lib/, msg_gen/ruby, srv_gen/ruby] to '$:'. this enables load
@@ -306,7 +321,7 @@ ruby files easily</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -334,19 +349,19 @@ ruby files easily</p>
       <pre class="lines">
 
 
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140</pre>
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_path_of_package'>add_path_of_package</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='cvar'>@@all_packages</span><span class='lbracket'>[</span><span class='id identifier rubyid_package'>package</span><span class='rbracket'>]</span>
@@ -364,13 +379,15 @@ ruby files easily</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="add_path_with_depend_packages-class_method">
+  <h3 class="signature " id="add_path_with_depend_packages-class_method">
   
     + (<tt>Object</tt>) <strong>add_path_with_depend_packages</strong>(package) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>add [lib/, msg_gen/ruby, srv_gen/ruby] dirs of all depend packages to
@@ -380,7 +397,7 @@ RUBYLIB, if the directory exists</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -408,15 +425,15 @@ RUBYLIB, if the directory exists</p>
       <pre class="lines">
 
 
-146
-147
-148
-149
-150
-151</pre>
+158
+159
+160
+161
+162
+163</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_path_with_depend_packages'>add_path_with_depend_packages</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_add_path_of_package'>add_path_of_package</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='rparen'>)</span>
@@ -430,13 +447,15 @@ RUBYLIB, if the directory exists</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="depends-class_method">
+  <h3 class="signature " id="depends-class_method">
   
     + (<tt>Array</tt>) <strong>depends</strong>(package, packages = []) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get the depend packages of the arg</p>
@@ -445,7 +464,7 @@ RUBYLIB, if the directory exists</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -484,7 +503,7 @@ RUBYLIB, if the directory exists</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -524,25 +543,49 @@ RUBYLIB, if the directory exists</p>
 107
 108
 109
-110</pre>
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_depends'>depends</span><span class='lparen'>(</span><span class='id identifier rubyid_package'>package</span><span class='comma'>,</span> <span class='id identifier rubyid_packages'>packages</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
-    <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@all_packages</span><span class='lbracket'>[</span><span class='id identifier rubyid_package'>package</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='const'>REXML</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_elements'>elements</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/package/depend</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span>
-      <span class='id identifier rubyid_depend_package'>depend_package</span> <span class='op'>=</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>package</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
-      <span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
-        <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
-        <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_depends'>depends</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='comma'>,</span> <span class='id identifier rubyid_packages'>packages</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@all_packages</span><span class='lbracket'>[</span><span class='id identifier rubyid_package'>package</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@all_packages</span><span class='lbracket'>[</span><span class='id identifier rubyid_package'>package</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='const'>REXML</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_elements'>elements</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/package/depend</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span>
+        <span class='id identifier rubyid_depend_package'>depend_package</span> <span class='op'>=</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>package</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+        <span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
+          <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
+          <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_depends'>depends</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='comma'>,</span> <span class='id identifier rubyid_packages'>packages</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@all_packages</span><span class='lbracket'>[</span><span class='id identifier rubyid_package'>package</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>/package.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='const'>REXML</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_elements'>elements</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/package/run_depend</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span>
+        <span class='id identifier rubyid_depend_package'>depend_package</span> <span class='op'>=</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>
+        <span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
+          <span class='id identifier rubyid_packages'>packages</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='rparen'>)</span>
+          <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_depends'>depends</span><span class='lparen'>(</span><span class='id identifier rubyid_depend_package'>depend_package</span><span class='comma'>,</span> <span class='id identifier rubyid_packages'>packages</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>rescue</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_package'>package</span><span class='rbrace'>}</span><span class='tstring_content'>'s manifest.xml not found</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
+<span class='comment'>#        puts &quot;#{package}'s manifest.xml/package.xml not found&quot;
+</span>  <span class='kw'>end</span>
   <span class='id identifier rubyid_packages'>packages</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -551,13 +594,15 @@ RUBYLIB, if the directory exists</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="find_all_packages-class_method">
+  <h3 class="signature " id="find_all_packages-class_method">
   
     + (<tt>Array</tt>) <strong>find_all_packages</strong>(packages = {}, roots = []) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>search all packages that has manifest.xml</p>
@@ -566,7 +611,7 @@ RUBYLIB, if the directory exists</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -607,7 +652,7 @@ RUBYLIB, if the directory exists</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -663,7 +708,8 @@ RUBYLIB, if the directory exists</p>
 79
 80
 81
-82</pre>
+82
+83</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 51</span>
@@ -683,7 +729,8 @@ RUBYLIB, if the directory exists</p>
   <span class='kw'>end</span>
     
   <span class='id identifier rubyid_roots'>roots</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_root'>root</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root'>root</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root'>root</span><span class='rbrace'>}</span><span class='tstring_content'>/manifest.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>or</span> 
+        <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root'>root</span><span class='rbrace'>}</span><span class='tstring_content'>/package.xml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
       <span class='id identifier rubyid_packages'>packages</span><span class='lbracket'>[</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_root'>root</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_root'>root</span>
     <span class='kw'>else</span>
       <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_root'>root</span><span class='rparen'>)</span>
@@ -706,13 +753,15 @@ RUBYLIB, if the directory exists</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="find_this_package-class_method">
+  <h3 class="signature " id="find_this_package-class_method">
   
     + (<tt>String</tt>) <strong>find_this_package</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get the current program's package</p>
@@ -722,7 +771,7 @@ RUBYLIB, if the directory exists</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -734,7 +783,7 @@ RUBYLIB, if the directory exists</p>
       
         &mdash;
         <div class='inline'>
-<p>name of running programs's package</p>
+<p>name of running programs’s package</p>
 </div>
       
     </li>
@@ -747,19 +796,19 @@ RUBYLIB, if the directory exists</p>
       <pre class="lines">
 
 
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125</pre>
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/package.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_this_package'>find_this_package</span>
   <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='gvar'>$PROGRAM_NAME</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -777,13 +826,15 @@ RUBYLIB, if the directory exists</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="read_cache_or_find_all-class_method">
+  <h3 class="signature " id="read_cache_or_find_all-class_method">
   
     + (<tt>Array</tt>) <strong>read_cache_or_find_all</strong>(cache_file = &quot;#{ENV['HOME']}/.ros/rospack_cache&quot;) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>at first check the rospack's cache, if found use it. if not found, check
@@ -793,7 +844,7 @@ all package path.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -816,7 +867,7 @@ all package path.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -891,11 +942,11 @@ all package path.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:49 2012 by 
+  Generated on Tue Sep 10 01:39:57 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

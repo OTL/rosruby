@@ -6,18 +6,20 @@
 <title>
   Class: ROS::GraphManager
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (G)</a> &raquo; 
+    <a href="../_index.html">Index (G)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">GraphManager</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::GraphManager
   
   
@@ -163,7 +170,10 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -189,7 +199,10 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -215,7 +228,10 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -241,7 +257,10 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -267,7 +286,10 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -293,7 +315,10 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -336,6 +361,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -368,6 +394,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -385,6 +412,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
     
   </span>
+  
   
   
   
@@ -414,6 +442,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -437,10 +466,35 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
 <p>register a subscriber to master.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#check_master_connection-instance_method" title="#check_master_connection (instance method)">- (Object) <strong>check_master_connection</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>check connection with master using master API.</p>
 </div></span>
   
 </li>
@@ -454,6 +508,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
     
   </span>
+  
   
   
   
@@ -483,6 +538,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -500,6 +556,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -531,6 +588,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -548,6 +606,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
     
   </span>
+  
   
   
   
@@ -577,6 +636,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -594,6 +654,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
     
   </span>
+  
   
   
   
@@ -623,6 +684,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -640,6 +702,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
     
   </span>
+  
   
   
   
@@ -669,6 +732,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -686,6 +750,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
     
   </span>
+  
   
   
   
@@ -712,19 +777,22 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Name.html" title="ROS::Name (module)">Name</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Name.html#anonymous_name-instance_method" title="ROS::Name#anonymous_name (method)">#anonymous_name</a></span>, <span class='object_link'><a href="Name.html#canonicalize_name-instance_method" title="ROS::Name#canonicalize_name (method)">#canonicalize_name</a></span>, <span class='object_link'><a href="Name.html#expand_local_name-instance_method" title="ROS::Name#expand_local_name (method)">#expand_local_name</a></span>, <span class='object_link'><a href="Name.html#resolve_name_with_call_id-instance_method" title="ROS::Name#resolve_name_with_call_id (method)">#resolve_name_with_call_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::GraphManager (class)">GraphManager</a></span></tt>) <strong>initialize</strong>(caller_id, master_uri, host) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>add xmlrpc handlers for slave connections. Then start serve thread.</p>
@@ -733,7 +801,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -851,25 +919,26 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
     
       
       <span id=""></span>
-      <span id="host-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="host-instance_method">
+  <h3 class="signature first" id="host-instance_method">
   
     - (<tt>String</tt>) <strong>host</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Value hostname of this node</p>
+<p>Returns value hostname of this node</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -911,25 +980,26 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
     
       
       <span id=""></span>
-      <span id="parameter_subscribers-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="parameter_subscribers-instance_method">
+  <h3 class="signature " id="parameter_subscribers-instance_method">
   
     - (<tt>Array</tt>) <strong>parameter_subscribers</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>All ParameterSubscriber of this node</p>
+<p>Returns all ParameterSubscriber of this node</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -971,25 +1041,26 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
     
       
       <span id=""></span>
-      <span id="port-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="port-instance_method">
+  <h3 class="signature " id="port-instance_method">
   
     - (<tt>Integer</tt>) <strong>port</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>Value port number of this node</p>
+<p>Returns value port number of this node</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1031,25 +1102,26 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
     
       
       <span id=""></span>
-      <span id="publishers-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="publishers-instance_method">
+  <h3 class="signature " id="publishers-instance_method">
   
     - (<tt>Array</tt>) <strong>publishers</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>All Publisher of this node</p>
+<p>Returns all Publisher of this node</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1091,25 +1163,26 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
     
       
       <span id=""></span>
-      <span id="service_servers-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="service_servers-instance_method">
+  <h3 class="signature " id="service_servers-instance_method">
   
     - (<tt>Array</tt>) <strong>service_servers</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>All ServiceServer of this node</p>
+<p>Returns all ServiceServer of this node</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1151,25 +1224,26 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
     
       
       <span id=""></span>
-      <span id="subscribers-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="subscribers-instance_method">
+  <h3 class="signature " id="subscribers-instance_method">
   
     - (<tt>Array</tt>) <strong>subscribers</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
-<p>All Subscriber of this node</p>
+<p>Returns all Subscriber of this node</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1214,16 +1288,18 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="shutdown_all-class_method">
+  <h3 class="signature first" id="shutdown_all-class_method">
   
     + (<tt>Object</tt>) <strong>shutdown_all</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>shutdown all nodes</p>
@@ -1267,16 +1343,18 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="add_parameter_subscriber-instance_method">
+  <h3 class="signature first" id="add_parameter_subscriber-instance_method">
   
     - (<tt><span class='object_link'><a href="ParameterSubscriber.html" title="ROS::ParameterSubscriber (class)">ParameterSubscriber</a></span></tt>) <strong>add_parameter_subscriber</strong>(subscriber) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>register callback for paramUpdate</p>
@@ -1285,7 +1363,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1306,7 +1384,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1353,13 +1431,15 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="add_publisher-instance_method">
+  <h3 class="signature " id="add_publisher-instance_method">
   
     - (<tt><span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span></tt>) <strong>add_publisher</strong>(publisher) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>register a publisher. raise if fail.</p>
@@ -1368,7 +1448,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1389,7 +1469,7 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1438,13 +1518,15 @@ href="http://ros.org/wiki/ROS/Slave_API">ros.org/wiki/ROS/Slave_API</a></p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="add_service_server-instance_method">
+  <h3 class="signature " id="add_service_server-instance_method">
   
     - (<tt><span class='object_link'><a href="ServiceServer.html" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>add_service_server</strong>(service_server) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>register a service to master, and add it in the controlling server list.
@@ -1454,7 +1536,7 @@ raise if fail.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1475,7 +1557,7 @@ raise if fail.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1524,13 +1606,15 @@ raise if fail.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="add_subscriber-instance_method">
+  <h3 class="signature " id="add_subscriber-instance_method">
   
     - (<tt><span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></tt>) <strong>add_subscriber</strong>(subscriber) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>register a subscriber to master. raise if fail.</p>
@@ -1539,7 +1623,7 @@ raise if fail.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1560,7 +1644,7 @@ raise if fail.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1615,13 +1699,68 @@ raise if fail.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_available_port-instance_method">
+  <h3 class="signature " id="check_master_connection-instance_method">
+  
+    - (<tt>Object</tt>) <strong>check_master_connection</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>check connection with master using master API</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+314
+315
+316
+317
+318
+319
+320
+321
+322</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ros/graph_manager.rb', line 314</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_master_connection'>check_master_connection</span>
+  <span class='kw'>begin</span>
+    <span class='ivar'>@master</span><span class='period'>.</span><span class='id identifier rubyid_get_system_state'>get_system_state</span>
+  <span class='kw'>rescue</span>
+    <span class='comment'># some error
+</span>    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_available_port-instance_method">
   
     - (<tt>Integer</tt>) <strong>get_available_port</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get available port number by opening port 0.</p>
@@ -1631,7 +1770,7 @@ raise if fail.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1680,13 +1819,15 @@ raise if fail.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_uri-instance_method">
+  <h3 class="signature " id="get_uri-instance_method">
   
     - (<tt>String</tt>) <strong>get_uri</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get this slave node's URI</p>
@@ -1696,7 +1837,7 @@ raise if fail.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1708,7 +1849,7 @@ raise if fail.</p>
       
         &mdash;
         <div class='inline'>
-<p>uri ('<a href="http://host:port">host:port</a>')</p>
+<p>uri (‘<a href="http://host:port">host:port</a>’)</p>
 </div>
       
     </li>
@@ -1737,13 +1878,15 @@ raise if fail.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="is_ok?-instance_method">
+  <h3 class="signature " id="is_ok?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>is_ok?</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>check if this node is running or not.</p>
@@ -1753,7 +1896,7 @@ raise if fail.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1794,13 +1937,15 @@ raise if fail.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown-instance_method">
+  <h3 class="signature " id="shutdown-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::GraphManager (class)">GraphManager</a></span></tt>) <strong>shutdown</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>shutdown this slave node. shutdown the xmlrpc server and all pub/sub
@@ -1811,7 +1956,7 @@ connections. and delelte all pub/sub instance from connection list</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1952,13 +2097,15 @@ connections. and delelte all pub/sub instance from connection list</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown_parameter_subscriber-instance_method">
+  <h3 class="signature " id="shutdown_parameter_subscriber-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown_parameter_subscriber</strong>(subscriber) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>shutdown a parameter subscriber.</p>
@@ -1967,7 +2114,7 @@ connections. and delelte all pub/sub instance from connection list</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2021,13 +2168,15 @@ connections. and delelte all pub/sub instance from connection list</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown_publisher-instance_method">
+  <h3 class="signature " id="shutdown_publisher-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown_publisher</strong>(publisher) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>shutdown a publisher.</p>
@@ -2036,7 +2185,7 @@ connections. and delelte all pub/sub instance from connection list</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2094,13 +2243,15 @@ connections. and delelte all pub/sub instance from connection list</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown_service_server-instance_method">
+  <h3 class="signature " id="shutdown_service_server-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown_service_server</strong>(service) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>shutdown a service server.</p>
@@ -2109,7 +2260,7 @@ connections. and delelte all pub/sub instance from connection list</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2169,13 +2320,15 @@ connections. and delelte all pub/sub instance from connection list</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown_subscriber-instance_method">
+  <h3 class="signature " id="shutdown_subscriber-instance_method">
   
     - (<tt>Object</tt>) <strong>shutdown_subscriber</strong>(subscriber) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>shutdown a subscriber.</p>
@@ -2184,7 +2337,7 @@ connections. and delelte all pub/sub instance from connection list</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2242,13 +2395,15 @@ connections. and delelte all pub/sub instance from connection list</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="spin_once-instance_method">
+  <h3 class="signature " id="spin_once-instance_method">
   
     - (<tt>Bool</tt>) <strong>spin_once</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>process all messages of subscribers. This means that callbacks for all
@@ -2259,7 +2414,7 @@ queued messages are called.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2294,7 +2449,7 @@ queued messages are called.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_spin_once'>spin_once</span>
   <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='ivar'>@subscribers</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_subscriber'>subscriber</span><span class='op'>|</span> <span class='id identifier rubyid_subscriber'>subscriber</span><span class='period'>.</span><span class='id identifier rubyid_process_queue'>process_queue</span><span class='rbrace'>}</span>
-  <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2302,13 +2457,15 @@ queued messages are called.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="wait_for_service-instance_method">
+  <h3 class="signature " id="wait_for_service-instance_method">
   
     - (<tt>Boolean</tt>) <strong>wait_for_service</strong>(service_name, timeout_sec) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>wait until service is available</p>
@@ -2317,7 +2474,7 @@ queued messages are called.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2354,7 +2511,7 @@ queued messages are called.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2411,7 +2568,7 @@ queued messages are called.</p>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>rescue</span> <span class='const'>Timeout</span><span class='op'>::</span><span class='const'>Error</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>time outed for wait service </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_service_name'>service_name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>time out for wait service </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_service_name'>service_name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>return</span> <span class='kw'>nil</span>
   <span class='kw'>rescue</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>connection with master failed. master = </span><span class='embexpr_beg'>#{</span><span class='ivar'>@master_uri</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2425,11 +2582,11 @@ queued messages are called.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:50 2012 by 
+  Generated on Tue Sep 10 01:39:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>

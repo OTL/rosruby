@@ -6,18 +6,20 @@
 <title>
   Class: ROS::Node
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (N)</a> &raquo; 
+    <a href="../_index.html">Index (N)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ROS.html" title="ROS (module)">ROS</a></span></span>
      &raquo; 
     <span class="title">Node</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: ROS::Node
   
   
@@ -107,24 +114,28 @@
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
+      
+        <p class="example_title"><div class='inline'>
 <p>Sample for Publisher</p>
-</div></h4>
-      <pre class="example code">node = ROS::Node.new('/rosruby/sample_publisher')
+</div></p>
+      
+      <pre class="example code"><code>node = ROS::Node.new('/rosruby/sample_publisher')
 publisher = node.advertise('/chatter', Std_msgs::String)
 sleep(1)
 msg = Std_msgs::String.new
 i = 0
 while node.ok?
   msg.data = &quot;Hello, rosruby!: #{i}&quot;
-  publisher.publish(msg)</pre>
+  publisher.publish(msg)</code></pre>
     
-      <h4><div class='inline'>
+      
+        <p class="example_title"><div class='inline'>
 <p>Sample for Subscriber</p>
-</div></h4>
-      <pre class="example code"><span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_subscriber</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>ROS</span><span class='op'>::</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/rosruby/sample_subscriber</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_subscribe'>subscribe</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/chatter</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='const'>Std_msgs</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>message come! = \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_content'>\'</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
@@ -132,7 +143,7 @@ while node.ok?
 <span class='kw'>while</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span>
   <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_spin_once'>spin_once</span>
   <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='kw'>end</span></code></pre>
     
   </div>
 
@@ -183,7 +194,10 @@ while node.ok?
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -209,7 +223,10 @@ while node.ok?
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -235,7 +252,10 @@ while node.ok?
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -278,6 +298,7 @@ while node.ok?
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -295,6 +316,7 @@ while node.ok?
 
     
   </span>
+  
   
   
   
@@ -324,6 +346,7 @@ while node.ok?
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -341,6 +364,7 @@ while node.ok?
 
     
   </span>
+  
   
   
   
@@ -370,6 +394,7 @@ while node.ok?
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -387,6 +412,7 @@ while node.ok?
 
     
   </span>
+  
   
   
   
@@ -416,6 +442,7 @@ while node.ok?
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -433,6 +460,7 @@ while node.ok?
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -465,6 +493,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -484,6 +513,7 @@ servers.</p>
       (also: #logerr)
     
   </span>
+  
   
   
   
@@ -513,6 +543,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -530,6 +561,7 @@ servers.</p>
 
     
   </span>
+  
   
   
   
@@ -559,6 +591,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -576,6 +609,7 @@ servers.</p>
 
     
   </span>
+  
   
   
   
@@ -605,6 +639,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -622,6 +657,7 @@ servers.</p>
 
     
   </span>
+  
   
   
   
@@ -651,6 +687,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -668,6 +705,7 @@ servers.</p>
 
     
   </span>
+  
   
   
   
@@ -697,6 +735,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -714,6 +753,7 @@ servers.</p>
 
     
   </span>
+  
   
   
   
@@ -743,6 +783,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -760,6 +801,7 @@ servers.</p>
 
     
   </span>
+  
   
   
   
@@ -789,6 +831,7 @@ servers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -806,6 +849,7 @@ servers.</p>
 
     
   </span>
+  
   
   
   
@@ -832,19 +876,22 @@ servers.</p>
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Name.html" title="ROS::Name (module)">Name</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Name.html#anonymous_name-instance_method" title="ROS::Name#anonymous_name (method)">#anonymous_name</a></span>, <span class='object_link'><a href="Name.html#canonicalize_name-instance_method" title="ROS::Name#canonicalize_name (method)">#canonicalize_name</a></span>, <span class='object_link'><a href="Name.html#expand_local_name-instance_method" title="ROS::Name#expand_local_name (method)">#expand_local_name</a></span>, <span class='object_link'><a href="Name.html#resolve_name_with_call_id-instance_method" title="ROS::Name#resolve_name_with_call_id (method)">#resolve_name_with_call_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Node (class)">Node</a></span></tt>) <strong>initialize</strong>(node_name, options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>initialization of ROS node get env, parse args, and start slave xmlrpc
@@ -854,7 +901,7 @@ servers.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -898,7 +945,7 @@ servers.</p>
     
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -910,9 +957,11 @@ servers.</p>
               <tt>false</tt>
             
           </span>
-          &mdash; <div class='inline'>
+          
+            &mdash; <div class='inline'>
 <p>use anonymous name if true. anonymous node generates a unique name</p>
 </div>
+          
         </li>
       
     </ul>
@@ -949,7 +998,15 @@ servers.</p>
 85
 86
 87
-88</pre>
+88
+89
+90
+91
+92
+93
+94
+95
+96</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 64</span>
@@ -970,6 +1027,14 @@ servers.</p>
 
   <span class='ivar'>@manager</span> <span class='op'>=</span> <span class='const'>GraphManager</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span> <span class='ivar'>@master_uri</span><span class='comma'>,</span> <span class='ivar'>@host</span><span class='rparen'>)</span>
   <span class='ivar'>@parameter</span> <span class='op'>=</span> <span class='const'>ParameterManager</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@master_uri</span><span class='comma'>,</span> <span class='ivar'>@node_name</span><span class='comma'>,</span> <span class='ivar'>@remappings</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='kw'>not</span> <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_check_master_connection'>check_master_connection</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unable to immediately register with master node [</span><span class='embexpr_beg'>#{</span><span class='ivar'>@master_uri</span><span class='rbrace'>}</span><span class='tstring_content'>]: master may not be running yet. Will keep trying.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>while</span> <span class='kw'>not</span> <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_check_master_connection'>check_master_connection</span>
+      <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:nologger</span><span class='rbracket'>]</span>
     <span class='ivar'>@logger</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>ROS</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -991,15 +1056,16 @@ servers.</p>
     
       
       <span id=""></span>
-      <span id="host-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="host-instance_method">
+  <h3 class="signature first" id="host-instance_method">
   
     - (<tt>String</tt>) <strong>host</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>hostname of this node.</p>
@@ -1009,7 +1075,7 @@ servers.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1034,12 +1100,12 @@ servers.</p>
       <pre class="lines">
 
 
-111
-112
-113</pre>
+119
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_host'>host</span>
   <span class='ivar'>@host</span>
@@ -1051,15 +1117,16 @@ servers.</p>
     
       
       <span id=""></span>
-      <span id="master_uri-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="master_uri-instance_method">
+  <h3 class="signature " id="master_uri-instance_method">
   
     - (<tt>String</tt>) <strong>master_uri</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>URI of master</p>
@@ -1069,7 +1136,7 @@ servers.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1094,12 +1161,12 @@ servers.</p>
       <pre class="lines">
 
 
-101
-102
-103</pre>
+109
+110
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_master_uri'>master_uri</span>
   <span class='ivar'>@master_uri</span>
@@ -1111,15 +1178,16 @@ servers.</p>
     
       
       <span id=""></span>
-      <span id="node_name-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="node_name-instance_method">
+  <h3 class="signature " id="node_name-instance_method">
   
     - (<tt>String</tt>) <strong>node_name</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>name of this node (caller_id).</p>
@@ -1129,7 +1197,7 @@ servers.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1154,12 +1222,12 @@ servers.</p>
       <pre class="lines">
 
 
-115
-116
-117</pre>
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_node_name'>node_name</span>
   <span class='ivar'>@node_name</span>
@@ -1174,16 +1242,18 @@ servers.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="advertise-instance_method">
+  <h3 class="signature first" id="advertise-instance_method">
   
     - (<tt><span class='object_link'><a href="Publisher.html" title="ROS::Publisher (class)">Publisher</a></span></tt>) <strong>advertise</strong>(topic_name, topic_type, options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>start publishing the topic.</p>
@@ -1192,7 +1262,7 @@ servers.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1254,7 +1324,7 @@ servers.</p>
     
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -1266,9 +1336,11 @@ servers.</p>
               <tt>false</tt>
             
           </span>
-          &mdash; <div class='inline'>
+          
+            &mdash; <div class='inline'>
 <p>latched topic</p>
 </div>
+          
         </li>
       
         <li>
@@ -1280,16 +1352,18 @@ servers.</p>
               <tt>true</tt>
             
           </span>
-          &mdash; <div class='inline'>
+          
+            &mdash; <div class='inline'>
 <p>resolve topic_name or not. This is for publish /rosout with namespaced
 node.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1314,24 +1388,24 @@ node.</p>
       <pre class="lines">
 
 
-187
-188
-189
-190
-191
-192
-193
-194
 195
 196
 197
 198
 199
 200
-201</pre>
+201
+202
+203
+204
+205
+206
+207
+208
+209</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 187</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_advertise'>advertise</span><span class='lparen'>(</span><span class='id identifier rubyid_topic_name'>topic_name</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_type'>topic_type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:no_resolve</span><span class='rbracket'>]</span>
@@ -1354,13 +1428,15 @@ node.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="advertise_service-instance_method">
+  <h3 class="signature " id="advertise_service-instance_method">
   
     - (<tt><span class='object_link'><a href="ServiceServer.html" title="ROS::ServiceServer (class)">ServiceServer</a></span></tt>) <strong>advertise_service</strong>(service_name, service_type, &amp;callback) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>start service server.</p>
@@ -1369,7 +1445,7 @@ node.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1422,7 +1498,7 @@ node.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1447,24 +1523,26 @@ node.</p>
       <pre class="lines">
 
 
-210
-211
-212
-213
-214
-215
-216
-217
-218</pre>
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 210</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 218</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_advertise_service'>advertise_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>ROS</span><span class='op'>::</span><span class='const'>ServiceServer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span>
                                     <span class='id identifier rubyid_resolve_name'>resolve_name</span><span class='lparen'>(</span><span class='id identifier rubyid_service_name'>service_name</span><span class='rparen'>)</span><span class='comma'>,</span>
                                     <span class='id identifier rubyid_service_type'>service_type</span><span class='comma'>,</span>
-                                    <span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
+                                    <span class='id identifier rubyid_callback'>callback</span><span class='comma'>,</span>
+                                    <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
   <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_add_service_server'>add_service_server</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_trap_signals'>trap_signals</span>
   <span class='id identifier rubyid_server'>server</span>
@@ -1475,13 +1553,15 @@ node.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="delete_param-instance_method">
+  <h3 class="signature " id="delete_param-instance_method">
   
     - (<tt>Boolean</tt>) <strong>delete_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>delete the parameter for 'key'</p>
@@ -1490,7 +1570,7 @@ node.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1511,7 +1591,7 @@ node.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1536,12 +1616,12 @@ node.</p>
       <pre class="lines">
 
 
-165
-166
-167</pre>
+173
+174
+175</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_param'>delete_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='ivar'>@parameter</span><span class='period'>.</span><span class='id identifier rubyid_delete_param'>delete_param</span><span class='lparen'>(</span><span class='id identifier rubyid_expand_local_name'>expand_local_name</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1552,13 +1632,15 @@ node.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_param-instance_method">
+  <h3 class="signature " id="get_param-instance_method">
   
     - (<tt>String</tt>, ...) <strong>get_param</strong>(key, default = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get the param for key. You can set default value. That is uesed when the
@@ -1568,7 +1650,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1607,7 +1689,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1632,18 +1714,18 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-133
-134
-135
-136
-137
-138
-139
-140
-141</pre>
+141
+142
+143
+144
+145
+146
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_param'>get_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_expand_local_name'>expand_local_name</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
@@ -1660,13 +1742,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_param_names-instance_method">
+  <h3 class="signature " id="get_param_names-instance_method">
   
     - (<tt>Array</tt>) <strong>get_param_names</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get all parameters.</p>
@@ -1676,7 +1760,7 @@ key is not set yet.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1701,12 +1785,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-148
-149
-150</pre>
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 156</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_param_names'>get_param_names</span>
   <span class='ivar'>@parameter</span><span class='period'>.</span><span class='id identifier rubyid_get_param_names'>get_param_names</span>
@@ -1717,13 +1801,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="get_published_topics-instance_method">
+  <h3 class="signature " id="get_published_topics-instance_method">
   
     - (<tt>Array</tt>) <strong>get_published_topics</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get all topics by this node.</p>
@@ -1733,7 +1819,7 @@ key is not set yet.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1758,14 +1844,14 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-360
-361
-362
-363
-364</pre>
+369
+370
+371
+372
+373</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 360</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 369</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_published_topics'>get_published_topics</span>
   <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_publishers'>publishers</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pub'>pub</span><span class='op'>|</span>
@@ -1778,13 +1864,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="has_param-instance_method">
+  <h3 class="signature " id="has_param-instance_method">
   
     - (<tt>Boolean</tt>) <strong>has_param</strong>(key) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>check if the parameter server has the param for 'key'.</p>
@@ -1793,7 +1881,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1814,7 +1902,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1839,12 +1927,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-156
-157
-158</pre>
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_param'>has_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='ivar'>@parameter</span><span class='period'>.</span><span class='id identifier rubyid_has_param'>has_param</span><span class='lparen'>(</span><span class='id identifier rubyid_expand_local_name'>expand_local_name</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1855,13 +1943,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="logdebug-instance_method">
+  <h3 class="signature " id="logdebug-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Node (class)">Node</a></span></tt>) <strong>logdebug</strong>(message) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>outputs log message for DEBUG</p>
@@ -1870,7 +1960,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1891,7 +1981,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1916,14 +2006,14 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-315
-316
-317
-318
-319</pre>
+324
+325
+326
+327
+328</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 315</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 324</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logdebug'>logdebug</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_function'>function</span> <span class='op'>=</span> <span class='id identifier rubyid_caller'>caller</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -1936,7 +2026,7 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="logerror-instance_method">
+  <h3 class="signature " id="logerror-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Node (class)">Node</a></span></tt>) <strong>logerror</strong>(message) 
   
@@ -1946,7 +2036,9 @@ key is not set yet.</p>
     <span class="names"><span id='logerr-instance_method'>logerr</span></span>
     </span>
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>outputs log message for ERROR.</p>
@@ -1955,7 +2047,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1976,7 +2068,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2001,14 +2093,14 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-337
-338
-339
-340
-341</pre>
+346
+347
+348
+349
+350</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 337</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 346</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logerror'>logerror</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_function'>function</span> <span class='op'>=</span> <span class='id identifier rubyid_caller'>caller</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -2021,13 +2113,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="logfatal-instance_method">
+  <h3 class="signature " id="logfatal-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Node (class)">Node</a></span></tt>) <strong>logfatal</strong>(message) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>outputs log message for FATAL.</p>
@@ -2036,7 +2130,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2057,7 +2151,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2082,14 +2176,14 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-350
-351
-352
-353
-354</pre>
+359
+360
+361
+362
+363</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 350</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 359</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logfatal'>logfatal</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_function'>function</span> <span class='op'>=</span> <span class='id identifier rubyid_caller'>caller</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -2102,13 +2196,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="loginfo-instance_method">
+  <h3 class="signature " id="loginfo-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Node (class)">Node</a></span></tt>) <strong>loginfo</strong>(message) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>outputs log message for INFO (INFORMATION).</p>
@@ -2117,7 +2213,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2138,7 +2234,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2163,14 +2259,14 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-305
-306
-307
-308
-309</pre>
+314
+315
+316
+317
+318</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 305</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 314</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_loginfo'>loginfo</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_function'>function</span> <span class='op'>=</span> <span class='id identifier rubyid_caller'>caller</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -2183,13 +2279,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="logwarn-instance_method">
+  <h3 class="signature " id="logwarn-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Node (class)">Node</a></span></tt>) <strong>logwarn</strong>(message) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>outputs log message for WARN (WARING).</p>
@@ -2198,7 +2296,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2219,7 +2317,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2244,14 +2342,14 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-326
-327
-328
-329
-330</pre>
+335
+336
+337
+338
+339</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 326</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 335</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logwarn'>logwarn</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_function'>function</span> <span class='op'>=</span> <span class='id identifier rubyid_caller'>caller</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -2264,13 +2362,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ok?-instance_method">
+  <h3 class="signature " id="ok?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>ok?</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>Is this node running? Please use for 'while loop' and so on..</p>
@@ -2280,7 +2380,7 @@ key is not set yet.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2305,12 +2405,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-95
-96
-97</pre>
+103
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span>
   <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_is_ok?'>is_ok?</span>
@@ -2321,13 +2421,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="resolve_name-instance_method">
+  <h3 class="signature " id="resolve_name-instance_method">
   
     - (<tt>String</tt>) <strong>resolve_name</strong>(name) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>resolve the name by this node's remapping rule.</p>
@@ -2336,7 +2438,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2357,7 +2459,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2382,12 +2484,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-122
-123
-124</pre>
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resolve_name'>resolve_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_resolve_name_with_call_id'>resolve_name_with_call_id</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span> <span class='ivar'>@ns</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='ivar'>@remappings</span><span class='rparen'>)</span>
@@ -2398,13 +2500,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="service-instance_method">
+  <h3 class="signature " id="service-instance_method">
   
     - (<tt><span class='object_link'><a href="ServiceClient.html" title="ROS::ServiceClient (class)">ServiceClient</a></span></tt>) <strong>service</strong>(service_name, service_type) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>create service client.</p>
@@ -2413,7 +2517,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2450,7 +2554,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2475,15 +2579,15 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-234
-235
-236
-237
-238
-239</pre>
+243
+244
+245
+246
+247
+248</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 234</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 243</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_service'>service</span><span class='lparen'>(</span><span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_service_type'>service_type</span><span class='rparen'>)</span>
   <span class='const'>ROS</span><span class='op'>::</span><span class='const'>ServiceClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@master_uri</span><span class='comma'>,</span>
@@ -2497,13 +2601,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="set_param-instance_method">
+  <h3 class="signature " id="set_param-instance_method">
   
     - (<tt>Boolean</tt>) <strong>set_param</strong>(key, value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>set parameter for 'key'.</p>
@@ -2512,7 +2618,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2549,7 +2655,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2574,12 +2680,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-174
-175
-176</pre>
+182
+183
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 174</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 182</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_param'>set_param</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@parameter</span><span class='period'>.</span><span class='id identifier rubyid_set_param'>set_param</span><span class='lparen'>(</span><span class='id identifier rubyid_expand_local_name'>expand_local_name</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2590,13 +2696,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="shutdown-instance_method">
+  <h3 class="signature " id="shutdown-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="ROS::Node (class)">Node</a></span></tt>) <strong>shutdown</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>unregister to master and shutdown all connections.</p>
@@ -2606,7 +2714,7 @@ key is not set yet.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2631,20 +2739,20 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-289
-290
-291
-292
-293
-294
-295
-296
-297
 298
-299</pre>
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 289</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 298</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_ok?'>ok?</span>
@@ -2663,13 +2771,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="slave_uri-instance_method">
+  <h3 class="signature " id="slave_uri-instance_method">
   
     - (<tt>String</tt>) <strong>slave_uri</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>get node URI</p>
@@ -2679,7 +2789,7 @@ key is not set yet.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2691,7 +2801,7 @@ key is not set yet.</p>
       
         &mdash;
         <div class='inline'>
-<p>uri of this node's api</p>
+<p>uri of this node’s api</p>
 </div>
       
     </li>
@@ -2704,12 +2814,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-105
-106
-107</pre>
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_slave_uri'>slave_uri</span>
   <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_get_uri'>get_uri</span>
@@ -2720,13 +2830,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="spin-instance_method">
+  <h3 class="signature " id="spin-instance_method">
   
     - (<tt>Object</tt>) <strong>spin</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>spin forever.</p>
@@ -2743,15 +2855,15 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-279
-280
-281
-282
-283
-284</pre>
+288
+289
+290
+291
+292
+293</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 279</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 288</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_spin'>spin</span>
   <span class='kw'>while</span> <span class='id identifier rubyid_ok?'>ok?</span>
@@ -2765,13 +2877,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="spin_once-instance_method">
+  <h3 class="signature " id="spin_once-instance_method">
   
     - (<tt>Object</tt>) <strong>spin_once</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>spin once. This invoke subscription/service_server callbacks</p>
@@ -2788,12 +2902,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-272
-273
-274</pre>
+281
+282
+283</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 272</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 281</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_spin_once'>spin_once</span>
   <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_spin_once'>spin_once</span>
@@ -2804,13 +2918,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="subscribe-instance_method">
+  <h3 class="signature " id="subscribe-instance_method">
   
     - (<tt><span class='object_link'><a href="Subscriber.html" title="ROS::Subscriber (class)">Subscriber</a></span></tt>) <strong>subscribe</strong>(topic_name, topic_type, &amp;callback) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>start to subscribe a topic.</p>
@@ -2819,7 +2935,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2856,7 +2972,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2881,18 +2997,18 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-247
-248
-249
-250
-251
-252
-253
-254
-255</pre>
+256
+257
+258
+259
+260
+261
+262
+263
+264</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 247</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 256</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subscribe'>subscribe</span><span class='lparen'>(</span><span class='id identifier rubyid_topic_name'>topic_name</span><span class='comma'>,</span> <span class='id identifier rubyid_topic_type'>topic_type</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='const'>Subscriber</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@node_name</span><span class='comma'>,</span>
@@ -2909,13 +3025,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="subscribe_parameter-instance_method">
+  <h3 class="signature " id="subscribe_parameter-instance_method">
   
     - (<tt><span class='object_link'><a href="ParameterSubscriber.html" title="ROS::ParameterSubscriber (class)">ParameterSubscriber</a></span></tt>) <strong>subscribe_parameter</strong>(param, &amp;callback) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>subscribe to the parameter.</p>
@@ -2924,7 +3042,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2961,7 +3079,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2986,14 +3104,14 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-263
-264
-265
-266
-267</pre>
+272
+273
+274
+275
+276</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 263</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 272</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subscribe_parameter'>subscribe_parameter</span><span class='lparen'>(</span><span class='id identifier rubyid_param'>param</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='const'>ParameterSubscriber</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_param'>param</span><span class='comma'>,</span> <span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
@@ -3006,13 +3124,15 @@ key is not set yet.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="wait_for_service-instance_method">
+  <h3 class="signature " id="wait_for_service-instance_method">
   
     - (<tt>Boolean</tt>) <strong>wait_for_service</strong>(service_name, timeout_sec = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>wait until start the service.</p>
@@ -3021,7 +3141,7 @@ key is not set yet.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3060,7 +3180,7 @@ key is not set yet.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3072,7 +3192,7 @@ key is not set yet.</p>
       
         &mdash;
         <div class='inline'>
-<p>true if success, false if timeouted</p>
+<p>true if success, false if timeout</p>
 </div>
       
     </li>
@@ -3085,12 +3205,12 @@ key is not set yet.</p>
       <pre class="lines">
 
 
-225
-226
-227</pre>
+234
+235
+236</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 225</span>
+      <pre class="code"><span class="info file"># File 'lib/ros/node.rb', line 234</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait_for_service'>wait_for_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_timeout_sec'>timeout_sec</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@manager</span><span class='period'>.</span><span class='id identifier rubyid_wait_for_service'>wait_for_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service_name'>service_name</span><span class='comma'>,</span> <span class='id identifier rubyid_timeout_sec'>timeout_sec</span><span class='rparen'>)</span>
@@ -3103,11 +3223,11 @@ key is not set yet.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sat Jun  9 21:44:48 2012 by 
+  Generated on Tue Sep 10 01:39:56 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.7 (ruby-1.9.3).
 </div>
 
   </body>
