@@ -15,23 +15,13 @@ catkin_package(
 macro(rosruby_setup)
   set(ROSRUBY_DEVEL_LIB_DESTINATION ${CATKIN_DEVEL_PREFIX}/lib/ruby/vendor_ruby)
   set(ROSRUBY_LIB_DESTINATION ${CATKIN_GLOBAL_LIB_DESTINATION}/ruby/vendor_ruby)
+  set(ROSRUBY_DEVEL_GENMSG ${ROSRUBY_DEVEL_LIB_DESTINATION}/rosruby_genmsg.py)
 endmacro()
 
 macro(rosruby_generate_messages)
   add_custom_target(rosruby_genmsg_${PROJECT_NAME} ALL
-    COMMAND rosrun rosruby rosruby_genmsg.py -d ${ROSRUBY_DEVEL_LIB_DESTINATION} ${ARGN})
-  install(DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/
-    DESTINATION ${ROSRUBY_LIB_DESTINATION}/msg
-    )
-  install(DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION}/srv/
-    DESTINATION ${ROSRUBY_LIB_DESTINATION}/srv
-    )
-endmacro()
-
-# only for rosruby
-macro(rosruby_generate_messages_core)
-  add_custom_target(rosruby_genmsg_${PROJECT_NAME} ALL
-    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/rosruby_genmsg.py -d ${ROSRUBY_DEVEL_LIB_DESTINATION} ${ARGN})
+    COMMAND ${ROSRUBY_DEVEL_GENMSG} -d ${ROSRUBY_DEVEL_LIB_DESTINATION} ${ARGN}
+    DEPENDS rosruby_devel_mkdir)
   install(DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/
     DESTINATION ${ROSRUBY_LIB_DESTINATION}/msg
     )
@@ -56,10 +46,13 @@ endmacro()
 rosruby_setup()
 
 catkin_add_env_hooks(rosruby SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
-rosruby_generate_messages_core(rosgraph_msgs std_msgs roscpp_tutorials)
+rosruby_generate_messages(rosgraph_msgs std_msgs roscpp_tutorials)
 
 add_custom_target(rosruby_devel_mkdir ALL
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${ROSRUBY_DEVEL_LIB_DESTINATION})
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${ROSRUBY_DEVEL_LIB_DESTINATION}
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/scripts/genmsg_ruby.py ${ROSRUBY_DEVEL_LIB_DESTINATION}
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/scripts/gensrv_ruby.py ${ROSRUBY_DEVEL_LIB_DESTINATION}
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/scripts/rosruby_genmsg.py ${ROSRUBY_DEVEL_LIB_DESTINATION})
 
 install(PROGRAMS
   bin/rubyroscore
