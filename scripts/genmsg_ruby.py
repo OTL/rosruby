@@ -67,6 +67,7 @@ try:
 except ImportError:
     from io import StringIO # Python 3.x
 
+import roslib
 import roslib.exceptions
 import roslib.gentools
 import roslib.msgs
