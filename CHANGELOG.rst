@@ -2,6 +2,10 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.4.2 (2013-09-11)
+------------------
+* add more depends
+
 0.4.1 (2013-09-10)
 ------------------
 * remove rosrun from message generation for rosruby
