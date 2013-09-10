@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rosruby)
 
-find_package(catkin REQUIRED COMPONENTS roslib)
+find_package(catkin REQUIRED COMPONENTS roslib rosgraph_msgs std_msgs roscpp_tutorials)
 
 catkin_package(
-  CATKIN_DEPENDS roslang rosgraph_msgs roslib
+  CATKIN_DEPENDS roslang rosgraph_msgs roslib std_msgs roscpp_tutorials
   DEPENDS ruby
 )
 
