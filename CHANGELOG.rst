@@ -2,9 +2,10 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.4.1 (2013-09-10)
+0.4.2 (2013-09-10)
 ------------------
 * remove rosrun from message generation for rosruby
+* add import roslib
 
 0.4.0 (2013-09-10)
 -------------------
