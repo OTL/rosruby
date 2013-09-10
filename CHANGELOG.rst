@@ -2,6 +2,10 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.4.1 (2013-09-10)
+------------------
+* remove rosrun from message generation for rosruby
+
 0.4.0 (2013-09-10)
 -------------------
 * use catkin_add_hook for ROSLIB environment
