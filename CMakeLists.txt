@@ -1,14 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rosruby)
 
-find_package(catkin REQUIRED COMPONENTS)
+find_package(catkin REQUIRED COMPONENTS roslib)
 
 catkin_package(
-  CATKIN_DEPENDS roslang rosgraph_msgs
+  CATKIN_DEPENDS roslang rosgraph_msgs roslib
   DEPENDS ruby
 )
 
-catkin_python_setup()
 
 #
 # macro definitions
