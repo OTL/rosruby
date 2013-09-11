@@ -1,6 +1,6 @@
 <package>
   <name>rosruby</name>
-  <version>0.4.2</version>
+  <version>0.4.3</version>
   <description>This package is a Ruby client library for ROS, the Robot Operating System.</description>
   <maintainer email="t.ogura@gmail.com">Takashi Ogura</maintainer>
 

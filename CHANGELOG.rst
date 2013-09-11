@@ -2,6 +2,10 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.4.3 (2013-09-11)
+------------------
+* set ROS_ROOT environ if it is not set for roslib.package (it requires it)
+
 0.4.2 (2013-09-11)
 ------------------
 * add more depends

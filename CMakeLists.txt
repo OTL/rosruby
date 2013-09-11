@@ -15,13 +15,25 @@ catkin_package(
 macro(rosruby_setup)
   set(ROSRUBY_DEVEL_LIB_DESTINATION ${CATKIN_DEVEL_PREFIX}/lib/ruby/vendor_ruby)
   set(ROSRUBY_LIB_DESTINATION ${CATKIN_GLOBAL_LIB_DESTINATION}/ruby/vendor_ruby)
-  set(ROSRUBY_DEVEL_GENMSG ${ROSRUBY_DEVEL_LIB_DESTINATION}/rosruby_genmsg.py)
+  set(ROSRUBY_GENMSG ${ROSRUBY_DEVEL_LIB_DESTINATION}/rosruby_genmsg.py)
+  foreach(prefix ${CMAKE_PREFIX_PATH})
+    if(EXISTS ${prefix}/${CATKIN_GLOBAL_LIB_DESTINATION}/rosruby/rosruby_genmsg.py)
+      set(ROSRUBY_GENMSG ${prefix}/${CATKIN_GLOBAL_LIB_DESTINATION}/rosruby/rosruby_genmsg.py)
+    endif()
+  endforeach()
+  message("-- using ${ROSRUBY_GENMSG} for message generation")
 endmacro()
 
 macro(rosruby_generate_messages)
-  add_custom_target(rosruby_genmsg_${PROJECT_NAME} ALL
-    COMMAND ${ROSRUBY_DEVEL_GENMSG} -d ${ROSRUBY_DEVEL_LIB_DESTINATION} ${ARGN}
-    DEPENDS rosruby_devel_mkdir)
+  foreach(pkg ${ARGN})
+    add_custom_command(
+      OUTPUT ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/${pkg}
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/${pkg}
+      COMMAND ${ROSRUBY_GENMSG} -d ${ROSRUBY_DEVEL_LIB_DESTINATION} ${pkg}
+      DEPENDS rosruby_devel_mkdir)
+    add_custom_target(rosruby_genmsg_${pkg} ALL
+      DEPENDS ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/${pkg})
+  endforeach()
   install(DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/
     DESTINATION ${ROSRUBY_LIB_DESTINATION}/msg
     )
@@ -29,6 +41,7 @@ macro(rosruby_generate_messages)
     DESTINATION ${ROSRUBY_LIB_DESTINATION}/srv
     )
 endmacro()
+
 
 macro(rosruby_add_libraries)
   foreach(file ${ARGN})
