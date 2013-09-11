@@ -57,7 +57,7 @@ if __name__ == "__main__":
             for file in os.listdir(msg_dir):
                 base, ext = os.path.splitext(file)
                 if ext == '.msg':
-                    print "generating " + file
+                    print "generating %s/%s"%(pack, file)
                     genmsg_ruby.gen_msg(msg_dir+file, msg_output_prefix)
 
         srv_dir = "%s/srv/"%get_pkg_dir(pack)
@@ -66,5 +66,5 @@ if __name__ == "__main__":
             for file in os.listdir(srv_dir):
                 base, ext = os.path.splitext(file)
                 if ext == '.srv':
-                    print "generating " + file
+                    print "generating %s/%s"%(pack, file)
                     gensrv_ruby.gen_srv(srv_dir+file, srv_output_prefix)

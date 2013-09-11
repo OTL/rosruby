@@ -1114,6 +1114,12 @@ def msg_generator(package, base_name, spec):
     return re.sub('_REPLACE_FOR_STRUCT_', structs, generated, 1)
 
 def gen_msg(path, output_dir_prefix=None):
+    # for roslib.packages.get_pkg_subdir bug(?)
+    # it requires ROS_ROOT environmental variable,
+    # although in bloom releasing it is not set.
+    if not os.environ.has_key(roslib.packages.ROS_ROOT):
+        os.environ[roslib.packages.ROS_ROOT] = ''
+
     f = os.path.abspath(path)
     (package_dir, package) = roslib.packages.get_dir_pkg(f)
     (name, spec) = roslib.msgs.load_from_file(f, package)
