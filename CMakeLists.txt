@@ -4,62 +4,26 @@ project(rosruby)
 find_package(catkin REQUIRED COMPONENTS
   genrb rosgraph_msgs std_msgs)
 
+include(${PROJECT_SOURCE_DIR}/cmake/rosruby-macro.cmake)
+
 set(ROSRUBY_GENMSG_DIR ${PROJECT_SOURCE_DIR}/scripts)
 
 catkin_package(
-  CFG_EXTRAS rosruby-extras.cmake
+  CFG_EXTRAS rosruby-extras.cmake rosruby-macro.cmake
   CATKIN_DEPENDS roslang genrb rosgraph_msgs std_msgs
   DEPENDS ruby
   )
 
 
-#
-# macro definitions
-#
-macro(rosruby_setup)
-  set(ROSRUBY_DEVEL_LIB_DESTINATION ${CATKIN_DEVEL_PREFIX}/lib/ruby/vendor_ruby)
-  set(ROSRUBY_LIB_DESTINATION ${CATKIN_GLOBAL_LIB_DESTINATION}/ruby/vendor_ruby)
-endmacro()
-
-
-macro(rosruby_add_libraries)
-  foreach(file ${ARGN})
-    get_filename_component(fullpath ${file} ABSOLUTE)
-    get_filename_component(name ${file} NAME)
-    add_custom_target(rosruby_${name}_link ALL
-      COMMAND ${CMAKE_COMMAND} -E create_symlink ${fullpath} ${ROSRUBY_DEVEL_LIB_DESTINATION}/${name}
-      DEPENDS rosruby_devel_mkdir)
-  endforeach()
-endmacro()
-
-macro(rosruby_generate_messages)
-  add_custom_target(rosruby_genmsg_for_${PROJECT_NAME} ALL
-    COMMAND ${ROSRUBY_GENMSG_DIR}/rosruby_genmsg.py ${ARGN}
-    -d ${ROSRUBY_DEVEL_LIB_DESTINATION}
-    )
-  install(DIRECTORY
-    ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/
-    DESTINATION ${ROSRUBY_LIB_DESTINATION}
-    )
-  install(DIRECTORY
-    ${ROSRUBY_DEVEL_LIB_DESTINATION}/srv/
-    DESTINATION ${ROSRUBY_LIB_DESTINATION}
-    )
-endmacro()
-#
-# end macro
-#
-
 rosruby_setup()
 
 catkin_add_env_hooks(${PROJECT_NAME} SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
-
-rosruby_generate_messages(std_msgs rosgraph_msgs roscpp_tutorials)
 
 add_custom_target(rosruby_devel_mkdir ALL
   COMMAND ${CMAKE_COMMAND} -E make_directory ${ROSRUBY_DEVEL_LIB_DESTINATION}
   )
 
+rosruby_generate_messages(std_msgs rosgraph_msgs)
 
 install(PROGRAMS
   bin/rubyroscore
@@ -74,3 +38,9 @@ rosruby_add_libraries(
 install(DIRECTORY lib/
   DESTINATION ${ROSRUBY_LIB_DESTINATION}
   )
+
+install(FILES
+  cmake/rosruby-extras.cmake.em
+  cmake/rosruby-macro.cmake
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/cmake)
+
