@@ -6,25 +6,28 @@
 
   <license>BSD</license>
 
-  <url type="website">http://ros.org/wiki/rosruby</url>
+  <url type="website">http://wiki.ros.org/rosruby</url>
   <url type="bugtracker">http://github.com/OTL/rosruby</url>
 
   <author>Takashi Ogura</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>roslib</build_depend>
+  <build_depend>genrb</build_depend>
+  <build_depend>rosmsg</build_depend>
+  <build_depend>rospkg</build_depend>
   <build_depend>rosgraph_msgs</build_depend>
   <build_depend>std_msgs</build_depend>
-  <build_depend>roscpp_tutorials</build_depend>
-  <build_depend>roslib</build_depend>
+
   <build_depend>ruby</build_depend>
   <build_depend>rake</build_depend>
 
-  <run_depend>roslib</run_depend>
+  <run_depend>genrb</run_depend>
+  <run_depend>rosmsg</run_depend>
+  <run_depend>rospkg</run_depend>
   <run_depend>rosgraph_msgs</run_depend>
   <run_depend>std_msgs</run_depend>
-  <run_depend>roscpp_tutorials</run_depend>
+
   <run_depend>roslang</run_depend>
   <run_depend>rosgraph_msgs</run_depend>
 

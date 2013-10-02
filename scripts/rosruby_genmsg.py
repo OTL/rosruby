@@ -5,39 +5,47 @@
 # because it needs root access and there are ROS_NOBUILD file in the packages.
 # This script generates *.rb files in the rosruby dir.
 
-import genmsg_ruby
-import gensrv_ruby
-from roslib.packages import get_pkg_dir
-
-# for electirc
-try:
-    from roslib.packages import ROSPackages
-    def get_all_deps(packages):
-        rp = ROSPackages()
-        depends = rp.depends(packages)
-        all_deps = set()
-        for packs in depends.values():
-            for pack in packs:
-                all_deps.add(pack)
-        for pack in packages:
-            all_deps.add(pack)
-        return all_deps
-# for fuerte
-except ImportError:
-    from rospkg import RosPack
-    def get_all_deps(packages):
-        rp = RosPack()
-        all_deps = set()
-        for pack in packages:
-            depends = rp.get_depends(pack)
-            for dep in depends:
-                all_deps.add(dep)
-        for pack in packages:
-            all_deps.add(pack)
-        return all_deps
 import sys
 import os
 
+from genrb.generator import msg_generator
+from genrb.generator import srv_generator
+from rospkg import RosPack
+
+import genmsg
+import rosmsg
+
+def get_all_deps(packages):
+    rp = RosPack()
+    all_deps = set()
+    for pack in packages:
+        depends = rp.get_depends(pack)
+        for dep in depends:
+            all_deps.add(dep)
+    for pack in packages:
+        all_deps.add(pack)
+    return all_deps
+
+
+def generate_rb_files(msg_srv, generator, list_msgs, load_msg_by_type, overwrite=True):
+    search_path = {}
+    for p in rospack.list():
+        search_path[p] = [os.path.join(rospack.get_path(p), msg_srv)] 
+    for pack in all_dep_packages:
+        output_prefix = "%s/%s"%(base_dir, msg_srv)
+        output_dir = "%s/%s/"%(output_prefix, pack)
+        all_pkg = list_msgs(pack)
+        if all_pkg and not os.path.isdir(output_dir):
+            os.makedirs(output_dir)
+        for pkg_msg in all_pkg:
+            spec = load_msg_by_type(context, pkg_msg, search_path)
+            output_file = "%s/%s.rb"%(output_prefix, pkg_msg)
+            if os.path.isfile(output_file) and not overwrite:
+                print "%s already exists skipping it (please use --overwrite to regenerate it)"%output_file
+            else:
+                with open(output_file, 'w') as f:
+                    for l in generator(context, spec, search_path):
+                        f.write(l)
 
 
 if __name__ == "__main__":
@@ -45,26 +53,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='generate rosruby msg/srv files')
     parser.add_argument('packages', nargs='+')
     parser.add_argument('-d', '--output-dir')
+#    parser.add_argument('--overwrite', default=False, help='overwrite .rb file if it is already exists. default: False', action='store_true')
     args = parser.parse_args()
     packages = args.packages
     base_dir = os.environ.get("HOME") + "/.ros/rosruby"
     if args.output_dir:
         base_dir = args.output_dir
-    for pack in get_all_deps(packages):
-        msg_dir = "%s/msg/"%get_pkg_dir(pack)
-        msg_output_prefix = "%s/msg"%base_dir
-        if os.path.exists(msg_dir):
-            for file in os.listdir(msg_dir):
-                base, ext = os.path.splitext(file)
-                if ext == '.msg':
-                    print "-- generating %s/%s"%(pack, file)
-                    genmsg_ruby.gen_msg(msg_dir+file, msg_output_prefix)
+    rospack = RosPack()
 
-        srv_dir = "%s/srv/"%get_pkg_dir(pack)
-        srv_output_prefix = "%s/srv"%base_dir
-        if os.path.exists(srv_dir):
-            for file in os.listdir(srv_dir):
-                base, ext = os.path.splitext(file)
-                if ext == '.srv':
-                    print "-- generating %s/%s"%(pack, file)
-                    gensrv_ruby.gen_srv(srv_dir+file, srv_output_prefix)
+    context = genmsg.MsgContext.create_default()
+    all_dep_packages = get_all_deps(packages)
+
+    generate_rb_files('msg', msg_generator, rosmsg.list_msgs, genmsg.load_msg_by_type)
+    generate_rb_files('srv', srv_generator, rosmsg.list_srvs, genmsg.load_srv_by_type)
