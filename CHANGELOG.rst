@@ -2,6 +2,12 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.1 (2013-10-02)
+------------------
+* change msg/srv generation path.
+  it will be same as genrb.
+* export rosruby macros
+
 0.5.0 (2013-10-02)
 ------------------
 * delete samples (please use rosruby_tutorials package)
