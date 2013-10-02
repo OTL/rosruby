@@ -2,6 +2,11 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.0 (2013-10-02)
+------------------
+* delete samples (please use rosruby_tutorials package)
+* use genrb package
+
 0.4.3 (2013-09-11)
 ------------------
 * set ROS_ROOT environ if it is not set for roslib.package (it requires it)
