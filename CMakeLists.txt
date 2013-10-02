@@ -14,6 +14,7 @@ catkin_package(
   DEPENDS ruby
   )
 
+catkin_python_setup()
 
 rosruby_setup()
 

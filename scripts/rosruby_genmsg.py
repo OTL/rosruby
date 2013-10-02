@@ -8,7 +8,6 @@
 import sys
 import os
 
-import genrb
 from genrb.generator import msg_generator
 from genrb.generator import srv_generator
 from rospkg import RosPack
