@@ -27,12 +27,12 @@ def get_all_deps(packages):
     return all_deps
 
 
-def generate_rb_files(msg_srv, generator, list_msgs, load_msg_by_type, overwrite=True):
+def generate_rb_files(msg_srv, generator, list_msgs, load_msg_by_type, base_dir, overwrite=True):
     search_path = {}
     for p in rospack.list():
         search_path[p] = [os.path.join(rospack.get_path(p), msg_srv)] 
     for pack in all_dep_packages:
-        output_prefix = "%s/%s"%(base_dir, msg_srv)
+        output_prefix = base_dir
         output_dir = "%s/%s/"%(output_prefix, pack)
         all_pkg = list_msgs(pack)
         if all_pkg and not os.path.isdir(output_dir):
@@ -64,5 +64,5 @@ if __name__ == "__main__":
     context = genmsg.MsgContext.create_default()
     all_dep_packages = get_all_deps(packages)
 
-    generate_rb_files('msg', msg_generator, rosmsg.list_msgs, genmsg.load_msg_by_type)
-    generate_rb_files('srv', srv_generator, rosmsg.list_srvs, genmsg.load_srv_by_type)
+    generate_rb_files('msg', msg_generator, rosmsg.list_msgs, genmsg.load_msg_by_type, base_dir)
+    generate_rb_files('srv', srv_generator, rosmsg.list_srvs, genmsg.load_srv_by_type, base_dir)
