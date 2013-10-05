@@ -5,6 +5,8 @@ Changelog for package rosruby
 0.5.2 (2013-10-03)
 ------------------
 * add setup.py for resolve genrb
+* use genrb_pkg_sh for message generation
+  (because in binary environment, we have to source setup.sh)
 
 0.5.1 (2013-10-02)
 ------------------
