@@ -18,7 +18,7 @@ endmacro()
 
 macro(rosruby_generate_messages)
   add_custom_target(rosruby_genmsg_for_${PROJECT_NAME} ALL
-    COMMAND ${ROSRUBY_GENMSG_DIR}/genrb_pkg ${ARGN}
+    COMMAND ${ROSRUBY_GENMSG_DIR}/genrb_pkg.sh ${ARGN}
     -d ${ROSRUBY_DEVEL_LIB_DESTINATION}
     )
   foreach(package ${ARGN})

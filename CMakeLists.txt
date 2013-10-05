@@ -29,7 +29,7 @@ rosruby_generate_messages(std_msgs rosgraph_msgs)
 install(PROGRAMS
   bin/rubyroscore
   scripts/rosruby_genmsg.py
-  scripts/genrb_pkg
+  scripts/genrb_pkg.sh
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
