@@ -8,10 +8,6 @@
 import sys
 import os
 
-# for binary install environment
-print sys.path
-sys.path.append('/opt/ros/hydro/lib/python2.7/dist-packages')
-
 from rospkg import RosPack
 
 import genmsg
