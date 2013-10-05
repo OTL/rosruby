@@ -9,10 +9,8 @@ import sys
 import os
 
 # for binary install environment
-if not os.environ.has_key('PYTHONPATH'):
-    os.environ['PYTHONPATH'] = '/opt/ros/hydro/lib/python2.7/dist-packages'
-for k, v in os.environ.items():
-    print "%s=%s"%(k, v)
+print sys.path
+sys.path.append('/opt/ros/hydro/lib/python2.7/dist-packages')
 
 from rospkg import RosPack
 
