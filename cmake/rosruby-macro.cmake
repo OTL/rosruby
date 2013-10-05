@@ -22,17 +22,9 @@ macro(rosruby_generate_messages)
     -d ${ROSRUBY_DEVEL_LIB_DESTINATION}
     )
   foreach(package ${ARGN})
-    if(EXISTS ${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/${package})
-      install(DIRECTORY
-	${ROSRUBY_DEVEL_LIB_DESTINATION}/msg/${package}
-	DESTINATION ${ROSRUBY_LIB_DESTINATION}
-	)
-    endif()
-    if(EXISTS ${ROSRUBY_DEVEL_LIB_DESTINATION}/srv/${package})
-      install(DIRECTORY
-	${ROSRUBY_DEVEL_LIB_DESTINATION}/srv/${package}
-	DESTINATION ${ROSRUBY_LIB_DESTINATION}
-	)
-    endif()
+    install(DIRECTORY
+      ${ROSRUBY_DEVEL_LIB_DESTINATION}/${package}
+      DESTINATION ${ROSRUBY_LIB_DESTINATION}
+      )
   endforeach()
 endmacro()
