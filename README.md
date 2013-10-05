@@ -121,50 +121,10 @@ Ruby requires 'Start with Capital letter' for class or module names.
 So please use **S**td_msgs::String class instead of **s**td_msgs::String.
 rosruby message compiler automatically generates messages by the rule.
 
-Try Publish and Subscribe
+
+Samples
 ----------------------
-You needs three terminal as it is often for ROS users.
-Then you run roscore if is not running.
-
-```bash
-$ roscore
-```
-
-run publisher sample
-
-```bash
-$ rosrun rosruby sample_publisher.rb
-```
-
-run subscription sample
-
-```bash
-$ rosrun rosruby sample_subscriber.rb
-```
-
-you can check publication by using rostopic.
-
-```bash
-$ rostopic list
-$ rostopic echo /chatter
-```
-
-Try Service?
-----------------------
-
-```bash
-$ rosrun rosruby add_two_ints_server.rb
-```
-
-run client with args ('a' and 'b' for roscpp_tutorials/TwoInts)
-
-```bash
-$ rosrun rosruby add_two_ints_client.rb 10 20
-```
-
-And more...
-----------------------
-There are [rosruby_common](https://github.com/OTL/rosruby_common) stack that contains actionlib and tf (highly under development).
+There are [rosruby_common](https://github.com/OTL/rosruby_common) that contains actionlib and tutorials.
 
 Do all tests
 -------------------------
