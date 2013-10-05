@@ -8,12 +8,18 @@
 import sys
 import os
 
-from genrb.generator import msg_generator
-from genrb.generator import srv_generator
+# for binary install environment
+if not os.environ.has_key('PYTHONPATH'):
+    os.environ['PYTHONPATH'] = '/opt/ros/hydro/lib/python2.7/dist-packages'
+for k, v in os.environ.items():
+    print "%s=%s"%(k, v)
+
 from rospkg import RosPack
 
 import genmsg
 import rosmsg
+from genrb.generator import msg_generator
+from genrb.generator import srv_generator
 
 def get_all_deps(packages):
     rp = RosPack()
