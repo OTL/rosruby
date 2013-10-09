@@ -20,16 +20,13 @@ rosruby_setup()
 
 catkin_add_env_hooks(${PROJECT_NAME} SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
 
-add_custom_target(rosruby_devel_mkdir ALL
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${ROSRUBY_DEVEL_LIB_DESTINATION}
-  )
+file(MAKE_DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION})
 
 rosruby_generate_messages(std_msgs rosgraph_msgs)
 
 install(PROGRAMS
   bin/rubyroscore
   scripts/rosruby_genmsg.py
-  scripts/genrb_pkg.sh
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
