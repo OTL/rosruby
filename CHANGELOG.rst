@@ -2,6 +2,10 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.4 (2013-10-19)
+------------------
+* add genrb_pkg.sh again, because binary build fails.
+
 0.5.3 (2013-10-19)
 ------------------
 * remove shell script and use CATKIN_ENV
