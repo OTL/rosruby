@@ -3,6 +3,7 @@
 #
 macro(rosruby_setup)
   set(ROSRUBY_DEVEL_LIB_DESTINATION ${CATKIN_DEVEL_PREFIX}/lib/ruby/vendor_ruby)
+  file(MAKE_DIRECTORY ${ROSRUBY_DEVEL_LIB_DESTINATION})
   set(ROSRUBY_LIB_DESTINATION ${CATKIN_GLOBAL_LIB_DESTINATION}/ruby/vendor_ruby)
 endmacro()
 
