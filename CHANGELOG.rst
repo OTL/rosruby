@@ -2,6 +2,10 @@
 Changelog for package rosruby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.5 (2013-10-25)
+------------------
+* add path for message generation (msg and srv)
+
 0.5.4 (2013-10-19)
 ------------------
 * add genrb_pkg.sh again, because binary build fails.
