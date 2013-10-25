@@ -30,7 +30,8 @@ def get_all_deps(packages):
 def generate_rb_files(msg_srv, generator, list_msgs, load_msg_by_type, base_dir, overwrite=True):
     search_path = {}
     for p in rospack.list():
-        search_path[p] = [os.path.join(rospack.get_path(p), msg_srv)] 
+        search_path[p] = [os.path.join(rospack.get_path(p), 'msg'),
+                          os.path.join(rospack.get_path(p), 'srv')]
     for pack in all_dep_packages:
         output_prefix = base_dir
         output_dir = "%s/%s/"%(output_prefix, pack)
