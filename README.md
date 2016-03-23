@@ -4,12 +4,12 @@ ROS Ruby Client: rosruby
 
 This project supports ruby ROS client. You can program intelligent robots by ruby, very easily.
 
-**Homepage**:     http://otl.github.com/rosruby   
-**Git**:          http://github.com/OTL/rosruby   
-**Author**:       Takashi Ogura   
-**Copyright**:    2012   
-**License**:      new BSD License   
-**Latest Version**: 0.4.3   
+**Homepage**:     http://otl.github.com/rosruby
+**Git**:          http://github.com/OTL/rosruby
+**Author**:       Takashi Ogura
+**Copyright**:    2012
+**License**:      new BSD License
+**Latest Version**: 0.4.3
 
 Requirements
 ----------
@@ -39,12 +39,22 @@ rosruby uses catkin. If you have not catkin_ws yet, please read [this wiki](http
 
 ````bash
 $ cd ~/catkin_ws/src
-$ git clone git://github.com/OTL/genrb.git
-$ git clone git://github.com/OTL/rosruby.git
+$ git clone https://github.com/OTL/genrb.git
+$ git clone https://github.com/OTL/rosruby.git
 $ cd ~/catkin_ws
 $ catkin_make
 ```
 
+Install from source (indigo/jade)
+----------------------------
+Try indigo-devel branch.
+
+```bash
+$ cd ~/catkin_ws/src/rosruby
+$ git checkout indigo-devel
+$ cd ~/catkin_ws
+$ catkin_make
+```
 
 Message generation
 -----------------------
@@ -57,7 +67,7 @@ Please add below to your package CMakeLists.txt.
 
 
 Or, you can generate it manually.
-Please use the msg/srv generation script (rosruby_genmsg.py) in order to 
+Please use the msg/srv generation script (rosruby_genmsg.py) in order to
 generage rosruby messages.
 
 For example, (please replace `catkin_ws` to your catkin workspace)
@@ -172,4 +182,3 @@ you can use these if you add `find_package(rosruby)` to CMakeLists.txt.
 * rosruby_setup() : setup some macros and variables for rosruby
 * rosruby_generate_messages(message_pkg1 message_okg2 ...) : generates rosruby msg/srv files
 * rosruby_add_libraries(files or dirs) : install lib files for devel environment.
-
